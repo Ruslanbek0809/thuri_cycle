@@ -1,0 +1,7 @@
+{
+    "@@locale": "es",
+    "homeAppBarTitle": "Hogar",
+    "@homeAppBarTitle": {
+        "description": "Texto mostrado en la AppBar de la página del hogar"
+    }
+}
