@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:intl/intl.dart';
 
 Size getSize(BuildContext context) {
   return MediaQuery.of(context).size;
@@ -44,6 +46,100 @@ Color getCustomOnPrimaryColor(BuildContext context, [double opacity = 0.5]) {
     getTheme(context).background,
     isDarkMode(context) ? 1000 : 500,
   ); */
+}
+
+//* Turns any field's toJson into NULL value
+dynamic toNull(dynamic a) {
+  return;
+}
+
+String colorToHex(Color c) {
+  return "#${(c.value.toRadixString(16))..padLeft(8, '0').toUpperCase()}";
+}
+
+Color hexToColor(String h) {
+  final buffer = StringBuffer();
+  if (h.length == 6 || h.length == 7) buffer.write('ff');
+  buffer.write(h.replaceFirst('#', ''));
+  return Color(int.parse(buffer.toString(), radix: 16));
+}
+
+LinearGradient colorsToGradient(List<Color> colors, {double opacity = 1}) {
+  return LinearGradient(
+    begin: Alignment.topCenter,
+    end: Alignment.bottomCenter,
+    colors: colors.map((c) => c.withOpacity(opacity)).toList(),
+  );
+}
+
+extension NumberToPrecisionFormat on num {
+  num toPrecision(int n) =>
+      num.parse(toStringAsFixed(n).replaceFirst(RegExp(r'\.?0*$'), ''));
+}
+
+extension PercentageOfNumberFormat on num {
+  num toPercentage({required int precision, required num discountPercentage}) =>
+      num.parse(
+        (this - (this * (discountPercentage / 100)))
+            .toPrecision(precision)
+            .toString(),
+      );
+}
+
+extension PercentageOfNumberFromAnotherNumberFormat on num {
+  num toDiscountPercentage({required num discountedPrice}) =>
+      100 * ((this - discountedPrice) / this);
+}
+
+//* PARSES and FORMATS String date time to DateTime date format
+extension DateTimeFormatter on DateTime {
+  String formatDateTimeToDate() {
+    // final tempDate = DateFormat('dd.MM.yyyy').parse(this);
+    return DateFormat('dd.MM.yyyy').format(this);
+  }
+}
+
+// //*PARSES and FORMATS String date time to DateTime in HH:mm format
+// extension DateTimeHmFormatter on String {
+//   String formatDateTimeToHm() {
+//     final tempDate = DateFormat('HH:mm').parse(this);
+//     return DateFormat.Hm().format(tempDate);
+//   }
+// }
+
+extension IndexedIterable<E> on Iterable<E> {
+  Iterable<T> mapIndexedd<T>(T Function(E e, int i) f) {
+    var i = 0;
+    return map((e) => f(e, i++));
+  }
+}
+
+bool isEmail(String input) {
+  // Regular expression for validating an email
+  final emailRegExp = RegExp(
+    r'^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$',
+    caseSensitive: false,
+  );
+
+  // Use the regex to validate the input
+  return emailRegExp.hasMatch(input);
+}
+
+//* Used when init data is needed but it is not added from initState
+TextEditingController useTextEditingControllerWithInitialValue(
+  String initialValue,
+) {
+  final controller = useTextEditingController();
+
+  useEffect(
+    () {
+      controller.text = initialValue;
+      return null;
+    },
+    [initialValue],
+  );
+
+  return controller;
 }
 
 //TODO: Look at below and more options as well (like flutter_screenutil)

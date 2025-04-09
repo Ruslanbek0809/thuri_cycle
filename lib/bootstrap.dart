@@ -1,11 +1,13 @@
 import 'dart:async';
 import 'dart:developer';
 
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
 import 'package:path_provider/path_provider.dart';
+import 'package:thuri_cycle/firebase_options.dart';
 import 'package:thuri_cycle/infastructure/bloc_observer/bloc_observer.dart';
 import 'package:thuri_cycle/infastructure/core/dependency_injection/di.dart';
 import 'package:thuri_cycle/presentation/core/utils/methods/aliases.dart';
@@ -16,12 +18,12 @@ import 'package:universal_platform/universal_platform.dart';
 //   //* make sure you call `initializeApp` before using other Firebase services.
 //   await Firebase.initializeApp();
 
-//   logIt.warn(
+//   talker.warn(
 //     'initFcmBackgroundMessage() onMessage.listen: message.data: ${message.data}',
 //   );
 
 //   if (message.notification != null) {
-//     logIt.warn(
+//     talker.warn(
 //       'initFcmBackgroundMessage() onMessage.listen: message.notification: ${message.notification}',
 //     );
 //   }
@@ -76,11 +78,10 @@ Future<void> bootstrap(FutureOr<Widget> Function() builder) async {
         ],
       );
 
-      //TODO: Configure Firebase
-      // //! ---------- FIREBASE INIT CONFIG -------- //
-      // await Firebase.initializeApp(
-      //   options: DefaultFirebaseOptions.currentPlatform,
-      // );
+      //! ---------- FIREBASE INIT CONFIG -------- //
+      await Firebase.initializeApp(
+        options: DefaultFirebaseOptions.currentPlatform,
+      );
       // //! ---------- FIREBASE MESSAGING CONFIG (IOS & WEB) -------- //
       // final messaging = FirebaseMessaging.instance;
 
@@ -115,7 +116,7 @@ Future<void> bootstrap(FutureOr<Widget> Function() builder) async {
       //   WidgetsFlutterBinding.ensureInitialized();
       //   cameras = await availableCameras();
       // } on CameraException catch (e) {
-      //   logIt
+      //   talker
       //     ..error(e.code)
       //     ..error(e.description ?? 'No description found');
       // }

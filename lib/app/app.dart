@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:thuri_cycle/application/app/app_cubit.dart';
 import 'package:thuri_cycle/application/app/locale/locale_cubit.dart';
+import 'package:thuri_cycle/application/auth/auth_bloc.dart';
 import 'package:thuri_cycle/infastructure/core/dependency_injection/di.dart';
 import 'package:thuri_cycle/l10n/l10n.dart';
 import 'package:thuri_cycle/presentation/core/utils/constants.dart';
@@ -29,10 +30,10 @@ class _AppState extends State<App> {
         //   lazy: false,
         //   create: (_) => getIt<SettingsFormCubit>()..initDiosAndHiveBoxes(),
         // ),
-        // BlocProvider(
-        //   create: (context) =>
-        //       getIt<AuthBloc>()..add(const AuthEvent.authCheckRequested()),
-        // ),
+        BlocProvider(
+          create: (context) =>
+              getIt<AuthBloc>()..add(const AuthEvent.authCheckRequested()),
+        ),
       ],
       child: BlocBuilder<AppCubit, AppState>(
         buildWhen: (p, c) => p.theme != c.theme,

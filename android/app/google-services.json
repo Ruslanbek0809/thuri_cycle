@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "770288966254",
+    "project_id": "thuri-cycle",
+    "storage_bucket": "thuri-cycle.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:770288966254:android:1b9c98f9c525888bc4247f",
+        "android_client_info": {
+          "package_name": "com.roosnoff.thuricycle.thuri_cycle"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBbKKu4FW6hkNSC0JHqeibqawLRRhT3cpE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
