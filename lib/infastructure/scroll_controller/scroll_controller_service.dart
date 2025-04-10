@@ -4,14 +4,14 @@ import 'package:injectable/injectable.dart';
 @lazySingleton
 class ScrollControllerService {
   final ScrollController homeScrollController = ScrollController();
-  final ScrollController inboxScrollController = ScrollController();
+  final ScrollController reportWastaScrollController = ScrollController();
   final ScrollController profileScrollController = ScrollController();
 
   // Injectable will call this automatically when you reset or shut down GetIt:
   @disposeMethod
   void dispose() {
     homeScrollController.dispose();
-    inboxScrollController.dispose();
+    reportWastaScrollController.dispose();
     profileScrollController.dispose();
   }
 }

@@ -42,10 +42,10 @@ abstract class AlertModel with _$AlertModel {
   factory AlertModel.exception({
     required String message,
     bool isTest = false,
-    // StackTrace? stackTrace,
+    StackTrace? stackTrace,
   }) {
     if (isTest) {
-      talker.error(message);
+      talker.handle('AlertModel.exception() message: $message', stackTrace);
       // logIt.error (message, stackTrace: stackTrace);
     }
 

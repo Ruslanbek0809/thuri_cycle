@@ -131,7 +131,7 @@ Future<void> bootstrap(FutureOr<Widget> Function() builder) async {
       );
     },
     (error, stackTrace) async {
-      talker.error('bootstrap() debugPrintStack()');
+      talker.handle('bootstrap() runZonedGuarded() error: $error', stackTrace);
       // await Sentry.captureException(
       //   exception,
       //   stackTrace: stackTrace,

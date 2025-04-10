@@ -44,6 +44,9 @@ dependencies:
   
   flutter_native_splash: ^2.4.5
 
+  # IMAGE
+  cached_network_image: ^3.4.1
+
   # UI
   flutter_svg: ^2.0.17
   animations: ^2.0.11

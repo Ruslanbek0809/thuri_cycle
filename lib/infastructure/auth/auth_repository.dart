@@ -117,6 +117,7 @@ class AuthRepository implements IAuth {
     try {
       return firebaseUser.getIdToken().then(right);
     } on firebase_auth.FirebaseAuthException catch (error) {
+      talker.error('[AuthRepository] getSignedInUser() error: $error');
       // reportExceptionToSentry(error);
       return left(const AuthFailure.serverError());
     }
@@ -157,6 +158,7 @@ class AuthRepository implements IAuth {
 
       return right(SignInMethod.google(userName));
     } on firebase_auth.FirebaseAuthException catch (error) {
+      talker.error('[AuthRepository] signInWithGoogle() error: $error');
       // reportExceptionToSentry(error);
       return left(const AuthFailure.serverError());
     }
@@ -194,12 +196,12 @@ class AuthRepository implements IAuth {
       );
 
       if (appleCredential.userIdentifier != null) {
-        talker.info(
+        talker.warning(
           '[AuthRepository] signInWithApple() FIRST TIME Apple ID: ${appleCredential.userIdentifier}',
         );
       }
       if (appleCredential.email != null) {
-        talker.info(
+        talker.warning(
           '[AuthRepository] signInWithApple() FIRST TIME Email: ${appleCredential.email}',
         );
       }
@@ -209,7 +211,7 @@ class AuthRepository implements IAuth {
           appleCredential.givenName ?? '',
           appleCredential.familyName ?? '',
         ].join(' ').trim();
-        talker.info(
+        talker.warning(
           '[AuthRepository] signInWithApple() FIRST TIME displayNameFromApple containing both givenName and familyName: $displayNameFromApple',
         );
       }
@@ -234,7 +236,7 @@ class AuthRepository implements IAuth {
           userCredential.user!.displayName!.isEmpty) {
         if (displayNameFromApple.isNotEmpty) {
           await userCredential.user?.updateDisplayName(displayNameFromApple);
-          talker.info(
+          talker.warning(
             '[AuthRepository] signInWithApple() Display name updated to: $displayNameFromApple',
           );
         } else {
@@ -250,7 +252,7 @@ class AuthRepository implements IAuth {
         if (appleCredential.email != null && isEmail(appleCredential.email!)) {
           try {
             await userCredential.user?.updateEmail(appleCredential.email!);
-            talker.info(
+            talker.warning(
               '[AuthRepository] signInWithApple() Email updated to: ${appleCredential.email}',
             );
           } on FirebaseAuthException catch (e) {
@@ -265,7 +267,7 @@ class AuthRepository implements IAuth {
             }
           }
         } else {
-          talker.warning(
+          talker.error(
             '[AuthRepository] signInWithApple() Invalid or missing email from Apple ID',
           );
         }
@@ -273,13 +275,13 @@ class AuthRepository implements IAuth {
 
       //* Log final user details from Firebase
       talker
-        ..info(
+        ..warning(
           '[AuthRepository] signInWithApple() Firebase User UID: ${userCredential.user?.uid}',
         )
-        ..info(
+        ..warning(
           '[AuthRepository] signInWithApple() Firebase User Email: ${userCredential.user?.email}',
         )
-        ..info(
+        ..warning(
           '[AuthRepository] signInWithApple() Firebase User Display Name: ${userCredential.user?.displayName}',
         );
 
@@ -347,7 +349,7 @@ class AuthRepository implements IAuth {
       //     queryParams['registration_id'] = fcmToken;
       //   }
 
-      //   talker.verbose(
+      //   talker.log(
       //     '[AuthRepository] signOut() => queryParams at the END: $queryParams',
       //   );
 
@@ -385,7 +387,7 @@ class AuthRepository implements IAuth {
 
   //     final profileUserFormData = FormData.fromMap(queryParams);
 
-  //     talker.verbose(
+  //     talker.log(
   //       '[AuthRepository] getProfileUser() => queryParams at the END: $queryParams',
   //     );
 
@@ -395,7 +397,7 @@ class AuthRepository implements IAuth {
   //         data: profileUserFormData,
   //       );
 
-  //       talker.verbose(
+  //       talker.log(
   //         '[AuthRepository] SUCCESS getProfileUser() => response.data: ${response.data}',
   //       );
 
@@ -415,7 +417,7 @@ class AuthRepository implements IAuth {
   //   // XFile? backgroundImageFile,
   //   // bool isDeleteUserBackgroundImageTriggered,
   // ) async {
-  //   talker.verbose(
+  //   talker.warning(
   //     '[AuthRepository] updateProfileUser() => userModel: $userModel'
   //     // userImageFile: $userImageFile, backgroundImageFile: $backgroundImageFile',
   //   );
@@ -505,7 +507,7 @@ class AuthRepository implements IAuth {
   //       }
   //     }
 
-  //     talker.verbose(
+  //     talker.log(
   //       '[AuthRepository] updateProfileUser() => queryParams at the END: $queryParams',
   //     );
 
@@ -520,7 +522,7 @@ class AuthRepository implements IAuth {
   //     //   data: updateUserFormData,
   //     // );
 
-  //     talker.verbose(
+  //     talker.log(
   //       '[AuthRepository] SUCCESS updateProfileUser() => response.data: ${response.data}',
   //     );
 
@@ -535,7 +537,7 @@ class AuthRepository implements IAuth {
   // Future<Either<AlertModel, UploadedImageModel>> uploadBusinessImage(
   //   CroppedFile? croppedFile,
   // ) async {
-  //   talker.verbose(
+  //   talker.warning(
   //     '[AuthRepository] uploadBusinessImage() => croppedFile: $croppedFile',
   //   );
   //   return dioExceptionHandler<UploadedImageModel>(() async {
@@ -549,7 +551,7 @@ class AuthRepository implements IAuth {
   //       );
   //     }
 
-  //     talker.verbose('queryParams at the END: $queryParams');
+  //     talker.log('queryParams at the END: $queryParams');
 
   //     final uploadBusinessImageFormData = FormData.fromMap(queryParams);
 

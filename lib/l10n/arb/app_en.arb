@@ -3,5 +3,13 @@
     "homeAppBarTitle": "Home",
     "@homeAppBarTitle": {
         "description": "Text shown in the AppBar of the Home Page"
-    }
+    },
+    "logIn": "Log in",
+    "loginToDoAction": "Please Log in to your account to do this action!",
+    "cancel": "Cancel",
+    "login": "Login",
+    "clear": "Clear",
+    "noConnection": "No connection",
+    "retry": "Retry",
+    "error": "Error"
 }

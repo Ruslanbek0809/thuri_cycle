@@ -23,7 +23,8 @@ class CustomBlocObserver extends BlocObserver {
   @override
   void onError(BlocBase<dynamic> bloc, Object error, StackTrace stackTrace) {
     super.onError(bloc, error, stackTrace);
-    talker.error('onError -- ${bloc.runtimeType}, $error');
+    talker.handle('onError -- ${bloc.runtimeType}, $error', stackTrace);
+    // talker.error('onError -- ${bloc.runtimeType}, $error');
     // stateToSentry(
     //   bloc,
     //   error: error,

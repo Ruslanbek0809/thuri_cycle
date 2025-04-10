@@ -3,5 +3,13 @@
     "homeAppBarTitle": "Hogar",
     "@homeAppBarTitle": {
         "description": "Texto mostrado en la AppBar de la página del hogar"
-    }
+    },
+    "logIn": "Conectarse",
+    "loginToDoAction": "Inicie sesión en su cuenta para realizar esta acción!.",
+    "cancel": "Cancelar",
+    "login": "Inicio de sesión",
+    "clear": "Limpiar",
+    "noConnection": "Sin conexión",
+    "retry": "Reintentar",
+    "error": "Error"
 }
