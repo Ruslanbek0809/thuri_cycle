@@ -37,7 +37,8 @@ class CustomElevatedGradientButton extends StatelessWidget {
           side: borderSide ?? BorderSide.none,
         ),
         padding: padding ?? EdgeInsets.zero,
-        minimumSize: size ?? Size(getSize(context).width, getTabletType() ? 80 : 56),
+        minimumSize:
+            size ?? Size(getSize(context).width, getTabletType() ? 80 : 56),
       ),
       onPressed: onPressed as VoidCallback,
       child: child,

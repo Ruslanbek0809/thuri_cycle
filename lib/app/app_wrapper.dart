@@ -111,7 +111,9 @@ class _AppWrapperState extends State<AppWrapper> with WidgetsBindingObserver {
                       confirmText: context.l10n.logIn,
                     ).then<void>((value) async {
                       if (value ?? false) {
-                        // await context.router.push(const LoginRoute());
+                        if (context.mounted) {
+                          await context.router.push(const LoginRoute());
+                        }
                       }
                     });
                   }

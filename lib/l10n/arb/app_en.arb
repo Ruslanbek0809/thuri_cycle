@@ -4,6 +4,10 @@
     "@homeAppBarTitle": {
         "description": "Text shown in the AppBar of the Home Page"
     },
+    "continuee": "Continue",
+    "welcome": "Welcome to the Flipgoo!",
+    "chooseOthers": "Choose other login options",
+    "confirmation": "Confirmation",
     "logIn": "Log in",
     "loginToDoAction": "Please Log in to your account to do this action!",
     "cancel": "Cancel",
@@ -11,5 +15,24 @@
     "clear": "Clear",
     "noConnection": "No connection",
     "retry": "Retry",
-    "error": "Error"
+    "error": "Error",
+    "serverError": "Server error",
+    "unexpectedError": "Unexpected error",
+    "cancelled": "Cancelled",
+    "emailAlreadyInUse": "Email is already in use",
+    "invalidEmailPassword": "Invalid email and password combination",
+    "tooManyRequests": "Too many requests",
+    "bySigningYouAgree": "By signing in, you agree to our",
+    "and": " and ",
+    "success": "Success!",
+    "successLoggedIn": "You have successfully logged in!",
+    "or": "or",
+    "signInWithGoogle": "Sign in with Google",
+    "signInWithApple": "Sign in with Apple",
+    "yourPhoneDoesntSupportAppleSignIn": "Your phone doesn't support Apple Sign-in method. Please update IOS version of your app and try again!",
+    "termsOfUse": "Terms of use",
+    "privacyPolicy": "Privacy Policy",
+    "contactUs": "Contact us",
+    "rateUs": "Rate us",
+    "comingInNextUpdate": "Coming in the next update"
 }

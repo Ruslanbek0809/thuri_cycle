@@ -16,6 +16,10 @@ class AppRouter extends RootStackRouter {
 
         // // These route(s) should NOT be inside `AppWrapper`
         // AutoRoute(path: '/onboarding', page: OnboardingRoute.page),
+        AutoRoute(
+          path: 'login',
+          page: LoginRoute.page,
+        ),
 
         // Main bottom navigation wrapper
         AutoRoute(

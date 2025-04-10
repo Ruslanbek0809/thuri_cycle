@@ -197,6 +197,7 @@ class _Theme {
   final double defaultBorderRadius = 10;
 }
 
+//TODO: Implement clean constant _TextStyle same as in navBarTextStyle 
 @immutable
 class _TextStyle {
   TextStyle navBarTextStyle(

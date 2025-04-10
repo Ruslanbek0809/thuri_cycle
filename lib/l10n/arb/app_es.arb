@@ -4,6 +4,10 @@
     "@homeAppBarTitle": {
         "description": "Texto mostrado en la AppBar de la página del hogar"
     },
+    "continuee": "Continuar",
+    "welcome": "Bienvenido al Flipgoo!",
+    "chooseOthers": "Elegir otras opciones de inicio de sesión",
+    "confirmation": "Confirmación",
     "logIn": "Conectarse",
     "loginToDoAction": "Inicie sesión en su cuenta para realizar esta acción!.",
     "cancel": "Cancelar",
@@ -11,5 +15,24 @@
     "clear": "Limpiar",
     "noConnection": "Sin conexión",
     "retry": "Reintentar",
-    "error": "Error"
+    "error": "Error",
+    "serverError": "Error de servidor",
+    "unexpectedError": "Error imprevisto",
+    "cancelled": "Anulado",
+    "emailAlreadyInUse": "Ya se usa el correo electrónico",
+    "invalidEmailPassword": "Combinación de email y contraseña no válida",
+    "tooManyRequests": "Demasiados pedidos",
+    "bySigningYouAgree": "Al iniciar sesión, acepta nuestra",
+    "and": "y",
+    "success": "¡Éxito!",
+    "successLoggedIn": "Ha iniciado sesión correctamente.",
+    "or": "o",
+    "signInWithGoogle": "Iniciar sesión con Google",
+    "signInWithApple": "Iniciar sesión con Apple",
+    "yourPhoneDoesntSupportAppleSignIn": "Tu teléfono no es compatible con el método de inicio de sesión de Apple. Actualiza la versión IOS de tu aplicación e inténtalo de nuevo",
+    "termsOfUse": "Condiciones de uso",
+    "privacyPolicy": "Política de privacidad",
+    "contactUs": "Póngase en contacto con nosotros",
+    "rateUs": "Valóranos",
+    "comingInNextUpdate": "En la próxima actualización"
 }
