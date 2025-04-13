@@ -1,7 +1,7 @@
 part of 'auth_form_cubit.dart';
 
 @freezed
-abstract class AuthFormState with _$AuthFormState {
+class AuthFormState with _$AuthFormState {
   factory AuthFormState({
     required bool isLoading,
     required String? verificationId,

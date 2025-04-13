@@ -6,7 +6,7 @@ import 'package:thuri_cycle/presentation/core/utils/constants.dart';
 part 'app_typography.freezed.dart';
 
 @freezed
-abstract class AppTypography with _$AppTypography {
+class AppTypography with _$AppTypography {
   factory AppTypography({
     required AppTextTheme black,
     required AppTextTheme white,

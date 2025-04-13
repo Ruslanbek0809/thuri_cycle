@@ -1,4 +1,3 @@
-// dart format width=80
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
@@ -10,157 +9,56 @@ part of 'app_color_scheme.dart';
 // FreezedGenerator
 // **************************************************************************
 
-// dart format off
 T _$identity<T>(T value) => value;
+
+final _privateConstructorUsedError = UnsupportedError(
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$AppColorScheme {
-  Brightness get brightness;
-  Color get primary;
-  Color get onPrimary;
-  Color get primaryContainer;
-  Color get onPrimaryContainer;
-  Color get secondary;
-  Color get onSecondary;
-  Color get secondaryContainer;
-  Color get onSecondaryContainer;
-  Color get tertiary;
-  Color get onTertiary;
-  Color get tertiaryContainer;
-  Color get onTertiaryContainer;
-  Color get error;
-  Color get onError;
-  Color get errorContainer;
-  Color get onErrorContainer;
-  Color get background;
-  Color get onBackground;
-  Color get surface;
-  Color get onSurface;
-  Color get surfaceVariant;
-  Color get onSurfaceVariant;
-  Color get outline;
-  Color get shadow;
-  Color get inverseSurface;
-  Color get onInverseSurface;
-  Color get inversePrimary;
-  Color get disabled;
-  Color get onDisabled;
+  Brightness get brightness => throw _privateConstructorUsedError;
+  Color get primary => throw _privateConstructorUsedError;
+  Color get onPrimary => throw _privateConstructorUsedError;
+  Color get primaryContainer => throw _privateConstructorUsedError;
+  Color get onPrimaryContainer => throw _privateConstructorUsedError;
+  Color get secondary => throw _privateConstructorUsedError;
+  Color get onSecondary => throw _privateConstructorUsedError;
+  Color get secondaryContainer => throw _privateConstructorUsedError;
+  Color get onSecondaryContainer => throw _privateConstructorUsedError;
+  Color get tertiary => throw _privateConstructorUsedError;
+  Color get onTertiary => throw _privateConstructorUsedError;
+  Color get tertiaryContainer => throw _privateConstructorUsedError;
+  Color get onTertiaryContainer => throw _privateConstructorUsedError;
+  Color get error => throw _privateConstructorUsedError;
+  Color get onError => throw _privateConstructorUsedError;
+  Color get errorContainer => throw _privateConstructorUsedError;
+  Color get onErrorContainer => throw _privateConstructorUsedError;
+  Color get background => throw _privateConstructorUsedError;
+  Color get onBackground => throw _privateConstructorUsedError;
+  Color get surface => throw _privateConstructorUsedError;
+  Color get onSurface => throw _privateConstructorUsedError;
+  Color get surfaceVariant => throw _privateConstructorUsedError;
+  Color get onSurfaceVariant => throw _privateConstructorUsedError;
+  Color get outline => throw _privateConstructorUsedError;
+  Color get shadow => throw _privateConstructorUsedError;
+  Color get inverseSurface => throw _privateConstructorUsedError;
+  Color get onInverseSurface => throw _privateConstructorUsedError;
+  Color get inversePrimary => throw _privateConstructorUsedError;
+  Color get disabled => throw _privateConstructorUsedError;
+  Color get onDisabled => throw _privateConstructorUsedError;
 
   /// Create a copy of AppColorScheme
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  @pragma('vm:prefer-inline')
   $AppColorSchemeCopyWith<AppColorScheme> get copyWith =>
-      _$AppColorSchemeCopyWithImpl<AppColorScheme>(
-          this as AppColorScheme, _$identity);
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is AppColorScheme &&
-            (identical(other.brightness, brightness) ||
-                other.brightness == brightness) &&
-            (identical(other.primary, primary) || other.primary == primary) &&
-            (identical(other.onPrimary, onPrimary) ||
-                other.onPrimary == onPrimary) &&
-            (identical(other.primaryContainer, primaryContainer) ||
-                other.primaryContainer == primaryContainer) &&
-            (identical(other.onPrimaryContainer, onPrimaryContainer) ||
-                other.onPrimaryContainer == onPrimaryContainer) &&
-            (identical(other.secondary, secondary) ||
-                other.secondary == secondary) &&
-            (identical(other.onSecondary, onSecondary) ||
-                other.onSecondary == onSecondary) &&
-            (identical(other.secondaryContainer, secondaryContainer) ||
-                other.secondaryContainer == secondaryContainer) &&
-            (identical(other.onSecondaryContainer, onSecondaryContainer) ||
-                other.onSecondaryContainer == onSecondaryContainer) &&
-            (identical(other.tertiary, tertiary) ||
-                other.tertiary == tertiary) &&
-            (identical(other.onTertiary, onTertiary) ||
-                other.onTertiary == onTertiary) &&
-            (identical(other.tertiaryContainer, tertiaryContainer) ||
-                other.tertiaryContainer == tertiaryContainer) &&
-            (identical(other.onTertiaryContainer, onTertiaryContainer) ||
-                other.onTertiaryContainer == onTertiaryContainer) &&
-            (identical(other.error, error) || other.error == error) &&
-            (identical(other.onError, onError) || other.onError == onError) &&
-            (identical(other.errorContainer, errorContainer) ||
-                other.errorContainer == errorContainer) &&
-            (identical(other.onErrorContainer, onErrorContainer) ||
-                other.onErrorContainer == onErrorContainer) &&
-            (identical(other.background, background) ||
-                other.background == background) &&
-            (identical(other.onBackground, onBackground) ||
-                other.onBackground == onBackground) &&
-            (identical(other.surface, surface) || other.surface == surface) &&
-            (identical(other.onSurface, onSurface) ||
-                other.onSurface == onSurface) &&
-            (identical(other.surfaceVariant, surfaceVariant) ||
-                other.surfaceVariant == surfaceVariant) &&
-            (identical(other.onSurfaceVariant, onSurfaceVariant) ||
-                other.onSurfaceVariant == onSurfaceVariant) &&
-            (identical(other.outline, outline) || other.outline == outline) &&
-            (identical(other.shadow, shadow) || other.shadow == shadow) &&
-            (identical(other.inverseSurface, inverseSurface) ||
-                other.inverseSurface == inverseSurface) &&
-            (identical(other.onInverseSurface, onInverseSurface) ||
-                other.onInverseSurface == onInverseSurface) &&
-            (identical(other.inversePrimary, inversePrimary) ||
-                other.inversePrimary == inversePrimary) &&
-            (identical(other.disabled, disabled) ||
-                other.disabled == disabled) &&
-            (identical(other.onDisabled, onDisabled) ||
-                other.onDisabled == onDisabled));
-  }
-
-  @override
-  int get hashCode => Object.hashAll([
-        runtimeType,
-        brightness,
-        primary,
-        onPrimary,
-        primaryContainer,
-        onPrimaryContainer,
-        secondary,
-        onSecondary,
-        secondaryContainer,
-        onSecondaryContainer,
-        tertiary,
-        onTertiary,
-        tertiaryContainer,
-        onTertiaryContainer,
-        error,
-        onError,
-        errorContainer,
-        onErrorContainer,
-        background,
-        onBackground,
-        surface,
-        onSurface,
-        surfaceVariant,
-        onSurfaceVariant,
-        outline,
-        shadow,
-        inverseSurface,
-        onInverseSurface,
-        inversePrimary,
-        disabled,
-        onDisabled
-      ]);
-
-  @override
-  String toString() {
-    return 'AppColorScheme(brightness: $brightness, primary: $primary, onPrimary: $onPrimary, primaryContainer: $primaryContainer, onPrimaryContainer: $onPrimaryContainer, secondary: $secondary, onSecondary: $onSecondary, secondaryContainer: $secondaryContainer, onSecondaryContainer: $onSecondaryContainer, tertiary: $tertiary, onTertiary: $onTertiary, tertiaryContainer: $tertiaryContainer, onTertiaryContainer: $onTertiaryContainer, error: $error, onError: $onError, errorContainer: $errorContainer, onErrorContainer: $onErrorContainer, background: $background, onBackground: $onBackground, surface: $surface, onSurface: $onSurface, surfaceVariant: $surfaceVariant, onSurfaceVariant: $onSurfaceVariant, outline: $outline, shadow: $shadow, inverseSurface: $inverseSurface, onInverseSurface: $onInverseSurface, inversePrimary: $inversePrimary, disabled: $disabled, onDisabled: $onDisabled)';
-  }
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract mixin class $AppColorSchemeCopyWith<$Res> {
+abstract class $AppColorSchemeCopyWith<$Res> {
   factory $AppColorSchemeCopyWith(
-          AppColorScheme value, $Res Function(AppColorScheme) _then) =
-      _$AppColorSchemeCopyWithImpl;
+          AppColorScheme value, $Res Function(AppColorScheme) then) =
+      _$AppColorSchemeCopyWithImpl<$Res, AppColorScheme>;
   @useResult
   $Res call(
       {Brightness brightness,
@@ -196,12 +94,14 @@ abstract mixin class $AppColorSchemeCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$AppColorSchemeCopyWithImpl<$Res>
+class _$AppColorSchemeCopyWithImpl<$Res, $Val extends AppColorScheme>
     implements $AppColorSchemeCopyWith<$Res> {
-  _$AppColorSchemeCopyWithImpl(this._self, this._then);
+  _$AppColorSchemeCopyWithImpl(this._value, this._then);
 
-  final AppColorScheme _self;
-  final $Res Function(AppColorScheme) _then;
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
   /// Create a copy of AppColorScheme
   /// with the given fields replaced by the non-null parameter values.
@@ -239,125 +139,335 @@ class _$AppColorSchemeCopyWithImpl<$Res>
     Object? disabled = null,
     Object? onDisabled = null,
   }) {
-    return _then(_self.copyWith(
+    return _then(_value.copyWith(
       brightness: null == brightness
-          ? _self.brightness
+          ? _value.brightness
           : brightness // ignore: cast_nullable_to_non_nullable
               as Brightness,
       primary: null == primary
-          ? _self.primary
+          ? _value.primary
           : primary // ignore: cast_nullable_to_non_nullable
               as Color,
       onPrimary: null == onPrimary
-          ? _self.onPrimary
+          ? _value.onPrimary
           : onPrimary // ignore: cast_nullable_to_non_nullable
               as Color,
       primaryContainer: null == primaryContainer
-          ? _self.primaryContainer
+          ? _value.primaryContainer
           : primaryContainer // ignore: cast_nullable_to_non_nullable
               as Color,
       onPrimaryContainer: null == onPrimaryContainer
-          ? _self.onPrimaryContainer
+          ? _value.onPrimaryContainer
           : onPrimaryContainer // ignore: cast_nullable_to_non_nullable
               as Color,
       secondary: null == secondary
-          ? _self.secondary
+          ? _value.secondary
           : secondary // ignore: cast_nullable_to_non_nullable
               as Color,
       onSecondary: null == onSecondary
-          ? _self.onSecondary
+          ? _value.onSecondary
           : onSecondary // ignore: cast_nullable_to_non_nullable
               as Color,
       secondaryContainer: null == secondaryContainer
-          ? _self.secondaryContainer
+          ? _value.secondaryContainer
           : secondaryContainer // ignore: cast_nullable_to_non_nullable
               as Color,
       onSecondaryContainer: null == onSecondaryContainer
-          ? _self.onSecondaryContainer
+          ? _value.onSecondaryContainer
           : onSecondaryContainer // ignore: cast_nullable_to_non_nullable
               as Color,
       tertiary: null == tertiary
-          ? _self.tertiary
+          ? _value.tertiary
           : tertiary // ignore: cast_nullable_to_non_nullable
               as Color,
       onTertiary: null == onTertiary
-          ? _self.onTertiary
+          ? _value.onTertiary
           : onTertiary // ignore: cast_nullable_to_non_nullable
               as Color,
       tertiaryContainer: null == tertiaryContainer
-          ? _self.tertiaryContainer
+          ? _value.tertiaryContainer
           : tertiaryContainer // ignore: cast_nullable_to_non_nullable
               as Color,
       onTertiaryContainer: null == onTertiaryContainer
-          ? _self.onTertiaryContainer
+          ? _value.onTertiaryContainer
           : onTertiaryContainer // ignore: cast_nullable_to_non_nullable
               as Color,
       error: null == error
-          ? _self.error
+          ? _value.error
           : error // ignore: cast_nullable_to_non_nullable
               as Color,
       onError: null == onError
-          ? _self.onError
+          ? _value.onError
           : onError // ignore: cast_nullable_to_non_nullable
               as Color,
       errorContainer: null == errorContainer
-          ? _self.errorContainer
+          ? _value.errorContainer
           : errorContainer // ignore: cast_nullable_to_non_nullable
               as Color,
       onErrorContainer: null == onErrorContainer
-          ? _self.onErrorContainer
+          ? _value.onErrorContainer
           : onErrorContainer // ignore: cast_nullable_to_non_nullable
               as Color,
       background: null == background
-          ? _self.background
+          ? _value.background
           : background // ignore: cast_nullable_to_non_nullable
               as Color,
       onBackground: null == onBackground
-          ? _self.onBackground
+          ? _value.onBackground
           : onBackground // ignore: cast_nullable_to_non_nullable
               as Color,
       surface: null == surface
-          ? _self.surface
+          ? _value.surface
           : surface // ignore: cast_nullable_to_non_nullable
               as Color,
       onSurface: null == onSurface
-          ? _self.onSurface
+          ? _value.onSurface
           : onSurface // ignore: cast_nullable_to_non_nullable
               as Color,
       surfaceVariant: null == surfaceVariant
-          ? _self.surfaceVariant
+          ? _value.surfaceVariant
           : surfaceVariant // ignore: cast_nullable_to_non_nullable
               as Color,
       onSurfaceVariant: null == onSurfaceVariant
-          ? _self.onSurfaceVariant
+          ? _value.onSurfaceVariant
           : onSurfaceVariant // ignore: cast_nullable_to_non_nullable
               as Color,
       outline: null == outline
-          ? _self.outline
+          ? _value.outline
           : outline // ignore: cast_nullable_to_non_nullable
               as Color,
       shadow: null == shadow
-          ? _self.shadow
+          ? _value.shadow
           : shadow // ignore: cast_nullable_to_non_nullable
               as Color,
       inverseSurface: null == inverseSurface
-          ? _self.inverseSurface
+          ? _value.inverseSurface
           : inverseSurface // ignore: cast_nullable_to_non_nullable
               as Color,
       onInverseSurface: null == onInverseSurface
-          ? _self.onInverseSurface
+          ? _value.onInverseSurface
           : onInverseSurface // ignore: cast_nullable_to_non_nullable
               as Color,
       inversePrimary: null == inversePrimary
-          ? _self.inversePrimary
+          ? _value.inversePrimary
           : inversePrimary // ignore: cast_nullable_to_non_nullable
               as Color,
       disabled: null == disabled
-          ? _self.disabled
+          ? _value.disabled
           : disabled // ignore: cast_nullable_to_non_nullable
               as Color,
       onDisabled: null == onDisabled
-          ? _self.onDisabled
+          ? _value.onDisabled
+          : onDisabled // ignore: cast_nullable_to_non_nullable
+              as Color,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$AppColorSchemeImplCopyWith<$Res>
+    implements $AppColorSchemeCopyWith<$Res> {
+  factory _$$AppColorSchemeImplCopyWith(_$AppColorSchemeImpl value,
+          $Res Function(_$AppColorSchemeImpl) then) =
+      __$$AppColorSchemeImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {Brightness brightness,
+      Color primary,
+      Color onPrimary,
+      Color primaryContainer,
+      Color onPrimaryContainer,
+      Color secondary,
+      Color onSecondary,
+      Color secondaryContainer,
+      Color onSecondaryContainer,
+      Color tertiary,
+      Color onTertiary,
+      Color tertiaryContainer,
+      Color onTertiaryContainer,
+      Color error,
+      Color onError,
+      Color errorContainer,
+      Color onErrorContainer,
+      Color background,
+      Color onBackground,
+      Color surface,
+      Color onSurface,
+      Color surfaceVariant,
+      Color onSurfaceVariant,
+      Color outline,
+      Color shadow,
+      Color inverseSurface,
+      Color onInverseSurface,
+      Color inversePrimary,
+      Color disabled,
+      Color onDisabled});
+}
+
+/// @nodoc
+class __$$AppColorSchemeImplCopyWithImpl<$Res>
+    extends _$AppColorSchemeCopyWithImpl<$Res, _$AppColorSchemeImpl>
+    implements _$$AppColorSchemeImplCopyWith<$Res> {
+  __$$AppColorSchemeImplCopyWithImpl(
+      _$AppColorSchemeImpl _value, $Res Function(_$AppColorSchemeImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of AppColorScheme
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? brightness = null,
+    Object? primary = null,
+    Object? onPrimary = null,
+    Object? primaryContainer = null,
+    Object? onPrimaryContainer = null,
+    Object? secondary = null,
+    Object? onSecondary = null,
+    Object? secondaryContainer = null,
+    Object? onSecondaryContainer = null,
+    Object? tertiary = null,
+    Object? onTertiary = null,
+    Object? tertiaryContainer = null,
+    Object? onTertiaryContainer = null,
+    Object? error = null,
+    Object? onError = null,
+    Object? errorContainer = null,
+    Object? onErrorContainer = null,
+    Object? background = null,
+    Object? onBackground = null,
+    Object? surface = null,
+    Object? onSurface = null,
+    Object? surfaceVariant = null,
+    Object? onSurfaceVariant = null,
+    Object? outline = null,
+    Object? shadow = null,
+    Object? inverseSurface = null,
+    Object? onInverseSurface = null,
+    Object? inversePrimary = null,
+    Object? disabled = null,
+    Object? onDisabled = null,
+  }) {
+    return _then(_$AppColorSchemeImpl(
+      brightness: null == brightness
+          ? _value.brightness
+          : brightness // ignore: cast_nullable_to_non_nullable
+              as Brightness,
+      primary: null == primary
+          ? _value.primary
+          : primary // ignore: cast_nullable_to_non_nullable
+              as Color,
+      onPrimary: null == onPrimary
+          ? _value.onPrimary
+          : onPrimary // ignore: cast_nullable_to_non_nullable
+              as Color,
+      primaryContainer: null == primaryContainer
+          ? _value.primaryContainer
+          : primaryContainer // ignore: cast_nullable_to_non_nullable
+              as Color,
+      onPrimaryContainer: null == onPrimaryContainer
+          ? _value.onPrimaryContainer
+          : onPrimaryContainer // ignore: cast_nullable_to_non_nullable
+              as Color,
+      secondary: null == secondary
+          ? _value.secondary
+          : secondary // ignore: cast_nullable_to_non_nullable
+              as Color,
+      onSecondary: null == onSecondary
+          ? _value.onSecondary
+          : onSecondary // ignore: cast_nullable_to_non_nullable
+              as Color,
+      secondaryContainer: null == secondaryContainer
+          ? _value.secondaryContainer
+          : secondaryContainer // ignore: cast_nullable_to_non_nullable
+              as Color,
+      onSecondaryContainer: null == onSecondaryContainer
+          ? _value.onSecondaryContainer
+          : onSecondaryContainer // ignore: cast_nullable_to_non_nullable
+              as Color,
+      tertiary: null == tertiary
+          ? _value.tertiary
+          : tertiary // ignore: cast_nullable_to_non_nullable
+              as Color,
+      onTertiary: null == onTertiary
+          ? _value.onTertiary
+          : onTertiary // ignore: cast_nullable_to_non_nullable
+              as Color,
+      tertiaryContainer: null == tertiaryContainer
+          ? _value.tertiaryContainer
+          : tertiaryContainer // ignore: cast_nullable_to_non_nullable
+              as Color,
+      onTertiaryContainer: null == onTertiaryContainer
+          ? _value.onTertiaryContainer
+          : onTertiaryContainer // ignore: cast_nullable_to_non_nullable
+              as Color,
+      error: null == error
+          ? _value.error
+          : error // ignore: cast_nullable_to_non_nullable
+              as Color,
+      onError: null == onError
+          ? _value.onError
+          : onError // ignore: cast_nullable_to_non_nullable
+              as Color,
+      errorContainer: null == errorContainer
+          ? _value.errorContainer
+          : errorContainer // ignore: cast_nullable_to_non_nullable
+              as Color,
+      onErrorContainer: null == onErrorContainer
+          ? _value.onErrorContainer
+          : onErrorContainer // ignore: cast_nullable_to_non_nullable
+              as Color,
+      background: null == background
+          ? _value.background
+          : background // ignore: cast_nullable_to_non_nullable
+              as Color,
+      onBackground: null == onBackground
+          ? _value.onBackground
+          : onBackground // ignore: cast_nullable_to_non_nullable
+              as Color,
+      surface: null == surface
+          ? _value.surface
+          : surface // ignore: cast_nullable_to_non_nullable
+              as Color,
+      onSurface: null == onSurface
+          ? _value.onSurface
+          : onSurface // ignore: cast_nullable_to_non_nullable
+              as Color,
+      surfaceVariant: null == surfaceVariant
+          ? _value.surfaceVariant
+          : surfaceVariant // ignore: cast_nullable_to_non_nullable
+              as Color,
+      onSurfaceVariant: null == onSurfaceVariant
+          ? _value.onSurfaceVariant
+          : onSurfaceVariant // ignore: cast_nullable_to_non_nullable
+              as Color,
+      outline: null == outline
+          ? _value.outline
+          : outline // ignore: cast_nullable_to_non_nullable
+              as Color,
+      shadow: null == shadow
+          ? _value.shadow
+          : shadow // ignore: cast_nullable_to_non_nullable
+              as Color,
+      inverseSurface: null == inverseSurface
+          ? _value.inverseSurface
+          : inverseSurface // ignore: cast_nullable_to_non_nullable
+              as Color,
+      onInverseSurface: null == onInverseSurface
+          ? _value.onInverseSurface
+          : onInverseSurface // ignore: cast_nullable_to_non_nullable
+              as Color,
+      inversePrimary: null == inversePrimary
+          ? _value.inversePrimary
+          : inversePrimary // ignore: cast_nullable_to_non_nullable
+              as Color,
+      disabled: null == disabled
+          ? _value.disabled
+          : disabled // ignore: cast_nullable_to_non_nullable
+              as Color,
+      onDisabled: null == onDisabled
+          ? _value.onDisabled
           : onDisabled // ignore: cast_nullable_to_non_nullable
               as Color,
     ));
@@ -366,8 +476,8 @@ class _$AppColorSchemeCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _AppColorScheme extends AppColorScheme {
-  _AppColorScheme(
+class _$AppColorSchemeImpl extends _AppColorScheme {
+  _$AppColorSchemeImpl(
       {required this.brightness,
       required this.primary,
       required this.onPrimary,
@@ -461,19 +571,16 @@ class _AppColorScheme extends AppColorScheme {
   @override
   final Color onDisabled;
 
-  /// Create a copy of AppColorScheme
-  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @pragma('vm:prefer-inline')
-  _$AppColorSchemeCopyWith<_AppColorScheme> get copyWith =>
-      __$AppColorSchemeCopyWithImpl<_AppColorScheme>(this, _$identity);
+  String toString() {
+    return 'AppColorScheme(brightness: $brightness, primary: $primary, onPrimary: $onPrimary, primaryContainer: $primaryContainer, onPrimaryContainer: $onPrimaryContainer, secondary: $secondary, onSecondary: $onSecondary, secondaryContainer: $secondaryContainer, onSecondaryContainer: $onSecondaryContainer, tertiary: $tertiary, onTertiary: $onTertiary, tertiaryContainer: $tertiaryContainer, onTertiaryContainer: $onTertiaryContainer, error: $error, onError: $onError, errorContainer: $errorContainer, onErrorContainer: $onErrorContainer, background: $background, onBackground: $onBackground, surface: $surface, onSurface: $onSurface, surfaceVariant: $surfaceVariant, onSurfaceVariant: $onSurfaceVariant, outline: $outline, shadow: $shadow, inverseSurface: $inverseSurface, onInverseSurface: $onInverseSurface, inversePrimary: $inversePrimary, disabled: $disabled, onDisabled: $onDisabled)';
+  }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _AppColorScheme &&
+            other is _$AppColorSchemeImpl &&
             (identical(other.brightness, brightness) ||
                 other.brightness == brightness) &&
             (identical(other.primary, primary) || other.primary == primary) &&
@@ -565,220 +672,115 @@ class _AppColorScheme extends AppColorScheme {
         onDisabled
       ]);
 
+  /// Create a copy of AppColorScheme
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  String toString() {
-    return 'AppColorScheme(brightness: $brightness, primary: $primary, onPrimary: $onPrimary, primaryContainer: $primaryContainer, onPrimaryContainer: $onPrimaryContainer, secondary: $secondary, onSecondary: $onSecondary, secondaryContainer: $secondaryContainer, onSecondaryContainer: $onSecondaryContainer, tertiary: $tertiary, onTertiary: $onTertiary, tertiaryContainer: $tertiaryContainer, onTertiaryContainer: $onTertiaryContainer, error: $error, onError: $onError, errorContainer: $errorContainer, onErrorContainer: $onErrorContainer, background: $background, onBackground: $onBackground, surface: $surface, onSurface: $onSurface, surfaceVariant: $surfaceVariant, onSurfaceVariant: $onSurfaceVariant, outline: $outline, shadow: $shadow, inverseSurface: $inverseSurface, onInverseSurface: $onInverseSurface, inversePrimary: $inversePrimary, disabled: $disabled, onDisabled: $onDisabled)';
-  }
+  @pragma('vm:prefer-inline')
+  _$$AppColorSchemeImplCopyWith<_$AppColorSchemeImpl> get copyWith =>
+      __$$AppColorSchemeImplCopyWithImpl<_$AppColorSchemeImpl>(
+          this, _$identity);
 }
 
-/// @nodoc
-abstract mixin class _$AppColorSchemeCopyWith<$Res>
-    implements $AppColorSchemeCopyWith<$Res> {
-  factory _$AppColorSchemeCopyWith(
-          _AppColorScheme value, $Res Function(_AppColorScheme) _then) =
-      __$AppColorSchemeCopyWithImpl;
+abstract class _AppColorScheme extends AppColorScheme {
+  factory _AppColorScheme(
+      {required final Brightness brightness,
+      required final Color primary,
+      required final Color onPrimary,
+      required final Color primaryContainer,
+      required final Color onPrimaryContainer,
+      required final Color secondary,
+      required final Color onSecondary,
+      required final Color secondaryContainer,
+      required final Color onSecondaryContainer,
+      required final Color tertiary,
+      required final Color onTertiary,
+      required final Color tertiaryContainer,
+      required final Color onTertiaryContainer,
+      required final Color error,
+      required final Color onError,
+      required final Color errorContainer,
+      required final Color onErrorContainer,
+      required final Color background,
+      required final Color onBackground,
+      required final Color surface,
+      required final Color onSurface,
+      required final Color surfaceVariant,
+      required final Color onSurfaceVariant,
+      required final Color outline,
+      required final Color shadow,
+      required final Color inverseSurface,
+      required final Color onInverseSurface,
+      required final Color inversePrimary,
+      required final Color disabled,
+      required final Color onDisabled}) = _$AppColorSchemeImpl;
+  _AppColorScheme._() : super._();
+
   @override
-  @useResult
-  $Res call(
-      {Brightness brightness,
-      Color primary,
-      Color onPrimary,
-      Color primaryContainer,
-      Color onPrimaryContainer,
-      Color secondary,
-      Color onSecondary,
-      Color secondaryContainer,
-      Color onSecondaryContainer,
-      Color tertiary,
-      Color onTertiary,
-      Color tertiaryContainer,
-      Color onTertiaryContainer,
-      Color error,
-      Color onError,
-      Color errorContainer,
-      Color onErrorContainer,
-      Color background,
-      Color onBackground,
-      Color surface,
-      Color onSurface,
-      Color surfaceVariant,
-      Color onSurfaceVariant,
-      Color outline,
-      Color shadow,
-      Color inverseSurface,
-      Color onInverseSurface,
-      Color inversePrimary,
-      Color disabled,
-      Color onDisabled});
-}
-
-/// @nodoc
-class __$AppColorSchemeCopyWithImpl<$Res>
-    implements _$AppColorSchemeCopyWith<$Res> {
-  __$AppColorSchemeCopyWithImpl(this._self, this._then);
-
-  final _AppColorScheme _self;
-  final $Res Function(_AppColorScheme) _then;
+  Brightness get brightness;
+  @override
+  Color get primary;
+  @override
+  Color get onPrimary;
+  @override
+  Color get primaryContainer;
+  @override
+  Color get onPrimaryContainer;
+  @override
+  Color get secondary;
+  @override
+  Color get onSecondary;
+  @override
+  Color get secondaryContainer;
+  @override
+  Color get onSecondaryContainer;
+  @override
+  Color get tertiary;
+  @override
+  Color get onTertiary;
+  @override
+  Color get tertiaryContainer;
+  @override
+  Color get onTertiaryContainer;
+  @override
+  Color get error;
+  @override
+  Color get onError;
+  @override
+  Color get errorContainer;
+  @override
+  Color get onErrorContainer;
+  @override
+  Color get background;
+  @override
+  Color get onBackground;
+  @override
+  Color get surface;
+  @override
+  Color get onSurface;
+  @override
+  Color get surfaceVariant;
+  @override
+  Color get onSurfaceVariant;
+  @override
+  Color get outline;
+  @override
+  Color get shadow;
+  @override
+  Color get inverseSurface;
+  @override
+  Color get onInverseSurface;
+  @override
+  Color get inversePrimary;
+  @override
+  Color get disabled;
+  @override
+  Color get onDisabled;
 
   /// Create a copy of AppColorScheme
   /// with the given fields replaced by the non-null parameter values.
   @override
-  @pragma('vm:prefer-inline')
-  $Res call({
-    Object? brightness = null,
-    Object? primary = null,
-    Object? onPrimary = null,
-    Object? primaryContainer = null,
-    Object? onPrimaryContainer = null,
-    Object? secondary = null,
-    Object? onSecondary = null,
-    Object? secondaryContainer = null,
-    Object? onSecondaryContainer = null,
-    Object? tertiary = null,
-    Object? onTertiary = null,
-    Object? tertiaryContainer = null,
-    Object? onTertiaryContainer = null,
-    Object? error = null,
-    Object? onError = null,
-    Object? errorContainer = null,
-    Object? onErrorContainer = null,
-    Object? background = null,
-    Object? onBackground = null,
-    Object? surface = null,
-    Object? onSurface = null,
-    Object? surfaceVariant = null,
-    Object? onSurfaceVariant = null,
-    Object? outline = null,
-    Object? shadow = null,
-    Object? inverseSurface = null,
-    Object? onInverseSurface = null,
-    Object? inversePrimary = null,
-    Object? disabled = null,
-    Object? onDisabled = null,
-  }) {
-    return _then(_AppColorScheme(
-      brightness: null == brightness
-          ? _self.brightness
-          : brightness // ignore: cast_nullable_to_non_nullable
-              as Brightness,
-      primary: null == primary
-          ? _self.primary
-          : primary // ignore: cast_nullable_to_non_nullable
-              as Color,
-      onPrimary: null == onPrimary
-          ? _self.onPrimary
-          : onPrimary // ignore: cast_nullable_to_non_nullable
-              as Color,
-      primaryContainer: null == primaryContainer
-          ? _self.primaryContainer
-          : primaryContainer // ignore: cast_nullable_to_non_nullable
-              as Color,
-      onPrimaryContainer: null == onPrimaryContainer
-          ? _self.onPrimaryContainer
-          : onPrimaryContainer // ignore: cast_nullable_to_non_nullable
-              as Color,
-      secondary: null == secondary
-          ? _self.secondary
-          : secondary // ignore: cast_nullable_to_non_nullable
-              as Color,
-      onSecondary: null == onSecondary
-          ? _self.onSecondary
-          : onSecondary // ignore: cast_nullable_to_non_nullable
-              as Color,
-      secondaryContainer: null == secondaryContainer
-          ? _self.secondaryContainer
-          : secondaryContainer // ignore: cast_nullable_to_non_nullable
-              as Color,
-      onSecondaryContainer: null == onSecondaryContainer
-          ? _self.onSecondaryContainer
-          : onSecondaryContainer // ignore: cast_nullable_to_non_nullable
-              as Color,
-      tertiary: null == tertiary
-          ? _self.tertiary
-          : tertiary // ignore: cast_nullable_to_non_nullable
-              as Color,
-      onTertiary: null == onTertiary
-          ? _self.onTertiary
-          : onTertiary // ignore: cast_nullable_to_non_nullable
-              as Color,
-      tertiaryContainer: null == tertiaryContainer
-          ? _self.tertiaryContainer
-          : tertiaryContainer // ignore: cast_nullable_to_non_nullable
-              as Color,
-      onTertiaryContainer: null == onTertiaryContainer
-          ? _self.onTertiaryContainer
-          : onTertiaryContainer // ignore: cast_nullable_to_non_nullable
-              as Color,
-      error: null == error
-          ? _self.error
-          : error // ignore: cast_nullable_to_non_nullable
-              as Color,
-      onError: null == onError
-          ? _self.onError
-          : onError // ignore: cast_nullable_to_non_nullable
-              as Color,
-      errorContainer: null == errorContainer
-          ? _self.errorContainer
-          : errorContainer // ignore: cast_nullable_to_non_nullable
-              as Color,
-      onErrorContainer: null == onErrorContainer
-          ? _self.onErrorContainer
-          : onErrorContainer // ignore: cast_nullable_to_non_nullable
-              as Color,
-      background: null == background
-          ? _self.background
-          : background // ignore: cast_nullable_to_non_nullable
-              as Color,
-      onBackground: null == onBackground
-          ? _self.onBackground
-          : onBackground // ignore: cast_nullable_to_non_nullable
-              as Color,
-      surface: null == surface
-          ? _self.surface
-          : surface // ignore: cast_nullable_to_non_nullable
-              as Color,
-      onSurface: null == onSurface
-          ? _self.onSurface
-          : onSurface // ignore: cast_nullable_to_non_nullable
-              as Color,
-      surfaceVariant: null == surfaceVariant
-          ? _self.surfaceVariant
-          : surfaceVariant // ignore: cast_nullable_to_non_nullable
-              as Color,
-      onSurfaceVariant: null == onSurfaceVariant
-          ? _self.onSurfaceVariant
-          : onSurfaceVariant // ignore: cast_nullable_to_non_nullable
-              as Color,
-      outline: null == outline
-          ? _self.outline
-          : outline // ignore: cast_nullable_to_non_nullable
-              as Color,
-      shadow: null == shadow
-          ? _self.shadow
-          : shadow // ignore: cast_nullable_to_non_nullable
-              as Color,
-      inverseSurface: null == inverseSurface
-          ? _self.inverseSurface
-          : inverseSurface // ignore: cast_nullable_to_non_nullable
-              as Color,
-      onInverseSurface: null == onInverseSurface
-          ? _self.onInverseSurface
-          : onInverseSurface // ignore: cast_nullable_to_non_nullable
-              as Color,
-      inversePrimary: null == inversePrimary
-          ? _self.inversePrimary
-          : inversePrimary // ignore: cast_nullable_to_non_nullable
-              as Color,
-      disabled: null == disabled
-          ? _self.disabled
-          : disabled // ignore: cast_nullable_to_non_nullable
-              as Color,
-      onDisabled: null == onDisabled
-          ? _self.onDisabled
-          : onDisabled // ignore: cast_nullable_to_non_nullable
-              as Color,
-    ));
-  }
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$AppColorSchemeImplCopyWith<_$AppColorSchemeImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
-
-// dart format on

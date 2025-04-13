@@ -9,7 +9,7 @@ part 'theme_model.freezed.dart';
 @freezed
 @singleton
 @preResolve
-abstract class ThemeModel with _$ThemeModel {
+class ThemeModel with _$ThemeModel {
   factory ThemeModel({
     required ThemeMode mode,
     required ThemeData light,

@@ -6,7 +6,7 @@ part 'app_text_theme.freezed.dart';
 typedef MaterialTextTheme = TextTheme;
 
 @freezed
-abstract class AppTextTheme with _$AppTextTheme {
+class AppTextTheme with _$AppTextTheme {
   factory AppTextTheme({
     required TextStyle displayLarge,
     required TextStyle displayMedium,

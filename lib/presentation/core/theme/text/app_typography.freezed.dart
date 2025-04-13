@@ -1,4 +1,3 @@
-// dart format width=80
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
@@ -10,45 +9,28 @@ part of 'app_typography.dart';
 // FreezedGenerator
 // **************************************************************************
 
-// dart format off
 T _$identity<T>(T value) => value;
+
+final _privateConstructorUsedError = UnsupportedError(
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$AppTypography {
-  AppTextTheme get black;
-  AppTextTheme get white;
+  AppTextTheme get black => throw _privateConstructorUsedError;
+  AppTextTheme get white => throw _privateConstructorUsedError;
 
   /// Create a copy of AppTypography
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  @pragma('vm:prefer-inline')
   $AppTypographyCopyWith<AppTypography> get copyWith =>
-      _$AppTypographyCopyWithImpl<AppTypography>(
-          this as AppTypography, _$identity);
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is AppTypography &&
-            (identical(other.black, black) || other.black == black) &&
-            (identical(other.white, white) || other.white == white));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, black, white);
-
-  @override
-  String toString() {
-    return 'AppTypography(black: $black, white: $white)';
-  }
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract mixin class $AppTypographyCopyWith<$Res> {
+abstract class $AppTypographyCopyWith<$Res> {
   factory $AppTypographyCopyWith(
-          AppTypography value, $Res Function(AppTypography) _then) =
-      _$AppTypographyCopyWithImpl;
+          AppTypography value, $Res Function(AppTypography) then) =
+      _$AppTypographyCopyWithImpl<$Res, AppTypography>;
   @useResult
   $Res call({AppTextTheme black, AppTextTheme white});
 
@@ -57,12 +39,14 @@ abstract mixin class $AppTypographyCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$AppTypographyCopyWithImpl<$Res>
+class _$AppTypographyCopyWithImpl<$Res, $Val extends AppTypography>
     implements $AppTypographyCopyWith<$Res> {
-  _$AppTypographyCopyWithImpl(this._self, this._then);
+  _$AppTypographyCopyWithImpl(this._value, this._then);
 
-  final AppTypography _self;
-  final $Res Function(AppTypography) _then;
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
   /// Create a copy of AppTypography
   /// with the given fields replaced by the non-null parameter values.
@@ -72,16 +56,16 @@ class _$AppTypographyCopyWithImpl<$Res>
     Object? black = null,
     Object? white = null,
   }) {
-    return _then(_self.copyWith(
+    return _then(_value.copyWith(
       black: null == black
-          ? _self.black
+          ? _value.black
           : black // ignore: cast_nullable_to_non_nullable
               as AppTextTheme,
       white: null == white
-          ? _self.white
+          ? _value.white
           : white // ignore: cast_nullable_to_non_nullable
               as AppTextTheme,
-    ));
+    ) as $Val);
   }
 
   /// Create a copy of AppTypography
@@ -89,8 +73,8 @@ class _$AppTypographyCopyWithImpl<$Res>
   @override
   @pragma('vm:prefer-inline')
   $AppTextThemeCopyWith<$Res> get black {
-    return $AppTextThemeCopyWith<$Res>(_self.black, (value) {
-      return _then(_self.copyWith(black: value));
+    return $AppTextThemeCopyWith<$Res>(_value.black, (value) {
+      return _then(_value.copyWith(black: value) as $Val);
     });
   }
 
@@ -99,35 +83,77 @@ class _$AppTypographyCopyWithImpl<$Res>
   @override
   @pragma('vm:prefer-inline')
   $AppTextThemeCopyWith<$Res> get white {
-    return $AppTextThemeCopyWith<$Res>(_self.white, (value) {
-      return _then(_self.copyWith(white: value));
+    return $AppTextThemeCopyWith<$Res>(_value.white, (value) {
+      return _then(_value.copyWith(white: value) as $Val);
     });
   }
 }
 
 /// @nodoc
+abstract class _$$AppTypographyImplCopyWith<$Res>
+    implements $AppTypographyCopyWith<$Res> {
+  factory _$$AppTypographyImplCopyWith(
+          _$AppTypographyImpl value, $Res Function(_$AppTypographyImpl) then) =
+      __$$AppTypographyImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({AppTextTheme black, AppTextTheme white});
 
-class _AppTypography extends AppTypography {
-  _AppTypography({required this.black, required this.white}) : super._();
+  @override
+  $AppTextThemeCopyWith<$Res> get black;
+  @override
+  $AppTextThemeCopyWith<$Res> get white;
+}
+
+/// @nodoc
+class __$$AppTypographyImplCopyWithImpl<$Res>
+    extends _$AppTypographyCopyWithImpl<$Res, _$AppTypographyImpl>
+    implements _$$AppTypographyImplCopyWith<$Res> {
+  __$$AppTypographyImplCopyWithImpl(
+      _$AppTypographyImpl _value, $Res Function(_$AppTypographyImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of AppTypography
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? black = null,
+    Object? white = null,
+  }) {
+    return _then(_$AppTypographyImpl(
+      black: null == black
+          ? _value.black
+          : black // ignore: cast_nullable_to_non_nullable
+              as AppTextTheme,
+      white: null == white
+          ? _value.white
+          : white // ignore: cast_nullable_to_non_nullable
+              as AppTextTheme,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$AppTypographyImpl extends _AppTypography {
+  _$AppTypographyImpl({required this.black, required this.white}) : super._();
 
   @override
   final AppTextTheme black;
   @override
   final AppTextTheme white;
 
-  /// Create a copy of AppTypography
-  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @pragma('vm:prefer-inline')
-  _$AppTypographyCopyWith<_AppTypography> get copyWith =>
-      __$AppTypographyCopyWithImpl<_AppTypography>(this, _$identity);
+  String toString() {
+    return 'AppTypography(black: $black, white: $white)';
+  }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _AppTypography &&
+            other is _$AppTypographyImpl &&
             (identical(other.black, black) || other.black == black) &&
             (identical(other.white, white) || other.white == white));
   }
@@ -135,75 +161,30 @@ class _AppTypography extends AppTypography {
   @override
   int get hashCode => Object.hash(runtimeType, black, white);
 
+  /// Create a copy of AppTypography
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  String toString() {
-    return 'AppTypography(black: $black, white: $white)';
-  }
+  @pragma('vm:prefer-inline')
+  _$$AppTypographyImplCopyWith<_$AppTypographyImpl> get copyWith =>
+      __$$AppTypographyImplCopyWithImpl<_$AppTypographyImpl>(this, _$identity);
 }
 
-/// @nodoc
-abstract mixin class _$AppTypographyCopyWith<$Res>
-    implements $AppTypographyCopyWith<$Res> {
-  factory _$AppTypographyCopyWith(
-          _AppTypography value, $Res Function(_AppTypography) _then) =
-      __$AppTypographyCopyWithImpl;
-  @override
-  @useResult
-  $Res call({AppTextTheme black, AppTextTheme white});
+abstract class _AppTypography extends AppTypography {
+  factory _AppTypography(
+      {required final AppTextTheme black,
+      required final AppTextTheme white}) = _$AppTypographyImpl;
+  _AppTypography._() : super._();
 
   @override
-  $AppTextThemeCopyWith<$Res> get black;
+  AppTextTheme get black;
   @override
-  $AppTextThemeCopyWith<$Res> get white;
-}
-
-/// @nodoc
-class __$AppTypographyCopyWithImpl<$Res>
-    implements _$AppTypographyCopyWith<$Res> {
-  __$AppTypographyCopyWithImpl(this._self, this._then);
-
-  final _AppTypography _self;
-  final $Res Function(_AppTypography) _then;
+  AppTextTheme get white;
 
   /// Create a copy of AppTypography
   /// with the given fields replaced by the non-null parameter values.
   @override
-  @pragma('vm:prefer-inline')
-  $Res call({
-    Object? black = null,
-    Object? white = null,
-  }) {
-    return _then(_AppTypography(
-      black: null == black
-          ? _self.black
-          : black // ignore: cast_nullable_to_non_nullable
-              as AppTextTheme,
-      white: null == white
-          ? _self.white
-          : white // ignore: cast_nullable_to_non_nullable
-              as AppTextTheme,
-    ));
-  }
-
-  /// Create a copy of AppTypography
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $AppTextThemeCopyWith<$Res> get black {
-    return $AppTextThemeCopyWith<$Res>(_self.black, (value) {
-      return _then(_self.copyWith(black: value));
-    });
-  }
-
-  /// Create a copy of AppTypography
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $AppTextThemeCopyWith<$Res> get white {
-    return $AppTextThemeCopyWith<$Res>(_self.white, (value) {
-      return _then(_self.copyWith(white: value));
-    });
-  }
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$AppTypographyImplCopyWith<_$AppTypographyImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
-
-// dart format on

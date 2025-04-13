@@ -20,9 +20,14 @@ import 'package:thuri_cycle/application/app/locale/locale_cubit.dart' as _i1063;
 import 'package:thuri_cycle/application/auth/auth_bloc.dart' as _i390;
 import 'package:thuri_cycle/application/auth/auth_form/auth_form_cubit.dart'
     as _i250;
+import 'package:thuri_cycle/application/community/community_featured/community_featured_cubit.dart'
+    as _i884;
 import 'package:thuri_cycle/domain/app/theme_model.dart' as _i836;
 import 'package:thuri_cycle/domain/auth/i_auth_facade.dart' as _i917;
+import 'package:thuri_cycle/domain/community/i_community.dart' as _i153;
 import 'package:thuri_cycle/infastructure/auth/auth_repository.dart' as _i767;
+import 'package:thuri_cycle/infastructure/core/dependency_injection/firebase_injectable.module.dart'
+    as _i63;
 import 'package:thuri_cycle/infastructure/core/dependency_injection/talker_module.dart'
     as _i159;
 import 'package:thuri_cycle/infastructure/scroll_controller/scroll_controller_service.dart'
@@ -40,12 +45,17 @@ extension GetItInjectableX on _i174.GetIt {
       environmentFilter,
     );
     final talkerModule = _$TalkerModule();
+    final firebaseInjectableModule = _$FirebaseInjectableModule();
     gh.factory<_i1063.LocaleCubit>(() => _i1063.LocaleCubit());
     gh.singleton<_i207.Talker>(() => talkerModule.talkerFlutter);
     await gh.singletonAsync<_i836.ThemeModel>(
       () => _i836.ThemeModel.create(),
       preResolve: true,
     );
+    gh.lazySingleton<_i116.GoogleSignIn>(
+        () => firebaseInjectableModule.googleSignIn);
+    gh.lazySingleton<_i59.FirebaseAuth>(
+        () => firebaseInjectableModule.firebaseAuth);
     gh.lazySingleton<_i795.ScrollControllerService>(
       () => _i795.ScrollControllerService(),
       dispose: (i) => i.dispose(),
@@ -56,6 +66,8 @@ extension GetItInjectableX on _i174.GetIt {
           gh<_i558.FlutterSecureStorage>(),
           gh<_i116.GoogleSignIn>(),
         ));
+    gh.factory<_i884.CommunityFeaturedCubit>(
+        () => _i884.CommunityFeaturedCubit(gh<_i153.ICommunity>()));
     gh.factory<_i250.AuthFormCubit>(
         () => _i250.AuthFormCubit(gh<_i917.IAuth>()));
     gh.factory<_i390.AuthBloc>(() => _i390.AuthBloc(
@@ -67,3 +79,5 @@ extension GetItInjectableX on _i174.GetIt {
 }
 
 class _$TalkerModule extends _i159.TalkerModule {}
+
+class _$FirebaseInjectableModule extends _i63.FirebaseInjectableModule {}

@@ -1,4 +1,3 @@
-// dart format width=80
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
@@ -10,102 +9,41 @@ part of 'app_text_theme.dart';
 // FreezedGenerator
 // **************************************************************************
 
-// dart format off
 T _$identity<T>(T value) => value;
+
+final _privateConstructorUsedError = UnsupportedError(
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$AppTextTheme {
-  TextStyle get displayLarge;
-  TextStyle get displayMedium;
-  TextStyle get displaySmall;
-  TextStyle get headlineLarge;
-  TextStyle get headlineMedium;
-  TextStyle get headlineSmall;
-  TextStyle get titleLarge;
-  TextStyle get titleMedium;
-  TextStyle get titleSmall;
-  TextStyle get bodyLarge;
-  TextStyle get bodyMedium;
-  TextStyle get bodySmall;
-  TextStyle get labelLarge;
-  TextStyle get labelMedium;
-  TextStyle get labelSmall;
+  TextStyle get displayLarge => throw _privateConstructorUsedError;
+  TextStyle get displayMedium => throw _privateConstructorUsedError;
+  TextStyle get displaySmall => throw _privateConstructorUsedError;
+  TextStyle get headlineLarge => throw _privateConstructorUsedError;
+  TextStyle get headlineMedium => throw _privateConstructorUsedError;
+  TextStyle get headlineSmall => throw _privateConstructorUsedError;
+  TextStyle get titleLarge => throw _privateConstructorUsedError;
+  TextStyle get titleMedium => throw _privateConstructorUsedError;
+  TextStyle get titleSmall => throw _privateConstructorUsedError;
+  TextStyle get bodyLarge => throw _privateConstructorUsedError;
+  TextStyle get bodyMedium => throw _privateConstructorUsedError;
+  TextStyle get bodySmall => throw _privateConstructorUsedError;
+  TextStyle get labelLarge => throw _privateConstructorUsedError;
+  TextStyle get labelMedium => throw _privateConstructorUsedError;
+  TextStyle get labelSmall => throw _privateConstructorUsedError;
 
   /// Create a copy of AppTextTheme
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  @pragma('vm:prefer-inline')
   $AppTextThemeCopyWith<AppTextTheme> get copyWith =>
-      _$AppTextThemeCopyWithImpl<AppTextTheme>(
-          this as AppTextTheme, _$identity);
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is AppTextTheme &&
-            (identical(other.displayLarge, displayLarge) ||
-                other.displayLarge == displayLarge) &&
-            (identical(other.displayMedium, displayMedium) ||
-                other.displayMedium == displayMedium) &&
-            (identical(other.displaySmall, displaySmall) ||
-                other.displaySmall == displaySmall) &&
-            (identical(other.headlineLarge, headlineLarge) ||
-                other.headlineLarge == headlineLarge) &&
-            (identical(other.headlineMedium, headlineMedium) ||
-                other.headlineMedium == headlineMedium) &&
-            (identical(other.headlineSmall, headlineSmall) ||
-                other.headlineSmall == headlineSmall) &&
-            (identical(other.titleLarge, titleLarge) ||
-                other.titleLarge == titleLarge) &&
-            (identical(other.titleMedium, titleMedium) ||
-                other.titleMedium == titleMedium) &&
-            (identical(other.titleSmall, titleSmall) ||
-                other.titleSmall == titleSmall) &&
-            (identical(other.bodyLarge, bodyLarge) ||
-                other.bodyLarge == bodyLarge) &&
-            (identical(other.bodyMedium, bodyMedium) ||
-                other.bodyMedium == bodyMedium) &&
-            (identical(other.bodySmall, bodySmall) ||
-                other.bodySmall == bodySmall) &&
-            (identical(other.labelLarge, labelLarge) ||
-                other.labelLarge == labelLarge) &&
-            (identical(other.labelMedium, labelMedium) ||
-                other.labelMedium == labelMedium) &&
-            (identical(other.labelSmall, labelSmall) ||
-                other.labelSmall == labelSmall));
-  }
-
-  @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      displayLarge,
-      displayMedium,
-      displaySmall,
-      headlineLarge,
-      headlineMedium,
-      headlineSmall,
-      titleLarge,
-      titleMedium,
-      titleSmall,
-      bodyLarge,
-      bodyMedium,
-      bodySmall,
-      labelLarge,
-      labelMedium,
-      labelSmall);
-
-  @override
-  String toString() {
-    return 'AppTextTheme(displayLarge: $displayLarge, displayMedium: $displayMedium, displaySmall: $displaySmall, headlineLarge: $headlineLarge, headlineMedium: $headlineMedium, headlineSmall: $headlineSmall, titleLarge: $titleLarge, titleMedium: $titleMedium, titleSmall: $titleSmall, bodyLarge: $bodyLarge, bodyMedium: $bodyMedium, bodySmall: $bodySmall, labelLarge: $labelLarge, labelMedium: $labelMedium, labelSmall: $labelSmall)';
-  }
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract mixin class $AppTextThemeCopyWith<$Res> {
+abstract class $AppTextThemeCopyWith<$Res> {
   factory $AppTextThemeCopyWith(
-          AppTextTheme value, $Res Function(AppTextTheme) _then) =
-      _$AppTextThemeCopyWithImpl;
+          AppTextTheme value, $Res Function(AppTextTheme) then) =
+      _$AppTextThemeCopyWithImpl<$Res, AppTextTheme>;
   @useResult
   $Res call(
       {TextStyle displayLarge,
@@ -126,11 +64,14 @@ abstract mixin class $AppTextThemeCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$AppTextThemeCopyWithImpl<$Res> implements $AppTextThemeCopyWith<$Res> {
-  _$AppTextThemeCopyWithImpl(this._self, this._then);
+class _$AppTextThemeCopyWithImpl<$Res, $Val extends AppTextTheme>
+    implements $AppTextThemeCopyWith<$Res> {
+  _$AppTextThemeCopyWithImpl(this._value, this._then);
 
-  final AppTextTheme _self;
-  final $Res Function(AppTextTheme) _then;
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
   /// Create a copy of AppTextTheme
   /// with the given fields replaced by the non-null parameter values.
@@ -153,65 +94,185 @@ class _$AppTextThemeCopyWithImpl<$Res> implements $AppTextThemeCopyWith<$Res> {
     Object? labelMedium = null,
     Object? labelSmall = null,
   }) {
-    return _then(_self.copyWith(
+    return _then(_value.copyWith(
       displayLarge: null == displayLarge
-          ? _self.displayLarge
+          ? _value.displayLarge
           : displayLarge // ignore: cast_nullable_to_non_nullable
               as TextStyle,
       displayMedium: null == displayMedium
-          ? _self.displayMedium
+          ? _value.displayMedium
           : displayMedium // ignore: cast_nullable_to_non_nullable
               as TextStyle,
       displaySmall: null == displaySmall
-          ? _self.displaySmall
+          ? _value.displaySmall
           : displaySmall // ignore: cast_nullable_to_non_nullable
               as TextStyle,
       headlineLarge: null == headlineLarge
-          ? _self.headlineLarge
+          ? _value.headlineLarge
           : headlineLarge // ignore: cast_nullable_to_non_nullable
               as TextStyle,
       headlineMedium: null == headlineMedium
-          ? _self.headlineMedium
+          ? _value.headlineMedium
           : headlineMedium // ignore: cast_nullable_to_non_nullable
               as TextStyle,
       headlineSmall: null == headlineSmall
-          ? _self.headlineSmall
+          ? _value.headlineSmall
           : headlineSmall // ignore: cast_nullable_to_non_nullable
               as TextStyle,
       titleLarge: null == titleLarge
-          ? _self.titleLarge
+          ? _value.titleLarge
           : titleLarge // ignore: cast_nullable_to_non_nullable
               as TextStyle,
       titleMedium: null == titleMedium
-          ? _self.titleMedium
+          ? _value.titleMedium
           : titleMedium // ignore: cast_nullable_to_non_nullable
               as TextStyle,
       titleSmall: null == titleSmall
-          ? _self.titleSmall
+          ? _value.titleSmall
           : titleSmall // ignore: cast_nullable_to_non_nullable
               as TextStyle,
       bodyLarge: null == bodyLarge
-          ? _self.bodyLarge
+          ? _value.bodyLarge
           : bodyLarge // ignore: cast_nullable_to_non_nullable
               as TextStyle,
       bodyMedium: null == bodyMedium
-          ? _self.bodyMedium
+          ? _value.bodyMedium
           : bodyMedium // ignore: cast_nullable_to_non_nullable
               as TextStyle,
       bodySmall: null == bodySmall
-          ? _self.bodySmall
+          ? _value.bodySmall
           : bodySmall // ignore: cast_nullable_to_non_nullable
               as TextStyle,
       labelLarge: null == labelLarge
-          ? _self.labelLarge
+          ? _value.labelLarge
           : labelLarge // ignore: cast_nullable_to_non_nullable
               as TextStyle,
       labelMedium: null == labelMedium
-          ? _self.labelMedium
+          ? _value.labelMedium
           : labelMedium // ignore: cast_nullable_to_non_nullable
               as TextStyle,
       labelSmall: null == labelSmall
-          ? _self.labelSmall
+          ? _value.labelSmall
+          : labelSmall // ignore: cast_nullable_to_non_nullable
+              as TextStyle,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$AppTextThemeImplCopyWith<$Res>
+    implements $AppTextThemeCopyWith<$Res> {
+  factory _$$AppTextThemeImplCopyWith(
+          _$AppTextThemeImpl value, $Res Function(_$AppTextThemeImpl) then) =
+      __$$AppTextThemeImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {TextStyle displayLarge,
+      TextStyle displayMedium,
+      TextStyle displaySmall,
+      TextStyle headlineLarge,
+      TextStyle headlineMedium,
+      TextStyle headlineSmall,
+      TextStyle titleLarge,
+      TextStyle titleMedium,
+      TextStyle titleSmall,
+      TextStyle bodyLarge,
+      TextStyle bodyMedium,
+      TextStyle bodySmall,
+      TextStyle labelLarge,
+      TextStyle labelMedium,
+      TextStyle labelSmall});
+}
+
+/// @nodoc
+class __$$AppTextThemeImplCopyWithImpl<$Res>
+    extends _$AppTextThemeCopyWithImpl<$Res, _$AppTextThemeImpl>
+    implements _$$AppTextThemeImplCopyWith<$Res> {
+  __$$AppTextThemeImplCopyWithImpl(
+      _$AppTextThemeImpl _value, $Res Function(_$AppTextThemeImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of AppTextTheme
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? displayLarge = null,
+    Object? displayMedium = null,
+    Object? displaySmall = null,
+    Object? headlineLarge = null,
+    Object? headlineMedium = null,
+    Object? headlineSmall = null,
+    Object? titleLarge = null,
+    Object? titleMedium = null,
+    Object? titleSmall = null,
+    Object? bodyLarge = null,
+    Object? bodyMedium = null,
+    Object? bodySmall = null,
+    Object? labelLarge = null,
+    Object? labelMedium = null,
+    Object? labelSmall = null,
+  }) {
+    return _then(_$AppTextThemeImpl(
+      displayLarge: null == displayLarge
+          ? _value.displayLarge
+          : displayLarge // ignore: cast_nullable_to_non_nullable
+              as TextStyle,
+      displayMedium: null == displayMedium
+          ? _value.displayMedium
+          : displayMedium // ignore: cast_nullable_to_non_nullable
+              as TextStyle,
+      displaySmall: null == displaySmall
+          ? _value.displaySmall
+          : displaySmall // ignore: cast_nullable_to_non_nullable
+              as TextStyle,
+      headlineLarge: null == headlineLarge
+          ? _value.headlineLarge
+          : headlineLarge // ignore: cast_nullable_to_non_nullable
+              as TextStyle,
+      headlineMedium: null == headlineMedium
+          ? _value.headlineMedium
+          : headlineMedium // ignore: cast_nullable_to_non_nullable
+              as TextStyle,
+      headlineSmall: null == headlineSmall
+          ? _value.headlineSmall
+          : headlineSmall // ignore: cast_nullable_to_non_nullable
+              as TextStyle,
+      titleLarge: null == titleLarge
+          ? _value.titleLarge
+          : titleLarge // ignore: cast_nullable_to_non_nullable
+              as TextStyle,
+      titleMedium: null == titleMedium
+          ? _value.titleMedium
+          : titleMedium // ignore: cast_nullable_to_non_nullable
+              as TextStyle,
+      titleSmall: null == titleSmall
+          ? _value.titleSmall
+          : titleSmall // ignore: cast_nullable_to_non_nullable
+              as TextStyle,
+      bodyLarge: null == bodyLarge
+          ? _value.bodyLarge
+          : bodyLarge // ignore: cast_nullable_to_non_nullable
+              as TextStyle,
+      bodyMedium: null == bodyMedium
+          ? _value.bodyMedium
+          : bodyMedium // ignore: cast_nullable_to_non_nullable
+              as TextStyle,
+      bodySmall: null == bodySmall
+          ? _value.bodySmall
+          : bodySmall // ignore: cast_nullable_to_non_nullable
+              as TextStyle,
+      labelLarge: null == labelLarge
+          ? _value.labelLarge
+          : labelLarge // ignore: cast_nullable_to_non_nullable
+              as TextStyle,
+      labelMedium: null == labelMedium
+          ? _value.labelMedium
+          : labelMedium // ignore: cast_nullable_to_non_nullable
+              as TextStyle,
+      labelSmall: null == labelSmall
+          ? _value.labelSmall
           : labelSmall // ignore: cast_nullable_to_non_nullable
               as TextStyle,
     ));
@@ -220,8 +281,8 @@ class _$AppTextThemeCopyWithImpl<$Res> implements $AppTextThemeCopyWith<$Res> {
 
 /// @nodoc
 
-class _AppTextTheme extends AppTextTheme {
-  _AppTextTheme(
+class _$AppTextThemeImpl extends _AppTextTheme {
+  _$AppTextThemeImpl(
       {required this.displayLarge,
       required this.displayMedium,
       required this.displaySmall,
@@ -270,19 +331,16 @@ class _AppTextTheme extends AppTextTheme {
   @override
   final TextStyle labelSmall;
 
-  /// Create a copy of AppTextTheme
-  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @pragma('vm:prefer-inline')
-  _$AppTextThemeCopyWith<_AppTextTheme> get copyWith =>
-      __$AppTextThemeCopyWithImpl<_AppTextTheme>(this, _$identity);
+  String toString() {
+    return 'AppTextTheme(displayLarge: $displayLarge, displayMedium: $displayMedium, displaySmall: $displaySmall, headlineLarge: $headlineLarge, headlineMedium: $headlineMedium, headlineSmall: $headlineSmall, titleLarge: $titleLarge, titleMedium: $titleMedium, titleSmall: $titleSmall, bodyLarge: $bodyLarge, bodyMedium: $bodyMedium, bodySmall: $bodySmall, labelLarge: $labelLarge, labelMedium: $labelMedium, labelSmall: $labelSmall)';
+  }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _AppTextTheme &&
+            other is _$AppTextThemeImpl &&
             (identical(other.displayLarge, displayLarge) ||
                 other.displayLarge == displayLarge) &&
             (identical(other.displayMedium, displayMedium) ||
@@ -334,130 +392,69 @@ class _AppTextTheme extends AppTextTheme {
       labelMedium,
       labelSmall);
 
+  /// Create a copy of AppTextTheme
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  String toString() {
-    return 'AppTextTheme(displayLarge: $displayLarge, displayMedium: $displayMedium, displaySmall: $displaySmall, headlineLarge: $headlineLarge, headlineMedium: $headlineMedium, headlineSmall: $headlineSmall, titleLarge: $titleLarge, titleMedium: $titleMedium, titleSmall: $titleSmall, bodyLarge: $bodyLarge, bodyMedium: $bodyMedium, bodySmall: $bodySmall, labelLarge: $labelLarge, labelMedium: $labelMedium, labelSmall: $labelSmall)';
-  }
+  @pragma('vm:prefer-inline')
+  _$$AppTextThemeImplCopyWith<_$AppTextThemeImpl> get copyWith =>
+      __$$AppTextThemeImplCopyWithImpl<_$AppTextThemeImpl>(this, _$identity);
 }
 
-/// @nodoc
-abstract mixin class _$AppTextThemeCopyWith<$Res>
-    implements $AppTextThemeCopyWith<$Res> {
-  factory _$AppTextThemeCopyWith(
-          _AppTextTheme value, $Res Function(_AppTextTheme) _then) =
-      __$AppTextThemeCopyWithImpl;
+abstract class _AppTextTheme extends AppTextTheme {
+  factory _AppTextTheme(
+      {required final TextStyle displayLarge,
+      required final TextStyle displayMedium,
+      required final TextStyle displaySmall,
+      required final TextStyle headlineLarge,
+      required final TextStyle headlineMedium,
+      required final TextStyle headlineSmall,
+      required final TextStyle titleLarge,
+      required final TextStyle titleMedium,
+      required final TextStyle titleSmall,
+      required final TextStyle bodyLarge,
+      required final TextStyle bodyMedium,
+      required final TextStyle bodySmall,
+      required final TextStyle labelLarge,
+      required final TextStyle labelMedium,
+      required final TextStyle labelSmall}) = _$AppTextThemeImpl;
+  _AppTextTheme._() : super._();
+
   @override
-  @useResult
-  $Res call(
-      {TextStyle displayLarge,
-      TextStyle displayMedium,
-      TextStyle displaySmall,
-      TextStyle headlineLarge,
-      TextStyle headlineMedium,
-      TextStyle headlineSmall,
-      TextStyle titleLarge,
-      TextStyle titleMedium,
-      TextStyle titleSmall,
-      TextStyle bodyLarge,
-      TextStyle bodyMedium,
-      TextStyle bodySmall,
-      TextStyle labelLarge,
-      TextStyle labelMedium,
-      TextStyle labelSmall});
-}
-
-/// @nodoc
-class __$AppTextThemeCopyWithImpl<$Res>
-    implements _$AppTextThemeCopyWith<$Res> {
-  __$AppTextThemeCopyWithImpl(this._self, this._then);
-
-  final _AppTextTheme _self;
-  final $Res Function(_AppTextTheme) _then;
+  TextStyle get displayLarge;
+  @override
+  TextStyle get displayMedium;
+  @override
+  TextStyle get displaySmall;
+  @override
+  TextStyle get headlineLarge;
+  @override
+  TextStyle get headlineMedium;
+  @override
+  TextStyle get headlineSmall;
+  @override
+  TextStyle get titleLarge;
+  @override
+  TextStyle get titleMedium;
+  @override
+  TextStyle get titleSmall;
+  @override
+  TextStyle get bodyLarge;
+  @override
+  TextStyle get bodyMedium;
+  @override
+  TextStyle get bodySmall;
+  @override
+  TextStyle get labelLarge;
+  @override
+  TextStyle get labelMedium;
+  @override
+  TextStyle get labelSmall;
 
   /// Create a copy of AppTextTheme
   /// with the given fields replaced by the non-null parameter values.
   @override
-  @pragma('vm:prefer-inline')
-  $Res call({
-    Object? displayLarge = null,
-    Object? displayMedium = null,
-    Object? displaySmall = null,
-    Object? headlineLarge = null,
-    Object? headlineMedium = null,
-    Object? headlineSmall = null,
-    Object? titleLarge = null,
-    Object? titleMedium = null,
-    Object? titleSmall = null,
-    Object? bodyLarge = null,
-    Object? bodyMedium = null,
-    Object? bodySmall = null,
-    Object? labelLarge = null,
-    Object? labelMedium = null,
-    Object? labelSmall = null,
-  }) {
-    return _then(_AppTextTheme(
-      displayLarge: null == displayLarge
-          ? _self.displayLarge
-          : displayLarge // ignore: cast_nullable_to_non_nullable
-              as TextStyle,
-      displayMedium: null == displayMedium
-          ? _self.displayMedium
-          : displayMedium // ignore: cast_nullable_to_non_nullable
-              as TextStyle,
-      displaySmall: null == displaySmall
-          ? _self.displaySmall
-          : displaySmall // ignore: cast_nullable_to_non_nullable
-              as TextStyle,
-      headlineLarge: null == headlineLarge
-          ? _self.headlineLarge
-          : headlineLarge // ignore: cast_nullable_to_non_nullable
-              as TextStyle,
-      headlineMedium: null == headlineMedium
-          ? _self.headlineMedium
-          : headlineMedium // ignore: cast_nullable_to_non_nullable
-              as TextStyle,
-      headlineSmall: null == headlineSmall
-          ? _self.headlineSmall
-          : headlineSmall // ignore: cast_nullable_to_non_nullable
-              as TextStyle,
-      titleLarge: null == titleLarge
-          ? _self.titleLarge
-          : titleLarge // ignore: cast_nullable_to_non_nullable
-              as TextStyle,
-      titleMedium: null == titleMedium
-          ? _self.titleMedium
-          : titleMedium // ignore: cast_nullable_to_non_nullable
-              as TextStyle,
-      titleSmall: null == titleSmall
-          ? _self.titleSmall
-          : titleSmall // ignore: cast_nullable_to_non_nullable
-              as TextStyle,
-      bodyLarge: null == bodyLarge
-          ? _self.bodyLarge
-          : bodyLarge // ignore: cast_nullable_to_non_nullable
-              as TextStyle,
-      bodyMedium: null == bodyMedium
-          ? _self.bodyMedium
-          : bodyMedium // ignore: cast_nullable_to_non_nullable
-              as TextStyle,
-      bodySmall: null == bodySmall
-          ? _self.bodySmall
-          : bodySmall // ignore: cast_nullable_to_non_nullable
-              as TextStyle,
-      labelLarge: null == labelLarge
-          ? _self.labelLarge
-          : labelLarge // ignore: cast_nullable_to_non_nullable
-              as TextStyle,
-      labelMedium: null == labelMedium
-          ? _self.labelMedium
-          : labelMedium // ignore: cast_nullable_to_non_nullable
-              as TextStyle,
-      labelSmall: null == labelSmall
-          ? _self.labelSmall
-          : labelSmall // ignore: cast_nullable_to_non_nullable
-              as TextStyle,
-    ));
-  }
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$AppTextThemeImplCopyWith<_$AppTextThemeImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
-
-// dart format on

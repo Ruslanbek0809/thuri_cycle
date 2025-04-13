@@ -13,7 +13,7 @@ enum AlertType {
 }
 
 @freezed
-abstract class AlertModel with _$AlertModel {
+class AlertModel with _$AlertModel {
   const factory AlertModel({
     required String message,
     required AlertType type,

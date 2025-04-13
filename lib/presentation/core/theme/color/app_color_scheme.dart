@@ -6,7 +6,7 @@ part 'app_color_scheme.freezed.dart';
 typedef MaterialColorScheme = ColorScheme;
 
 @freezed
-abstract class AppColorScheme with _$AppColorScheme {
+class AppColorScheme with _$AppColorScheme {
   factory AppColorScheme({
     required Brightness brightness,
     required Color primary,

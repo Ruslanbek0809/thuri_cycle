@@ -40,10 +40,25 @@ class AppRouter extends RootStackRouter {
               path: 'report-waste',
               page: ReportWasteRoute.page,
             ),
+
+            // RecyclingGuideRoute
             AutoRoute(
-              path: 'recycling-guide',
-              page: RecyclingGuideRoute.page,
+              path: 'community',
+              page: const EmptyShellRoute('CommunityRoute'),
+              children: [
+                AutoRoute(path: '', page: CommunityRoute.page, initial: true),
+                AutoRoute(path: ':article', page: ArticleRoute.page),
+                // AutoRoute(path: ':postId', page: PostDetailRoute.page),
+                AutoRoute(
+                  path: ':recycling-guide',
+                  page: RecyclingGuideRoute.page,
+                ),
+              ],
             ),
+            // AutoRoute(
+            //   path: 'recycling-guide',
+            //   page: RecyclingGuideRoute.page,
+            // ),
             AutoRoute(
               path: 'profile',
               page: ProfileRoute.page,

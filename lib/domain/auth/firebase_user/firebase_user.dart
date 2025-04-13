@@ -5,7 +5,7 @@
 
 // // NOT USED model YET
 // @freezed
-// abstract class FirebaseUser with _$FirebaseUser {
+// class FirebaseUser with _$FirebaseUser {
 //   const factory FirebaseUser({
 //     required UniqueId id,
 //   }) = _FirebaseUser;

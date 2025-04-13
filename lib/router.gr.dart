@@ -9,27 +9,34 @@
 // coverage:ignore-file
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'package:auto_route/auto_route.dart' as _i10;
+import 'package:auto_route/auto_route.dart' as _i12;
+import 'package:flutter/material.dart' as _i14;
 import 'package:thuri_cycle/app/app_wrapper.dart' as _i1;
-import 'package:thuri_cycle/app/onboarding.dart' as _i4;
-import 'package:thuri_cycle/app/splash.dart' as _i9;
-import 'package:thuri_cycle/presentation/auth/login.dart' as _i3;
-import 'package:thuri_cycle/presentation/home/home.dart' as _i2;
-import 'package:thuri_cycle/presentation/profile/profile.dart' as _i5;
+import 'package:thuri_cycle/app/onboarding.dart' as _i6;
+import 'package:thuri_cycle/app/splash.dart' as _i11;
+import 'package:thuri_cycle/presentation/auth/login.dart' as _i5;
+import 'package:thuri_cycle/presentation/home/home.dart' as _i4;
+import 'package:thuri_cycle/presentation/profile/profile.dart' as _i7;
+import 'package:thuri_cycle/presentation/recycling_guide/article_page.dart'
+    as _i2;
+import 'package:thuri_cycle/presentation/recycling_guide/article_widgets/article/article.dart'
+    as _i13;
+import 'package:thuri_cycle/presentation/recycling_guide/community/community_page.dart'
+    as _i3;
 import 'package:thuri_cycle/presentation/recycling_guide/recycling_guide.dart'
-    as _i6;
-import 'package:thuri_cycle/presentation/report_waste/report_waste.dart' as _i7;
-import 'package:thuri_cycle/presentation/scan_waste/scan_waste.dart' as _i8;
+    as _i8;
+import 'package:thuri_cycle/presentation/report_waste/report_waste.dart' as _i9;
+import 'package:thuri_cycle/presentation/scan_waste/scan_waste.dart' as _i10;
 
 /// generated route for
 /// [_i1.AppWrapper]
-class AppWrapper extends _i10.PageRouteInfo<void> {
-  const AppWrapper({List<_i10.PageRouteInfo>? children})
+class AppWrapper extends _i12.PageRouteInfo<void> {
+  const AppWrapper({List<_i12.PageRouteInfo>? children})
     : super(AppWrapper.name, initialChildren: children);
 
   static const String name = 'AppWrapper';
 
-  static _i10.PageInfo page = _i10.PageInfo(
+  static _i12.PageInfo page = _i12.PageInfo(
     name,
     builder: (data) {
       return const _i1.AppWrapper();
@@ -38,129 +45,182 @@ class AppWrapper extends _i10.PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [_i2.HomePage]
-class HomeRoute extends _i10.PageRouteInfo<void> {
-  const HomeRoute({List<_i10.PageRouteInfo>? children})
+/// [_i2.ArticlePage]
+class ArticleRoute extends _i12.PageRouteInfo<ArticleRouteArgs> {
+  ArticleRoute({
+    required _i13.Article article,
+    _i14.Key? key,
+    List<_i12.PageRouteInfo>? children,
+  }) : super(
+         ArticleRoute.name,
+         args: ArticleRouteArgs(article: article, key: key),
+         initialChildren: children,
+       );
+
+  static const String name = 'ArticleRoute';
+
+  static _i12.PageInfo page = _i12.PageInfo(
+    name,
+    builder: (data) {
+      final args = data.argsAs<ArticleRouteArgs>();
+      return _i2.ArticlePage(article: args.article, key: args.key);
+    },
+  );
+}
+
+class ArticleRouteArgs {
+  const ArticleRouteArgs({required this.article, this.key});
+
+  final _i13.Article article;
+
+  final _i14.Key? key;
+
+  @override
+  String toString() {
+    return 'ArticleRouteArgs{article: $article, key: $key}';
+  }
+}
+
+/// generated route for
+/// [_i3.CommunityPage]
+class CommunityRoute extends _i12.PageRouteInfo<void> {
+  const CommunityRoute({List<_i12.PageRouteInfo>? children})
+    : super(CommunityRoute.name, initialChildren: children);
+
+  static const String name = 'CommunityRoute';
+
+  static _i12.PageInfo page = _i12.PageInfo(
+    name,
+    builder: (data) {
+      return const _i3.CommunityPage();
+    },
+  );
+}
+
+/// generated route for
+/// [_i4.HomePage]
+class HomeRoute extends _i12.PageRouteInfo<void> {
+  const HomeRoute({List<_i12.PageRouteInfo>? children})
     : super(HomeRoute.name, initialChildren: children);
 
   static const String name = 'HomeRoute';
 
-  static _i10.PageInfo page = _i10.PageInfo(
+  static _i12.PageInfo page = _i12.PageInfo(
     name,
     builder: (data) {
-      return const _i2.HomePage();
+      return const _i4.HomePage();
     },
   );
 }
 
 /// generated route for
-/// [_i3.LoginPage]
-class LoginRoute extends _i10.PageRouteInfo<void> {
-  const LoginRoute({List<_i10.PageRouteInfo>? children})
+/// [_i5.LoginPage]
+class LoginRoute extends _i12.PageRouteInfo<void> {
+  const LoginRoute({List<_i12.PageRouteInfo>? children})
     : super(LoginRoute.name, initialChildren: children);
 
   static const String name = 'LoginRoute';
 
-  static _i10.PageInfo page = _i10.PageInfo(
+  static _i12.PageInfo page = _i12.PageInfo(
     name,
     builder: (data) {
-      return const _i3.LoginPage();
+      return const _i5.LoginPage();
     },
   );
 }
 
 /// generated route for
-/// [_i4.OnboardingPage]
-class OnboardingRoute extends _i10.PageRouteInfo<void> {
-  const OnboardingRoute({List<_i10.PageRouteInfo>? children})
+/// [_i6.OnboardingPage]
+class OnboardingRoute extends _i12.PageRouteInfo<void> {
+  const OnboardingRoute({List<_i12.PageRouteInfo>? children})
     : super(OnboardingRoute.name, initialChildren: children);
 
   static const String name = 'OnboardingRoute';
 
-  static _i10.PageInfo page = _i10.PageInfo(
+  static _i12.PageInfo page = _i12.PageInfo(
     name,
     builder: (data) {
-      return const _i4.OnboardingPage();
+      return const _i6.OnboardingPage();
     },
   );
 }
 
 /// generated route for
-/// [_i5.ProfilePage]
-class ProfileRoute extends _i10.PageRouteInfo<void> {
-  const ProfileRoute({List<_i10.PageRouteInfo>? children})
+/// [_i7.ProfilePage]
+class ProfileRoute extends _i12.PageRouteInfo<void> {
+  const ProfileRoute({List<_i12.PageRouteInfo>? children})
     : super(ProfileRoute.name, initialChildren: children);
 
   static const String name = 'ProfileRoute';
 
-  static _i10.PageInfo page = _i10.PageInfo(
+  static _i12.PageInfo page = _i12.PageInfo(
     name,
     builder: (data) {
-      return const _i5.ProfilePage();
+      return const _i7.ProfilePage();
     },
   );
 }
 
 /// generated route for
-/// [_i6.RecyclingGuidePage]
-class RecyclingGuideRoute extends _i10.PageRouteInfo<void> {
-  const RecyclingGuideRoute({List<_i10.PageRouteInfo>? children})
+/// [_i8.RecyclingGuidePage]
+class RecyclingGuideRoute extends _i12.PageRouteInfo<void> {
+  const RecyclingGuideRoute({List<_i12.PageRouteInfo>? children})
     : super(RecyclingGuideRoute.name, initialChildren: children);
 
   static const String name = 'RecyclingGuideRoute';
 
-  static _i10.PageInfo page = _i10.PageInfo(
+  static _i12.PageInfo page = _i12.PageInfo(
     name,
     builder: (data) {
-      return const _i6.RecyclingGuidePage();
+      return const _i8.RecyclingGuidePage();
     },
   );
 }
 
 /// generated route for
-/// [_i7.ReportWastePage]
-class ReportWasteRoute extends _i10.PageRouteInfo<void> {
-  const ReportWasteRoute({List<_i10.PageRouteInfo>? children})
+/// [_i9.ReportWastePage]
+class ReportWasteRoute extends _i12.PageRouteInfo<void> {
+  const ReportWasteRoute({List<_i12.PageRouteInfo>? children})
     : super(ReportWasteRoute.name, initialChildren: children);
 
   static const String name = 'ReportWasteRoute';
 
-  static _i10.PageInfo page = _i10.PageInfo(
+  static _i12.PageInfo page = _i12.PageInfo(
     name,
     builder: (data) {
-      return const _i7.ReportWastePage();
+      return const _i9.ReportWastePage();
     },
   );
 }
 
 /// generated route for
-/// [_i8.ScanWastePage]
-class ScanWasteRoute extends _i10.PageRouteInfo<void> {
-  const ScanWasteRoute({List<_i10.PageRouteInfo>? children})
+/// [_i10.ScanWastePage]
+class ScanWasteRoute extends _i12.PageRouteInfo<void> {
+  const ScanWasteRoute({List<_i12.PageRouteInfo>? children})
     : super(ScanWasteRoute.name, initialChildren: children);
 
   static const String name = 'ScanWasteRoute';
 
-  static _i10.PageInfo page = _i10.PageInfo(
+  static _i12.PageInfo page = _i12.PageInfo(
     name,
     builder: (data) {
-      return const _i8.ScanWastePage();
+      return const _i10.ScanWastePage();
     },
   );
 }
 
 /// generated route for
-/// [_i9.SplashPage]
-class SplashRoute extends _i10.PageRouteInfo<void> {
-  const SplashRoute({List<_i10.PageRouteInfo>? children})
+/// [_i11.SplashPage]
+class SplashRoute extends _i12.PageRouteInfo<void> {
+  const SplashRoute({List<_i12.PageRouteInfo>? children})
     : super(SplashRoute.name, initialChildren: children);
 
   static const String name = 'SplashRoute';
 
-  static _i10.PageInfo page = _i10.PageInfo(
+  static _i12.PageInfo page = _i12.PageInfo(
     name,
     builder: (data) {
-      return const _i9.SplashPage();
+      return const _i11.SplashPage();
     },
   );
 }

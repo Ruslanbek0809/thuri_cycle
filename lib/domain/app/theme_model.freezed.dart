@@ -1,4 +1,3 @@
-// dart format width=80
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
@@ -10,56 +9,42 @@ part of 'theme_model.dart';
 // FreezedGenerator
 // **************************************************************************
 
-// dart format off
 T _$identity<T>(T value) => value;
+
+final _privateConstructorUsedError = UnsupportedError(
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$ThemeModel {
-  ThemeMode get mode;
-  ThemeData get light;
-  ThemeData get dark;
+  ThemeMode get mode => throw _privateConstructorUsedError;
+  ThemeData get light => throw _privateConstructorUsedError;
+  ThemeData get dark => throw _privateConstructorUsedError;
 
   /// Create a copy of ThemeModel
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  @pragma('vm:prefer-inline')
   $ThemeModelCopyWith<ThemeModel> get copyWith =>
-      _$ThemeModelCopyWithImpl<ThemeModel>(this as ThemeModel, _$identity);
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is ThemeModel &&
-            (identical(other.mode, mode) || other.mode == mode) &&
-            (identical(other.light, light) || other.light == light) &&
-            (identical(other.dark, dark) || other.dark == dark));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, mode, light, dark);
-
-  @override
-  String toString() {
-    return 'ThemeModel(mode: $mode, light: $light, dark: $dark)';
-  }
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract mixin class $ThemeModelCopyWith<$Res> {
+abstract class $ThemeModelCopyWith<$Res> {
   factory $ThemeModelCopyWith(
-          ThemeModel value, $Res Function(ThemeModel) _then) =
-      _$ThemeModelCopyWithImpl;
+          ThemeModel value, $Res Function(ThemeModel) then) =
+      _$ThemeModelCopyWithImpl<$Res, ThemeModel>;
   @useResult
   $Res call({ThemeMode mode, ThemeData light, ThemeData dark});
 }
 
 /// @nodoc
-class _$ThemeModelCopyWithImpl<$Res> implements $ThemeModelCopyWith<$Res> {
-  _$ThemeModelCopyWithImpl(this._self, this._then);
+class _$ThemeModelCopyWithImpl<$Res, $Val extends ThemeModel>
+    implements $ThemeModelCopyWith<$Res> {
+  _$ThemeModelCopyWithImpl(this._value, this._then);
 
-  final ThemeModel _self;
-  final $Res Function(ThemeModel) _then;
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
   /// Create a copy of ThemeModel
   /// with the given fields replaced by the non-null parameter values.
@@ -70,17 +55,62 @@ class _$ThemeModelCopyWithImpl<$Res> implements $ThemeModelCopyWith<$Res> {
     Object? light = null,
     Object? dark = null,
   }) {
-    return _then(_self.copyWith(
+    return _then(_value.copyWith(
       mode: null == mode
-          ? _self.mode
+          ? _value.mode
           : mode // ignore: cast_nullable_to_non_nullable
               as ThemeMode,
       light: null == light
-          ? _self.light
+          ? _value.light
           : light // ignore: cast_nullable_to_non_nullable
               as ThemeData,
       dark: null == dark
-          ? _self.dark
+          ? _value.dark
+          : dark // ignore: cast_nullable_to_non_nullable
+              as ThemeData,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$ThemeModelImplCopyWith<$Res>
+    implements $ThemeModelCopyWith<$Res> {
+  factory _$$ThemeModelImplCopyWith(
+          _$ThemeModelImpl value, $Res Function(_$ThemeModelImpl) then) =
+      __$$ThemeModelImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({ThemeMode mode, ThemeData light, ThemeData dark});
+}
+
+/// @nodoc
+class __$$ThemeModelImplCopyWithImpl<$Res>
+    extends _$ThemeModelCopyWithImpl<$Res, _$ThemeModelImpl>
+    implements _$$ThemeModelImplCopyWith<$Res> {
+  __$$ThemeModelImplCopyWithImpl(
+      _$ThemeModelImpl _value, $Res Function(_$ThemeModelImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of ThemeModel
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? mode = null,
+    Object? light = null,
+    Object? dark = null,
+  }) {
+    return _then(_$ThemeModelImpl(
+      mode: null == mode
+          ? _value.mode
+          : mode // ignore: cast_nullable_to_non_nullable
+              as ThemeMode,
+      light: null == light
+          ? _value.light
+          : light // ignore: cast_nullable_to_non_nullable
+              as ThemeData,
+      dark: null == dark
+          ? _value.dark
           : dark // ignore: cast_nullable_to_non_nullable
               as ThemeData,
     ));
@@ -89,8 +119,9 @@ class _$ThemeModelCopyWithImpl<$Res> implements $ThemeModelCopyWith<$Res> {
 
 /// @nodoc
 
-class _ThemeModel extends ThemeModel {
-  _ThemeModel({required this.mode, required this.light, required this.dark})
+class _$ThemeModelImpl extends _ThemeModel {
+  _$ThemeModelImpl(
+      {required this.mode, required this.light, required this.dark})
       : super._();
 
   @override
@@ -100,19 +131,16 @@ class _ThemeModel extends ThemeModel {
   @override
   final ThemeData dark;
 
-  /// Create a copy of ThemeModel
-  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @pragma('vm:prefer-inline')
-  _$ThemeModelCopyWith<_ThemeModel> get copyWith =>
-      __$ThemeModelCopyWithImpl<_ThemeModel>(this, _$identity);
+  String toString() {
+    return 'ThemeModel(mode: $mode, light: $light, dark: $dark)';
+  }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _ThemeModel &&
+            other is _$ThemeModelImpl &&
             (identical(other.mode, mode) || other.mode == mode) &&
             (identical(other.light, light) || other.light == light) &&
             (identical(other.dark, dark) || other.dark == dark));
@@ -121,54 +149,33 @@ class _ThemeModel extends ThemeModel {
   @override
   int get hashCode => Object.hash(runtimeType, mode, light, dark);
 
+  /// Create a copy of ThemeModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  String toString() {
-    return 'ThemeModel(mode: $mode, light: $light, dark: $dark)';
-  }
+  @pragma('vm:prefer-inline')
+  _$$ThemeModelImplCopyWith<_$ThemeModelImpl> get copyWith =>
+      __$$ThemeModelImplCopyWithImpl<_$ThemeModelImpl>(this, _$identity);
 }
 
-/// @nodoc
-abstract mixin class _$ThemeModelCopyWith<$Res>
-    implements $ThemeModelCopyWith<$Res> {
-  factory _$ThemeModelCopyWith(
-          _ThemeModel value, $Res Function(_ThemeModel) _then) =
-      __$ThemeModelCopyWithImpl;
+abstract class _ThemeModel extends ThemeModel {
+  factory _ThemeModel(
+      {required final ThemeMode mode,
+      required final ThemeData light,
+      required final ThemeData dark}) = _$ThemeModelImpl;
+  _ThemeModel._() : super._();
+
   @override
-  @useResult
-  $Res call({ThemeMode mode, ThemeData light, ThemeData dark});
-}
-
-/// @nodoc
-class __$ThemeModelCopyWithImpl<$Res> implements _$ThemeModelCopyWith<$Res> {
-  __$ThemeModelCopyWithImpl(this._self, this._then);
-
-  final _ThemeModel _self;
-  final $Res Function(_ThemeModel) _then;
+  ThemeMode get mode;
+  @override
+  ThemeData get light;
+  @override
+  ThemeData get dark;
 
   /// Create a copy of ThemeModel
   /// with the given fields replaced by the non-null parameter values.
   @override
-  @pragma('vm:prefer-inline')
-  $Res call({
-    Object? mode = null,
-    Object? light = null,
-    Object? dark = null,
-  }) {
-    return _then(_ThemeModel(
-      mode: null == mode
-          ? _self.mode
-          : mode // ignore: cast_nullable_to_non_nullable
-              as ThemeMode,
-      light: null == light
-          ? _self.light
-          : light // ignore: cast_nullable_to_non_nullable
-              as ThemeData,
-      dark: null == dark
-          ? _self.dark
-          : dark // ignore: cast_nullable_to_non_nullable
-              as ThemeData,
-    ));
-  }
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$ThemeModelImplCopyWith<_$ThemeModelImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
-
-// dart format on
