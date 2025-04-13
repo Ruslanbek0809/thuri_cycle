@@ -17,7 +17,7 @@ class AppRouter extends RootStackRouter {
         // // These route(s) should NOT be inside `AppWrapper`
         // AutoRoute(path: '/onboarding', page: OnboardingRoute.page),
         AutoRoute(
-          path: 'login',
+          path: '/login',
           page: LoginRoute.page,
         ),
 
@@ -40,21 +40,22 @@ class AppRouter extends RootStackRouter {
               path: 'report-waste',
               page: ReportWasteRoute.page,
             ),
+            AutoRoute(path: 'community', page: CommunityRoute.page),
 
-            // RecyclingGuideRoute
-            AutoRoute(
-              path: 'community',
-              page: const EmptyShellRoute('CommunityRoute'),
-              children: [
-                AutoRoute(path: '', page: CommunityRoute.page, initial: true),
-                AutoRoute(path: ':article', page: ArticleRoute.page),
-                // AutoRoute(path: ':postId', page: PostDetailRoute.page),
-                AutoRoute(
-                  path: ':recycling-guide',
-                  page: RecyclingGuideRoute.page,
-                ),
-              ],
-            ),
+            // // RecyclingGuideRoute
+            // AutoRoute(
+            //   path: 'community',
+            //   page: const EmptyShellRoute('CommunityRoute'),
+            //   children: [
+            //     AutoRoute(path: '', page: CommunityRoute.page, initial: true),
+            //     AutoRoute(path: ':article', page: ArticleRoute.page),
+            //     // AutoRoute(path: ':postId', page: PostDetailRoute.page),
+            //     AutoRoute(
+            //       path: ':recycling-guide',
+            //       page: RecyclingGuideRoute.page,
+            //     ),
+            //   ],
+            // ),
             // AutoRoute(
             //   path: 'recycling-guide',
             //   page: RecyclingGuideRoute.page,

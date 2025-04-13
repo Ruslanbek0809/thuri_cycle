@@ -14,6 +14,7 @@ import 'package:flutter_secure_storage/flutter_secure_storage.dart' as _i558;
 import 'package:get_it/get_it.dart' as _i174;
 import 'package:google_sign_in/google_sign_in.dart' as _i116;
 import 'package:injectable/injectable.dart' as _i526;
+import 'package:shared_preferences/shared_preferences.dart' as _i460;
 import 'package:talker_flutter/talker_flutter.dart' as _i207;
 import 'package:thuri_cycle/application/app/app_cubit.dart' as _i227;
 import 'package:thuri_cycle/application/app/locale/locale_cubit.dart' as _i1063;
@@ -26,8 +27,14 @@ import 'package:thuri_cycle/domain/app/theme_model.dart' as _i836;
 import 'package:thuri_cycle/domain/auth/i_auth_facade.dart' as _i917;
 import 'package:thuri_cycle/domain/community/i_community.dart' as _i153;
 import 'package:thuri_cycle/infastructure/auth/auth_repository.dart' as _i767;
+import 'package:thuri_cycle/infastructure/community/community_repository.dart'
+    as _i443;
 import 'package:thuri_cycle/infastructure/core/dependency_injection/firebase_injectable.module.dart'
     as _i63;
+import 'package:thuri_cycle/infastructure/core/dependency_injection/secure_storage_di.dart'
+    as _i890;
+import 'package:thuri_cycle/infastructure/core/dependency_injection/sharedPreferences_di.dart'
+    as _i139;
 import 'package:thuri_cycle/infastructure/core/dependency_injection/talker_module.dart'
     as _i159;
 import 'package:thuri_cycle/infastructure/scroll_controller/scroll_controller_service.dart'
@@ -44,9 +51,17 @@ extension GetItInjectableX on _i174.GetIt {
       environment,
       environmentFilter,
     );
+    final sharedPreferencesInjection = _$SharedPreferencesInjection();
+    final secureStorageInjection = _$SecureStorageInjection();
     final talkerModule = _$TalkerModule();
     final firebaseInjectableModule = _$FirebaseInjectableModule();
     gh.factory<_i1063.LocaleCubit>(() => _i1063.LocaleCubit());
+    await gh.factoryAsync<_i460.SharedPreferences>(
+      () => sharedPreferencesInjection.prefs,
+      preResolve: true,
+    );
+    gh.factory<_i558.FlutterSecureStorage>(
+        () => secureStorageInjection.storage());
     gh.singleton<_i207.Talker>(() => talkerModule.talkerFlutter);
     await gh.singletonAsync<_i836.ThemeModel>(
       () => _i836.ThemeModel.create(),
@@ -61,6 +76,7 @@ extension GetItInjectableX on _i174.GetIt {
       dispose: (i) => i.dispose(),
     );
     gh.lazySingleton<_i227.AppCubit>(() => _i227.AppCubit());
+    gh.lazySingleton<_i153.ICommunity>(() => _i443.CommunityRepository());
     gh.lazySingleton<_i917.IAuth>(() => _i767.AuthRepository(
           gh<_i59.FirebaseAuth>(),
           gh<_i558.FlutterSecureStorage>(),
@@ -77,6 +93,10 @@ extension GetItInjectableX on _i174.GetIt {
     return this;
   }
 }
+
+class _$SharedPreferencesInjection extends _i139.SharedPreferencesInjection {}
+
+class _$SecureStorageInjection extends _i890.SecureStorageInjection {}
 
 class _$TalkerModule extends _i159.TalkerModule {}
 

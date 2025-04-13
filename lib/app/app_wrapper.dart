@@ -65,7 +65,7 @@ class _AppWrapperState extends State<AppWrapper> with WidgetsBindingObserver {
         HomeRoute(),
         ScanWasteRoute(),
         ReportWasteRoute(),
-        RecyclingGuideRoute(),
+        CommunityRoute(),
         ProfileRoute(),
       ],
       animationDuration: const Duration(milliseconds: 100),
@@ -100,7 +100,7 @@ class _AppWrapperState extends State<AppWrapper> with WidgetsBindingObserver {
             elevation: 16,
             indicatorColor: Colors.transparent,
             onDestinationSelected: (index) async {
-              if (index == 3) {
+              if (index == 2) {
                 if (authBlocState == const AuthState.unauthenticated()) {
                   if (context.mounted) {
                     await DialogHelper.showCustomAlertDialog(
@@ -165,7 +165,7 @@ class _AppWrapperState extends State<AppWrapper> with WidgetsBindingObserver {
                 //         ),
                 //   );
                 // }
-
+              } else {
                 tabsRouter.setActiveIndex(index);
               }
             },

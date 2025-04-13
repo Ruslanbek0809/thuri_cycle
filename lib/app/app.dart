@@ -1,3 +1,4 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:thuri_cycle/application/app/app_cubit.dart';
@@ -44,10 +45,10 @@ class _AppState extends State<App> {
               return MaterialApp.router(
                 scaffoldMessengerKey: scaffoldMessengerKey,
                 routerConfig: appRouter.config(
-                    // navigatorObservers: () => [
-                    //   AutoRouteObserver(),
-                    //   // SentryNavigatorObserver(),
-                    // ],
+                    navigatorObservers: () => [
+                      AutoRouteObserver(),
+                      // SentryNavigatorObserver(),
+                    ],
                     ),
                 //* Theme configuration.
                 theme: appState.theme.light,
