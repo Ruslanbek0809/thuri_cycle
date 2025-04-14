@@ -10,6 +10,6 @@ class CommunityArticlesState with _$CommunityArticlesState {
       _Failed;
 
   const factory CommunityArticlesState.success({
-    required List<Article> subcategoryProducts,
+    required List<Article> articles,
   }) = _Success;
 }

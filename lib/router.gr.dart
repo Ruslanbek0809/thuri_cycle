@@ -21,7 +21,7 @@ import 'package:thuri_cycle/presentation/recycling_guide/article_page.dart'
     as _i2;
 import 'package:thuri_cycle/presentation/recycling_guide/article_widgets/article/article.dart'
     as _i13;
-import 'package:thuri_cycle/presentation/recycling_guide/community/community_page.dart'
+import 'package:thuri_cycle/presentation/recycling_guide/community_page.dart'
     as _i3;
 import 'package:thuri_cycle/presentation/recycling_guide/recycling_guide.dart'
     as _i8;

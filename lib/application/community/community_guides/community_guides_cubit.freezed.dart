@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'community_articles_cubit.dart';
+part of 'community_guides_cubit.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -15,13 +15,13 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
-mixin _$CommunityArticlesState {
+mixin _$CommunityGuidesState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(AlertModel alert) failed,
-    required TResult Function(List<Article> articles) success,
+    required TResult Function(List<Guide> guides) success,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -29,7 +29,7 @@ mixin _$CommunityArticlesState {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(AlertModel alert)? failed,
-    TResult? Function(List<Article> articles)? success,
+    TResult? Function(List<Guide> guides)? success,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -37,7 +37,7 @@ mixin _$CommunityArticlesState {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(AlertModel alert)? failed,
-    TResult Function(List<Article> articles)? success,
+    TResult Function(List<Guide> guides)? success,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -69,24 +69,24 @@ mixin _$CommunityArticlesState {
 }
 
 /// @nodoc
-abstract class $CommunityArticlesStateCopyWith<$Res> {
-  factory $CommunityArticlesStateCopyWith(CommunityArticlesState value,
-          $Res Function(CommunityArticlesState) then) =
-      _$CommunityArticlesStateCopyWithImpl<$Res, CommunityArticlesState>;
+abstract class $CommunityGuidesStateCopyWith<$Res> {
+  factory $CommunityGuidesStateCopyWith(CommunityGuidesState value,
+          $Res Function(CommunityGuidesState) then) =
+      _$CommunityGuidesStateCopyWithImpl<$Res, CommunityGuidesState>;
 }
 
 /// @nodoc
-class _$CommunityArticlesStateCopyWithImpl<$Res,
-        $Val extends CommunityArticlesState>
-    implements $CommunityArticlesStateCopyWith<$Res> {
-  _$CommunityArticlesStateCopyWithImpl(this._value, this._then);
+class _$CommunityGuidesStateCopyWithImpl<$Res,
+        $Val extends CommunityGuidesState>
+    implements $CommunityGuidesStateCopyWith<$Res> {
+  _$CommunityGuidesStateCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of CommunityArticlesState
+  /// Create a copy of CommunityGuidesState
   /// with the given fields replaced by the non-null parameter values.
 }
 
@@ -99,13 +99,13 @@ abstract class _$$InitialImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$InitialImplCopyWithImpl<$Res>
-    extends _$CommunityArticlesStateCopyWithImpl<$Res, _$InitialImpl>
+    extends _$CommunityGuidesStateCopyWithImpl<$Res, _$InitialImpl>
     implements _$$InitialImplCopyWith<$Res> {
   __$$InitialImplCopyWithImpl(
       _$InitialImpl _value, $Res Function(_$InitialImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of CommunityArticlesState
+  /// Create a copy of CommunityGuidesState
   /// with the given fields replaced by the non-null parameter values.
 }
 
@@ -116,7 +116,7 @@ class _$InitialImpl implements _Initial {
 
   @override
   String toString() {
-    return 'CommunityArticlesState.initial()';
+    return 'CommunityGuidesState.initial()';
   }
 
   @override
@@ -134,7 +134,7 @@ class _$InitialImpl implements _Initial {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(AlertModel alert) failed,
-    required TResult Function(List<Article> articles) success,
+    required TResult Function(List<Guide> guides) success,
   }) {
     return initial();
   }
@@ -145,7 +145,7 @@ class _$InitialImpl implements _Initial {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(AlertModel alert)? failed,
-    TResult? Function(List<Article> articles)? success,
+    TResult? Function(List<Guide> guides)? success,
   }) {
     return initial?.call();
   }
@@ -156,7 +156,7 @@ class _$InitialImpl implements _Initial {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(AlertModel alert)? failed,
-    TResult Function(List<Article> articles)? success,
+    TResult Function(List<Guide> guides)? success,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -203,7 +203,7 @@ class _$InitialImpl implements _Initial {
   }
 }
 
-abstract class _Initial implements CommunityArticlesState {
+abstract class _Initial implements CommunityGuidesState {
   const factory _Initial() = _$InitialImpl;
 }
 
@@ -216,13 +216,13 @@ abstract class _$$LoadingImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$LoadingImplCopyWithImpl<$Res>
-    extends _$CommunityArticlesStateCopyWithImpl<$Res, _$LoadingImpl>
+    extends _$CommunityGuidesStateCopyWithImpl<$Res, _$LoadingImpl>
     implements _$$LoadingImplCopyWith<$Res> {
   __$$LoadingImplCopyWithImpl(
       _$LoadingImpl _value, $Res Function(_$LoadingImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of CommunityArticlesState
+  /// Create a copy of CommunityGuidesState
   /// with the given fields replaced by the non-null parameter values.
 }
 
@@ -233,7 +233,7 @@ class _$LoadingImpl implements _Loading {
 
   @override
   String toString() {
-    return 'CommunityArticlesState.loading()';
+    return 'CommunityGuidesState.loading()';
   }
 
   @override
@@ -251,7 +251,7 @@ class _$LoadingImpl implements _Loading {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(AlertModel alert) failed,
-    required TResult Function(List<Article> articles) success,
+    required TResult Function(List<Guide> guides) success,
   }) {
     return loading();
   }
@@ -262,7 +262,7 @@ class _$LoadingImpl implements _Loading {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(AlertModel alert)? failed,
-    TResult? Function(List<Article> articles)? success,
+    TResult? Function(List<Guide> guides)? success,
   }) {
     return loading?.call();
   }
@@ -273,7 +273,7 @@ class _$LoadingImpl implements _Loading {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(AlertModel alert)? failed,
-    TResult Function(List<Article> articles)? success,
+    TResult Function(List<Guide> guides)? success,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -320,7 +320,7 @@ class _$LoadingImpl implements _Loading {
   }
 }
 
-abstract class _Loading implements CommunityArticlesState {
+abstract class _Loading implements CommunityGuidesState {
   const factory _Loading() = _$LoadingImpl;
 }
 
@@ -337,13 +337,13 @@ abstract class _$$FailedImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$FailedImplCopyWithImpl<$Res>
-    extends _$CommunityArticlesStateCopyWithImpl<$Res, _$FailedImpl>
+    extends _$CommunityGuidesStateCopyWithImpl<$Res, _$FailedImpl>
     implements _$$FailedImplCopyWith<$Res> {
   __$$FailedImplCopyWithImpl(
       _$FailedImpl _value, $Res Function(_$FailedImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of CommunityArticlesState
+  /// Create a copy of CommunityGuidesState
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -358,7 +358,7 @@ class __$$FailedImplCopyWithImpl<$Res>
     ));
   }
 
-  /// Create a copy of CommunityArticlesState
+  /// Create a copy of CommunityGuidesState
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
@@ -379,7 +379,7 @@ class _$FailedImpl implements _Failed {
 
   @override
   String toString() {
-    return 'CommunityArticlesState.failed(alert: $alert)';
+    return 'CommunityGuidesState.failed(alert: $alert)';
   }
 
   @override
@@ -393,7 +393,7 @@ class _$FailedImpl implements _Failed {
   @override
   int get hashCode => Object.hash(runtimeType, alert);
 
-  /// Create a copy of CommunityArticlesState
+  /// Create a copy of CommunityGuidesState
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
@@ -407,7 +407,7 @@ class _$FailedImpl implements _Failed {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(AlertModel alert) failed,
-    required TResult Function(List<Article> articles) success,
+    required TResult Function(List<Guide> guides) success,
   }) {
     return failed(alert);
   }
@@ -418,7 +418,7 @@ class _$FailedImpl implements _Failed {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(AlertModel alert)? failed,
-    TResult? Function(List<Article> articles)? success,
+    TResult? Function(List<Guide> guides)? success,
   }) {
     return failed?.call(alert);
   }
@@ -429,7 +429,7 @@ class _$FailedImpl implements _Failed {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(AlertModel alert)? failed,
-    TResult Function(List<Article> articles)? success,
+    TResult Function(List<Guide> guides)? success,
     required TResult orElse(),
   }) {
     if (failed != null) {
@@ -476,12 +476,12 @@ class _$FailedImpl implements _Failed {
   }
 }
 
-abstract class _Failed implements CommunityArticlesState {
+abstract class _Failed implements CommunityGuidesState {
   const factory _Failed({required final AlertModel alert}) = _$FailedImpl;
 
   AlertModel get alert;
 
-  /// Create a copy of CommunityArticlesState
+  /// Create a copy of CommunityGuidesState
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$FailedImplCopyWith<_$FailedImpl> get copyWith =>
@@ -494,29 +494,29 @@ abstract class _$$SuccessImplCopyWith<$Res> {
           _$SuccessImpl value, $Res Function(_$SuccessImpl) then) =
       __$$SuccessImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({List<Article> articles});
+  $Res call({List<Guide> guides});
 }
 
 /// @nodoc
 class __$$SuccessImplCopyWithImpl<$Res>
-    extends _$CommunityArticlesStateCopyWithImpl<$Res, _$SuccessImpl>
+    extends _$CommunityGuidesStateCopyWithImpl<$Res, _$SuccessImpl>
     implements _$$SuccessImplCopyWith<$Res> {
   __$$SuccessImplCopyWithImpl(
       _$SuccessImpl _value, $Res Function(_$SuccessImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of CommunityArticlesState
+  /// Create a copy of CommunityGuidesState
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? articles = null,
+    Object? guides = null,
   }) {
     return _then(_$SuccessImpl(
-      articles: null == articles
-          ? _value._articles
-          : articles // ignore: cast_nullable_to_non_nullable
-              as List<Article>,
+      guides: null == guides
+          ? _value._guides
+          : guides // ignore: cast_nullable_to_non_nullable
+              as List<Guide>,
     ));
   }
 }
@@ -524,20 +524,19 @@ class __$$SuccessImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$SuccessImpl implements _Success {
-  const _$SuccessImpl({required final List<Article> articles})
-      : _articles = articles;
+  const _$SuccessImpl({required final List<Guide> guides}) : _guides = guides;
 
-  final List<Article> _articles;
+  final List<Guide> _guides;
   @override
-  List<Article> get articles {
-    if (_articles is EqualUnmodifiableListView) return _articles;
+  List<Guide> get guides {
+    if (_guides is EqualUnmodifiableListView) return _guides;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_articles);
+    return EqualUnmodifiableListView(_guides);
   }
 
   @override
   String toString() {
-    return 'CommunityArticlesState.success(articles: $articles)';
+    return 'CommunityGuidesState.success(guides: $guides)';
   }
 
   @override
@@ -545,14 +544,14 @@ class _$SuccessImpl implements _Success {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$SuccessImpl &&
-            const DeepCollectionEquality().equals(other._articles, _articles));
+            const DeepCollectionEquality().equals(other._guides, _guides));
   }
 
   @override
   int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(_articles));
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_guides));
 
-  /// Create a copy of CommunityArticlesState
+  /// Create a copy of CommunityGuidesState
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
@@ -566,9 +565,9 @@ class _$SuccessImpl implements _Success {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(AlertModel alert) failed,
-    required TResult Function(List<Article> articles) success,
+    required TResult Function(List<Guide> guides) success,
   }) {
-    return success(articles);
+    return success(guides);
   }
 
   @override
@@ -577,9 +576,9 @@ class _$SuccessImpl implements _Success {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(AlertModel alert)? failed,
-    TResult? Function(List<Article> articles)? success,
+    TResult? Function(List<Guide> guides)? success,
   }) {
-    return success?.call(articles);
+    return success?.call(guides);
   }
 
   @override
@@ -588,11 +587,11 @@ class _$SuccessImpl implements _Success {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(AlertModel alert)? failed,
-    TResult Function(List<Article> articles)? success,
+    TResult Function(List<Guide> guides)? success,
     required TResult orElse(),
   }) {
     if (success != null) {
-      return success(articles);
+      return success(guides);
     }
     return orElse();
   }
@@ -635,13 +634,12 @@ class _$SuccessImpl implements _Success {
   }
 }
 
-abstract class _Success implements CommunityArticlesState {
-  const factory _Success({required final List<Article> articles}) =
-      _$SuccessImpl;
+abstract class _Success implements CommunityGuidesState {
+  const factory _Success({required final List<Guide> guides}) = _$SuccessImpl;
 
-  List<Article> get articles;
+  List<Guide> get guides;
 
-  /// Create a copy of CommunityArticlesState
+  /// Create a copy of CommunityGuidesState
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$SuccessImplCopyWith<_$SuccessImpl> get copyWith =>

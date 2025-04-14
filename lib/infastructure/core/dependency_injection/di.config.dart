@@ -25,6 +25,8 @@ import 'package:thuri_cycle/application/community/community_articles/community_a
     as _i790;
 import 'package:thuri_cycle/application/community/community_featured/community_featured_cubit.dart'
     as _i884;
+import 'package:thuri_cycle/application/community/community_guides/community_guides_cubit.dart'
+    as _i243;
 import 'package:thuri_cycle/domain/app/theme_model.dart' as _i836;
 import 'package:thuri_cycle/domain/auth/i_auth_facade.dart' as _i917;
 import 'package:thuri_cycle/domain/community/i_community.dart' as _i153;
@@ -57,13 +59,13 @@ extension GetItInjectableX on _i174.GetIt {
     final secureStorageInjection = _$SecureStorageInjection();
     final talkerModule = _$TalkerModule();
     final firebaseInjectableModule = _$FirebaseInjectableModule();
-    gh.factory<_i1063.LocaleCubit>(() => _i1063.LocaleCubit());
     await gh.factoryAsync<_i460.SharedPreferences>(
       () => sharedPreferencesInjection.prefs,
       preResolve: true,
     );
     gh.factory<_i558.FlutterSecureStorage>(
         () => secureStorageInjection.storage());
+    gh.factory<_i1063.LocaleCubit>(() => _i1063.LocaleCubit());
     gh.singleton<_i207.Talker>(() => talkerModule.talkerFlutter);
     await gh.singletonAsync<_i836.ThemeModel>(
       () => _i836.ThemeModel.create(),
@@ -84,10 +86,12 @@ extension GetItInjectableX on _i174.GetIt {
           gh<_i558.FlutterSecureStorage>(),
           gh<_i116.GoogleSignIn>(),
         ));
-    gh.factory<_i884.CommunityFeaturedCubit>(
-        () => _i884.CommunityFeaturedCubit(gh<_i153.ICommunity>()));
     gh.factory<_i790.CommunityArticlesCubit>(
         () => _i790.CommunityArticlesCubit(gh<_i153.ICommunity>()));
+    gh.factory<_i243.CommunityGuidesCubit>(
+        () => _i243.CommunityGuidesCubit(gh<_i153.ICommunity>()));
+    gh.factory<_i884.CommunityFeaturedCubit>(
+        () => _i884.CommunityFeaturedCubit(gh<_i153.ICommunity>()));
     gh.factory<_i250.AuthFormCubit>(
         () => _i250.AuthFormCubit(gh<_i917.IAuth>()));
     gh.factory<_i390.AuthBloc>(() => _i390.AuthBloc(
