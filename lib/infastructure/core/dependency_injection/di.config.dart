@@ -21,6 +21,8 @@ import 'package:thuri_cycle/application/app/locale/locale_cubit.dart' as _i1063;
 import 'package:thuri_cycle/application/auth/auth_bloc.dart' as _i390;
 import 'package:thuri_cycle/application/auth/auth_form/auth_form_cubit.dart'
     as _i250;
+import 'package:thuri_cycle/application/community/community_articles/community_articles_cubit.dart'
+    as _i790;
 import 'package:thuri_cycle/application/community/community_featured/community_featured_cubit.dart'
     as _i884;
 import 'package:thuri_cycle/domain/app/theme_model.dart' as _i836;
@@ -84,6 +86,8 @@ extension GetItInjectableX on _i174.GetIt {
         ));
     gh.factory<_i884.CommunityFeaturedCubit>(
         () => _i884.CommunityFeaturedCubit(gh<_i153.ICommunity>()));
+    gh.factory<_i790.CommunityArticlesCubit>(
+        () => _i790.CommunityArticlesCubit(gh<_i153.ICommunity>()));
     gh.factory<_i250.AuthFormCubit>(
         () => _i250.AuthFormCubit(gh<_i917.IAuth>()));
     gh.factory<_i390.AuthBloc>(() => _i390.AuthBloc(

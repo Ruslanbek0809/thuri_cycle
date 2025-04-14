@@ -28,8 +28,6 @@ class CommunityFeaturedSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // final articleState = ref.watch(featuredArticleProvider);
-
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 20),
       child: Column(
@@ -45,54 +43,25 @@ class CommunityFeaturedSection extends StatelessWidget {
             child: BlocBuilder<CommunityFeaturedCubit, CommunityFeaturedState>(
               buildWhen: (previous, current) => previous != current,
               builder: (context, state) {
-                return state.maybeWhen(
-                  orElse: Container.new,
-                  loading: () => const ArticleWidgetSkeleton.large(),
-                  failed: (e) => articleContainer(text: (e).message),
-                  success: (article) => article != null
-                      ? ArticleWidget.large(
-                          article: article,
-                          onTap: (Article article) async {
-                            await context.router
-                                .push(ArticleRoute(article: article));
-                          },
-                        )
-                      : articleContainer(text: 'Coming soon!'),
+                return Container(
+                  key: ValueKey(state),
+                  child: state.maybeWhen(
+                    orElse: Container.new,
+                    loading: () => const ArticleWidgetSkeleton.large(),
+                    failed: (e) => articleContainer(text: (e).message),
+                    success: (article) => article != null
+                        ? ArticleWidget.large(
+                            article: article,
+                            onTap: (Article article) async {
+                              await context.router
+                                  .push(ArticleRoute(article: article));
+                            },
+                          )
+                        : articleContainer(text: 'Coming soon!'),
+                  ),
                 );
               },
             ),
-            // Container(
-            //   key: ValueKey(articleState),
-            //   child: articleState.when(
-            //     data: (article) => article != null
-            //         ? ArticleWidget.large(
-            //             article: article,
-            //             onTap: (Article article) async {
-            //               await context.router.push(const ArticleRoute());
-            //             },
-            //           )
-            //         : articleContainer(text: 'Coming soon!'),
-            //     loading: () => const ArticleWidgetSkeleton.large(),
-            //     error: (e, tr) => articleContainer(
-            //         text: e is ApiError ? (e).message : 'Error occurred'),
-            //   ),
-            // ),
-            // Container(
-            //   key: ValueKey(articleState),
-            //   child: articleState.when(
-            //     data: (article) => article != null
-            //         ? ArticleWidget.large(
-            //             article: article,
-            //             onTap: (Article article) async {
-            //               await context.router.push(const ArticleRoute());
-            //             },
-            //           )
-            //         : articleContainer(text: 'Coming soon!'),
-            //     loading: () => const ArticleWidgetSkeleton.large(),
-            //     error: (e, tr) => articleContainer(
-            //         text: e is ApiError ? (e).message : 'Error occurred'),
-            //   ),
-            // ),
           ),
         ],
       ),
