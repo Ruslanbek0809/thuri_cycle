@@ -16,6 +16,7 @@ import 'package:thuri_cycle/presentation/core/utils/methods/shortcuts.dart';
 //   Sentry.captureException(e);
 // }
 
+//TODO: Allow read/write access to a document keyed by the user's UID
 @LazySingleton(as: IAuth)
 class AuthRepository implements IAuth {
   AuthRepository(

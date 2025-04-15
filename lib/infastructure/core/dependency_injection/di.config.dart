@@ -9,6 +9,7 @@
 // coverage:ignore-file
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
+import 'package:cloud_firestore/cloud_firestore.dart' as _i974;
 import 'package:firebase_auth/firebase_auth.dart' as _i59;
 import 'package:flutter_secure_storage/flutter_secure_storage.dart' as _i558;
 import 'package:get_it/get_it.dart' as _i174;
@@ -75,17 +76,20 @@ extension GetItInjectableX on _i174.GetIt {
         () => firebaseInjectableModule.googleSignIn);
     gh.lazySingleton<_i59.FirebaseAuth>(
         () => firebaseInjectableModule.firebaseAuth);
+    gh.lazySingleton<_i974.FirebaseFirestore>(
+        () => firebaseInjectableModule.firestore);
     gh.lazySingleton<_i795.ScrollControllerService>(
       () => _i795.ScrollControllerService(),
       dispose: (i) => i.dispose(),
     );
     gh.lazySingleton<_i227.AppCubit>(() => _i227.AppCubit());
-    gh.lazySingleton<_i153.ICommunity>(() => _i443.CommunityRepository());
     gh.lazySingleton<_i917.IAuth>(() => _i767.AuthRepository(
           gh<_i59.FirebaseAuth>(),
           gh<_i558.FlutterSecureStorage>(),
           gh<_i116.GoogleSignIn>(),
         ));
+    gh.lazySingleton<_i153.ICommunity>(
+        () => _i443.CommunityRepository(gh<_i974.FirebaseFirestore>()));
     gh.factory<_i790.CommunityArticlesCubit>(
         () => _i790.CommunityArticlesCubit(gh<_i153.ICommunity>()));
     gh.factory<_i243.CommunityGuidesCubit>(

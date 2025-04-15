@@ -26,6 +26,7 @@ mixin _$Guide {
   String get iconUrl => throw _privateConstructorUsedError;
   String get color => throw _privateConstructorUsedError;
   String get content => throw _privateConstructorUsedError;
+  String get tip => throw _privateConstructorUsedError;
 
   /// Serializes this Guide to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -47,7 +48,8 @@ abstract class $GuideCopyWith<$Res> {
       String imageUrl,
       String iconUrl,
       String color,
-      String content});
+      String content,
+      String tip});
 }
 
 /// @nodoc
@@ -71,6 +73,7 @@ class _$GuideCopyWithImpl<$Res, $Val extends Guide>
     Object? iconUrl = null,
     Object? color = null,
     Object? content = null,
+    Object? tip = null,
   }) {
     return _then(_value.copyWith(
       uid: null == uid
@@ -97,6 +100,10 @@ class _$GuideCopyWithImpl<$Res, $Val extends Guide>
           ? _value.content
           : content // ignore: cast_nullable_to_non_nullable
               as String,
+      tip: null == tip
+          ? _value.tip
+          : tip // ignore: cast_nullable_to_non_nullable
+              as String,
     ) as $Val);
   }
 }
@@ -114,7 +121,8 @@ abstract class _$$GuideImplCopyWith<$Res> implements $GuideCopyWith<$Res> {
       String imageUrl,
       String iconUrl,
       String color,
-      String content});
+      String content,
+      String tip});
 }
 
 /// @nodoc
@@ -136,6 +144,7 @@ class __$$GuideImplCopyWithImpl<$Res>
     Object? iconUrl = null,
     Object? color = null,
     Object? content = null,
+    Object? tip = null,
   }) {
     return _then(_$GuideImpl(
       uid: null == uid
@@ -162,6 +171,10 @@ class __$$GuideImplCopyWithImpl<$Res>
           ? _value.content
           : content // ignore: cast_nullable_to_non_nullable
               as String,
+      tip: null == tip
+          ? _value.tip
+          : tip // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -175,7 +188,8 @@ class _$GuideImpl extends _Guide {
       required this.imageUrl,
       required this.iconUrl,
       required this.color,
-      required this.content})
+      required this.content,
+      required this.tip})
       : super._();
 
   factory _$GuideImpl.fromJson(Map<String, dynamic> json) =>
@@ -193,10 +207,12 @@ class _$GuideImpl extends _Guide {
   final String color;
   @override
   final String content;
+  @override
+  final String tip;
 
   @override
   String toString() {
-    return 'Guide(uid: $uid, material: $material, imageUrl: $imageUrl, iconUrl: $iconUrl, color: $color, content: $content)';
+    return 'Guide(uid: $uid, material: $material, imageUrl: $imageUrl, iconUrl: $iconUrl, color: $color, content: $content, tip: $tip)';
   }
 
   @override
@@ -211,13 +227,14 @@ class _$GuideImpl extends _Guide {
                 other.imageUrl == imageUrl) &&
             (identical(other.iconUrl, iconUrl) || other.iconUrl == iconUrl) &&
             (identical(other.color, color) || other.color == color) &&
-            (identical(other.content, content) || other.content == content));
+            (identical(other.content, content) || other.content == content) &&
+            (identical(other.tip, tip) || other.tip == tip));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
-      runtimeType, uid, material, imageUrl, iconUrl, color, content);
+      runtimeType, uid, material, imageUrl, iconUrl, color, content, tip);
 
   /// Create a copy of Guide
   /// with the given fields replaced by the non-null parameter values.
@@ -242,7 +259,8 @@ abstract class _Guide extends Guide {
       required final String imageUrl,
       required final String iconUrl,
       required final String color,
-      required final String content}) = _$GuideImpl;
+      required final String content,
+      required final String tip}) = _$GuideImpl;
   const _Guide._() : super._();
 
   factory _Guide.fromJson(Map<String, dynamic> json) = _$GuideImpl.fromJson;
@@ -259,6 +277,8 @@ abstract class _Guide extends Guide {
   String get color;
   @override
   String get content;
+  @override
+  String get tip;
 
   /// Create a copy of Guide
   /// with the given fields replaced by the non-null parameter values.

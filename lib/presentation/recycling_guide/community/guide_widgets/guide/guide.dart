@@ -1,5 +1,3 @@
-// ignore_for_file: invalid_annotation_target
-
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'guide.freezed.dart';
@@ -14,6 +12,7 @@ class Guide with _$Guide {
     required String iconUrl,
     required String color,
     required String content,
+    required String tip,
   }) = _Guide;
   const Guide._();
 

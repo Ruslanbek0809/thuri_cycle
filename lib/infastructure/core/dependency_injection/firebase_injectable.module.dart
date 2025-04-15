@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:injectable/injectable.dart';
@@ -5,6 +6,7 @@ import 'package:injectable/injectable.dart';
 //* SOLVES following issues
 //* [AuthRepository] depends on unregistered type [FirebaseAuth] from package:firebase_auth/firebase_auth.dart
 //* [AuthRepository] depends on unregistered type [GoogleSignIn] from package:google_sign_in/google_sign_in.dart
+//* [AuthRepository] depends on unregistered type [FirebaseFirestore] from package:cloud_firestore/cloud_firestore.dart
 
 @module
 abstract class FirebaseInjectableModule {
@@ -13,4 +15,7 @@ abstract class FirebaseInjectableModule {
 
   @lazySingleton
   FirebaseAuth get firebaseAuth => FirebaseAuth.instance;
+
+  @lazySingleton
+  FirebaseFirestore get firestore => FirebaseFirestore.instance;
 }

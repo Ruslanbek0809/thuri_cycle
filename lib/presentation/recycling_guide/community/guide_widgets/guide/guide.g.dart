@@ -13,6 +13,7 @@ _$GuideImpl _$$GuideImplFromJson(Map<String, dynamic> json) => _$GuideImpl(
       iconUrl: json['iconUrl'] as String,
       color: json['color'] as String,
       content: json['content'] as String,
+      tip: json['tip'] as String,
     );
 
 Map<String, dynamic> _$$GuideImplToJson(_$GuideImpl instance) =>
@@ -23,4 +24,5 @@ Map<String, dynamic> _$$GuideImplToJson(_$GuideImpl instance) =>
       'iconUrl': instance.iconUrl,
       'color': instance.color,
       'content': instance.content,
+      'tip': instance.tip,
     };
