@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:thuri_cycle/application/community/community_articles/community_articles_cubit.dart';
+import 'package:thuri_cycle/infastructure/core/firebase_config/firebase_failure_handler.dart';
 import 'package:thuri_cycle/presentation/recycling_guide/article_widgets/article/article.dart';
 import 'package:thuri_cycle/presentation/recycling_guide/article_widgets/article_widget.dart';
 import 'package:thuri_cycle/presentation/recycling_guide/article_widgets/article_widget_skeleton.dart';
@@ -62,7 +63,7 @@ class CommunityArticlesSection extends StatelessWidget {
                     itemBuilder: (context, index) =>
                         const ArticleWidgetSkeleton(),
                   ),
-                  failed: (e) => Center(child: Text(e.message)),
+                  failed: (e) => Center(child: Text(mapFailureToMessage(e))),
                   success: (articles) => GridView.builder(
                     shrinkWrap: true,
                     padding: const EdgeInsets.symmetric(horizontal: 20),

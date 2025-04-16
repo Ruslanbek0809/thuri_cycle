@@ -20,24 +20,24 @@ mixin _$CommunityFeaturedState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(AlertModel alert) failed,
-    required TResult Function(Article article) success,
+    required TResult Function(FirebaseFailure failure) failed,
+    required TResult Function(Article? article) success,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(AlertModel alert)? failed,
-    TResult? Function(Article article)? success,
+    TResult? Function(FirebaseFailure failure)? failed,
+    TResult? Function(Article? article)? success,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(AlertModel alert)? failed,
-    TResult Function(Article article)? success,
+    TResult Function(FirebaseFailure failure)? failed,
+    TResult Function(Article? article)? success,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -146,8 +146,8 @@ class _$CommunityFeaturedStateInitialImpl
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(AlertModel alert) failed,
-    required TResult Function(Article article) success,
+    required TResult Function(FirebaseFailure failure) failed,
+    required TResult Function(Article? article) success,
   }) {
     return initial();
   }
@@ -157,8 +157,8 @@ class _$CommunityFeaturedStateInitialImpl
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(AlertModel alert)? failed,
-    TResult? Function(Article article)? success,
+    TResult? Function(FirebaseFailure failure)? failed,
+    TResult? Function(Article? article)? success,
   }) {
     return initial?.call();
   }
@@ -168,8 +168,8 @@ class _$CommunityFeaturedStateInitialImpl
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(AlertModel alert)? failed,
-    TResult Function(Article article)? success,
+    TResult Function(FirebaseFailure failure)? failed,
+    TResult Function(Article? article)? success,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -278,8 +278,8 @@ class _$CommunityFeaturedStateLoadingImpl
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(AlertModel alert) failed,
-    required TResult Function(Article article) success,
+    required TResult Function(FirebaseFailure failure) failed,
+    required TResult Function(Article? article) success,
   }) {
     return loading();
   }
@@ -289,8 +289,8 @@ class _$CommunityFeaturedStateLoadingImpl
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(AlertModel alert)? failed,
-    TResult? Function(Article article)? success,
+    TResult? Function(FirebaseFailure failure)? failed,
+    TResult? Function(Article? article)? success,
   }) {
     return loading?.call();
   }
@@ -300,8 +300,8 @@ class _$CommunityFeaturedStateLoadingImpl
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(AlertModel alert)? failed,
-    TResult Function(Article article)? success,
+    TResult Function(FirebaseFailure failure)? failed,
+    TResult Function(Article? article)? success,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -361,9 +361,9 @@ abstract class _$$CommunityFeaturedStateFailedImplCopyWith<$Res> {
           $Res Function(_$CommunityFeaturedStateFailedImpl) then) =
       __$$CommunityFeaturedStateFailedImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({AlertModel alert});
+  $Res call({FirebaseFailure failure});
 
-  $AlertModelCopyWith<$Res> get alert;
+  $FirebaseFailureCopyWith<$Res> get failure;
 }
 
 /// @nodoc
@@ -381,13 +381,13 @@ class __$$CommunityFeaturedStateFailedImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? alert = null,
+    Object? failure = null,
   }) {
     return _then(_$CommunityFeaturedStateFailedImpl(
-      alert: null == alert
-          ? _value.alert
-          : alert // ignore: cast_nullable_to_non_nullable
-              as AlertModel,
+      failure: null == failure
+          ? _value.failure
+          : failure // ignore: cast_nullable_to_non_nullable
+              as FirebaseFailure,
     ));
   }
 
@@ -395,9 +395,9 @@ class __$$CommunityFeaturedStateFailedImplCopyWithImpl<$Res>
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  $AlertModelCopyWith<$Res> get alert {
-    return $AlertModelCopyWith<$Res>(_value.alert, (value) {
-      return _then(_value.copyWith(alert: value));
+  $FirebaseFailureCopyWith<$Res> get failure {
+    return $FirebaseFailureCopyWith<$Res>(_value.failure, (value) {
+      return _then(_value.copyWith(failure: value));
     });
   }
 }
@@ -407,14 +407,14 @@ class __$$CommunityFeaturedStateFailedImplCopyWithImpl<$Res>
 class _$CommunityFeaturedStateFailedImpl
     with DiagnosticableTreeMixin
     implements _CommunityFeaturedStateFailed {
-  const _$CommunityFeaturedStateFailedImpl({required this.alert});
+  const _$CommunityFeaturedStateFailedImpl({required this.failure});
 
   @override
-  final AlertModel alert;
+  final FirebaseFailure failure;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'CommunityFeaturedState.failed(alert: $alert)';
+    return 'CommunityFeaturedState.failed(failure: $failure)';
   }
 
   @override
@@ -422,7 +422,7 @@ class _$CommunityFeaturedStateFailedImpl
     super.debugFillProperties(properties);
     properties
       ..add(DiagnosticsProperty('type', 'CommunityFeaturedState.failed'))
-      ..add(DiagnosticsProperty('alert', alert));
+      ..add(DiagnosticsProperty('failure', failure));
   }
 
   @override
@@ -430,11 +430,11 @@ class _$CommunityFeaturedStateFailedImpl
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$CommunityFeaturedStateFailedImpl &&
-            (identical(other.alert, alert) || other.alert == alert));
+            (identical(other.failure, failure) || other.failure == failure));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, alert);
+  int get hashCode => Object.hash(runtimeType, failure);
 
   /// Create a copy of CommunityFeaturedState
   /// with the given fields replaced by the non-null parameter values.
@@ -451,10 +451,10 @@ class _$CommunityFeaturedStateFailedImpl
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(AlertModel alert) failed,
-    required TResult Function(Article article) success,
+    required TResult Function(FirebaseFailure failure) failed,
+    required TResult Function(Article? article) success,
   }) {
-    return failed(alert);
+    return failed(failure);
   }
 
   @override
@@ -462,10 +462,10 @@ class _$CommunityFeaturedStateFailedImpl
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(AlertModel alert)? failed,
-    TResult? Function(Article article)? success,
+    TResult? Function(FirebaseFailure failure)? failed,
+    TResult? Function(Article? article)? success,
   }) {
-    return failed?.call(alert);
+    return failed?.call(failure);
   }
 
   @override
@@ -473,12 +473,12 @@ class _$CommunityFeaturedStateFailedImpl
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(AlertModel alert)? failed,
-    TResult Function(Article article)? success,
+    TResult Function(FirebaseFailure failure)? failed,
+    TResult Function(Article? article)? success,
     required TResult orElse(),
   }) {
     if (failed != null) {
-      return failed(alert);
+      return failed(failure);
     }
     return orElse();
   }
@@ -523,9 +523,10 @@ class _$CommunityFeaturedStateFailedImpl
 
 abstract class _CommunityFeaturedStateFailed implements CommunityFeaturedState {
   const factory _CommunityFeaturedStateFailed(
-      {required final AlertModel alert}) = _$CommunityFeaturedStateFailedImpl;
+          {required final FirebaseFailure failure}) =
+      _$CommunityFeaturedStateFailedImpl;
 
-  AlertModel get alert;
+  FirebaseFailure get failure;
 
   /// Create a copy of CommunityFeaturedState
   /// with the given fields replaced by the non-null parameter values.
@@ -542,9 +543,9 @@ abstract class _$$CommunityFeaturedStateSuccessImplCopyWith<$Res> {
           $Res Function(_$CommunityFeaturedStateSuccessImpl) then) =
       __$$CommunityFeaturedStateSuccessImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({Article article});
+  $Res call({Article? article});
 
-  $ArticleCopyWith<$Res> get article;
+  $ArticleCopyWith<$Res>? get article;
 }
 
 /// @nodoc
@@ -562,13 +563,13 @@ class __$$CommunityFeaturedStateSuccessImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? article = null,
+    Object? article = freezed,
   }) {
     return _then(_$CommunityFeaturedStateSuccessImpl(
-      article: null == article
+      article: freezed == article
           ? _value.article
           : article // ignore: cast_nullable_to_non_nullable
-              as Article,
+              as Article?,
     ));
   }
 
@@ -576,8 +577,12 @@ class __$$CommunityFeaturedStateSuccessImplCopyWithImpl<$Res>
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  $ArticleCopyWith<$Res> get article {
-    return $ArticleCopyWith<$Res>(_value.article, (value) {
+  $ArticleCopyWith<$Res>? get article {
+    if (_value.article == null) {
+      return null;
+    }
+
+    return $ArticleCopyWith<$Res>(_value.article!, (value) {
       return _then(_value.copyWith(article: value));
     });
   }
@@ -591,7 +596,7 @@ class _$CommunityFeaturedStateSuccessImpl
   const _$CommunityFeaturedStateSuccessImpl({required this.article});
 
   @override
-  final Article article;
+  final Article? article;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
@@ -632,8 +637,8 @@ class _$CommunityFeaturedStateSuccessImpl
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(AlertModel alert) failed,
-    required TResult Function(Article article) success,
+    required TResult Function(FirebaseFailure failure) failed,
+    required TResult Function(Article? article) success,
   }) {
     return success(article);
   }
@@ -643,8 +648,8 @@ class _$CommunityFeaturedStateSuccessImpl
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(AlertModel alert)? failed,
-    TResult? Function(Article article)? success,
+    TResult? Function(FirebaseFailure failure)? failed,
+    TResult? Function(Article? article)? success,
   }) {
     return success?.call(article);
   }
@@ -654,8 +659,8 @@ class _$CommunityFeaturedStateSuccessImpl
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(AlertModel alert)? failed,
-    TResult Function(Article article)? success,
+    TResult Function(FirebaseFailure failure)? failed,
+    TResult Function(Article? article)? success,
     required TResult orElse(),
   }) {
     if (success != null) {
@@ -705,9 +710,9 @@ class _$CommunityFeaturedStateSuccessImpl
 abstract class _CommunityFeaturedStateSuccess
     implements CommunityFeaturedState {
   const factory _CommunityFeaturedStateSuccess(
-      {required final Article article}) = _$CommunityFeaturedStateSuccessImpl;
+      {required final Article? article}) = _$CommunityFeaturedStateSuccessImpl;
 
-  Article get article;
+  Article? get article;
 
   /// Create a copy of CommunityFeaturedState
   /// with the given fields replaced by the non-null parameter values.

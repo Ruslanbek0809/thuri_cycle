@@ -6,7 +6,7 @@ class CommunityArticlesState with _$CommunityArticlesState {
 
   const factory CommunityArticlesState.loading() = _Loading;
 
-  const factory CommunityArticlesState.failed({required AlertModel alert}) =
+  const factory CommunityArticlesState.failed({required FirebaseFailure failure}) =
       _Failed;
 
   const factory CommunityArticlesState.success({

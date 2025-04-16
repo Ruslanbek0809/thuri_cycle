@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:thuri_cycle/domain/community/i_community.dart';
-import 'package:thuri_cycle/domain/core/alert_model.dart';
+import 'package:thuri_cycle/domain/core/firebase_failure.dart';
 import 'package:thuri_cycle/presentation/recycling_guide/article_widgets/article/article.dart';
 
 part 'community_featured_cubit.freezed.dart';
@@ -23,7 +23,7 @@ class CommunityFeaturedCubit extends Cubit<CommunityFeaturedState> {
 
     emit(
       response.fold(
-        (error) => CommunityFeaturedState.failed(alert: error),
+        (failure) => CommunityFeaturedState.failed(failure: failure),
         (article) => CommunityFeaturedState.success(article: article),
       ),
     );

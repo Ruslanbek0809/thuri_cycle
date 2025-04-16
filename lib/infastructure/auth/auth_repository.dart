@@ -17,6 +17,7 @@ import 'package:thuri_cycle/presentation/core/utils/methods/shortcuts.dart';
 // }
 
 //TODO: Allow read/write access to a document keyed by the user's UID
+//TODO: https://firebase.google.com/docs/auth/flutter/start#authstatechanges 
 @LazySingleton(as: IAuth)
 class AuthRepository implements IAuth {
   AuthRepository(

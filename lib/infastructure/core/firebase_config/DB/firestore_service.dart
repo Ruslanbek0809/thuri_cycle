@@ -1,5 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:injectable/injectable.dart';
 
+// This will now be injected with FirebaseFirestore automatically from your
+// FirebaseInjectableModule.
+@lazySingleton
 class FirestoreService {
   FirestoreService(this.db) : super();
 

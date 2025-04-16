@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:thuri_cycle/application/community/community_featured/community_featured_cubit.dart';
+import 'package:thuri_cycle/infastructure/core/firebase_config/firebase_failure_handler.dart';
 import 'package:thuri_cycle/presentation/recycling_guide/article_widgets/article/article.dart';
 import 'package:thuri_cycle/presentation/recycling_guide/article_widgets/article_widget.dart';
 import 'package:thuri_cycle/presentation/recycling_guide/article_widgets/article_widget_skeleton.dart';
@@ -48,7 +49,7 @@ class CommunityFeaturedSection extends StatelessWidget {
                   child: state.maybeWhen(
                     orElse: Container.new,
                     loading: () => const ArticleWidgetSkeleton.large(),
-                    failed: (e) => articleContainer(text: (e).message),
+                    failed: (e) => articleContainer(text: mapFailureToMessage(e)),
                     success: (article) => article != null
                         ? ArticleWidget.large(
                             article: article,

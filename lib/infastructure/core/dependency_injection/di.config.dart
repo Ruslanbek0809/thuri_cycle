@@ -11,6 +11,7 @@
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:cloud_firestore/cloud_firestore.dart' as _i974;
 import 'package:firebase_auth/firebase_auth.dart' as _i59;
+import 'package:firebase_storage/firebase_storage.dart' as _i457;
 import 'package:flutter_secure_storage/flutter_secure_storage.dart' as _i558;
 import 'package:get_it/get_it.dart' as _i174;
 import 'package:google_sign_in/google_sign_in.dart' as _i116;
@@ -42,6 +43,12 @@ import 'package:thuri_cycle/infastructure/core/dependency_injection/sharedPrefer
     as _i139;
 import 'package:thuri_cycle/infastructure/core/dependency_injection/talker_module.dart'
     as _i159;
+import 'package:thuri_cycle/infastructure/core/firebase_config/collections.dart'
+    as _i357;
+import 'package:thuri_cycle/infastructure/core/firebase_config/DB/firestore_service.dart'
+    as _i575;
+import 'package:thuri_cycle/infastructure/core/firebase_config/storage/firebase_storage.dart'
+    as _i137;
 import 'package:thuri_cycle/infastructure/scroll_controller/scroll_controller_service.dart'
     as _i795;
 
@@ -78,30 +85,42 @@ extension GetItInjectableX on _i174.GetIt {
         () => firebaseInjectableModule.firebaseAuth);
     gh.lazySingleton<_i974.FirebaseFirestore>(
         () => firebaseInjectableModule.firestore);
+    gh.lazySingleton<_i457.FirebaseStorage>(
+        () => firebaseInjectableModule.firebaseStorage);
     gh.lazySingleton<_i795.ScrollControllerService>(
       () => _i795.ScrollControllerService(),
       dispose: (i) => i.dispose(),
     );
     gh.lazySingleton<_i227.AppCubit>(() => _i227.AppCubit());
+    gh.lazySingleton<_i357.ArticlesCollection>(
+        () => _i357.ArticlesCollection(gh<_i974.FirebaseFirestore>()));
+    gh.lazySingleton<_i357.GuidesCollection>(
+        () => _i357.GuidesCollection(gh<_i974.FirebaseFirestore>()));
     gh.lazySingleton<_i917.IAuth>(() => _i767.AuthRepository(
           gh<_i59.FirebaseAuth>(),
           gh<_i558.FlutterSecureStorage>(),
           gh<_i116.GoogleSignIn>(),
         ));
-    gh.lazySingleton<_i153.ICommunity>(
-        () => _i443.CommunityRepository(gh<_i974.FirebaseFirestore>()));
-    gh.factory<_i790.CommunityArticlesCubit>(
-        () => _i790.CommunityArticlesCubit(gh<_i153.ICommunity>()));
-    gh.factory<_i243.CommunityGuidesCubit>(
-        () => _i243.CommunityGuidesCubit(gh<_i153.ICommunity>()));
-    gh.factory<_i884.CommunityFeaturedCubit>(
-        () => _i884.CommunityFeaturedCubit(gh<_i153.ICommunity>()));
+    gh.lazySingleton<_i137.FirebaseStorageService>(
+        () => _i137.FirebaseStorageService(gh<_i457.FirebaseStorage>()));
+    gh.lazySingleton<_i575.FirestoreService>(
+        () => _i575.FirestoreService(gh<_i974.FirebaseFirestore>()));
+    gh.lazySingleton<_i153.ICommunity>(() => _i443.CommunityRepository(
+          gh<_i137.FirebaseStorageService>(),
+          gh<_i357.ArticlesCollection>(),
+        ));
     gh.factory<_i250.AuthFormCubit>(
         () => _i250.AuthFormCubit(gh<_i917.IAuth>()));
     gh.factory<_i390.AuthBloc>(() => _i390.AuthBloc(
           gh<_i917.IAuth>(),
           gh<_i558.FlutterSecureStorage>(),
         ));
+    gh.factory<_i790.CommunityArticlesCubit>(
+        () => _i790.CommunityArticlesCubit(gh<_i153.ICommunity>()));
+    gh.factory<_i243.CommunityGuidesCubit>(
+        () => _i243.CommunityGuidesCubit(gh<_i153.ICommunity>()));
+    gh.factory<_i884.CommunityFeaturedCubit>(
+        () => _i884.CommunityFeaturedCubit(gh<_i153.ICommunity>()));
     return this;
   }
 }

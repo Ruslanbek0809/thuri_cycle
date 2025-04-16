@@ -2,7 +2,7 @@ import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:thuri_cycle/domain/community/i_community.dart';
-import 'package:thuri_cycle/domain/core/alert_model.dart';
+import 'package:thuri_cycle/domain/core/firebase_failure.dart';
 import 'package:thuri_cycle/presentation/recycling_guide/community/guide_widgets/guide/guide.dart';
 
 part 'community_guides_state.dart';
@@ -22,7 +22,7 @@ class CommunityGuidesCubit extends Cubit<CommunityGuidesState> {
 
     // emit(
     //   response.fold(
-    //     (error) => CommunityArticlesState.failed(alert: error),
+    //     (failure) => CommunityArticlesState.failed(failure: failure),
     //     (guides) => CommunityArticlesState.success(guides: guides),
     //   ),
     // );

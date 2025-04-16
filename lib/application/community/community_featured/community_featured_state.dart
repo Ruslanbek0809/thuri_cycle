@@ -8,11 +8,10 @@ class CommunityFeaturedState with _$CommunityFeaturedState {
   const factory CommunityFeaturedState.loading() =
       _CommunityFeaturedStateLoading;
 
-  const factory CommunityFeaturedState.failed({required AlertModel alert}) =
+  const factory CommunityFeaturedState.failed({required FirebaseFailure failure}) =
       _CommunityFeaturedStateFailed;
 
   const factory CommunityFeaturedState.success({
-    required Article article,
+    required Article? article,
   }) = _CommunityFeaturedStateSuccess;
 }
-

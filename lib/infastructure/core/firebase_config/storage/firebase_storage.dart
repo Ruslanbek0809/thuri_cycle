@@ -1,23 +1,25 @@
 import 'package:firebase_storage/firebase_storage.dart';
+import 'package:injectable/injectable.dart';
 
+@lazySingleton
 class FirebaseStorageService {
-  FirebaseStorageService._();
+  FirebaseStorageService(this._firebaseStorage);
 
-  static final instance = FirebaseStorageService._();
+  final FirebaseStorage _firebaseStorage;
 
   Future<String> getImageUrl(String? imagePath) async {
-    final storage = FirebaseStorage.instance;
     if (imagePath == null) {
       return '';
     }
 
     try {
       final storageReference = imagePath.contains('gs://')
-          ? storage.refFromURL(imagePath)
-          : storage.ref(imagePath);
+          ? _firebaseStorage.refFromURL(imagePath)
+          : _firebaseStorage.ref(imagePath);
       return await storageReference.getDownloadURL();
     } catch (e) {
-      return storage.ref('thumbnails/kw-not-found.jpg').getDownloadURL();
+      return _firebaseStorage.ref('thumbnails/kw-not-found.jpg').getDownloadURL();
     }
   }
 }
+ 

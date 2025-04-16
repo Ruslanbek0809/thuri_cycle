@@ -20,7 +20,7 @@ mixin _$CommunityArticlesState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(AlertModel alert) failed,
+    required TResult Function(FirebaseFailure failure) failed,
     required TResult Function(List<Article> articles) success,
   }) =>
       throw _privateConstructorUsedError;
@@ -28,7 +28,7 @@ mixin _$CommunityArticlesState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(AlertModel alert)? failed,
+    TResult? Function(FirebaseFailure failure)? failed,
     TResult? Function(List<Article> articles)? success,
   }) =>
       throw _privateConstructorUsedError;
@@ -36,7 +36,7 @@ mixin _$CommunityArticlesState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(AlertModel alert)? failed,
+    TResult Function(FirebaseFailure failure)? failed,
     TResult Function(List<Article> articles)? success,
     required TResult orElse(),
   }) =>
@@ -133,7 +133,7 @@ class _$InitialImpl implements _Initial {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(AlertModel alert) failed,
+    required TResult Function(FirebaseFailure failure) failed,
     required TResult Function(List<Article> articles) success,
   }) {
     return initial();
@@ -144,7 +144,7 @@ class _$InitialImpl implements _Initial {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(AlertModel alert)? failed,
+    TResult? Function(FirebaseFailure failure)? failed,
     TResult? Function(List<Article> articles)? success,
   }) {
     return initial?.call();
@@ -155,7 +155,7 @@ class _$InitialImpl implements _Initial {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(AlertModel alert)? failed,
+    TResult Function(FirebaseFailure failure)? failed,
     TResult Function(List<Article> articles)? success,
     required TResult orElse(),
   }) {
@@ -250,7 +250,7 @@ class _$LoadingImpl implements _Loading {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(AlertModel alert) failed,
+    required TResult Function(FirebaseFailure failure) failed,
     required TResult Function(List<Article> articles) success,
   }) {
     return loading();
@@ -261,7 +261,7 @@ class _$LoadingImpl implements _Loading {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(AlertModel alert)? failed,
+    TResult? Function(FirebaseFailure failure)? failed,
     TResult? Function(List<Article> articles)? success,
   }) {
     return loading?.call();
@@ -272,7 +272,7 @@ class _$LoadingImpl implements _Loading {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(AlertModel alert)? failed,
+    TResult Function(FirebaseFailure failure)? failed,
     TResult Function(List<Article> articles)? success,
     required TResult orElse(),
   }) {
@@ -330,9 +330,9 @@ abstract class _$$FailedImplCopyWith<$Res> {
           _$FailedImpl value, $Res Function(_$FailedImpl) then) =
       __$$FailedImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({AlertModel alert});
+  $Res call({FirebaseFailure failure});
 
-  $AlertModelCopyWith<$Res> get alert;
+  $FirebaseFailureCopyWith<$Res> get failure;
 }
 
 /// @nodoc
@@ -348,13 +348,13 @@ class __$$FailedImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? alert = null,
+    Object? failure = null,
   }) {
     return _then(_$FailedImpl(
-      alert: null == alert
-          ? _value.alert
-          : alert // ignore: cast_nullable_to_non_nullable
-              as AlertModel,
+      failure: null == failure
+          ? _value.failure
+          : failure // ignore: cast_nullable_to_non_nullable
+              as FirebaseFailure,
     ));
   }
 
@@ -362,9 +362,9 @@ class __$$FailedImplCopyWithImpl<$Res>
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  $AlertModelCopyWith<$Res> get alert {
-    return $AlertModelCopyWith<$Res>(_value.alert, (value) {
-      return _then(_value.copyWith(alert: value));
+  $FirebaseFailureCopyWith<$Res> get failure {
+    return $FirebaseFailureCopyWith<$Res>(_value.failure, (value) {
+      return _then(_value.copyWith(failure: value));
     });
   }
 }
@@ -372,14 +372,14 @@ class __$$FailedImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$FailedImpl implements _Failed {
-  const _$FailedImpl({required this.alert});
+  const _$FailedImpl({required this.failure});
 
   @override
-  final AlertModel alert;
+  final FirebaseFailure failure;
 
   @override
   String toString() {
-    return 'CommunityArticlesState.failed(alert: $alert)';
+    return 'CommunityArticlesState.failed(failure: $failure)';
   }
 
   @override
@@ -387,11 +387,11 @@ class _$FailedImpl implements _Failed {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$FailedImpl &&
-            (identical(other.alert, alert) || other.alert == alert));
+            (identical(other.failure, failure) || other.failure == failure));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, alert);
+  int get hashCode => Object.hash(runtimeType, failure);
 
   /// Create a copy of CommunityArticlesState
   /// with the given fields replaced by the non-null parameter values.
@@ -406,10 +406,10 @@ class _$FailedImpl implements _Failed {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(AlertModel alert) failed,
+    required TResult Function(FirebaseFailure failure) failed,
     required TResult Function(List<Article> articles) success,
   }) {
-    return failed(alert);
+    return failed(failure);
   }
 
   @override
@@ -417,10 +417,10 @@ class _$FailedImpl implements _Failed {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(AlertModel alert)? failed,
+    TResult? Function(FirebaseFailure failure)? failed,
     TResult? Function(List<Article> articles)? success,
   }) {
-    return failed?.call(alert);
+    return failed?.call(failure);
   }
 
   @override
@@ -428,12 +428,12 @@ class _$FailedImpl implements _Failed {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(AlertModel alert)? failed,
+    TResult Function(FirebaseFailure failure)? failed,
     TResult Function(List<Article> articles)? success,
     required TResult orElse(),
   }) {
     if (failed != null) {
-      return failed(alert);
+      return failed(failure);
     }
     return orElse();
   }
@@ -477,9 +477,10 @@ class _$FailedImpl implements _Failed {
 }
 
 abstract class _Failed implements CommunityArticlesState {
-  const factory _Failed({required final AlertModel alert}) = _$FailedImpl;
+  const factory _Failed({required final FirebaseFailure failure}) =
+      _$FailedImpl;
 
-  AlertModel get alert;
+  FirebaseFailure get failure;
 
   /// Create a copy of CommunityArticlesState
   /// with the given fields replaced by the non-null parameter values.
@@ -565,7 +566,7 @@ class _$SuccessImpl implements _Success {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(AlertModel alert) failed,
+    required TResult Function(FirebaseFailure failure) failed,
     required TResult Function(List<Article> articles) success,
   }) {
     return success(articles);
@@ -576,7 +577,7 @@ class _$SuccessImpl implements _Success {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(AlertModel alert)? failed,
+    TResult? Function(FirebaseFailure failure)? failed,
     TResult? Function(List<Article> articles)? success,
   }) {
     return success?.call(articles);
@@ -587,7 +588,7 @@ class _$SuccessImpl implements _Success {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(AlertModel alert)? failed,
+    TResult Function(FirebaseFailure failure)? failed,
     TResult Function(List<Article> articles)? success,
     required TResult orElse(),
   }) {

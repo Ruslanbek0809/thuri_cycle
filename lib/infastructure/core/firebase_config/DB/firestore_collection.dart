@@ -8,7 +8,7 @@ class FirestoreCollection<T> {
 
   final String path = '';
 
-  FirebaseFirestore firestore = FirebaseFirestore.instance;
+  // FirebaseFirestore firestore = FirebaseFirestore.instance;
 
   CollectionReference<T> get withConverter => throw UnimplementedError();
 
@@ -40,7 +40,10 @@ class FirestoreCollection<T> {
   Future<List<T>> futureAll([String? orderBy, bool desc = false]) async {
     final docs = orderBy != null
         ? (await this.orderBy(orderBy, desc).get()).docs
-        : (await withConverter.get()).docs;
+        : (await withConverter.get()).docs; 
+    // Fetches all documents:
+    // •	Optionally ordered by a field (like date, descending).
+    // •	Then it maps each doc to a model, like Article, using your converter.
 
     return docs.map((doc) => doc.data()).toList();
   }

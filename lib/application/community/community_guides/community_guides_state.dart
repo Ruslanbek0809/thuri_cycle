@@ -6,8 +6,9 @@ class CommunityGuidesState with _$CommunityGuidesState {
 
   const factory CommunityGuidesState.loading() = _Loading;
 
-  const factory CommunityGuidesState.failed({required AlertModel alert}) =
-      _Failed;
+  const factory CommunityGuidesState.failed({
+    required FirebaseFailure failure,
+  }) = _Failed;
 
   const factory CommunityGuidesState.success({
     required List<Guide> guides,
