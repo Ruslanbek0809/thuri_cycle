@@ -8,6 +8,7 @@
     "welcome": "Welcome to the Flipgoo!",
     "chooseOthers": "Choose other login options",
     "confirmation": "Confirmation",
+    "profile": "Profile",
     "logIn": "Log in",
     "loginToDoAction": "Please Log in to your account to do this action!",
     "cancel": "Cancel",
@@ -34,5 +35,11 @@
     "privacyPolicy": "Privacy Policy",
     "contactUs": "Contact us",
     "rateUs": "Rate us",
+    "appVersion": "App version",
+    "theme": "Theme",
+    "language": "Language",
+    "darkMode": "Dark mode",
+    "viewProfile": "View profile",
+    "pleaseLoginOrRegisterToUse": "Please log in to your account or register to use this applicaction!",
     "comingInNextUpdate": "Coming in the next update"
 }

@@ -29,6 +29,8 @@ import 'package:thuri_cycle/application/community/community_featured/community_f
     as _i884;
 import 'package:thuri_cycle/application/community/community_guides/community_guides_cubit.dart'
     as _i243;
+import 'package:thuri_cycle/application/profile/settings_form_cubit.dart'
+    as _i225;
 import 'package:thuri_cycle/domain/app/theme_model.dart' as _i836;
 import 'package:thuri_cycle/domain/auth/i_auth_facade.dart' as _i917;
 import 'package:thuri_cycle/domain/community/i_community.dart' as _i153;
@@ -101,6 +103,8 @@ extension GetItInjectableX on _i174.GetIt {
           gh<_i558.FlutterSecureStorage>(),
           gh<_i116.GoogleSignIn>(),
         ));
+    gh.factory<_i225.SettingsFormCubit>(
+        () => _i225.SettingsFormCubit(gh<_i460.SharedPreferences>()));
     gh.lazySingleton<_i137.FirebaseStorageService>(
         () => _i137.FirebaseStorageService(gh<_i457.FirebaseStorage>()));
     gh.lazySingleton<_i575.FirestoreService>(

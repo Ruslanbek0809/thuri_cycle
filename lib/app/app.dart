@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:thuri_cycle/application/app/app_cubit.dart';
 import 'package:thuri_cycle/application/app/locale/locale_cubit.dart';
 import 'package:thuri_cycle/application/auth/auth_bloc.dart';
+import 'package:thuri_cycle/application/profile/settings_form_cubit.dart';
 import 'package:thuri_cycle/infastructure/core/dependency_injection/di.dart';
 import 'package:thuri_cycle/l10n/l10n.dart';
 import 'package:thuri_cycle/presentation/core/utils/constants.dart';
@@ -35,6 +36,7 @@ class _AppState extends State<App> {
           create: (context) =>
               getIt<AuthBloc>()..add(const AuthEvent.authCheckRequested()),
         ),
+        BlocProvider(create: (_) => getIt<SettingsFormCubit>()),
       ],
       child: BlocBuilder<AppCubit, AppState>(
         buildWhen: (p, c) => p.theme != c.theme,
@@ -45,11 +47,11 @@ class _AppState extends State<App> {
               return MaterialApp.router(
                 scaffoldMessengerKey: scaffoldMessengerKey,
                 routerConfig: appRouter.config(
-                    navigatorObservers: () => [
-                      AutoRouteObserver(),
-                      // SentryNavigatorObserver(),
-                    ],
-                    ),
+                  navigatorObservers: () => [
+                    AutoRouteObserver(),
+                    // SentryNavigatorObserver(),
+                  ],
+                ),
                 //* Theme configuration.
                 theme: appState.theme.light,
                 darkTheme: appState.theme.dark,

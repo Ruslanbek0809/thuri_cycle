@@ -8,6 +8,7 @@
     "welcome": "Bienvenido al Flipgoo!",
     "chooseOthers": "Elegir otras opciones de inicio de sesión",
     "confirmation": "Confirmación",
+    "profile": "Profile",
     "logIn": "Conectarse",
     "loginToDoAction": "Inicie sesión en su cuenta para realizar esta acción!.",
     "cancel": "Cancelar",
@@ -34,5 +35,11 @@
     "privacyPolicy": "Política de privacidad",
     "contactUs": "Póngase en contacto con nosotros",
     "rateUs": "Valóranos",
+    "appVersion": "Versión de la aplicación",
+    "theme": "Tema",
+    "language": "Idioma",
+    "darkMode": "Modo oscuro",
+    "viewProfile": "Perfil",
+    "pleaseLoginOrRegisterToUse": "Acceda a su cuenta o regístrese para utilizar esta aplicación!",
     "comingInNextUpdate": "En la próxima actualización"
 }
