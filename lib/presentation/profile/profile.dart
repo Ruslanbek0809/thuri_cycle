@@ -162,7 +162,7 @@ class _ProfilePageState extends State<ProfilePage> {
                           //*------------------ LANGUAGE ---------------------//
                           ProfileItemCard(
                             title: context.l10n.language,
-                            svgName: 'assets/profile/profile/language.svg',
+                            svgName: 'assets/profile/language.svg',
                             value: 'English',
                             onTap: () async {},
                           ),
@@ -173,7 +173,7 @@ class _ProfilePageState extends State<ProfilePage> {
                             builder: (context, state) {
                               return ProfileThemeItemCard(
                                 title: context.l10n.theme,
-                                svgName: 'assets/profile/profile/dark_mode.svg',
+                                svgName: 'assets/profile/dark_mode.svg',
                                 value: state.theme.mode.name[0].toUpperCase() +
                                     state.theme.mode.name.substring(1),
                                 onTap: () async {
@@ -210,7 +210,7 @@ class _ProfilePageState extends State<ProfilePage> {
                         children: [
                           ProfileItemCard(
                             title: context.l10n.termsOfUse,
-                            svgName: 'assets/profile/profile/terms.svg',
+                            svgName: 'assets/profile/terms.svg',
                             onTap: () async {
                               // await context.router
                               //     .push(const TermsOfUseRoute());
@@ -219,7 +219,7 @@ class _ProfilePageState extends State<ProfilePage> {
                           const CustomDivider(),
                           ProfileItemCard(
                             title: context.l10n.privacyPolicy,
-                            svgName: 'assets/profile/profile/privacy.svg',
+                            svgName: 'assets/profile/privacy.svg',
                             onTap: () async {
                               // await context.router
                               //     .push(const PrivacyPolicyRoute());
@@ -228,7 +228,7 @@ class _ProfilePageState extends State<ProfilePage> {
                           const CustomDivider(),
                           ProfileItemCard(
                             title: context.l10n.contactUs,
-                            svgName: 'assets/profile/profile/contact_us.svg',
+                            svgName: 'assets/profile/contact_us.svg',
                             onTap: () async {
                               // await context.router.push(const ContactUsRoute());
                             },
@@ -236,7 +236,7 @@ class _ProfilePageState extends State<ProfilePage> {
                           const CustomDivider(),
                           ProfileItemCard(
                             title: context.l10n.rateUs,
-                            svgName: 'assets/profile/profile/rate_us.svg',
+                            svgName: 'assets/profile/rate_us.svg',
                             onTap: () async {
                               // await context
                               //     .read<SettingsFormCubit>()
@@ -246,7 +246,7 @@ class _ProfilePageState extends State<ProfilePage> {
                           const CustomDivider(),
                           ProfileItemCard(
                             title: 'FAQ',
-                            svgName: 'assets/profile/profile/faq.svg',
+                            svgName: 'assets/profile/faq.svg',
                             onTap: () async {
                               // await context.router.push(const FaqRoute());
                             },
@@ -254,7 +254,7 @@ class _ProfilePageState extends State<ProfilePage> {
                           const CustomDivider(),
                           ProfileUpdatesItemCard(
                             title: context.l10n.appVersion,
-                            svgName: 'assets/profile/profile/updates.svg',
+                            svgName: 'assets/profile/updates.svg',
                             value: 'V ${state.packageInfo?.version}',
                             onTap: () async {},
                           ),

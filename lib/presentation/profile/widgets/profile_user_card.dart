@@ -62,15 +62,15 @@ class _ProfileUserCardState extends State<ProfileUserCard> {
               //     ),
               //   );
               // } else {
-              await context.router.push(
-                PersonalProfileDetailsRoute(
-                  userProfile: userModel,
-                  profileFollowCubit: BlocProvider.of<ProfileFollowFormCubit>(
-                    context,
-                  ),
-                  isMyUser: true,
-                ),
-              );
+              // await context.router.push(
+              //   PersonalProfileDetailsRoute(
+              //     userProfile: userModel,
+              //     profileFollowCubit: BlocProvider.of<ProfileFollowFormCubit>(
+              //       context,
+              //     ),
+              //     isMyUser: true,
+              //   ),
+              // );
               // }
             },
             child: Ink(
@@ -84,13 +84,9 @@ class _ProfileUserCardState extends State<ProfileUserCard> {
                   Expanded(
                     child: Row(
                       children: [
-                        if (userModel.avatar != null ||
-                            (userModel.business != null &&
-                                userModel.business!.avatar != null))
+                        if (userModel.profilePicture != null)
                           CustomBorderedAvatarImage(
-                            image: userModel.business != null
-                                ? userModel.business!.avatar
-                                : userModel.avatar,
+                            image: userModel.profilePicture,
                             radius: 25,
                             size: Size(
                               getTabletType() ? 100 : 60,
@@ -109,9 +105,7 @@ class _ProfileUserCardState extends State<ProfileUserCard> {
                                   children: [
                                     Flexible(
                                       child: Text(
-                                        userModel.business != null
-                                            ? userModel.business!.name ?? ''
-                                            : userModel.firstName ?? '',
+                                        userModel.name ?? '',
                                         maxLines: 2,
                                         overflow: TextOverflow.ellipsis,
                                         style: getTextTheme(context)
@@ -125,18 +119,39 @@ class _ProfileUserCardState extends State<ProfileUserCard> {
                                             ),
                                       ),
                                     ),
-                                    //*--------------- BLUE TICK ---------------//
-                                    if (userModel.business != null)
-                                      Padding(
+                                    Flexible(
+                                      child: Padding(
                                         padding: EdgeInsets.only(
                                           left: $constants.insets.xxs,
                                         ),
-                                        child: CustomSvgIcon(
-                                          icon: 'tick',
-                                          color: $constants.palette.main,
-                                          size: 22,
+                                        child: Text(
+                                          '@${userModel?.username ?? ''}',
+                                          maxLines: 2,
+                                          overflow: TextOverflow.ellipsis,
+                                          style: getTextTheme(context)
+                                              .titleMedium!
+                                              .copyWith(
+                                                fontSize: responsiveFontSize(
+                                                  context,
+                                                  16,
+                                                ),
+                                                fontWeight: FontWeight.w600,
+                                              ),
                                         ),
                                       ),
+                                    ),
+                                    // //*--------------- BLUE TICK ---------------//
+                                    // if (userModel.business != null)
+                                    //   Padding(
+                                    //     padding: EdgeInsets.only(
+                                    //       left: $constants.insets.xxs,
+                                    //     ),
+                                    //     child: CustomSvgIcon(
+                                    //       icon: 'tick',
+                                    //       color: $constants.palette.main,
+                                    //       size: 22,
+                                    //     ),
+                                    //   ),
                                   ],
                                 ),
                                 Text(

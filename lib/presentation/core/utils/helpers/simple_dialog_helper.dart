@@ -32,11 +32,11 @@ abstract class SimpleDialogHelper {
     ];
     final assets = <String>[
       if (MediaQuery.of(context).platformBrightness == Brightness.dark)
-        'assets/profile/profile/theme_mode_dark.svg'
+        'assets/profile/theme_mode_dark.svg'
       else
-        'assets/profile/profile/theme_mode_light.svg',
-      'assets/profile/profile/theme_mode_light.svg',
-      'assets/profile/profile/theme_mode_dark.svg'
+        'assets/profile/theme_mode_light.svg',
+      'assets/profile/theme_mode_light.svg',
+      'assets/profile/theme_mode_dark.svg'
     ];
     if (Theme.of(context).platform != TargetPlatform.iOS) {
       return showDialog<ThemeMode?>(

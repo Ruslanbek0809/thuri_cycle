@@ -17,7 +17,7 @@ class ProfileUserOpacityEditButton extends StatelessWidget {
         child: Padding(
           padding: EdgeInsets.all($constants.insets.xxs + 2),
           child: SvgPicture.asset(
-            'assets/profile_edit.svg',
+            'assets/profile/profile_edit.svg',
             height: 16,
             width: 16,
           ),

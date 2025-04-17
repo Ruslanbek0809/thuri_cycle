@@ -72,7 +72,7 @@ class SimpleDialogThemeChangeCard extends StatelessWidget {
                   //*------------------ SELECTED CHECK ICON ---------------------//
                   if (isSelected)
                     SvgPicture.asset(
-                      'assets/profile/profile/theme_mode_check.svg',
+                      'assets/profile/theme_mode_check.svg',
                       height: getTabletType() ? 40 : 20,
                       width: getTabletType() ? 40 : 20,
                     ),
