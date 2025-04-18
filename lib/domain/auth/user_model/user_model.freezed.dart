@@ -20,37 +20,17 @@ UserModel _$UserModelFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$UserModel {
-  int? get id => throw _privateConstructorUsedError;
-  String? get username => throw _privateConstructorUsedError;
-  @JsonKey(name: 'first_name')
-  String? get firstName => throw _privateConstructorUsedError;
-  @JsonKey(name: 'last_name')
-  String? get lastName => throw _privateConstructorUsedError;
-  String? get bio => throw _privateConstructorUsedError;
-  DateTime? get birthday => throw _privateConstructorUsedError;
-  String? get avatar => throw _privateConstructorUsedError;
-  String? get wallpaper => throw _privateConstructorUsedError;
-  String? get mobile => throw _privateConstructorUsedError;
-  @JsonKey(name: 'mobile_iso_code')
-  String? get mobileIsoCode => throw _privateConstructorUsedError;
-  @JsonKey(name: 'phones')
-  List<String>? get phonesVerified => throw _privateConstructorUsedError;
+  String get uid =>
+      throw _privateConstructorUsedError; // @JsonKey(includeToJson: false) UserStats? stats,
   String? get email => throw _privateConstructorUsedError;
-  @JsonKey(name: 'email_hidden')
-  bool? get emailHidden => throw _privateConstructorUsedError;
-  @JsonKey(name: 'mobile_hidden')
-  bool? get mobileHidden => throw _privateConstructorUsedError;
-  DateTime? get createdAt => throw _privateConstructorUsedError;
-  DateTime? get updatedAt => throw _privateConstructorUsedError;
-  @JsonKey(name: 'date_joined')
-  DateTime? get dateJoined => throw _privateConstructorUsedError;
-  String? get location => throw _privateConstructorUsedError;
-  num? get latitude => throw _privateConstructorUsedError;
-  num? get longitude => throw _privateConstructorUsedError;
-  bool? get isSelectedFromMap =>
-      throw _privateConstructorUsedError; //* NOT used for server-side
-  @JsonKey(name: 'last_seen_at')
-  String? get lastSeenAt => throw _privateConstructorUsedError;
+  String? get username => throw _privateConstructorUsedError;
+  String? get name => throw _privateConstructorUsedError;
+  String? get phoneNumber => throw _privateConstructorUsedError;
+  String? get profilePicture => throw _privateConstructorUsedError;
+  bool get isAnonymous =>
+      throw _privateConstructorUsedError; // @Default([]) List<String> bookmarks,
+  @JsonKey(name: 'fcm_token')
+  String? get fcmToken => throw _privateConstructorUsedError;
 
   /// Serializes this UserModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -68,28 +48,14 @@ abstract class $UserModelCopyWith<$Res> {
       _$UserModelCopyWithImpl<$Res, UserModel>;
   @useResult
   $Res call(
-      {int? id,
-      String? username,
-      @JsonKey(name: 'first_name') String? firstName,
-      @JsonKey(name: 'last_name') String? lastName,
-      String? bio,
-      DateTime? birthday,
-      String? avatar,
-      String? wallpaper,
-      String? mobile,
-      @JsonKey(name: 'mobile_iso_code') String? mobileIsoCode,
-      @JsonKey(name: 'phones') List<String>? phonesVerified,
+      {String uid,
       String? email,
-      @JsonKey(name: 'email_hidden') bool? emailHidden,
-      @JsonKey(name: 'mobile_hidden') bool? mobileHidden,
-      DateTime? createdAt,
-      DateTime? updatedAt,
-      @JsonKey(name: 'date_joined') DateTime? dateJoined,
-      String? location,
-      num? latitude,
-      num? longitude,
-      bool? isSelectedFromMap,
-      @JsonKey(name: 'last_seen_at') String? lastSeenAt});
+      String? username,
+      String? name,
+      String? phoneNumber,
+      String? profilePicture,
+      bool isAnonymous,
+      @JsonKey(name: 'fcm_token') String? fcmToken});
 }
 
 /// @nodoc
@@ -107,117 +73,47 @@ class _$UserModelCopyWithImpl<$Res, $Val extends UserModel>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = freezed,
-    Object? username = freezed,
-    Object? firstName = freezed,
-    Object? lastName = freezed,
-    Object? bio = freezed,
-    Object? birthday = freezed,
-    Object? avatar = freezed,
-    Object? wallpaper = freezed,
-    Object? mobile = freezed,
-    Object? mobileIsoCode = freezed,
-    Object? phonesVerified = freezed,
+    Object? uid = null,
     Object? email = freezed,
-    Object? emailHidden = freezed,
-    Object? mobileHidden = freezed,
-    Object? createdAt = freezed,
-    Object? updatedAt = freezed,
-    Object? dateJoined = freezed,
-    Object? location = freezed,
-    Object? latitude = freezed,
-    Object? longitude = freezed,
-    Object? isSelectedFromMap = freezed,
-    Object? lastSeenAt = freezed,
+    Object? username = freezed,
+    Object? name = freezed,
+    Object? phoneNumber = freezed,
+    Object? profilePicture = freezed,
+    Object? isAnonymous = null,
+    Object? fcmToken = freezed,
   }) {
     return _then(_value.copyWith(
-      id: freezed == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as int?,
-      username: freezed == username
-          ? _value.username
-          : username // ignore: cast_nullable_to_non_nullable
-              as String?,
-      firstName: freezed == firstName
-          ? _value.firstName
-          : firstName // ignore: cast_nullable_to_non_nullable
-              as String?,
-      lastName: freezed == lastName
-          ? _value.lastName
-          : lastName // ignore: cast_nullable_to_non_nullable
-              as String?,
-      bio: freezed == bio
-          ? _value.bio
-          : bio // ignore: cast_nullable_to_non_nullable
-              as String?,
-      birthday: freezed == birthday
-          ? _value.birthday
-          : birthday // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      avatar: freezed == avatar
-          ? _value.avatar
-          : avatar // ignore: cast_nullable_to_non_nullable
-              as String?,
-      wallpaper: freezed == wallpaper
-          ? _value.wallpaper
-          : wallpaper // ignore: cast_nullable_to_non_nullable
-              as String?,
-      mobile: freezed == mobile
-          ? _value.mobile
-          : mobile // ignore: cast_nullable_to_non_nullable
-              as String?,
-      mobileIsoCode: freezed == mobileIsoCode
-          ? _value.mobileIsoCode
-          : mobileIsoCode // ignore: cast_nullable_to_non_nullable
-              as String?,
-      phonesVerified: freezed == phonesVerified
-          ? _value.phonesVerified
-          : phonesVerified // ignore: cast_nullable_to_non_nullable
-              as List<String>?,
+      uid: null == uid
+          ? _value.uid
+          : uid // ignore: cast_nullable_to_non_nullable
+              as String,
       email: freezed == email
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
               as String?,
-      emailHidden: freezed == emailHidden
-          ? _value.emailHidden
-          : emailHidden // ignore: cast_nullable_to_non_nullable
-              as bool?,
-      mobileHidden: freezed == mobileHidden
-          ? _value.mobileHidden
-          : mobileHidden // ignore: cast_nullable_to_non_nullable
-              as bool?,
-      createdAt: freezed == createdAt
-          ? _value.createdAt
-          : createdAt // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      updatedAt: freezed == updatedAt
-          ? _value.updatedAt
-          : updatedAt // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      dateJoined: freezed == dateJoined
-          ? _value.dateJoined
-          : dateJoined // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      location: freezed == location
-          ? _value.location
-          : location // ignore: cast_nullable_to_non_nullable
+      username: freezed == username
+          ? _value.username
+          : username // ignore: cast_nullable_to_non_nullable
               as String?,
-      latitude: freezed == latitude
-          ? _value.latitude
-          : latitude // ignore: cast_nullable_to_non_nullable
-              as num?,
-      longitude: freezed == longitude
-          ? _value.longitude
-          : longitude // ignore: cast_nullable_to_non_nullable
-              as num?,
-      isSelectedFromMap: freezed == isSelectedFromMap
-          ? _value.isSelectedFromMap
-          : isSelectedFromMap // ignore: cast_nullable_to_non_nullable
-              as bool?,
-      lastSeenAt: freezed == lastSeenAt
-          ? _value.lastSeenAt
-          : lastSeenAt // ignore: cast_nullable_to_non_nullable
+      name: freezed == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String?,
+      phoneNumber: freezed == phoneNumber
+          ? _value.phoneNumber
+          : phoneNumber // ignore: cast_nullable_to_non_nullable
+              as String?,
+      profilePicture: freezed == profilePicture
+          ? _value.profilePicture
+          : profilePicture // ignore: cast_nullable_to_non_nullable
+              as String?,
+      isAnonymous: null == isAnonymous
+          ? _value.isAnonymous
+          : isAnonymous // ignore: cast_nullable_to_non_nullable
+              as bool,
+      fcmToken: freezed == fcmToken
+          ? _value.fcmToken
+          : fcmToken // ignore: cast_nullable_to_non_nullable
               as String?,
     ) as $Val);
   }
@@ -232,28 +128,14 @@ abstract class _$$UserModelImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {int? id,
-      String? username,
-      @JsonKey(name: 'first_name') String? firstName,
-      @JsonKey(name: 'last_name') String? lastName,
-      String? bio,
-      DateTime? birthday,
-      String? avatar,
-      String? wallpaper,
-      String? mobile,
-      @JsonKey(name: 'mobile_iso_code') String? mobileIsoCode,
-      @JsonKey(name: 'phones') List<String>? phonesVerified,
+      {String uid,
       String? email,
-      @JsonKey(name: 'email_hidden') bool? emailHidden,
-      @JsonKey(name: 'mobile_hidden') bool? mobileHidden,
-      DateTime? createdAt,
-      DateTime? updatedAt,
-      @JsonKey(name: 'date_joined') DateTime? dateJoined,
-      String? location,
-      num? latitude,
-      num? longitude,
-      bool? isSelectedFromMap,
-      @JsonKey(name: 'last_seen_at') String? lastSeenAt});
+      String? username,
+      String? name,
+      String? phoneNumber,
+      String? profilePicture,
+      bool isAnonymous,
+      @JsonKey(name: 'fcm_token') String? fcmToken});
 }
 
 /// @nodoc
@@ -269,117 +151,47 @@ class __$$UserModelImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = freezed,
-    Object? username = freezed,
-    Object? firstName = freezed,
-    Object? lastName = freezed,
-    Object? bio = freezed,
-    Object? birthday = freezed,
-    Object? avatar = freezed,
-    Object? wallpaper = freezed,
-    Object? mobile = freezed,
-    Object? mobileIsoCode = freezed,
-    Object? phonesVerified = freezed,
+    Object? uid = null,
     Object? email = freezed,
-    Object? emailHidden = freezed,
-    Object? mobileHidden = freezed,
-    Object? createdAt = freezed,
-    Object? updatedAt = freezed,
-    Object? dateJoined = freezed,
-    Object? location = freezed,
-    Object? latitude = freezed,
-    Object? longitude = freezed,
-    Object? isSelectedFromMap = freezed,
-    Object? lastSeenAt = freezed,
+    Object? username = freezed,
+    Object? name = freezed,
+    Object? phoneNumber = freezed,
+    Object? profilePicture = freezed,
+    Object? isAnonymous = null,
+    Object? fcmToken = freezed,
   }) {
     return _then(_$UserModelImpl(
-      id: freezed == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as int?,
-      username: freezed == username
-          ? _value.username
-          : username // ignore: cast_nullable_to_non_nullable
-              as String?,
-      firstName: freezed == firstName
-          ? _value.firstName
-          : firstName // ignore: cast_nullable_to_non_nullable
-              as String?,
-      lastName: freezed == lastName
-          ? _value.lastName
-          : lastName // ignore: cast_nullable_to_non_nullable
-              as String?,
-      bio: freezed == bio
-          ? _value.bio
-          : bio // ignore: cast_nullable_to_non_nullable
-              as String?,
-      birthday: freezed == birthday
-          ? _value.birthday
-          : birthday // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      avatar: freezed == avatar
-          ? _value.avatar
-          : avatar // ignore: cast_nullable_to_non_nullable
-              as String?,
-      wallpaper: freezed == wallpaper
-          ? _value.wallpaper
-          : wallpaper // ignore: cast_nullable_to_non_nullable
-              as String?,
-      mobile: freezed == mobile
-          ? _value.mobile
-          : mobile // ignore: cast_nullable_to_non_nullable
-              as String?,
-      mobileIsoCode: freezed == mobileIsoCode
-          ? _value.mobileIsoCode
-          : mobileIsoCode // ignore: cast_nullable_to_non_nullable
-              as String?,
-      phonesVerified: freezed == phonesVerified
-          ? _value._phonesVerified
-          : phonesVerified // ignore: cast_nullable_to_non_nullable
-              as List<String>?,
+      uid: null == uid
+          ? _value.uid
+          : uid // ignore: cast_nullable_to_non_nullable
+              as String,
       email: freezed == email
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
               as String?,
-      emailHidden: freezed == emailHidden
-          ? _value.emailHidden
-          : emailHidden // ignore: cast_nullable_to_non_nullable
-              as bool?,
-      mobileHidden: freezed == mobileHidden
-          ? _value.mobileHidden
-          : mobileHidden // ignore: cast_nullable_to_non_nullable
-              as bool?,
-      createdAt: freezed == createdAt
-          ? _value.createdAt
-          : createdAt // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      updatedAt: freezed == updatedAt
-          ? _value.updatedAt
-          : updatedAt // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      dateJoined: freezed == dateJoined
-          ? _value.dateJoined
-          : dateJoined // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      location: freezed == location
-          ? _value.location
-          : location // ignore: cast_nullable_to_non_nullable
+      username: freezed == username
+          ? _value.username
+          : username // ignore: cast_nullable_to_non_nullable
               as String?,
-      latitude: freezed == latitude
-          ? _value.latitude
-          : latitude // ignore: cast_nullable_to_non_nullable
-              as num?,
-      longitude: freezed == longitude
-          ? _value.longitude
-          : longitude // ignore: cast_nullable_to_non_nullable
-              as num?,
-      isSelectedFromMap: freezed == isSelectedFromMap
-          ? _value.isSelectedFromMap
-          : isSelectedFromMap // ignore: cast_nullable_to_non_nullable
-              as bool?,
-      lastSeenAt: freezed == lastSeenAt
-          ? _value.lastSeenAt
-          : lastSeenAt // ignore: cast_nullable_to_non_nullable
+      name: freezed == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String?,
+      phoneNumber: freezed == phoneNumber
+          ? _value.phoneNumber
+          : phoneNumber // ignore: cast_nullable_to_non_nullable
+              as String?,
+      profilePicture: freezed == profilePicture
+          ? _value.profilePicture
+          : profilePicture // ignore: cast_nullable_to_non_nullable
+              as String?,
+      isAnonymous: null == isAnonymous
+          ? _value.isAnonymous
+          : isAnonymous // ignore: cast_nullable_to_non_nullable
+              as bool,
+      fcmToken: freezed == fcmToken
+          ? _value.fcmToken
+          : fcmToken // ignore: cast_nullable_to_non_nullable
               as String?,
     ));
   }
@@ -390,98 +202,42 @@ class __$$UserModelImplCopyWithImpl<$Res>
 @JsonSerializable(includeIfNull: false)
 class _$UserModelImpl implements _UserModel {
   const _$UserModelImpl(
-      {this.id,
-      this.username,
-      @JsonKey(name: 'first_name') this.firstName,
-      @JsonKey(name: 'last_name') this.lastName,
-      this.bio,
-      this.birthday,
-      this.avatar,
-      this.wallpaper,
-      this.mobile,
-      @JsonKey(name: 'mobile_iso_code') this.mobileIsoCode,
-      @JsonKey(name: 'phones') final List<String>? phonesVerified,
+      {required this.uid,
       this.email,
-      @JsonKey(name: 'email_hidden') this.emailHidden,
-      @JsonKey(name: 'mobile_hidden') this.mobileHidden,
-      this.createdAt,
-      this.updatedAt,
-      @JsonKey(name: 'date_joined') this.dateJoined,
-      this.location,
-      this.latitude,
-      this.longitude,
-      this.isSelectedFromMap,
-      @JsonKey(name: 'last_seen_at') this.lastSeenAt})
-      : _phonesVerified = phonesVerified;
+      this.username,
+      this.name,
+      this.phoneNumber,
+      this.profilePicture,
+      this.isAnonymous = true,
+      @JsonKey(name: 'fcm_token') this.fcmToken});
 
   factory _$UserModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$UserModelImplFromJson(json);
 
   @override
-  final int? id;
-  @override
-  final String? username;
-  @override
-  @JsonKey(name: 'first_name')
-  final String? firstName;
-  @override
-  @JsonKey(name: 'last_name')
-  final String? lastName;
-  @override
-  final String? bio;
-  @override
-  final DateTime? birthday;
-  @override
-  final String? avatar;
-  @override
-  final String? wallpaper;
-  @override
-  final String? mobile;
-  @override
-  @JsonKey(name: 'mobile_iso_code')
-  final String? mobileIsoCode;
-  final List<String>? _phonesVerified;
-  @override
-  @JsonKey(name: 'phones')
-  List<String>? get phonesVerified {
-    final value = _phonesVerified;
-    if (value == null) return null;
-    if (_phonesVerified is EqualUnmodifiableListView) return _phonesVerified;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(value);
-  }
-
+  final String uid;
+// @JsonKey(includeToJson: false) UserStats? stats,
   @override
   final String? email;
   @override
-  @JsonKey(name: 'email_hidden')
-  final bool? emailHidden;
+  final String? username;
   @override
-  @JsonKey(name: 'mobile_hidden')
-  final bool? mobileHidden;
+  final String? name;
   @override
-  final DateTime? createdAt;
+  final String? phoneNumber;
   @override
-  final DateTime? updatedAt;
+  final String? profilePicture;
   @override
-  @JsonKey(name: 'date_joined')
-  final DateTime? dateJoined;
+  @JsonKey()
+  final bool isAnonymous;
+// @Default([]) List<String> bookmarks,
   @override
-  final String? location;
-  @override
-  final num? latitude;
-  @override
-  final num? longitude;
-  @override
-  final bool? isSelectedFromMap;
-//* NOT used for server-side
-  @override
-  @JsonKey(name: 'last_seen_at')
-  final String? lastSeenAt;
+  @JsonKey(name: 'fcm_token')
+  final String? fcmToken;
 
   @override
   String toString() {
-    return 'UserModel(id: $id, username: $username, firstName: $firstName, lastName: $lastName, bio: $bio, birthday: $birthday, avatar: $avatar, wallpaper: $wallpaper, mobile: $mobile, mobileIsoCode: $mobileIsoCode, phonesVerified: $phonesVerified, email: $email, emailHidden: $emailHidden, mobileHidden: $mobileHidden, createdAt: $createdAt, updatedAt: $updatedAt, dateJoined: $dateJoined, location: $location, latitude: $latitude, longitude: $longitude, isSelectedFromMap: $isSelectedFromMap, lastSeenAt: $lastSeenAt)';
+    return 'UserModel(uid: $uid, email: $email, username: $username, name: $name, phoneNumber: $phoneNumber, profilePicture: $profilePicture, isAnonymous: $isAnonymous, fcmToken: $fcmToken)';
   }
 
   @override
@@ -489,74 +245,25 @@ class _$UserModelImpl implements _UserModel {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$UserModelImpl &&
-            (identical(other.id, id) || other.id == id) &&
+            (identical(other.uid, uid) || other.uid == uid) &&
+            (identical(other.email, email) || other.email == email) &&
             (identical(other.username, username) ||
                 other.username == username) &&
-            (identical(other.firstName, firstName) ||
-                other.firstName == firstName) &&
-            (identical(other.lastName, lastName) ||
-                other.lastName == lastName) &&
-            (identical(other.bio, bio) || other.bio == bio) &&
-            (identical(other.birthday, birthday) ||
-                other.birthday == birthday) &&
-            (identical(other.avatar, avatar) || other.avatar == avatar) &&
-            (identical(other.wallpaper, wallpaper) ||
-                other.wallpaper == wallpaper) &&
-            (identical(other.mobile, mobile) || other.mobile == mobile) &&
-            (identical(other.mobileIsoCode, mobileIsoCode) ||
-                other.mobileIsoCode == mobileIsoCode) &&
-            const DeepCollectionEquality()
-                .equals(other._phonesVerified, _phonesVerified) &&
-            (identical(other.email, email) || other.email == email) &&
-            (identical(other.emailHidden, emailHidden) ||
-                other.emailHidden == emailHidden) &&
-            (identical(other.mobileHidden, mobileHidden) ||
-                other.mobileHidden == mobileHidden) &&
-            (identical(other.createdAt, createdAt) ||
-                other.createdAt == createdAt) &&
-            (identical(other.updatedAt, updatedAt) ||
-                other.updatedAt == updatedAt) &&
-            (identical(other.dateJoined, dateJoined) ||
-                other.dateJoined == dateJoined) &&
-            (identical(other.location, location) ||
-                other.location == location) &&
-            (identical(other.latitude, latitude) ||
-                other.latitude == latitude) &&
-            (identical(other.longitude, longitude) ||
-                other.longitude == longitude) &&
-            (identical(other.isSelectedFromMap, isSelectedFromMap) ||
-                other.isSelectedFromMap == isSelectedFromMap) &&
-            (identical(other.lastSeenAt, lastSeenAt) ||
-                other.lastSeenAt == lastSeenAt));
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.phoneNumber, phoneNumber) ||
+                other.phoneNumber == phoneNumber) &&
+            (identical(other.profilePicture, profilePicture) ||
+                other.profilePicture == profilePicture) &&
+            (identical(other.isAnonymous, isAnonymous) ||
+                other.isAnonymous == isAnonymous) &&
+            (identical(other.fcmToken, fcmToken) ||
+                other.fcmToken == fcmToken));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hashAll([
-        runtimeType,
-        id,
-        username,
-        firstName,
-        lastName,
-        bio,
-        birthday,
-        avatar,
-        wallpaper,
-        mobile,
-        mobileIsoCode,
-        const DeepCollectionEquality().hash(_phonesVerified),
-        email,
-        emailHidden,
-        mobileHidden,
-        createdAt,
-        updatedAt,
-        dateJoined,
-        location,
-        latitude,
-        longitude,
-        isSelectedFromMap,
-        lastSeenAt
-      ]);
+  int get hashCode => Object.hash(runtimeType, uid, email, username, name,
+      phoneNumber, profilePicture, isAnonymous, fcmToken);
 
   /// Create a copy of UserModel
   /// with the given fields replaced by the non-null parameter values.
@@ -576,85 +283,35 @@ class _$UserModelImpl implements _UserModel {
 
 abstract class _UserModel implements UserModel {
   const factory _UserModel(
-          {final int? id,
-          final String? username,
-          @JsonKey(name: 'first_name') final String? firstName,
-          @JsonKey(name: 'last_name') final String? lastName,
-          final String? bio,
-          final DateTime? birthday,
-          final String? avatar,
-          final String? wallpaper,
-          final String? mobile,
-          @JsonKey(name: 'mobile_iso_code') final String? mobileIsoCode,
-          @JsonKey(name: 'phones') final List<String>? phonesVerified,
-          final String? email,
-          @JsonKey(name: 'email_hidden') final bool? emailHidden,
-          @JsonKey(name: 'mobile_hidden') final bool? mobileHidden,
-          final DateTime? createdAt,
-          final DateTime? updatedAt,
-          @JsonKey(name: 'date_joined') final DateTime? dateJoined,
-          final String? location,
-          final num? latitude,
-          final num? longitude,
-          final bool? isSelectedFromMap,
-          @JsonKey(name: 'last_seen_at') final String? lastSeenAt}) =
-      _$UserModelImpl;
+      {required final String uid,
+      final String? email,
+      final String? username,
+      final String? name,
+      final String? phoneNumber,
+      final String? profilePicture,
+      final bool isAnonymous,
+      @JsonKey(name: 'fcm_token') final String? fcmToken}) = _$UserModelImpl;
 
   factory _UserModel.fromJson(Map<String, dynamic> json) =
       _$UserModelImpl.fromJson;
 
   @override
-  int? get id;
-  @override
-  String? get username;
-  @override
-  @JsonKey(name: 'first_name')
-  String? get firstName;
-  @override
-  @JsonKey(name: 'last_name')
-  String? get lastName;
-  @override
-  String? get bio;
-  @override
-  DateTime? get birthday;
-  @override
-  String? get avatar;
-  @override
-  String? get wallpaper;
-  @override
-  String? get mobile;
-  @override
-  @JsonKey(name: 'mobile_iso_code')
-  String? get mobileIsoCode;
-  @override
-  @JsonKey(name: 'phones')
-  List<String>? get phonesVerified;
+  String get uid; // @JsonKey(includeToJson: false) UserStats? stats,
   @override
   String? get email;
   @override
-  @JsonKey(name: 'email_hidden')
-  bool? get emailHidden;
+  String? get username;
   @override
-  @JsonKey(name: 'mobile_hidden')
-  bool? get mobileHidden;
+  String? get name;
   @override
-  DateTime? get createdAt;
+  String? get phoneNumber;
   @override
-  DateTime? get updatedAt;
+  String? get profilePicture;
   @override
-  @JsonKey(name: 'date_joined')
-  DateTime? get dateJoined;
+  bool get isAnonymous; // @Default([]) List<String> bookmarks,
   @override
-  String? get location;
-  @override
-  num? get latitude;
-  @override
-  num? get longitude;
-  @override
-  bool? get isSelectedFromMap; //* NOT used for server-side
-  @override
-  @JsonKey(name: 'last_seen_at')
-  String? get lastSeenAt;
+  @JsonKey(name: 'fcm_token')
+  String? get fcmToken;
 
   /// Create a copy of UserModel
   /// with the given fields replaced by the non-null parameter values.

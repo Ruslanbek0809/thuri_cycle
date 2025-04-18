@@ -23,6 +23,8 @@ import 'package:thuri_cycle/application/app/locale/locale_cubit.dart' as _i1063;
 import 'package:thuri_cycle/application/auth/auth_bloc.dart' as _i390;
 import 'package:thuri_cycle/application/auth/auth_form/auth_form_cubit.dart'
     as _i250;
+import 'package:thuri_cycle/application/auth/profile_user_form/profile_user_form_cubit.dart'
+    as _i124;
 import 'package:thuri_cycle/application/community/community_articles/community_articles_cubit.dart'
     as _i790;
 import 'package:thuri_cycle/application/community/community_featured/community_featured_cubit.dart'
@@ -94,17 +96,19 @@ extension GetItInjectableX on _i174.GetIt {
       dispose: (i) => i.dispose(),
     );
     gh.lazySingleton<_i227.AppCubit>(() => _i227.AppCubit());
+    gh.lazySingleton<_i357.UserCollection>(
+        () => _i357.UserCollection(gh<_i974.FirebaseFirestore>()));
     gh.lazySingleton<_i357.ArticlesCollection>(
         () => _i357.ArticlesCollection(gh<_i974.FirebaseFirestore>()));
     gh.lazySingleton<_i357.GuidesCollection>(
         () => _i357.GuidesCollection(gh<_i974.FirebaseFirestore>()));
-    gh.lazySingleton<_i917.IAuth>(() => _i767.AuthRepository(
-          gh<_i59.FirebaseAuth>(),
-          gh<_i558.FlutterSecureStorage>(),
-          gh<_i116.GoogleSignIn>(),
-        ));
     gh.factory<_i225.SettingsFormCubit>(
         () => _i225.SettingsFormCubit(gh<_i460.SharedPreferences>()));
+    gh.lazySingleton<_i917.IAuth>(() => _i767.AuthRepository(
+          gh<_i59.FirebaseAuth>(),
+          gh<_i357.UserCollection>(),
+          gh<_i116.GoogleSignIn>(),
+        ));
     gh.lazySingleton<_i137.FirebaseStorageService>(
         () => _i137.FirebaseStorageService(gh<_i457.FirebaseStorage>()));
     gh.lazySingleton<_i575.FirestoreService>(
@@ -115,6 +119,8 @@ extension GetItInjectableX on _i174.GetIt {
         ));
     gh.factory<_i250.AuthFormCubit>(
         () => _i250.AuthFormCubit(gh<_i917.IAuth>()));
+    gh.factory<_i124.ProfileUserFormCubit>(
+        () => _i124.ProfileUserFormCubit(gh<_i917.IAuth>()));
     gh.factory<_i390.AuthBloc>(() => _i390.AuthBloc(
           gh<_i917.IAuth>(),
           gh<_i558.FlutterSecureStorage>(),

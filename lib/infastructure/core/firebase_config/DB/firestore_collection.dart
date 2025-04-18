@@ -37,19 +37,50 @@ class FirestoreCollection<T> {
     }
   }
 
+  Stream<T?> streamSingle(String? id) async* {
+    if (id == null) {
+      yield* const Stream.empty();
+    } else {
+      final streamController = StreamController<T?>();
+
+      try {
+        withConverter.doc(id).snapshots().listen(
+          (snapshot) {
+            streamController.add(snapshot.data());
+          },
+          onError: (Object e, StackTrace stackTrace) {
+            streamController
+              ..addError(e, stackTrace)
+              ..close();
+          },
+        );
+      } catch (e) {
+        streamController
+          ..addError(e)
+          ..close();
+      }
+
+      yield* streamController.stream;
+    }
+  }
+
   Future<List<T>> futureAll([String? orderBy, bool desc = false]) async {
     final docs = orderBy != null
         ? (await this.orderBy(orderBy, desc).get()).docs
-        : (await withConverter.get()).docs; 
+        : (await withConverter.get()).docs;
     // Fetches all documents:
     // •	Optionally ordered by a field (like date, descending).
-    // •	Then it maps each doc to a model, like Article, using your converter.
+    // •	Then it maps each doc to a model, like Article, using withConverter.
 
     return docs.map((doc) => doc.data()).toList();
   }
 
-  Future<List<T>> futureAllWhereEqual(String field, dynamic value,
-      [String? orderBy, bool desc = false]) async {
+  Future<List<T>> futureAllWhereEqual(
+    String field,
+    dynamic value, [
+    String? orderBy,
+    bool desc = false,
+  ]) async {
     try {
       final query = whereEqual(field, value);
 

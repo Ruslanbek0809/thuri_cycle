@@ -1,0 +1,16 @@
+part of 'profile_user_form_cubit.dart';
+
+@freezed
+class ProfileUserFormState with _$ProfileUserFormState {
+  factory ProfileUserFormState({
+    required UserModel userModel,
+    required bool isSubmitting,
+    required Option<Either<Unit, FirebaseFailure>> failureOrSuccessOption,
+  }) = _ProfileUserFormState;
+
+  factory ProfileUserFormState.initial() => ProfileUserFormState(
+        userModel: UserModel.initial(),
+        isSubmitting: false,
+        failureOrSuccessOption: none(),
+      );
+}

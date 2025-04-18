@@ -1,14 +1,14 @@
 import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart' as firebase_auth;
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:injectable/injectable.dart';
 import 'package:sign_in_with_apple/sign_in_with_apple.dart';
 import 'package:thuri_cycle/application/auth/auth_form/auth_form_cubit.dart';
 import 'package:thuri_cycle/domain/auth/auth_failure.dart';
 import 'package:thuri_cycle/domain/auth/i_auth_facade.dart';
-import 'package:thuri_cycle/presentation/core/utils/constants.dart';
+import 'package:thuri_cycle/domain/auth/user_model/user_model.dart';
+import 'package:thuri_cycle/infastructure/core/firebase_config/collections.dart';
 import 'package:thuri_cycle/presentation/core/utils/methods/aliases.dart';
 import 'package:thuri_cycle/presentation/core/utils/methods/shortcuts.dart';
 
@@ -17,92 +17,57 @@ import 'package:thuri_cycle/presentation/core/utils/methods/shortcuts.dart';
 // }
 
 //TODO: Allow read/write access to a document keyed by the user's UID
-//TODO: https://firebase.google.com/docs/auth/flutter/start#authstatechanges 
+//TODO: https://firebase.google.com/docs/auth/flutter/start#authstatechanges
 @LazySingleton(as: IAuth)
 class AuthRepository implements IAuth {
   AuthRepository(
     this._firebaseAuth,
-    this._secureStorage,
+    this._userCollection,
+    // this._secureStorage,
     this._googleSignIn,
-    // this._dioService,
-    // this.iHive,
   );
 
-  final firebase_auth.FirebaseAuth _firebaseAuth;
-  final FlutterSecureStorage _secureStorage;
+  final FirebaseAuth _firebaseAuth;
+  final UserCollection _userCollection;
+  // final FlutterSecureStorage _secureStorage;
   final GoogleSignIn _googleSignIn;
-  // final IHive iHive;
-
-  // //* CONFIGURED based on initDioClient()
-  // final Dio _dioClient;
-
-  // //* TEMPORARY SOLUTION instead of dio integrated with generation initDioClient
-  // final DioService _dioService;
-
-  //*----------------- DIO TOKEN ---------------------//
-
-  @override
-  Future<String?> getStoredAuthToken({bool forceRefresh = false}) async {
-    talker.warning(
-      '[AuthRepository] getStoredAuthToken() => forceRefresh: $forceRefresh',
-    );
-    final tokenExpireTimeString =
-        await _secureStorage.read(key: $constants.authTokenExpireTime);
-
-    //* Check if the token expiration time exists or if force refresh is requested
-    DateTime tokenExpireTimeDateTime;
-    if (tokenExpireTimeString != null) {
-      tokenExpireTimeDateTime = DateTime.parse(tokenExpireTimeString);
-    } else {
-      //* If the expiration time is not available, set it to a past date to force refresh
-      tokenExpireTimeDateTime = DateTime.fromMillisecondsSinceEpoch(0);
-    }
-
-    if (DateTime.now().isAfter(tokenExpireTimeDateTime) || forceRefresh) {
-      final firebaseCurrentUser = _firebaseAuth.currentUser;
-      if (firebaseCurrentUser != null) {
-        await _refreshAndStoreNewAuthToken(
-          firebaseCurrentUser,
-          forceRefresh: forceRefresh,
-        );
-        final storedAccessToken =
-            await _secureStorage.read(key: $constants.authTokenStorage);
-        return storedAccessToken;
-      } else {
-        return null;
-      }
-    } else {
-      final storedAccessToken =
-          await _secureStorage.read(key: $constants.authTokenStorage);
-      return storedAccessToken;
-    }
-  }
-
-  Future<void> _refreshAndStoreNewAuthToken(
-    User user, {
-    bool forceRefresh = false,
-  }) async {
-    talker.warning(
-      '[AuthRepository] _refreshAndStoreNewAuthToken() => user.uid: ${user.uid}, forceRefresh: ${forceRefresh}',
-    );
-    final newAuthToken = await user.getIdToken(forceRefresh);
-    await _secureStorage.write(
-      key: $constants.authTokenStorage,
-      value: newAuthToken,
-    );
-    talker.warning(
-      '[AuthRepository] _refreshAndStoreNewAuthToken() => newAuthToken: $newAuthToken',
-    );
-    //* Optionally store the expiration timestamp
-    final tokenExpireTimeDateTime =
-        DateTime.now().add(const Duration(hours: 1));
-    await _secureStorage.write(
-      key: $constants.authTokenExpireTime,
-      value: tokenExpireTimeDateTime.toIso8601String(),
-    );
-  }
 
   //*----------------- FIREBASE ---------------------//
+
+  @override
+  Future<Option<UserModel>> getUserModelFromFb() async {
+    final uid = _firebaseAuth.currentUser?.uid;
+    if (uid == null) return none();
+
+    final user = await _userCollection.futureSingleByID(uid);
+    return optionOf(user);
+  }
+
+  @override
+  Stream<Option<UserModel>> watchUserModelFromFb() {
+    final uid = _firebaseAuth.currentUser?.uid;
+    if (uid == null) return Stream.value(none());
+
+    return _userCollection.streamSingle(uid).map(optionOf);
+    // •	.map(optionOf)
+    // Converts each UserModel? into an Option<UserModel> from the dartz package:
+    // •	If the model is null, it becomes none().
+    // •	If it has a value, it becomes some(userModel)
+  }
+
+  // @override
+  // Future<void> updateProfile(UserModel user) async {
+  //   await _userCollection.doc(user.uid).update(user.toJson());
+  // }
+
+  // @override
+  // Future<void> createUserIfNotExists(UserModel user) async {
+  //   final docRef = _userCollection.doc(user.uid);
+  //   final doc = await docRef.get();
+  //   if (!doc.exists) {
+  //     await docRef.set(user.toJson());
+  //   }
+  // }
 
   // @override
   // Future<Option<FirebaseUser>> getSignedInUser() async =>
@@ -112,18 +77,18 @@ class AuthRepository implements IAuth {
   Future<Option<User>> getSignedInUser() async =>
       optionOf(_firebaseAuth.currentUser);
 
-  @override
-  Future<Either<AuthFailure, String?>> getSignedInUserIdToken(
-    User firebaseUser,
-  ) async {
-    try {
-      return firebaseUser.getIdToken().then(right);
-    } on firebase_auth.FirebaseAuthException catch (error) {
-      talker.error('[AuthRepository] getSignedInUser() error: $error');
-      // reportExceptionToSentry(error);
-      return left(const AuthFailure.serverError());
-    }
-  }
+  // @override
+  // Future<Either<AuthFailure, String?>> getSignedInUserIdToken(
+  //   User firebaseUser,
+  // ) async {
+  //   try {
+  //     return firebaseUser.getIdToken().then(right);
+  //   } on firebase_auth.FirebaseAuthException catch (error) {
+  //     talker.error('[AuthRepository] getSignedInUser() error: $error');
+  //     // reportExceptionToSentry(error);
+  //     return left(const AuthFailure.serverError());
+  //   }
+  // }
 
   @override
   Future<Either<AuthFailure, SignInMethod>> signInWithGoogle() async {

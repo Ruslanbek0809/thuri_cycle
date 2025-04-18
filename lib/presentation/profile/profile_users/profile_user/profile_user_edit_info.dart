@@ -51,16 +51,6 @@ class _ProfileUserEditInfoPageState extends State<ProfileUserEditInfoPage> {
   bool isBottomSheetOpen = false;
 
   @override
-  void initState() {
-    super.initState();
-    context
-        .read<ProfileUserFormCubit>()
-        .assignInitialProfileUserMainPhoneController();
-    context.read<ProfileUserFormCubit>().assignInitialProfileUserAddressState();
-    // context.read<ProfileUserFormCubit>().getGenders();
-  }
-
-  @override
   Widget build(BuildContext context) {
     final safeTopPadding = MediaQuery.of(context).padding.top;
     return BlocListener<AuthBloc, AuthState>(

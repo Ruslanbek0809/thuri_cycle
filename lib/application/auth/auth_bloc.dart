@@ -17,28 +17,15 @@ part 'auth_state.dart';
 class AuthBloc extends Bloc<AuthEvent, AuthState> {
   AuthBloc(
     this.iAuth,
-    // this.iHive,
     this._secureStorage,
-    // this._dioTokenRefresh,
   ) : super(const AuthState.initial()) {
     on<AuthCheckRequested>(authCheckRequested);
-    on<AuthExtensiveCheckRequested>(authExtensiveCheckRequested);
+    // on<AuthExtensiveCheckRequested>(authExtensiveCheckRequested);
     on<SignedOut>(signedOut);
-    // _dioTokenRefresh.fresh.authenticationStatus.listen((event) async {
-    // if (event == AuthenticationStatus.authenticated) {
-    // final idToken = await _dioTokenRefresh.fresh.token;
-    // talker.warn(
-    //   '[AuthBloc] SUCCESS AuthenticationStatus.authenticated => idToken: $idToken',
-    // );
-    // } else if (event == AuthenticationStatus.unauthenticated) {}
-    // });
   }
 
   final IAuth iAuth;
-  // final IHive iHive;
   final FlutterSecureStorage _secureStorage;
-
-  // final DioTokenRefresh _dioTokenRefresh;
 
   Future<void> authCheckRequested(
     AuthCheckRequested event,
@@ -51,35 +38,35 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     );
   }
 
-  Future<void> authExtensiveCheckRequested(
-    AuthExtensiveCheckRequested event,
-    Emitter<AuthState> emit,
-  ) async {
-    final userOption = await iAuth.getSignedInUser();
-    userOption.fold(
-      () => emit(const AuthState.unauthenticated()),
-      (firebaseUser) async {
-        final userIdTokenOption =
-            await iAuth.getSignedInUserIdToken(firebaseUser);
-        userIdTokenOption.fold(
-          (l) => emit(const AuthState.unauthenticated()),
-          (idToken) async {
-            talker.warning(
-              '[AuthBloc] SUCCESS authCheckRequested() => idToken: $idToken',
-            );
-            await _secureStorage.write(
-              key: $constants.authTokenStorage,
-              value: idToken,
-            );
-            emit(const AuthState.authenticated());
-            // await _dioTokenRefresh.fresh
-            //     .setToken(idToken)
-            //     .then((value) => emit(const AuthState.authenticated()));
-          },
-        );
-      },
-    );
-  }
+  // Future<void> authExtensiveCheckRequested(
+  //   AuthExtensiveCheckRequested event,
+  //   Emitter<AuthState> emit,
+  // ) async {
+  //   final userOption = await iAuth.getSignedInUser();
+  //   userOption.fold(
+  //     () => emit(const AuthState.unauthenticated()),
+  //     (firebaseUser) async {
+  //       final userIdTokenOption =
+  //           await iAuth.getSignedInUserIdToken(firebaseUser);
+  //       userIdTokenOption.fold(
+  //         (l) => emit(const AuthState.unauthenticated()),
+  //         (idToken) async {
+  //           talker.warning(
+  //             '[AuthBloc] SUCCESS authCheckRequested() => idToken: $idToken',
+  //           );
+  //           await _secureStorage.write(
+  //             key: $constants.authTokenStorage,
+  //             value: idToken,
+  //           );
+  //           emit(const AuthState.authenticated());
+  //           // await _dioTokenRefresh.fresh
+  //           //     .setToken(idToken)
+  //           //     .then((value) => emit(const AuthState.authenticated()));
+  //         },
+  //       );
+  //     },
+  //   );
+  // }
 
   Future<void> signedOut(
     SignedOut event,

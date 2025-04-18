@@ -8,66 +8,24 @@ part of 'user_model.dart';
 
 _$UserModelImpl _$$UserModelImplFromJson(Map<String, dynamic> json) =>
     _$UserModelImpl(
-      id: (json['id'] as num?)?.toInt(),
-      username: json['username'] as String?,
-      firstName: json['first_name'] as String?,
-      lastName: json['last_name'] as String?,
-      bio: json['bio'] as String?,
-      birthday: json['birthday'] == null
-          ? null
-          : DateTime.parse(json['birthday'] as String),
-      avatar: json['avatar'] as String?,
-      wallpaper: json['wallpaper'] as String?,
-      mobile: json['mobile'] as String?,
-      mobileIsoCode: json['mobile_iso_code'] as String?,
-      phonesVerified:
-          (json['phones'] as List<dynamic>?)?.map((e) => e as String).toList(),
+      uid: json['uid'] as String,
       email: json['email'] as String?,
-      emailHidden: json['email_hidden'] as bool?,
-      mobileHidden: json['mobile_hidden'] as bool?,
-      createdAt: json['createdAt'] == null
-          ? null
-          : DateTime.parse(json['createdAt'] as String),
-      updatedAt: json['updatedAt'] == null
-          ? null
-          : DateTime.parse(json['updatedAt'] as String),
-      dateJoined: json['date_joined'] == null
-          ? null
-          : DateTime.parse(json['date_joined'] as String),
-      location: json['location'] as String?,
-      latitude: json['latitude'] as num?,
-      longitude: json['longitude'] as num?,
-      isSelectedFromMap: json['isSelectedFromMap'] as bool?,
-      lastSeenAt: json['last_seen_at'] as String?,
+      username: json['username'] as String?,
+      name: json['name'] as String?,
+      phoneNumber: json['phoneNumber'] as String?,
+      profilePicture: json['profilePicture'] as String?,
+      isAnonymous: json['isAnonymous'] as bool? ?? true,
+      fcmToken: json['fcm_token'] as String?,
     );
 
 Map<String, dynamic> _$$UserModelImplToJson(_$UserModelImpl instance) =>
     <String, dynamic>{
-      if (instance.id case final value?) 'id': value,
-      if (instance.username case final value?) 'username': value,
-      if (instance.firstName case final value?) 'first_name': value,
-      if (instance.lastName case final value?) 'last_name': value,
-      if (instance.bio case final value?) 'bio': value,
-      if (instance.birthday?.toIso8601String() case final value?)
-        'birthday': value,
-      if (instance.avatar case final value?) 'avatar': value,
-      if (instance.wallpaper case final value?) 'wallpaper': value,
-      if (instance.mobile case final value?) 'mobile': value,
-      if (instance.mobileIsoCode case final value?) 'mobile_iso_code': value,
-      if (instance.phonesVerified case final value?) 'phones': value,
+      'uid': instance.uid,
       if (instance.email case final value?) 'email': value,
-      if (instance.emailHidden case final value?) 'email_hidden': value,
-      if (instance.mobileHidden case final value?) 'mobile_hidden': value,
-      if (instance.createdAt?.toIso8601String() case final value?)
-        'createdAt': value,
-      if (instance.updatedAt?.toIso8601String() case final value?)
-        'updatedAt': value,
-      if (instance.dateJoined?.toIso8601String() case final value?)
-        'date_joined': value,
-      if (instance.location case final value?) 'location': value,
-      if (instance.latitude case final value?) 'latitude': value,
-      if (instance.longitude case final value?) 'longitude': value,
-      if (instance.isSelectedFromMap case final value?)
-        'isSelectedFromMap': value,
-      if (instance.lastSeenAt case final value?) 'last_seen_at': value,
+      if (instance.username case final value?) 'username': value,
+      if (instance.name case final value?) 'name': value,
+      if (instance.phoneNumber case final value?) 'phoneNumber': value,
+      if (instance.profilePicture case final value?) 'profilePicture': value,
+      'isAnonymous': instance.isAnonymous,
+      if (instance.fcmToken case final value?) 'fcm_token': value,
     };
