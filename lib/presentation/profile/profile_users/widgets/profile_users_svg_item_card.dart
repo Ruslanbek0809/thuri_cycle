@@ -1,7 +1,7 @@
-import 'package:flipgoo_app/presentation/core/utils/constants.dart';
-import 'package:flipgoo_app/presentation/core/utils/methods/shortcuts.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:thuri_cycle/presentation/core/utils/constants.dart';
+import 'package:thuri_cycle/presentation/core/utils/methods/shortcuts.dart';
 
 class ProfileUsersSvgItemCard extends StatelessWidget {
   const ProfileUsersSvgItemCard({

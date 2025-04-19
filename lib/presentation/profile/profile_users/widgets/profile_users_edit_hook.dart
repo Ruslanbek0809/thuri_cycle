@@ -1,8 +1,8 @@
-import 'package:flipgoo_app/presentation/core/utils/constants.dart';
-import 'package:flipgoo_app/presentation/core/utils/methods/shortcuts.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:thuri_cycle/presentation/core/utils/constants.dart';
+import 'package:thuri_cycle/presentation/core/utils/methods/shortcuts.dart';
 
 class ProfileUsersEditHook extends HookWidget {
   const ProfileUsersEditHook({

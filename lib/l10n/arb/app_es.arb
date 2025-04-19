@@ -41,5 +41,8 @@
     "darkMode": "Modo oscuro",
     "viewProfile": "Perfil",
     "pleaseLoginOrRegisterToUse": "Acceda a su cuenta o regístrese para utilizar esta aplicación!",
+    "camera": "Cámara",
+    "gallery": "Galería",
+    "deletePhoto": "Eliminar foto",
     "comingInNextUpdate": "En la próxima actualización"
 }

@@ -9,14 +9,14 @@ part 'user_model.g.dart';
 class UserModel with _$UserModel {
   @JsonSerializable(includeIfNull: false)
   const factory UserModel({
-    required String uid,
+    required String? uid,
     // @JsonKey(includeToJson: false) UserStats? stats,
     String? email,
     String? username,
     String? name,
     String? phoneNumber,
     String? profilePicture,
-    @Default(true) bool isAnonymous,
+    @Default(true) bool? isAnonymous,
     // @Default([]) List<String> bookmarks,
     @JsonKey(name: 'fcm_token') String? fcmToken,
   }) = _UserModel;

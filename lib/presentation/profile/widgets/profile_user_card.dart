@@ -1,11 +1,10 @@
-import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:thuri_cycle/application/auth/profile_user_form/profile_user_form_cubit.dart';
 import 'package:thuri_cycle/l10n/l10n.dart';
 import 'package:thuri_cycle/presentation/core/utils/constants.dart';
 import 'package:thuri_cycle/presentation/core/utils/methods/shortcuts.dart';
 import 'package:thuri_cycle/presentation/core/widgets/custom/custom_bordered_avatar_image.dart';
-import 'package:thuri_cycle/presentation/core/widgets/custom/custom_svg_icon.dart';
 
 class ProfileUserCard extends StatefulWidget {
   const ProfileUserCard({super.key});
@@ -23,55 +22,14 @@ class _ProfileUserCardState extends State<ProfileUserCard> {
           $constants.corners.md + 6,
         ),
       ),
-      child: BlocConsumer<ProfileUserFormCubit, ProfileUserFormState>(
-        listenWhen: (previous, current) =>
-            previous.optionOfSuccessOrFailure !=
-            current.optionOfSuccessOrFailure,
-        listener: (context, state) {
-          state.optionOfSuccessOrFailure.fold(
-            () => null,
-            (a) => a.fold(
-              (alert) {
-                scaffoldMessengerKey.currentState
-                  ?..hideCurrentSnackBar()
-                  ..showSnackBar(
-                    SnackBarHelper.createError(
-                      message: alert.message,
-                    ),
-                  );
-              },
-              (r) {},
-            ),
-          );
-        },
+      child: BlocBuilder<ProfileUserFormCubit, ProfileUserFormState>(
         buildWhen: (previous, current) =>
             previous.userModel != current.userModel,
         builder: (context, state) {
           final userModel = state.userModel;
           return InkWell(
             onTap: () async {
-              //TODO: Business
-              // if (userModel.business != null) {
-              //   await context.router.push(
-              //     BusinessProfileDetailsRoute(
-              //       businessProfile: userModel,
-              //       profileFollowCubit: BlocProvider.of<ProfileFollowFormCubit>(
-              //         context,
-              //       ),
-              //       isMyUser: true,
-              //     ),
-              //   );
-              // } else {
-              // await context.router.push(
-              //   PersonalProfileDetailsRoute(
-              //     userProfile: userModel,
-              //     profileFollowCubit: BlocProvider.of<ProfileFollowFormCubit>(
-              //       context,
-              //     ),
-              //     isMyUser: true,
-              //   ),
-              // );
-              // }
+              //TODO: Do I need this?
             },
             child: Ink(
               padding: EdgeInsets.symmetric(
@@ -125,7 +83,7 @@ class _ProfileUserCardState extends State<ProfileUserCard> {
                                           left: $constants.insets.xxs,
                                         ),
                                         child: Text(
-                                          '@${userModel?.username ?? ''}',
+                                          '@${userModel.username ?? ''}',
                                           maxLines: 2,
                                           overflow: TextOverflow.ellipsis,
                                           style: getTextTheme(context)

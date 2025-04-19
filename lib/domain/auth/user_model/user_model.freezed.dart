@@ -20,14 +20,14 @@ UserModel _$UserModelFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$UserModel {
-  String get uid =>
+  String? get uid =>
       throw _privateConstructorUsedError; // @JsonKey(includeToJson: false) UserStats? stats,
   String? get email => throw _privateConstructorUsedError;
   String? get username => throw _privateConstructorUsedError;
   String? get name => throw _privateConstructorUsedError;
   String? get phoneNumber => throw _privateConstructorUsedError;
   String? get profilePicture => throw _privateConstructorUsedError;
-  bool get isAnonymous =>
+  bool? get isAnonymous =>
       throw _privateConstructorUsedError; // @Default([]) List<String> bookmarks,
   @JsonKey(name: 'fcm_token')
   String? get fcmToken => throw _privateConstructorUsedError;
@@ -48,13 +48,13 @@ abstract class $UserModelCopyWith<$Res> {
       _$UserModelCopyWithImpl<$Res, UserModel>;
   @useResult
   $Res call(
-      {String uid,
+      {String? uid,
       String? email,
       String? username,
       String? name,
       String? phoneNumber,
       String? profilePicture,
-      bool isAnonymous,
+      bool? isAnonymous,
       @JsonKey(name: 'fcm_token') String? fcmToken});
 }
 
@@ -73,20 +73,20 @@ class _$UserModelCopyWithImpl<$Res, $Val extends UserModel>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? uid = null,
+    Object? uid = freezed,
     Object? email = freezed,
     Object? username = freezed,
     Object? name = freezed,
     Object? phoneNumber = freezed,
     Object? profilePicture = freezed,
-    Object? isAnonymous = null,
+    Object? isAnonymous = freezed,
     Object? fcmToken = freezed,
   }) {
     return _then(_value.copyWith(
-      uid: null == uid
+      uid: freezed == uid
           ? _value.uid
           : uid // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       email: freezed == email
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
@@ -107,10 +107,10 @@ class _$UserModelCopyWithImpl<$Res, $Val extends UserModel>
           ? _value.profilePicture
           : profilePicture // ignore: cast_nullable_to_non_nullable
               as String?,
-      isAnonymous: null == isAnonymous
+      isAnonymous: freezed == isAnonymous
           ? _value.isAnonymous
           : isAnonymous // ignore: cast_nullable_to_non_nullable
-              as bool,
+              as bool?,
       fcmToken: freezed == fcmToken
           ? _value.fcmToken
           : fcmToken // ignore: cast_nullable_to_non_nullable
@@ -128,13 +128,13 @@ abstract class _$$UserModelImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {String uid,
+      {String? uid,
       String? email,
       String? username,
       String? name,
       String? phoneNumber,
       String? profilePicture,
-      bool isAnonymous,
+      bool? isAnonymous,
       @JsonKey(name: 'fcm_token') String? fcmToken});
 }
 
@@ -151,20 +151,20 @@ class __$$UserModelImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? uid = null,
+    Object? uid = freezed,
     Object? email = freezed,
     Object? username = freezed,
     Object? name = freezed,
     Object? phoneNumber = freezed,
     Object? profilePicture = freezed,
-    Object? isAnonymous = null,
+    Object? isAnonymous = freezed,
     Object? fcmToken = freezed,
   }) {
     return _then(_$UserModelImpl(
-      uid: null == uid
+      uid: freezed == uid
           ? _value.uid
           : uid // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       email: freezed == email
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
@@ -185,10 +185,10 @@ class __$$UserModelImplCopyWithImpl<$Res>
           ? _value.profilePicture
           : profilePicture // ignore: cast_nullable_to_non_nullable
               as String?,
-      isAnonymous: null == isAnonymous
+      isAnonymous: freezed == isAnonymous
           ? _value.isAnonymous
           : isAnonymous // ignore: cast_nullable_to_non_nullable
-              as bool,
+              as bool?,
       fcmToken: freezed == fcmToken
           ? _value.fcmToken
           : fcmToken // ignore: cast_nullable_to_non_nullable
@@ -215,7 +215,7 @@ class _$UserModelImpl implements _UserModel {
       _$$UserModelImplFromJson(json);
 
   @override
-  final String uid;
+  final String? uid;
 // @JsonKey(includeToJson: false) UserStats? stats,
   @override
   final String? email;
@@ -229,7 +229,7 @@ class _$UserModelImpl implements _UserModel {
   final String? profilePicture;
   @override
   @JsonKey()
-  final bool isAnonymous;
+  final bool? isAnonymous;
 // @Default([]) List<String> bookmarks,
   @override
   @JsonKey(name: 'fcm_token')
@@ -283,20 +283,20 @@ class _$UserModelImpl implements _UserModel {
 
 abstract class _UserModel implements UserModel {
   const factory _UserModel(
-      {required final String uid,
+      {required final String? uid,
       final String? email,
       final String? username,
       final String? name,
       final String? phoneNumber,
       final String? profilePicture,
-      final bool isAnonymous,
+      final bool? isAnonymous,
       @JsonKey(name: 'fcm_token') final String? fcmToken}) = _$UserModelImpl;
 
   factory _UserModel.fromJson(Map<String, dynamic> json) =
       _$UserModelImpl.fromJson;
 
   @override
-  String get uid; // @JsonKey(includeToJson: false) UserStats? stats,
+  String? get uid; // @JsonKey(includeToJson: false) UserStats? stats,
   @override
   String? get email;
   @override
@@ -308,7 +308,7 @@ abstract class _UserModel implements UserModel {
   @override
   String? get profilePicture;
   @override
-  bool get isAnonymous; // @Default([]) List<String> bookmarks,
+  bool? get isAnonymous; // @Default([]) List<String> bookmarks,
   @override
   @JsonKey(name: 'fcm_token')
   String? get fcmToken;

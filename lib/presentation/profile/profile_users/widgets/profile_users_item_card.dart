@@ -1,6 +1,6 @@
-import 'package:flipgoo_app/presentation/core/utils/constants.dart';
-import 'package:flipgoo_app/presentation/core/utils/methods/shortcuts.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:thuri_cycle/presentation/core/utils/constants.dart';
+import 'package:thuri_cycle/presentation/core/utils/methods/shortcuts.dart';
 
 class ProfileUsersItemCard extends StatelessWidget {
   const ProfileUsersItemCard({

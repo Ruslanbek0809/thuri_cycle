@@ -1,8 +1,7 @@
 import 'dart:io';
 
-import 'package:flipgoo_app/presentation/core/utils/constants.dart';
-import 'package:flipgoo_app/presentation/core/utils/methods/shortcuts.dart';
-import 'package:flipgoo_app/presentation/core/widgets/custom/custom_lottie_avatar.dart';
+import 'package:thuri_cycle/presentation/core/utils/constants.dart';
+import 'package:thuri_cycle/presentation/core/utils/methods/shortcuts.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 
@@ -43,18 +42,18 @@ class ProfileUsersCircleAvatarPickedFile extends StatelessWidget {
                 },
               ),
             ),
-          )
-        else
-          CustomLottieAvatar(
-            width: getTabletType() ? 208 : 104,
-            height: getTabletType() ? 208 : 104,
-            decoration: BoxDecoration(
-              shape: BoxShape.circle,
-              border: Border.all(
-                  width: 3,
-                  color: getThemeData(context).scaffoldBackgroundColor),
-            ),
           ),
+        // else
+        //   CustomLottieAvatar(
+        //     width: getTabletType() ? 208 : 104,
+        //     height: getTabletType() ? 208 : 104,
+        //     decoration: BoxDecoration(
+        //       shape: BoxShape.circle,
+        //       border: Border.all(
+        //           width: 3,
+        //           color: getThemeData(context).scaffoldBackgroundColor),
+        //     ),
+        //   ),
         Card(
           color: $constants.palette.black.withOpacity(0.5),
           shape: const CircleBorder(),

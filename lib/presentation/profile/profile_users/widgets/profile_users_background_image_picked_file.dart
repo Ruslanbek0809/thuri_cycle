@@ -1,10 +1,9 @@
 import 'dart:io';
 
-import 'package:flipgoo_app/presentation/core/utils/constants.dart';
-import 'package:flipgoo_app/presentation/core/utils/methods/shortcuts.dart';
-import 'package:flipgoo_app/presentation/core/widgets/custom/custom_image.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:thuri_cycle/presentation/core/utils/constants.dart';
+import 'package:thuri_cycle/presentation/core/utils/methods/shortcuts.dart';
 
 class ProfileUsersBackgroundImagePickedFile extends StatelessWidget {
   const ProfileUsersBackgroundImagePickedFile({
@@ -39,13 +38,13 @@ class ProfileUsersBackgroundImagePickedFile extends StatelessWidget {
                 ),
               );
             },
-          )
-        else
-          CustomImage(
-            image: getProfileBackground(context),
-            height: getSize(context).height * (getTabletType() ? 0.3 : 0.27),
-            width: getSize(context).width,
           ),
+        // else
+        //   CustomImage(
+        //     image: getProfileBackground(context),
+        //     height: getSize(context).height * (getTabletType() ? 0.3 : 0.27),
+        //     width: getSize(context).width,
+        //   ),
         Positioned(
           top: safeTopPadding + $constants.insets.sm,
           right: $constants.insets.sm,

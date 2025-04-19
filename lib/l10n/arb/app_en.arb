@@ -41,5 +41,8 @@
     "darkMode": "Dark mode",
     "viewProfile": "View profile",
     "pleaseLoginOrRegisterToUse": "Please log in to your account or register to use this applicaction!",
+    "camera": "Camera",
+    "gallery": "Gallery",
+    "deletePhoto": "Delete photo",
     "comingInNextUpdate": "Coming in the next update"
 }

@@ -1,13 +1,13 @@
 import 'dart:async';
 
-import 'package:flipgoo_app/l10n/l10n.dart';
-import 'package:flipgoo_app/presentation/auth/widgets/profile_user_info_image_picker_item_card.dart';
-import 'package:flipgoo_app/presentation/core/utils/constants.dart';
-import 'package:flipgoo_app/presentation/core/utils/methods/shortcuts.dart';
-import 'package:flipgoo_app/presentation/core/widgets/custom/custom_bar_for_bottom_sheet.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
+import 'package:thuri_cycle/l10n/l10n.dart';
+import 'package:thuri_cycle/presentation/auth/widgets/profile_user_info_image_picker_item_card.dart';
+import 'package:thuri_cycle/presentation/core/utils/constants.dart';
+import 'package:thuri_cycle/presentation/core/utils/methods/shortcuts.dart';
+import 'package:thuri_cycle/presentation/core/widgets/custom/custom_bar_for_bottom_sheet.dart';
 
 class ProfileUsersImagePickerBottomSheet extends StatefulWidget {
   const ProfileUsersImagePickerBottomSheet({
