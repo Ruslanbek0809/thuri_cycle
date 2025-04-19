@@ -33,7 +33,8 @@ if (keystorePropertiesFile.exists()) {
 
 android {
     namespace "com.roosnoff.thuricycle.thuri_cycle"
-    compileSdkVersion flutter.compileSdkVersion
+    compileSdkVersion localProperties.getProperty('flutter.compileSdkVersion').toInteger()
+    // compileSdkVersion flutter.compileSdkVersion
     ndkVersion flutter.ndkVersion
 
     compileOptions {
