@@ -6,6 +6,7 @@ import 'package:thuri_cycle/application/app/locale/locale_cubit.dart';
 import 'package:thuri_cycle/application/auth/auth_bloc.dart';
 import 'package:thuri_cycle/application/auth/profile_user_form/profile_user_form_cubit.dart';
 import 'package:thuri_cycle/application/profile/settings_form_cubit.dart';
+import 'package:thuri_cycle/application/report_waste/map_marker_form_cubit.dart';
 import 'package:thuri_cycle/infastructure/core/dependency_injection/di.dart';
 import 'package:thuri_cycle/l10n/l10n.dart';
 import 'package:thuri_cycle/presentation/core/utils/constants.dart';
@@ -36,6 +37,10 @@ class _AppState extends State<App> {
           create: (context) => getIt<ProfileUserFormCubit>(),
         ),
         BlocProvider(create: (_) => getIt<SettingsFormCubit>()),
+        //TODO: If possible try to move it just before MapPage
+        BlocProvider<MapMarkerFormCubit>(
+          create: (context) => getIt<MapMarkerFormCubit>(),
+        ),
       ],
       child: BlocListener<AuthBloc, AuthState>(
         listenWhen: (previous, current) =>

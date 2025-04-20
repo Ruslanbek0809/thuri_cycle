@@ -152,7 +152,7 @@ TextEditingController useTextEditingControllerWithInitialValue(
   return controller;
 }
 
-//TODO: Look at below and more options as well (like flutter_screenutil)
+//TODO [optimization]: Look at below and more options as well (like flutter_screenutil)
 double responsiveFontSize(BuildContext context, double baseSize) {
   const referenceWidth =
       360; //* A common denominator for various Android devices

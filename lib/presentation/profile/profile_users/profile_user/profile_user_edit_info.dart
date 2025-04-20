@@ -38,7 +38,7 @@
 // import 'package:phone_form_field/phone_form_field.dart';
 
 //TODO: Background image should be static
-//TODO: Add lottie custom avatar???
+//TODO [optimization]: Add lottie custom avatar???
 // @RoutePage()
 // class ProfileUserEditInfoPage extends StatefulWidget {
 //   const ProfileUserEditInfoPage({super.key});

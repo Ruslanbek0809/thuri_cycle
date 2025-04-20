@@ -37,25 +37,30 @@ class AppRouter extends RootStackRouter {
               // meta: const {'hideBottomNav': true},
             ),
             AutoRoute(
-              path: 'report-waste',
-              page: ReportWasteRoute.page,
+              path: 'map',
+              page: MapRoute.page,
             ),
-            AutoRoute(path: 'community', page: CommunityRoute.page),
-
-            // // RecyclingGuideRoute
+            AutoRoute(path: 'map', page: CommunityRoute.page),
             // AutoRoute(
-            //   path: 'community',
-            //   page: const EmptyShellRoute('CommunityRoute'),
-            //   children: [
-            //     AutoRoute(path: '', page: CommunityRoute.page, initial: true),
-            //     AutoRoute(path: ':article', page: ArticleRoute.page),
-            //     // AutoRoute(path: ':postId', page: PostDetailRoute.page),
-            //     AutoRoute(
-            //       path: ':recycling-guide',
-            //       page: RecyclingGuideRoute.page,
-            //     ),
-            //   ],
+            //   path: 'report-waste',
+            //   page: ReportWasteRoute.page,
             // ),
+
+            // RecyclingGuideRoute
+            AutoRoute(
+              path: 'community',
+              page: const EmptyShellRoute('CommunityRoute'),
+              children: [
+                AutoRoute(path: '', page: CommunityRoute.page, initial: true),
+                AutoRoute(path: ':article', page: ArticleRoute.page),
+                // AutoRoute(path: ':postId', page: PostDetailRoute.page),
+                AutoRoute(
+                  path: ':recycling-guide',
+                  page: RecyclingGuideRoute.page,
+                ),
+              ],
+            ),
+            // AutoRoute(path: 'community', page: CommunityRoute.page),
             // AutoRoute(
             //   path: 'recycling-guide',
             //   page: RecyclingGuideRoute.page,

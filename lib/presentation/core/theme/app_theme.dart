@@ -7,7 +7,7 @@ import 'package:thuri_cycle/presentation/core/theme/text/app_typography.dart';
 import 'package:thuri_cycle/presentation/core/utils/constants.dart';
 import 'package:thuri_cycle/presentation/core/utils/methods/shortcuts.dart';
 
-//TODO: Work on deprecated parameters
+//TODO [optimization]: Work on deprecated parameters
 Future<ThemeData> createTheme({
   required Brightness brightness,
 }) async {

@@ -44,5 +44,12 @@
     "camera": "Cámara",
     "gallery": "Galería",
     "deletePhoto": "Eliminar foto",
+    "markerTypeUnknown": "Tipo desconocido",
+    "markerTypePlastic": "Plástico",
+    "markerTypePaper": "Papel",
+    "markerTypeUndifferentiated": "Indiferenciado",
+    "markerTypeGlass": "Vidrio",
+    "markerTypeCompost": "Compost",
+    "markerTypeElectronics": "Material electrónico",
     "comingInNextUpdate": "En la próxima actualización"
 }

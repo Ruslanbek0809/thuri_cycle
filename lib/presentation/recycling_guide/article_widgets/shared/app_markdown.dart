@@ -1,7 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
-//TODO: If really needed, change to alternative one
+//TODO [optimization]: If really needed, change to alternative one
 import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:thuri_cycle/presentation/recycling_guide/article_widgets/theme/theme.dart';
 import 'package:url_launcher/url_launcher_string.dart';

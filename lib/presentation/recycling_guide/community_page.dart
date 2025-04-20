@@ -15,7 +15,7 @@ import 'package:thuri_cycle/presentation/recycling_guide/community/community_fea
 import 'package:thuri_cycle/presentation/recycling_guide/community/community_guide_section.dart';
 
 //TODO: Look for changes from old project for this page and apply any needed features from it if needed
-//TODO: Refactor everything inside the page later (plus add error widgets in bloc sections)
+//TODO [optimization]: Refactor everything inside the page later (plus add error widgets in bloc sections)
 @RoutePage()
 class CommunityPage extends StatefulWidget {
   const CommunityPage({super.key});

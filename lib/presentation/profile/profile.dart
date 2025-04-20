@@ -32,7 +32,6 @@ class _ProfilePageState extends State<ProfilePage> {
     super.initState();
 
     // fetchSettingsRelatedDataIfNotLoaded();
-    //TODO: Add app version
     context.read<SettingsFormCubit>().getAppVersion();
   }
 

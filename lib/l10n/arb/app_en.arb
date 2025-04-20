@@ -44,5 +44,12 @@
     "camera": "Camera",
     "gallery": "Gallery",
     "deletePhoto": "Delete photo",
+    "markerTypeUnknown": "Unknown type",
+    "markerTypePlastic": "Plastic",
+    "markerTypePaper": "Paper",
+    "markerTypeUndifferentiated": "Undifferentiated",
+    "markerTypeGlass": "Glass",
+    "markerTypeCompost": "Compost",
+    "markerTypeElectronics": "Electronic material",
     "comingInNextUpdate": "Coming in the next update"
 }

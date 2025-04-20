@@ -33,9 +33,12 @@ import 'package:thuri_cycle/application/community/community_guides/community_gui
     as _i243;
 import 'package:thuri_cycle/application/profile/settings_form_cubit.dart'
     as _i225;
+import 'package:thuri_cycle/application/report_waste/map_marker_form_cubit.dart'
+    as _i115;
 import 'package:thuri_cycle/domain/app/theme_model.dart' as _i836;
 import 'package:thuri_cycle/domain/auth/i_auth_facade.dart' as _i917;
 import 'package:thuri_cycle/domain/community/i_community.dart' as _i153;
+import 'package:thuri_cycle/domain/report_waste/i_report_waste.dart' as _i452;
 import 'package:thuri_cycle/infastructure/auth/auth_repository.dart' as _i767;
 import 'package:thuri_cycle/infastructure/community/community_repository.dart'
     as _i443;
@@ -53,6 +56,10 @@ import 'package:thuri_cycle/infastructure/core/firebase_config/DB/firestore_serv
     as _i575;
 import 'package:thuri_cycle/infastructure/core/firebase_config/storage/firebase_storage.dart'
     as _i137;
+import 'package:thuri_cycle/infastructure/core/local_storage/map_preferences.dart'
+    as _i1048;
+import 'package:thuri_cycle/infastructure/report_waste/report_waste_repository.dart'
+    as _i521;
 import 'package:thuri_cycle/infastructure/scroll_controller/scroll_controller_service.dart'
     as _i795;
 
@@ -96,12 +103,16 @@ extension GetItInjectableX on _i174.GetIt {
       dispose: (i) => i.dispose(),
     );
     gh.lazySingleton<_i227.AppCubit>(() => _i227.AppCubit());
+    gh.lazySingleton<_i452.IReportWaste>(
+        () => _i521.ReportWasteRepository(gh<_i974.FirebaseFirestore>()));
     gh.lazySingleton<_i357.UserCollection>(
         () => _i357.UserCollection(gh<_i974.FirebaseFirestore>()));
     gh.lazySingleton<_i357.ArticlesCollection>(
         () => _i357.ArticlesCollection(gh<_i974.FirebaseFirestore>()));
     gh.lazySingleton<_i357.GuidesCollection>(
         () => _i357.GuidesCollection(gh<_i974.FirebaseFirestore>()));
+    gh.lazySingleton<_i1048.MapPreferences>(
+        () => _i1048.MapPreferences(gh<_i460.SharedPreferences>()));
     gh.factory<_i225.SettingsFormCubit>(
         () => _i225.SettingsFormCubit(gh<_i460.SharedPreferences>()));
     gh.lazySingleton<_i917.IAuth>(() => _i767.AuthRepository(
@@ -124,6 +135,10 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i390.AuthBloc>(() => _i390.AuthBloc(
           gh<_i917.IAuth>(),
           gh<_i558.FlutterSecureStorage>(),
+        ));
+    gh.factory<_i115.MapMarkerFormCubit>(() => _i115.MapMarkerFormCubit(
+          gh<_i452.IReportWaste>(),
+          gh<_i1048.MapPreferences>(),
         ));
     gh.factory<_i790.CommunityArticlesCubit>(
         () => _i790.CommunityArticlesCubit(gh<_i153.ICommunity>()));

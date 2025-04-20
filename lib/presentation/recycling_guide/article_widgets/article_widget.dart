@@ -76,7 +76,7 @@ class ArticleWidget extends StatelessWidget {
                       ),
                     ),
                   ),
-                  // TODO: add bookmark button
+                  // TODO [optimization]: add bookmark button
                   // Positioned(
                   //   top: 10,
                   //   right: 10,
