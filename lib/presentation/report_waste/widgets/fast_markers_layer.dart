@@ -59,7 +59,9 @@ class _FastMarkersLayerState extends State<FastMarkersLayer> {
 
     var picture = pictureRecorder.endRecording();
     final imageWithoutShadow = await picture.toImage(
-        atlasImageSize * MarkerType.values.length, atlasImageSize);
+      atlasImageSize * MarkerType.values.length,
+      atlasImageSize,
+    );
 
     pictureRecorder = ui.PictureRecorder();
     canvas = Canvas(pictureRecorder)
@@ -78,7 +80,9 @@ class _FastMarkersLayerState extends State<FastMarkersLayer> {
 
     picture = pictureRecorder.endRecording();
     final imageWithShadow = await picture.toImage(
-        atlasImageSize * MarkerType.values.length, atlasImageSize);
+      atlasImageSize * MarkerType.values.length,
+      atlasImageSize,
+    );
 
     setState(() {
       atlasImage = imageWithShadow;
@@ -97,7 +101,11 @@ class _FastMarkersLayerState extends State<FastMarkersLayer> {
     return RepaintBoundary(
       child: CustomPaint(
         painter: _FastMarkerPainter(
-            atlasImage!, mapState, widget.markers, markerScale),
+          atlasImage!,
+          mapState,
+          widget.markers,
+          markerScale,
+        ),
       ),
     );
   }
@@ -105,7 +113,11 @@ class _FastMarkersLayerState extends State<FastMarkersLayer> {
 
 class _FastMarkerPainter extends CustomPainter {
   const _FastMarkerPainter(
-      this.atlasImage, this.mapState, this.markers, this.scale);
+    this.atlasImage,
+    this.mapState,
+    this.markers,
+    this.scale,
+  );
   final ui.Image atlasImage;
   final MapCamera mapState;
   final Iterable<MapMarkerModel> markers;
@@ -117,15 +129,15 @@ class _FastMarkerPainter extends CustomPainter {
       atlasImage,
       markers.map((marker) {
         final pos =
-            mapState.project(LatLng(marker.latitude, marker.longitude)) -
-                mapState.pixelOrigin.toDoublePoint();
+            mapState.projectAtZoom(LatLng(marker.latitude, marker.longitude)) -
+                mapState.pixelOrigin;
         return RSTransform.fromComponents(
           rotation: 0,
           scale: scale / atlasImageSizeDouble / 0.8,
           anchorX: atlasImageSizeDouble / 2,
           anchorY: atlasImageSizeDouble / 2,
-          translateX: pos.x,
-          translateY: pos.y,
+          translateX: pos.dx,
+          translateY: pos.dy, //TODO: Check changes here in this file 1 more time
         );
       }).toList(),
       markers.map((marker) {

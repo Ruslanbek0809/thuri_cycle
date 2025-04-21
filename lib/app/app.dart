@@ -31,13 +31,17 @@ class _AppState extends State<App> {
       providers: [
         BlocProvider(create: (_) => getIt<AppCubit>()),
         BlocProvider(create: (_) => getIt<LocaleCubit>()..initLocale()),
+        BlocProvider(
+          create: (context) =>
+              getIt<AuthBloc>()..add(const AuthEvent.authCheckRequested()),
+        ),
         BlocProvider<ProfileUserFormCubit>(
           lazy: false,
           // Since you’re watching user model from start, lazy: false is fine here.
           // If I initialize it only when user goes to profile page, then lazy: true would fit here.
           create: (context) => getIt<ProfileUserFormCubit>(),
         ),
-        BlocProvider(create: (_) => getIt<SettingsFormCubit>()),
+        BlocProvider(create: (context) => getIt<SettingsFormCubit>()),
         //TODO [optimization]: If possible try to move it just before MapPage
         BlocProvider<MapMarkerFormCubit>(
           create: (context) => getIt<MapMarkerFormCubit>(),

@@ -40,7 +40,6 @@ class AppRouter extends RootStackRouter {
               path: 'map',
               page: MapRoute.page,
             ),
-            AutoRoute(path: 'map', page: CommunityRoute.page),
             // AutoRoute(
             //   path: 'report-waste',
             //   page: ReportWasteRoute.page,

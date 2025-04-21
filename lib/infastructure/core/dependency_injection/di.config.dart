@@ -67,8 +67,6 @@ import 'package:thuri_cycle/infastructure/report_waste/report_waste_repository.d
     as _i521;
 import 'package:thuri_cycle/infastructure/scroll_controller/scroll_controller_service.dart'
     as _i795;
-import 'package:thuri_cycle/presentation/report_waste/location_provider.dart'
-    as _i386;
 
 extension GetItInjectableX on _i174.GetIt {
 // initializes the registration of main-scope dependencies inside of GetIt
@@ -110,10 +108,6 @@ extension GetItInjectableX on _i174.GetIt {
       dispose: (i) => i.dispose(),
     );
     gh.lazySingleton<_i227.AppCubit>(() => _i227.AppCubit());
-    gh.lazySingleton<_i386.LocationProvider>(
-      () => _i386.LocationProvider(),
-      dispose: (i) => i.dispose(),
-    );
     gh.lazySingleton<_i452.IReportWaste>(
         () => _i521.ReportWasteRepository(gh<_i974.FirebaseFirestore>()));
     gh.lazySingleton<_i357.UserCollection>(

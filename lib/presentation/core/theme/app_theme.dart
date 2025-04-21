@@ -200,38 +200,39 @@ Future<ThemeData> createTheme({
           ? $constants.palette.shadowDarkColor
           : $constants.palette.shadowLightColor,
     ),
-    expansionTileTheme: ExpansionTileThemeData(
-      backgroundColor: brightness == Brightness.dark
-          ? $constants.theme.defaultDarkBackgroundColor
-          : $constants.theme.defaultLightBackgroundColor,
-      collapsedBackgroundColor: brightness == Brightness.dark
-          ? $constants.theme.defaultDarkBackgroundColor
-          : $constants.theme.defaultLightBackgroundColor,
-      iconColor: brightness == Brightness.dark
-          ? $constants.palette.strokeDarkColor
-          : $constants.palette.strokeLightColor,
-      collapsedIconColor: brightness == Brightness.dark
-          ? $constants.palette.strokeDarkColor
-          : $constants.palette.strokeLightColor,
-      shape: UnderlineInputBorder(
-        borderRadius: BorderRadius.zero,
-        borderSide: BorderSide(
-          width: 0.5,
-          color: brightness == Brightness.dark
-              ? $constants.palette.strokeDarkColor
-              : $constants.palette.strokeLightColor,
-        ),
-      ),
-      collapsedShape: UnderlineInputBorder(
-        borderRadius: BorderRadius.zero,
-        borderSide: BorderSide(
-          width: 0.5,
-          color: brightness == Brightness.dark
-              ? $constants.palette.strokeDarkColor
-              : $constants.palette.strokeLightColor,
-        ),
-      ),
-    ),
+    // expansionTileTheme: ExpansionTileThemeData(
+    //   backgroundColor: brightness == Brightness.dark
+    //       ? $constants.theme.defaultDarkBackgroundColor
+    //       : $constants.theme.defaultLightBackgroundColor,
+    //   collapsedBackgroundColor: brightness == Brightness.dark
+    //       ? $constants.theme.defaultDarkBackgroundColor
+    //       : $constants.theme.defaultLightBackgroundColor,
+    //   iconColor: brightness == Brightness.dark
+    //       ? $constants.palette.strokeDarkColor
+    //       : $constants.palette.strokeLightColor,
+    //   collapsedIconColor: brightness == Brightness.dark
+    //       ? $constants.palette.strokeDarkColor
+    //       : $constants.palette.strokeLightColor,
+    //   shape: UnderlineInputBorder(
+    //     borderRadius: BorderRadius.zero,
+    //     borderSide: BorderSide(
+    //       width: 0.5,
+    //       color: brightness == Brightness.dark
+    //           ? $constants.palette.strokeDarkColor
+    //           : $constants.palette.strokeLightColor,
+    //     ),
+    //   ),
+    //   //TODO [optimization] Go deeper into this issue
+    //   collapsedShape: const RoundedRectangleBorder(
+    //       // borderRadius: BorderRadius.zero,
+    //       // borderSide: BorderSide(
+    //       //   width: 0.5,
+    //       //   color: brightness == Brightness.dark
+    //       //       ? $constants.palette.strokeDarkColor
+    //       //       : $constants.palette.strokeLightColor,
+    //       // ),
+    //       ),
+    // ),
     listTileTheme: ListTileThemeData(
       tileColor: brightness == Brightness.dark
           ? $constants.theme.defaultDarkBackgroundColor

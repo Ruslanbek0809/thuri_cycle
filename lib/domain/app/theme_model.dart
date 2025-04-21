@@ -16,9 +16,10 @@ class ThemeModel with _$ThemeModel {
     required ThemeData dark,
   }) = _ThemeModel;
 
+  //TODO: Change it back to system
   factory ThemeModel.initial() => ThemeModel(
-        // mode: ThemeMode.light,
-        mode: ThemeMode.system,
+        mode: ThemeMode.light,
+        // mode: ThemeMode.system,
         light: ThemeData.light(),
         dark: ThemeData.dark(),
       );

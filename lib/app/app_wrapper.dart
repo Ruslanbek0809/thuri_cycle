@@ -64,7 +64,7 @@ class _AppWrapperState extends State<AppWrapper> with WidgetsBindingObserver {
       routes: const [
         HomeRoute(),
         ScanWasteRoute(),
-        ReportWasteRoute(),
+        MapRoute(),
         CommunityRoute(),
         ProfileRoute(),
       ],
@@ -100,7 +100,7 @@ class _AppWrapperState extends State<AppWrapper> with WidgetsBindingObserver {
             elevation: 16,
             indicatorColor: Colors.transparent,
             onDestinationSelected: (index) async {
-              if (index == 2) {
+              if (index == 1) {
                 if (authBlocState == const AuthState.unauthenticated()) {
                   if (context.mounted) {
                     await DialogHelper.showCustomAlertDialog(
