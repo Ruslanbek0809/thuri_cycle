@@ -51,5 +51,10 @@
     "markerTypeGlass": "Glass",
     "markerTypeCompost": "Compost",
     "markerTypeElectronics": "Electronic material",
+    "settings": "Settings",
+    "filterMarkers": "Filter markers",
+    "refresh": "Refresh",
+    "ok": "OK",
+    "includeResolved": "Include resolved",
     "comingInNextUpdate": "Coming in the next update"
 }

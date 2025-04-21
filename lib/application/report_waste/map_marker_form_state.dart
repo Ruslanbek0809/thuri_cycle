@@ -4,7 +4,7 @@ part of 'map_marker_form_cubit.dart';
 class MapMarkerFormState with _$MapMarkerFormState {
   factory MapMarkerFormState({
     required LatLng initialLatLng,
-    required num initialZoom,
+    required double initialZoom,
     required LatLng? lastMapCenter,
     required bool isLoading,
     required bool includeResolved,

@@ -17,7 +17,7 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$MapMarkerFormState {
   LatLng get initialLatLng => throw _privateConstructorUsedError;
-  num get initialZoom => throw _privateConstructorUsedError;
+  double get initialZoom => throw _privateConstructorUsedError;
   LatLng? get lastMapCenter => throw _privateConstructorUsedError;
   bool get isLoading => throw _privateConstructorUsedError;
   bool get includeResolved => throw _privateConstructorUsedError;
@@ -40,7 +40,7 @@ abstract class $MapMarkerFormStateCopyWith<$Res> {
   @useResult
   $Res call(
       {LatLng initialLatLng,
-      num initialZoom,
+      double initialZoom,
       LatLng? lastMapCenter,
       bool isLoading,
       bool includeResolved,
@@ -81,7 +81,7 @@ class _$MapMarkerFormStateCopyWithImpl<$Res, $Val extends MapMarkerFormState>
       initialZoom: null == initialZoom
           ? _value.initialZoom
           : initialZoom // ignore: cast_nullable_to_non_nullable
-              as num,
+              as double,
       lastMapCenter: freezed == lastMapCenter
           ? _value.lastMapCenter
           : lastMapCenter // ignore: cast_nullable_to_non_nullable
@@ -120,7 +120,7 @@ abstract class _$$MapMarkerFormStateImplCopyWith<$Res>
   @useResult
   $Res call(
       {LatLng initialLatLng,
-      num initialZoom,
+      double initialZoom,
       LatLng? lastMapCenter,
       bool isLoading,
       bool includeResolved,
@@ -159,7 +159,7 @@ class __$$MapMarkerFormStateImplCopyWithImpl<$Res>
       initialZoom: null == initialZoom
           ? _value.initialZoom
           : initialZoom // ignore: cast_nullable_to_non_nullable
-              as num,
+              as double,
       lastMapCenter: freezed == lastMapCenter
           ? _value.lastMapCenter
           : lastMapCenter // ignore: cast_nullable_to_non_nullable
@@ -206,7 +206,7 @@ class _$MapMarkerFormStateImpl implements _MapMarkerFormState {
   @override
   final LatLng initialLatLng;
   @override
-  final num initialZoom;
+  final double initialZoom;
   @override
   final LatLng? lastMapCenter;
   @override
@@ -285,7 +285,7 @@ class _$MapMarkerFormStateImpl implements _MapMarkerFormState {
 abstract class _MapMarkerFormState implements MapMarkerFormState {
   factory _MapMarkerFormState(
       {required final LatLng initialLatLng,
-      required final num initialZoom,
+      required final double initialZoom,
       required final LatLng? lastMapCenter,
       required final bool isLoading,
       required final bool includeResolved,
@@ -296,7 +296,7 @@ abstract class _MapMarkerFormState implements MapMarkerFormState {
   @override
   LatLng get initialLatLng;
   @override
-  num get initialZoom;
+  double get initialZoom;
   @override
   LatLng? get lastMapCenter;
   @override

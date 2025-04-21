@@ -7,9 +7,11 @@ import 'package:flutter_map/flutter_map.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:latlong2/latlong.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:thuri_cycle/application/report_waste/location/location_cubit.dart';
 import 'package:thuri_cycle/application/report_waste/map_marker_form_cubit.dart';
 import 'package:thuri_cycle/infastructure/core/dependency_injection/di.dart';
 import 'package:thuri_cycle/presentation/core/utils/constants.dart';
+import 'package:thuri_cycle/presentation/report_waste/widgets/fast_markers_layer.dart';
 
 //TODO: Look for changes from old project for this page and apply any needed features from it if needed
 @RoutePage()
@@ -24,7 +26,6 @@ class MapPage extends StatefulWidget {
 // const double defaultInitialZoom = 16;
 
 class _MapPageState extends State<MapPage> with WidgetsBindingObserver {
-  // late final MapMarkerProvider mapMarkerProvider;
   final MapController mapController = MapController();
 
   @override
@@ -32,6 +33,7 @@ class _MapPageState extends State<MapPage> with WidgetsBindingObserver {
     super.initState();
     WidgetsBinding.instance.addObserver(this);
 
+    context.read<LocationCubit>().initialize();
     context.read<MapMarkerFormCubit>()
       ..initialize()
       ..connectToMapStream(mapController.mapEventStream);
@@ -104,7 +106,9 @@ class _MapPageState extends State<MapPage> with WidgetsBindingObserver {
               // OSM supports at most the zoom value 19
               maxZoom: 18.45,
               onTap: (tapPosition, tapLatLng) {
-                final minMarker = mapMarkerProvider.getClosestMarker(tapLatLng);
+                final minMarker = context
+                    .read<MapMarkerFormCubit>()
+                    .getClosestMarker(tapLatLng);
                 if (minMarker == null) {
                   return;
                 }
@@ -136,7 +140,9 @@ class _MapPageState extends State<MapPage> with WidgetsBindingObserver {
                     )
                     .toList(),
               ),
-              FastMarkersLayer(mapMarkerProvider.getVisibleMarkers()),
+              FastMarkersLayer(
+                context.read<MapMarkerFormCubit>().visibleMarkers,
+              ),
               const Align(
                 alignment: Alignment.bottomLeft,
                 child: Text(
@@ -190,8 +196,10 @@ class _MapPageState extends State<MapPage> with WidgetsBindingObserver {
       arguments: MarkerPageArgs(m, errorAddingImages),
     ).then((value) {
       if (value is MapMarker) {
-        // the marker may have been resolved, or its data might have changed, so update it
-        setState(() => mapMarkerProvider.addOrReplace(value));
+        // The marker may have been resolved, or its data might have changed, so update it
+        setState(
+          () => context.read<MapMarkerFormCubit>().addOrReplaceMarker(value),
+        );
       }
     });
   }
@@ -199,7 +207,11 @@ class _MapPageState extends State<MapPage> with WidgetsBindingObserver {
   void openReportPage() {
     Navigator.pushNamed(context, ReportPage.routeName).then((value) {
       if (value is ReportedResult) {
-        setState(() => mapMarkerProvider.addOrReplace(value.newMapMarker));
+        setState(
+          () => context
+              .read<MapMarkerFormCubit>()
+              .addOrReplaceMarker(value.newMapMarker),
+        );
         openMarkerPage(value.newMapMarker, value.errorAddingImages);
       }
     });

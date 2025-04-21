@@ -51,5 +51,10 @@
     "markerTypeGlass": "Vidrio",
     "markerTypeCompost": "Compost",
     "markerTypeElectronics": "Material electrónico",
+    "settings": "Configuración",
+    "filterMarkers": "Filtrar marcadores",
+    "refresh": "Actualizar",
+    "ok": "Aceptar",
+    "includeResolved": "Incluir resuelto",
     "comingInNextUpdate": "En la próxima actualización"
 }
