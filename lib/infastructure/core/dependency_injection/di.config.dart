@@ -31,6 +31,8 @@ import 'package:thuri_cycle/application/community/community_featured/community_f
     as _i884;
 import 'package:thuri_cycle/application/community/community_guides/community_guides_cubit.dart'
     as _i243;
+import 'package:thuri_cycle/application/community/community_single_guide/community_single_guide_cubit.dart'
+    as _i749;
 import 'package:thuri_cycle/application/profile/settings_form_cubit.dart'
     as _i225;
 import 'package:thuri_cycle/application/report_waste/location/location_cubit.dart'
@@ -133,6 +135,7 @@ extension GetItInjectableX on _i174.GetIt {
     gh.lazySingleton<_i153.ICommunity>(() => _i443.CommunityRepository(
           gh<_i137.FirebaseStorageService>(),
           gh<_i357.ArticlesCollection>(),
+          gh<_i357.GuidesCollection>(),
         ));
     gh.factory<_i250.AuthFormCubit>(
         () => _i250.AuthFormCubit(gh<_i917.IAuth>()));
@@ -154,6 +157,8 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i243.CommunityGuidesCubit(gh<_i153.ICommunity>()));
     gh.factory<_i884.CommunityFeaturedCubit>(
         () => _i884.CommunityFeaturedCubit(gh<_i153.ICommunity>()));
+    gh.factory<_i749.CommunitySingleGuideCubit>(
+        () => _i749.CommunitySingleGuideCubit(gh<_i153.ICommunity>()));
     return this;
   }
 }

@@ -6,6 +6,7 @@ import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:thuri_cycle/application/community/community_articles/community_articles_cubit.dart';
 import 'package:thuri_cycle/application/community/community_featured/community_featured_cubit.dart';
 import 'package:thuri_cycle/application/community/community_guides/community_guides_cubit.dart';
+import 'package:thuri_cycle/application/community/community_single_guide/community_single_guide_cubit.dart';
 import 'package:thuri_cycle/infastructure/core/dependency_injection/di.dart';
 import 'package:thuri_cycle/presentation/recycling_guide/article_widgets/app_icon_button.dart';
 import 'package:thuri_cycle/presentation/recycling_guide/article_widgets/theme/src/app_colors.dart';
@@ -38,6 +39,10 @@ class _CommunityPageState extends State<CommunityPage> {
         BlocProvider(
           create: (_) => getIt<CommunityGuidesCubit>()..getGuides(),
         ),
+        //TODO: Handle single guide
+        BlocProvider(
+          create: (_) => getIt<CommunitySingleGuideCubit>(),
+        ),
       ],
       child: Scaffold(
         extendBodyBehindAppBar: true,
@@ -58,6 +63,18 @@ class _CommunityPageState extends State<CommunityPage> {
               edgeOffset: MediaQuery.of(context).viewPadding.top + 60,
               onRefresh: () async {
                 await HapticFeedback.lightImpact();
+                if (context.mounted) {
+                  await context
+                      .read<CommunityFeaturedCubit>()
+                      .getFeaturedArticle();
+                }
+                if (context.mounted) {
+                  await context.read<CommunityArticlesCubit>().getAllArticles();
+                }
+
+                if (context.mounted) {
+                  await context.read<CommunityGuidesCubit>().getGuides();
+                }
               },
               // onRefresh: () async {
               //   HapticFeedback.lightImpact();

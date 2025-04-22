@@ -21,10 +21,12 @@ Future<Either<FirebaseFailure, T>> firebaseFailureHandler<T>(
       case 'unavailable':
         return left(const FirebaseFailure.networkError());
       default:
+        // talker.handle('FirebaseException FirebaseFailure.custom: $e');
         return left(FirebaseFailure.custom(e.message ?? 'Unexpected error'));
     }
   } catch (e, _) {
     // reportException(e);
+    // talker.handle('FirebaseFailure.unexpected: $e', stackTrace);
 
     return left(const FirebaseFailure.unexpected());
   }

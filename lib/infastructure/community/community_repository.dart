@@ -6,6 +6,7 @@ import 'package:thuri_cycle/infastructure/core/firebase_config/collections.dart'
 import 'package:thuri_cycle/infastructure/core/firebase_config/firebase_failure_handler.dart';
 import 'package:thuri_cycle/infastructure/core/firebase_config/storage/firebase_storage.dart';
 import 'package:thuri_cycle/presentation/recycling_guide/article_widgets/article/article.dart';
+import 'package:thuri_cycle/presentation/recycling_guide/community/guide_widgets/guide/guide.dart';
 
 @LazySingleton(as: ICommunity)
 class CommunityRepository implements ICommunity {
@@ -13,17 +14,19 @@ class CommunityRepository implements ICommunity {
     // this._firebaseFirestore,
     this._firebaseStorageService,
     this._articlesCollection,
+    this._guidesCollection,
   );
 
   // final FirebaseFirestore _firebaseFirestore;
   final FirebaseStorageService _firebaseStorageService;
   final ArticlesCollection _articlesCollection;
+  final GuidesCollection _guidesCollection;
 
-// await db.collection("users").get().then((event) {
-//   for (var doc in event.docs) {
-//     print("${doc.id} => ${doc.data()}");
-//   }
-// });
+  // await db.collection("users").get().then((event) {
+  //   for (var doc in event.docs) {
+  //     print("${doc.id} => ${doc.data()}");
+  //   }
+  // });
 
   @override
   Future<Either<FirebaseFailure, List<Article>>> getArticles() {
@@ -42,23 +45,6 @@ class CommunityRepository implements ICommunity {
     });
   }
 
-  // @override
-  // Future<List<Article>> getArticles() async {
-  //   try {
-  //     final articles = await _articlesCollection.futureAll('date', true);
-
-  //     return Future.wait(
-  //       articles.map(
-  //         (article) => _firebaseStorageService
-  //             .getImageUrl(article.imageUrl)
-  //             .then((url) => article = article.copyWith(imageUrl: url)),
-  //       ),
-  //     );
-  //   } catch (e) {
-  //     // throw ApiError(message: 'Error fetching articles');
-  //   }
-  // }
-
   @override
   Future<Either<FirebaseFailure, Article?>> getFeaturedArticle() async {
     return firebaseFailureHandler(() async {
@@ -76,48 +62,38 @@ class CommunityRepository implements ICommunity {
     });
   }
 
-  // @override
-  // Future<Article?> getFeaturedArticle() async {
-  //   try {
-  //     final article = await articlesCollection.futureSingleWhereEqual('featured', true);
-  //     if (article == null) {
-  //       return null;
-  //     }
+  @override
+  Future<Either<FirebaseFailure, List<Guide>>> getGuides() async {
+    return firebaseFailureHandler(() async {
+      final guides = await _guidesCollection.futureAll();
 
-  //     final imageUrl = await storage.getImageUrl(article.imageUrl);
-  //     return article.copyWith(imageUrl: imageUrl);
-  //   } catch (err) {
-  //     throw ApiError(message: 'Error fetching featured article');
-  //   }
-  // }
+      final updatedGuides = await Future.wait(
+        guides.map((guide) async {
+          final imageUrl =
+              await _firebaseStorageService.getImageUrl(guide.imageUrl);
+          final iconUrl =
+              await _firebaseStorageService.getImageUrl(guide.iconUrl);
+          return guide.copyWith(imageUrl: imageUrl, iconUrl: iconUrl);
+        }),
+      );
 
-  // @override
-  // Stream<List<MealModel>> getAllMeals() {
-  //   return _firebaseFirestore.collection('meals').snapshots().map((snapshot) {
-  //     return snapshot.docs.map((doc) {
-  //       return MealModel.fromSnapShot(doc);
-  //     }).toList();
-  //   });
-  // }
-  // @override
-  // Stream<List<MealModel>> getMealsByCategory(String categoryId) {
-  //   return _firebaseFirestore
-  //       .collection('meals')
-  //       .where('categoryid', isEqualTo: categoryId)
-  //       .snapshots()
-  //       .map((snapshot) {
-  //     return snapshot.docs.map((doc) {
-  //       return MealModel.fromSnapShot(doc);
-  //     }).toList();
-  //   });
-  // }
+      return updatedGuides;
+    });
+  }
 
-  // @override
-  // Stream<NibblesInfo> getAboutInfo() {
-  //   return _firebaseFirestore
-  //       .collection('info')
-  //       .doc("about")
-  //       .snapshots()
-  //       .map((snap) => NibblesInfo.fromSnapshot(snap));
-  // }
+  @override
+  Future<Either<FirebaseFailure, Guide?>> getSingleGuide(String id) async {
+    return firebaseFailureHandler(() async {
+      final guide = await _guidesCollection.futureSingleByID(id);
+
+      if (guide == null) {
+        return null;
+      }
+
+      final imageUrl =
+          await _firebaseStorageService.getImageUrl(guide.imageUrl);
+
+      return guide.copyWith(imageUrl: imageUrl);
+    });
+  }
 }

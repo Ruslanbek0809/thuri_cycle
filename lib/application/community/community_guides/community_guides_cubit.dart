@@ -18,13 +18,13 @@ class CommunityGuidesCubit extends Cubit<CommunityGuidesState> {
   Future<void> getGuides() async {
     emit(const CommunityGuidesState.loading());
 
-    // final response = await iCommunity.getGuides();
+    final response = await iCommunity.getGuides();
 
-    // emit(
-    //   response.fold(
-    //     (failure) => CommunityArticlesState.failed(failure: failure),
-    //     (guides) => CommunityArticlesState.success(guides: guides),
-    //   ),
-    // );
+    emit(
+      response.fold(
+        (failure) => CommunityGuidesState.failed(failure: failure),
+        (guides) => CommunityGuidesState.success(guides: guides),
+      ),
+    );
   }
 }
