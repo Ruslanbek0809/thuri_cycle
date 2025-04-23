@@ -18,7 +18,8 @@
 // import 'package:insigno_frontend/util/error_messages.dart';
 // import 'package:material_symbols_icons/symbols.dart';
 
-// class BottomControlsWidget extends StatefulWidget with GetItStatefulWidgetMixin {
+// class BottomControlsWidget extends StatefulWidget
+//     with GetItStatefulWidgetMixin {
 //   final VoidCallback onAddWidgetPressed;
 
 //   BottomControlsWidget(this.onAddWidgetPressed, {super.key});
@@ -28,7 +29,9 @@
 // }
 
 // class _BottomControlsWidgetState extends State<BottomControlsWidget>
-//     with GetItStateMixin<BottomControlsWidget>, TickerProviderStateMixin<BottomControlsWidget> {
+//     with
+//         GetItStateMixin<BottomControlsWidget>,
+//         TickerProviderStateMixin<BottomControlsWidget> {
 //   ErrorMessage? errorMessage;
 //   bool isVersionCompatible = true;
 //   VerifyTime verifyTime = VerifyTime.notAcceptedYet(false);
@@ -44,7 +47,9 @@
 //     get<Backend>().isCompatible().then((value) {
 //       isVersionCompatible = value;
 //       _updateErrorMessage();
-//     }, onError: (e) => debugPrint("Could not check whether this version is compatible: $e"));
+//     },
+//         onError: (e) => debugPrint(
+//             'Could not check whether this version is compatible: $e'));
 
 //     // show errors about the location being loaded only after 2 seconds since the app is started
 //     // to avoid useless appearing and disappearing popups
@@ -55,8 +60,12 @@
 //     _updateErrorMessage();
 //     _updateVerifyMessage(get<VerifyTimeProvider>().getVerifyTime());
 
-//     get<LocationProvider>().getLocationStream().forEach((_) => _updateErrorMessage());
-//     get<Authentication>().getIsLoggedInStream().forEach((_) => _updateErrorMessage());
+//     get<LocationProvider>()
+//         .getLocationStream()
+//         .forEach((_) => _updateErrorMessage());
+//     get<Authentication>()
+//         .getIsLoggedInStream()
+//         .forEach((_) => _updateErrorMessage());
 //     get<VerifyTimeProvider>()
 //         .getVerifyTimeStream()
 //         .forEach((newVerifyTime) => _updateVerifyMessage(newVerifyTime));
@@ -74,7 +83,8 @@
 //     final mediaQuery = MediaQuery.of(context);
 
 //     final isLoggedIn = watchStream(
-//             (Authentication authentication) => authentication.getIsLoggedInStream(),
+//             (Authentication authentication) =>
+//                 authentication.getIsLoggedInStream(),
 //             get<Authentication>().isLoggedIn())
 //         .data;
 
@@ -88,11 +98,14 @@
 //         crossAxisAlignment: CrossAxisAlignment.end,
 //         children: [
 //           FloatingActionButton(
-//             heroTag: "user",
+//             heroTag: 'user',
 //             onPressed: isLoggedIn == null
 //                 ? null
 //                 : () => Navigator.pushNamed(
-//                     context, isLoggedIn == true ? ProfilePage.routeName : LoginFlowPage.routeName),
+//                     context,
+//                     isLoggedIn == true
+//                         ? ProfilePage.routeName
+//                         : LoginFlowPage.routeName),
 //             tooltip: isLoggedIn == true ? l10n.user : l10n.login,
 //             child: isLoggedIn == true
 //                 ? const Icon(Symbols.person_check)
@@ -105,14 +118,14 @@
 //                 physics: const NeverScrollableScrollPhysics(),
 //                 key: _listKey,
 //                 shrinkWrap: true,
-//                 initialItemCount:
-//                     (errorMessage != null ? 1 : 0) + (verifyTime.shouldShowMessage() ? 1 : 0),
+//                 initialItemCount: (errorMessage != null ? 1 : 0) +
+//                     (verifyTime.shouldShowMessage() ? 1 : 0),
 //                 itemBuilder: _buildMessage,
 //               ),
 //             ),
 //           ),
 //           FloatingActionButton(
-//             heroTag: "addMarker",
+//             heroTag: 'addMarker',
 //             onPressed: errorMessage == null ? widget.onAddWidgetPressed : null,
 //             tooltip: l10n.report,
 //             backgroundColor: errorMessage == null //
@@ -138,7 +151,8 @@
 //         get<LocationProvider>().lastLocationInfo(),
 //       );
 
-//       if (appOpenedTimer.isActive && newErrorMessage == ErrorMessage.locationIsLoading) {
+//       if (appOpenedTimer.isActive &&
+//           newErrorMessage == ErrorMessage.locationIsLoading) {
 //         // do not show "Location is loading" for the first two seconds, since it might load faster
 //         newErrorMessage = null;
 //       }
@@ -151,8 +165,10 @@
 //         _listKey.currentState!.insertItem(0);
 //       }
 //       if (prevErrorMessage != null) {
-//         _listKey.currentState!.removeItem(newErrorMessage == null ? 0 : 1,
-//             (context, animation) => _buildErrorMessage(context, animation, prevErrorMessage));
+//         _listKey.currentState!.removeItem(
+//             newErrorMessage == null ? 0 : 1,
+//             (context, animation) =>
+//                 _buildErrorMessage(context, animation, prevErrorMessage));
 //       }
 //     }
 //     setState(() {
@@ -163,12 +179,15 @@
 //   void _updateVerifyMessage(VerifyTime newVerifyTime) async {
 //     var oldVerifyTime = verifyTime;
 //     if (_listKey.currentState != null &&
-//         oldVerifyTime.shouldShowMessage() != newVerifyTime.shouldShowMessage()) {
+//         oldVerifyTime.shouldShowMessage() !=
+//             newVerifyTime.shouldShowMessage()) {
 //       if (newVerifyTime.shouldShowMessage()) {
 //         _listKey.currentState!.insertItem(errorMessage == null ? 0 : 1);
 //       } else {
-//         _listKey.currentState!.removeItem(errorMessage == null ? 0 : 1,
-//             (context, animation) => _buildVerifyMessage(context, animation, oldVerifyTime));
+//         _listKey.currentState!.removeItem(
+//             errorMessage == null ? 0 : 1,
+//             (context, animation) =>
+//                 _buildVerifyMessage(context, animation, oldVerifyTime));
 //       }
 //     }
 //     setState(() {
@@ -176,7 +195,8 @@
 //     });
 //   }
 
-//   Widget _buildMessage(BuildContext context, int index, Animation<double> animation) {
+//   Widget _buildMessage(
+//       BuildContext context, int index, Animation<double> animation) {
 //     if (errorMessage != null && index == 0) {
 //       return _buildErrorMessage(context, animation, errorMessage!);
 //     } else if (verifyTime.shouldShowMessage()) {
@@ -207,8 +227,8 @@
 //     );
 //   }
 
-//   Widget _buildVerifyMessage(
-//       BuildContext context, Animation<double> animation, VerifyTime verifyTime) {
+//   Widget _buildVerifyMessage(BuildContext context, Animation<double> animation,
+//       VerifyTime verifyTime) {
 //     return VerifyMessageBox(animation, verifyTime, () {
 //       if (verifyTime.dateTime != null) {
 //         Navigator.pushNamed(context, ImageVerificationPage.routeName);
@@ -220,7 +240,8 @@
 //               if (accepted) {
 //                 Navigator.pushNamed(context, ImageVerificationPage.routeName);
 //               } else {
-//                 get<VerifyTimeProvider>().onAcceptedToReviewSettingChanged(false);
+//                 get<VerifyTimeProvider>()
+//                     .onAcceptedToReviewSettingChanged(false);
 //               }
 //             });
 //           }

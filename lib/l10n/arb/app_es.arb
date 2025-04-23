@@ -56,5 +56,7 @@
     "refresh": "Actualizar",
     "ok": "Aceptar",
     "includeResolved": "Incluir resuelto",
+    "scoreboard": "Marcador",
+    "goToPosition": "Ve a tu posición",
     "comingInNextUpdate": "En la próxima actualización"
 }

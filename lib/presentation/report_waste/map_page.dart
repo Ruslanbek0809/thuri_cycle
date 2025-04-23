@@ -9,7 +9,9 @@ import 'package:latlong2/latlong.dart';
 import 'package:thuri_cycle/application/report_waste/location/location_cubit.dart';
 import 'package:thuri_cycle/application/report_waste/map_marker_form_cubit.dart';
 import 'package:thuri_cycle/domain/report_waste/map_marker.dart';
+import 'package:thuri_cycle/presentation/core/utils/constants.dart';
 import 'package:thuri_cycle/presentation/report_waste/widgets/fast_markers_layer.dart';
+import 'package:thuri_cycle/presentation/report_waste/widgets/map_controls_widget.dart';
 import 'package:thuri_cycle/presentation/report_waste/widgets/settings_controls_widget.dart';
 
 //TODO: Look for changes from old project for this page and apply any needed features from it if needed
@@ -124,6 +126,7 @@ class _MapPageState extends State<MapPage> with WidgetsBindingObserver {
                 urlTemplate: 'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
               ),
               //TODO: Add more features of LocationProvider
+              // TODO: Check
               BlocBuilder<LocationCubit, LocationState>(
                 buildWhen: (previous, current) => previous != current,
                 builder: (context, state) {
@@ -146,9 +149,11 @@ class _MapPageState extends State<MapPage> with WidgetsBindingObserver {
                   );
                 },
               ),
+              // TODO: Check
               FastMarkersLayer(
                 context.read<MapMarkerFormCubit>().visibleMarkers,
               ),
+              // Recognition text
               const Align(
                 alignment: Alignment.bottomLeft,
                 child: Text(
@@ -163,10 +168,30 @@ class _MapPageState extends State<MapPage> with WidgetsBindingObserver {
                   ), // theme-independent grey
                 ),
               ),
-              // Align(
-              //   alignment: Alignment.topRight,
-              //   child: MapControlsWidget(mapController),
-              // ),
+              // Map controls //TODO: Check
+              //TODO [optimization]: Add ScoreboardPage later on
+              BlocBuilder<LocationCubit, LocationState>(
+                builder: (context, state) {
+                  final position = state.maybeWhen(
+                    success: (pos) => pos,
+                    orElse: () => null,
+                  );
+
+                  return Align(
+                    alignment: Alignment.topRight,
+                    child: MapControlsWidget(
+                      onTap: () {
+                        if (position != null) {
+                          mapController.move(
+                            LatLng(position.latitude, position.longitude),
+                            $constants.defaultInitialZoom,
+                          );
+                        }
+                      },
+                    ),
+                  );
+                },
+              ),
               Align(
                 alignment: Alignment.topLeft,
                 child: SettingsControlsWidget(
@@ -181,6 +206,7 @@ class _MapPageState extends State<MapPage> with WidgetsBindingObserver {
               //   alignment: Alignment.bottomCenter,
               //   child: BottomControlsWidget(openReportPage),
               // ),
+              // Random quotes or motivational sentences in the middle
               // Align(
               //   alignment: Alignment.topCenter,
               //   child: PillWidget(),

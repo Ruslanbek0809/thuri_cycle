@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:latlong2/latlong.dart';
 import 'package:thuri_cycle/l10n/l10n.dart';
 import 'package:thuri_cycle/presentation/core/utils/methods/shortcuts.dart';
 
@@ -68,6 +69,9 @@ class Constants {
   final connectionTimeout = 30000;
   final longerReceiveTimeout = 300000;
   final longerConnectionTimeout = 300000;
+
+  final defaultInitialCoordinates = const LatLng(50.6844, 10.9255);
+  final defaultInitialZoom = 16.0;
 
   final authTokenStorage = 'auth_storage';
   final authTokenExpireTime = 'auth_storage_expire_time';

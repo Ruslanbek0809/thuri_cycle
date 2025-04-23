@@ -5,6 +5,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:injectable/injectable.dart';
 import 'package:thuri_cycle/domain/report_waste/i_location.dart';
+import 'package:thuri_cycle/presentation/core/utils/methods/aliases.dart';
 
 part 'location_state.dart';
 part 'location_cubit.freezed.dart';
@@ -25,11 +26,25 @@ class LocationCubit extends Cubit<LocationState> {
     }
 
     if (serviceEnabled) {
-      _positionSubscription = iLocationFacade.getPositionStream().listen(
-            (pos) => emit(LocationState.success(pos)),
-            onError: (_) => emit(const LocationState.failure()),
-          );
+      try {
+        _positionSubscription = iLocationFacade.getPositionStream().listen(
+          (pos) => emit(LocationState.success(pos)),
+          onError: (error) {
+            talker.error(
+              'LocationState.failure() getPositionStream() onError: $error',
+            );
+            return emit(const LocationState.failure());
+          },
+        );
+      } catch (e, stackTrace) {
+        // reportException(e);
+        talker.handle(
+          'LocationState.failure() serviceEnabled ENABLED error: $e',
+          stackTrace,
+        );
+      }
     } else {
+      talker.error('LocationState.failure() unexpected');
       emit(const LocationState.failure());
     }
   }

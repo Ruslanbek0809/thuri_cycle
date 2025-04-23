@@ -56,5 +56,7 @@
     "refresh": "Refresh",
     "ok": "OK",
     "includeResolved": "Include resolved",
+    "scoreboard": "Scoreboard",
+    "goToPosition": "Go to your position",
     "comingInNextUpdate": "Coming in the next update"
 }
