@@ -57,6 +57,10 @@
     "ok": "Aceptar",
     "includeResolved": "Incluir resuelto",
     "scoreboard": "Marcador",
-    "goToPosition": "Ve a tu posición",
+    "goToPosition": "Ve a tu posición","user": "Usuario",
+    "report": "Reportar",
+    "reportAsInappropriate": "Reportar como inapropiado",
+    "confirmReportAsInappropriate": "¿Seguro que desea reportar este marcador como inapropiado?",
+    "reportedBy": "Reportado por {user}",
     "comingInNextUpdate": "En la próxima actualización"
 }

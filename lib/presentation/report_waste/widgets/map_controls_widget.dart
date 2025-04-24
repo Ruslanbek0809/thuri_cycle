@@ -72,7 +72,6 @@ class _MapControlsWidgetState extends State<MapControlsWidget>
               animation: repositionAnim,
               builder: (_, child) => ClipRect(
                 child: Align(
-                  alignment: Alignment.center,
                   heightFactor: repositionAnim.value,
                   widthFactor: repositionAnim.value,
                   child: child,

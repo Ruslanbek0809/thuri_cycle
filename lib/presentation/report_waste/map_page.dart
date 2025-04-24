@@ -10,6 +10,7 @@ import 'package:thuri_cycle/application/report_waste/location/location_cubit.dar
 import 'package:thuri_cycle/application/report_waste/map_marker_form_cubit.dart';
 import 'package:thuri_cycle/domain/report_waste/map_marker.dart';
 import 'package:thuri_cycle/presentation/core/utils/constants.dart';
+import 'package:thuri_cycle/presentation/report_waste/widgets/bottom_controls_widget.dart';
 import 'package:thuri_cycle/presentation/report_waste/widgets/fast_markers_layer.dart';
 import 'package:thuri_cycle/presentation/report_waste/widgets/map_controls_widget.dart';
 import 'package:thuri_cycle/presentation/report_waste/widgets/settings_controls_widget.dart';
@@ -202,10 +203,16 @@ class _MapPageState extends State<MapPage> with WidgetsBindingObserver {
                   // ), //TODO: Add dialog
                 ),
               ),
-              // Align(
-              //   alignment: Alignment.bottomCenter,
-              //   child: BottomControlsWidget(openReportPage),
-              // ),
+              //TODO: Add login feature
+              //TODO: initStateFeatures??
+              Align(
+                alignment: Alignment.bottomCenter,
+                child: BottomControlsWidget(
+                  onAddWidgetPressed: () {
+                    // openReportPage();
+                  },
+                ),
+              ),
               // Random quotes or motivational sentences in the middle
               // Align(
               //   alignment: Alignment.topCenter,

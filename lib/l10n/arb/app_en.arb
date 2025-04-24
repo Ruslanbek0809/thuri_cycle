@@ -58,5 +58,10 @@
     "includeResolved": "Include resolved",
     "scoreboard": "Scoreboard",
     "goToPosition": "Go to your position",
+    "user": "User",
+    "report": "Report",
+    "reportAsInappropriate": "Report as inappropriate",
+    "confirmReportAsInappropriate": "Are you sure you want to report this marker as inappropriate?",
+    "reportedBy": "Reported by {user}",
     "comingInNextUpdate": "Coming in the next update"
 }

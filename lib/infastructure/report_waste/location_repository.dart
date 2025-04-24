@@ -7,7 +7,8 @@ import 'package:thuri_cycle/domain/report_waste/i_location.dart';
 class LocationRepository implements ILocationFacade {
   static const locationSettings = LocationSettings(
     distanceFilter: 1,
-    timeLimit: Duration(milliseconds: 500),
+    // timeLimit: Duration(milliseconds: 500),
+    // timeLimit: Duration(milliseconds: 5000),
   );
 
   @override
