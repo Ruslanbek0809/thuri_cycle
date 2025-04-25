@@ -62,5 +62,22 @@
     "reportAsInappropriate": "Reportar como inapropiado",
     "confirmReportAsInappropriate": "¿Seguro que desea reportar este marcador como inapropiado?",
     "reportedBy": "Reportado por {user}",
+    "errorReporting": "Error al reportar: {error}",
+    "@errorReporting": {
+    "placeholders": {
+    "error": {
+    "type": "String"
+                }
+            }
+        },
+    "markerType": "Tipo de marcador",
+    "loginRequired": "Se requiere inicio de sesión",
+    "grantLocationPermission": "Otorgar permiso para acceder a la ubicación",
+    "enableLocationServices": "Habilitar servicios de ubicación",
+    "addImage": "Añadir una imagen",
+    "selectMarkerType": "Seleccionar un tipo de marcador",
+    "locationIsLoading": "La ubicación se está cargando, por favor espere…",
+    "tooFarToResolve": "Está demasiado lejos para resolver",
+    "send": "Enviar",
     "comingInNextUpdate": "En la próxima actualización"
 }

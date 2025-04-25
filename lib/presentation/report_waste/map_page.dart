@@ -5,9 +5,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:latlong2/latlong.dart';
 import 'package:thuri_cycle/application/report_waste/location/location_cubit.dart';
 import 'package:thuri_cycle/application/report_waste/map_marker_form_cubit.dart';
+import 'package:thuri_cycle/domain/report_waste/location_info.dart';
 import 'package:thuri_cycle/domain/report_waste/map_marker.dart';
 import 'package:thuri_cycle/presentation/core/utils/constants.dart';
 import 'package:thuri_cycle/presentation/report_waste/widgets/bottom_controls_widget.dart';
@@ -16,6 +16,7 @@ import 'package:thuri_cycle/presentation/report_waste/widgets/map_controls_widge
 import 'package:thuri_cycle/presentation/report_waste/widgets/settings_controls_widget.dart';
 
 //TODO: Look for changes from old project for this page and apply any needed features from it if needed
+//TODO: Add getMarkers
 @RoutePage()
 class MapPage extends StatefulWidget {
   const MapPage({super.key});
@@ -128,25 +129,28 @@ class _MapPageState extends State<MapPage> with WidgetsBindingObserver {
               ),
               //TODO: Add more features of LocationProvider
               // TODO: Check
+              // TODO [optimization]: Optimize LocationCubit by using LocationInfo and keeping current last position
               BlocBuilder<LocationCubit, LocationState>(
                 buildWhen: (previous, current) => previous != current,
                 builder: (context, state) {
                   return state.maybeWhen(
                     orElse: Container.new,
-                    success: (position) => MarkerLayer(
-                      markers: [LatLng(position.latitude, position.longitude)]
-                          .whereType<LatLng>()
-                          .map(
-                            (pos) => Marker(
-                              rotate: true,
-                              point: pos,
-                              child: SvgPicture.asset(
-                                'assets/current_location.svg',
-                              ),
-                            ),
-                          )
-                          .toList(),
-                    ),
+                    success: (locationInfoModel) {
+                      final latLng = locationInfoModel.latLng;
+                      if (latLng == null) {
+                        return Container();
+                      }
+                      return MarkerLayer(
+                        markers: [
+                          Marker(
+                            rotate: true,
+                            point: latLng,
+                            child:
+                                SvgPicture.asset('assets/current_location.svg'),
+                          ),
+                        ],
+                      );
+                    },
                   );
                 },
               ),
@@ -173,8 +177,8 @@ class _MapPageState extends State<MapPage> with WidgetsBindingObserver {
               //TODO [optimization]: Add ScoreboardPage later on
               BlocBuilder<LocationCubit, LocationState>(
                 builder: (context, state) {
-                  final position = state.maybeWhen(
-                    success: (pos) => pos,
+                  final locationInfoModel = state.maybeWhen(
+                    success: (locationInfoModel) => locationInfoModel,
                     orElse: () => null,
                   );
 
@@ -182,9 +186,10 @@ class _MapPageState extends State<MapPage> with WidgetsBindingObserver {
                     alignment: Alignment.topRight,
                     child: MapControlsWidget(
                       onTap: () {
-                        if (position != null) {
+                        if (locationInfoModel != null &&
+                            locationInfoModel.position != null) {
                           mapController.move(
-                            LatLng(position.latitude, position.longitude),
+                            locationInfoModel.latLng!,
                             $constants.defaultInitialZoom,
                           );
                         }

@@ -17,11 +17,11 @@ part 'map_marker_form_state.dart';
 @injectable
 class MapMarkerFormCubit extends Cubit<MapMarkerFormState> {
   MapMarkerFormCubit(
-    this.iReportWaste,
+    this.iReportWasteFacade,
     this.mapPreferences,
   ) : super(MapMarkerFormState.initial());
 
-  final IReportWaste iReportWaste;
+  final IReportWasteFacade iReportWasteFacade;
   final MapPreferences mapPreferences;
   final Distance _distance = const Distance();
   static const double zoomThreshold = 11;
@@ -63,7 +63,7 @@ class MapMarkerFormCubit extends Cubit<MapMarkerFormState> {
     );
 
     try {
-      final response = await iReportWaste.getMarkers(
+      final response = await iReportWasteFacade.getMarkers(
         center,
         includeResolved: state.includeResolved,
       );

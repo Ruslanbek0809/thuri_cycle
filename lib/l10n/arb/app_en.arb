@@ -63,5 +63,22 @@
     "reportAsInappropriate": "Report as inappropriate",
     "confirmReportAsInappropriate": "Are you sure you want to report this marker as inappropriate?",
     "reportedBy": "Reported by {user}",
+    "errorReporting": "Error when reporting: {error}",
+    "@errorReporting": {
+        "placeholders": {
+        "error": {
+            "type": "String"
+        }
+        }
+    },
+    "markerType": "Marker type",
+    "loginRequired": "Login required",
+    "grantLocationPermission": "Grant permission to access location",
+    "enableLocationServices": "Enable location services",
+    "addImage": "Add an image",
+    "selectMarkerType": "Select a marker type",
+    "locationIsLoading": "Location is loading, please wait…",
+    "tooFarToResolve": "You are too far to resolve",
+    "send": "Send",
     "comingInNextUpdate": "Coming in the next update"
 }

@@ -2,12 +2,13 @@ import 'package:dartz/dartz.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:injectable/injectable.dart';
 import 'package:thuri_cycle/domain/report_waste/i_location.dart';
+import 'package:thuri_cycle/domain/report_waste/location_info.dart';
 
 @LazySingleton(as: ILocationFacade)
 class LocationRepository implements ILocationFacade {
   static const locationSettings = LocationSettings(
     distanceFilter: 1,
-    // timeLimit: Duration(milliseconds: 500),
+    // Optional timeLimit if needed later
     // timeLimit: Duration(milliseconds: 5000),
   );
 
@@ -37,5 +38,17 @@ class LocationRepository implements ILocationFacade {
   @override
   Future<bool> isServiceEnabled() async {
     return Geolocator.isLocationServiceEnabled();
+  }
+
+  @override
+  Future<LocationInfoModel> getCurrentLocationInfo() async {
+    final permissionGranted = await isPermissionGranted();
+    final servicesEnabled = await isServiceEnabled();
+    final positionOpt = await getLastKnownPosition();
+    return LocationInfoModel(
+      servicesEnabled: servicesEnabled,
+      permissionGranted: permissionGranted,
+      position: positionOpt.toNullable(),
+    );
   }
 }

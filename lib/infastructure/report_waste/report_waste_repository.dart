@@ -7,8 +7,8 @@ import 'package:thuri_cycle/domain/report_waste/i_report_waste.dart';
 import 'package:thuri_cycle/domain/report_waste/map_marker.dart';
 import 'package:thuri_cycle/infastructure/core/firebase_config/firebase_failure_handler.dart';
 
-@LazySingleton(as: IReportWaste)
-class ReportWasteRepository implements IReportWaste {
+@LazySingleton(as: IReportWasteFacade)
+class ReportWasteRepository implements IReportWasteFacade {
   ReportWasteRepository(
     this._firebaseFirestore,
   );

@@ -110,14 +110,14 @@ extension GetItInjectableX on _i174.GetIt {
       dispose: (i) => i.dispose(),
     );
     gh.lazySingleton<_i227.AppCubit>(() => _i227.AppCubit());
-    gh.lazySingleton<_i452.IReportWaste>(
-        () => _i521.ReportWasteRepository(gh<_i974.FirebaseFirestore>()));
     gh.lazySingleton<_i357.UserCollection>(
         () => _i357.UserCollection(gh<_i974.FirebaseFirestore>()));
     gh.lazySingleton<_i357.ArticlesCollection>(
         () => _i357.ArticlesCollection(gh<_i974.FirebaseFirestore>()));
     gh.lazySingleton<_i357.GuidesCollection>(
         () => _i357.GuidesCollection(gh<_i974.FirebaseFirestore>()));
+    gh.lazySingleton<_i521.ReportWasteRepository>(
+        () => _i521.ReportWasteRepository(gh<_i974.FirebaseFirestore>()));
     gh.lazySingleton<_i145.ILocationFacade>(() => _i389.LocationRepository());
     gh.lazySingleton<_i1048.MapPreferences>(
         () => _i1048.MapPreferences(gh<_i460.SharedPreferences>()));
@@ -145,12 +145,12 @@ extension GetItInjectableX on _i174.GetIt {
           gh<_i917.IAuth>(),
           gh<_i558.FlutterSecureStorage>(),
         ));
-    gh.factory<_i115.MapMarkerFormCubit>(() => _i115.MapMarkerFormCubit(
-          gh<_i452.IReportWaste>(),
-          gh<_i1048.MapPreferences>(),
-        ));
     gh.factory<_i990.LocationCubit>(
         () => _i990.LocationCubit(gh<_i145.ILocationFacade>()));
+    gh.factory<_i115.MapMarkerFormCubit>(() => _i115.MapMarkerFormCubit(
+          gh<_i452.IReportWasteFacade>(),
+          gh<_i1048.MapPreferences>(),
+        ));
     gh.factory<_i790.CommunityArticlesCubit>(
         () => _i790.CommunityArticlesCubit(gh<_i153.ICommunity>()));
     gh.factory<_i243.CommunityGuidesCubit>(
