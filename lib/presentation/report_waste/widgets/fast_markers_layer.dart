@@ -137,12 +137,13 @@ class _FastMarkerPainter extends CustomPainter {
           anchorX: atlasImageSizeDouble / 2,
           anchorY: atlasImageSizeDouble / 2,
           translateX: pos.dx,
-          translateY: pos.dy, //TODO: Check changes here in this file 1 more time
+          translateY:
+              pos.dy, //TODO: Check changes here in this file 1 more time
         );
       }).toList(),
       markers.map((marker) {
         return Rect.fromLTWH(
-          atlasImageSizeDouble * marker.type.index,
+          atlasImageSizeDouble * marker.markerType.index,
           0,
           atlasImageSizeDouble,
           atlasImageSizeDouble,

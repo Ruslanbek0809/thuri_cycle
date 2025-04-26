@@ -169,10 +169,10 @@ class _ReportPageState extends State<ReportPage> {
                           : () {
                               final pos = locationInfo?.position;
                               if (pos != null) {
-                                // context.read<ReportFormCubit>().submitReport(
-                                //       latitude: pos.latitude,
-                                //       longitude: pos.longitude,
-                                //     );
+                                context.read<ReportFormCubit>().submitReport(
+                                      latitude: pos.latitude,
+                                      longitude: pos.longitude,
+                                    );
                               }
                             },
                       // onPressed: errorMessage == null ? send : null,

@@ -20,6 +20,8 @@ mixin _$ReportFormState {
   List<ImageWithFileModel> get images => throw _privateConstructorUsedError;
   bool get isSubmitting => throw _privateConstructorUsedError;
   bool get submissionSuccess => throw _privateConstructorUsedError;
+  Option<Either<FirebaseFailure, Unit>> get failureOrSuccessOption =>
+      throw _privateConstructorUsedError;
   String? get errorMessage => throw _privateConstructorUsedError;
   MapMarkerModel? get createdMarker => throw _privateConstructorUsedError;
   String? get imageUploadError => throw _privateConstructorUsedError;
@@ -42,6 +44,7 @@ abstract class $ReportFormStateCopyWith<$Res> {
       List<ImageWithFileModel> images,
       bool isSubmitting,
       bool submissionSuccess,
+      Option<Either<FirebaseFailure, Unit>> failureOrSuccessOption,
       String? errorMessage,
       MapMarkerModel? createdMarker,
       String? imageUploadError});
@@ -68,6 +71,7 @@ class _$ReportFormStateCopyWithImpl<$Res, $Val extends ReportFormState>
     Object? images = null,
     Object? isSubmitting = null,
     Object? submissionSuccess = null,
+    Object? failureOrSuccessOption = null,
     Object? errorMessage = freezed,
     Object? createdMarker = freezed,
     Object? imageUploadError = freezed,
@@ -89,6 +93,10 @@ class _$ReportFormStateCopyWithImpl<$Res, $Val extends ReportFormState>
           ? _value.submissionSuccess
           : submissionSuccess // ignore: cast_nullable_to_non_nullable
               as bool,
+      failureOrSuccessOption: null == failureOrSuccessOption
+          ? _value.failureOrSuccessOption
+          : failureOrSuccessOption // ignore: cast_nullable_to_non_nullable
+              as Option<Either<FirebaseFailure, Unit>>,
       errorMessage: freezed == errorMessage
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
@@ -132,6 +140,7 @@ abstract class _$$ReportFormStateImplCopyWith<$Res>
       List<ImageWithFileModel> images,
       bool isSubmitting,
       bool submissionSuccess,
+      Option<Either<FirebaseFailure, Unit>> failureOrSuccessOption,
       String? errorMessage,
       MapMarkerModel? createdMarker,
       String? imageUploadError});
@@ -157,6 +166,7 @@ class __$$ReportFormStateImplCopyWithImpl<$Res>
     Object? images = null,
     Object? isSubmitting = null,
     Object? submissionSuccess = null,
+    Object? failureOrSuccessOption = null,
     Object? errorMessage = freezed,
     Object? createdMarker = freezed,
     Object? imageUploadError = freezed,
@@ -178,6 +188,10 @@ class __$$ReportFormStateImplCopyWithImpl<$Res>
           ? _value.submissionSuccess
           : submissionSuccess // ignore: cast_nullable_to_non_nullable
               as bool,
+      failureOrSuccessOption: null == failureOrSuccessOption
+          ? _value.failureOrSuccessOption
+          : failureOrSuccessOption // ignore: cast_nullable_to_non_nullable
+              as Option<Either<FirebaseFailure, Unit>>,
       errorMessage: freezed == errorMessage
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
@@ -202,6 +216,7 @@ class _$ReportFormStateImpl implements _ReportFormState {
       required final List<ImageWithFileModel> images,
       required this.isSubmitting,
       required this.submissionSuccess,
+      required this.failureOrSuccessOption,
       this.errorMessage,
       this.createdMarker,
       this.imageUploadError})
@@ -222,6 +237,8 @@ class _$ReportFormStateImpl implements _ReportFormState {
   @override
   final bool submissionSuccess;
   @override
+  final Option<Either<FirebaseFailure, Unit>> failureOrSuccessOption;
+  @override
   final String? errorMessage;
   @override
   final MapMarkerModel? createdMarker;
@@ -230,7 +247,7 @@ class _$ReportFormStateImpl implements _ReportFormState {
 
   @override
   String toString() {
-    return 'ReportFormState(markerType: $markerType, images: $images, isSubmitting: $isSubmitting, submissionSuccess: $submissionSuccess, errorMessage: $errorMessage, createdMarker: $createdMarker, imageUploadError: $imageUploadError)';
+    return 'ReportFormState(markerType: $markerType, images: $images, isSubmitting: $isSubmitting, submissionSuccess: $submissionSuccess, failureOrSuccessOption: $failureOrSuccessOption, errorMessage: $errorMessage, createdMarker: $createdMarker, imageUploadError: $imageUploadError)';
   }
 
   @override
@@ -245,6 +262,8 @@ class _$ReportFormStateImpl implements _ReportFormState {
                 other.isSubmitting == isSubmitting) &&
             (identical(other.submissionSuccess, submissionSuccess) ||
                 other.submissionSuccess == submissionSuccess) &&
+            (identical(other.failureOrSuccessOption, failureOrSuccessOption) ||
+                other.failureOrSuccessOption == failureOrSuccessOption) &&
             (identical(other.errorMessage, errorMessage) ||
                 other.errorMessage == errorMessage) &&
             (identical(other.createdMarker, createdMarker) ||
@@ -260,6 +279,7 @@ class _$ReportFormStateImpl implements _ReportFormState {
       const DeepCollectionEquality().hash(_images),
       isSubmitting,
       submissionSuccess,
+      failureOrSuccessOption,
       errorMessage,
       createdMarker,
       imageUploadError);
@@ -280,6 +300,8 @@ abstract class _ReportFormState implements ReportFormState {
       required final List<ImageWithFileModel> images,
       required final bool isSubmitting,
       required final bool submissionSuccess,
+      required final Option<Either<FirebaseFailure, Unit>>
+          failureOrSuccessOption,
       final String? errorMessage,
       final MapMarkerModel? createdMarker,
       final String? imageUploadError}) = _$ReportFormStateImpl;
@@ -292,6 +314,8 @@ abstract class _ReportFormState implements ReportFormState {
   bool get isSubmitting;
   @override
   bool get submissionSuccess;
+  @override
+  Option<Either<FirebaseFailure, Unit>> get failureOrSuccessOption;
   @override
   String? get errorMessage;
   @override

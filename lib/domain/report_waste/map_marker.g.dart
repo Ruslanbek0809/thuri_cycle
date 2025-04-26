@@ -11,9 +11,11 @@ _$MapMarkerModelImpl _$$MapMarkerModelImplFromJson(Map<String, dynamic> json) =>
       id: json['id'] as String,
       latitude: (json['latitude'] as num).toDouble(),
       longitude: (json['longitude'] as num).toDouble(),
-      type: $enumDecode(_$MarkerTypeEnumMap, json['type']),
+      markerType: $enumDecode(_$MarkerTypeEnumMap, json['markerType']),
       creationDate: DateTime.parse(json['creationDate'] as String),
       reportedBy: json['reportedBy'] as String,
+      images:
+          (json['images'] as List<dynamic>?)?.map((e) => e as String).toList(),
       resolutionDate: json['resolutionDate'] == null
           ? null
           : DateTime.parse(json['resolutionDate'] as String),
@@ -26,9 +28,10 @@ Map<String, dynamic> _$$MapMarkerModelImplToJson(
       'id': instance.id,
       'latitude': instance.latitude,
       'longitude': instance.longitude,
-      'type': _$MarkerTypeEnumMap[instance.type]!,
+      'markerType': _$MarkerTypeEnumMap[instance.markerType]!,
       'creationDate': instance.creationDate.toIso8601String(),
       'reportedBy': instance.reportedBy,
+      'images': instance.images,
       'resolutionDate': instance.resolutionDate?.toIso8601String(),
       'resolvedBy': instance.resolvedBy,
     };

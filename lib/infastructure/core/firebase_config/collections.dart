@@ -1,9 +1,29 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:injectable/injectable.dart';
 import 'package:thuri_cycle/domain/auth/user_model/user_model.dart';
+import 'package:thuri_cycle/domain/report_waste/map_marker.dart';
 import 'package:thuri_cycle/infastructure/core/firebase_config/DB/firestore_collection.dart';
 import 'package:thuri_cycle/presentation/recycling_guide/article_widgets/article/article.dart';
 import 'package:thuri_cycle/presentation/recycling_guide/community/guide_widgets/guide/guide.dart';
+
+@lazySingleton
+class MapMarkersCollection extends FirestoreCollection<MapMarkerModel> {
+  MapMarkersCollection(this._firestore);
+
+  final FirebaseFirestore _firestore;
+
+  @override
+  String get path => 'markers';
+
+  @override
+  CollectionReference<MapMarkerModel> get withConverter =>
+      _firestore.collection(path).withConverter<MapMarkerModel>(
+            fromFirestore: (snapshot, _) => MapMarkerModel.fromJson(
+              snapshot.data()!..addAll({'id': snapshot.id}),
+            ),
+            toFirestore: (marker, _) => marker.toJson()..remove('id'),
+          );
+}
 
 @lazySingleton
 class UserCollection extends FirestoreCollection<UserModel> {

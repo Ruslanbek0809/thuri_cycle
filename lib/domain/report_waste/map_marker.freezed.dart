@@ -23,9 +23,10 @@ mixin _$MapMarkerModel {
   String get id => throw _privateConstructorUsedError;
   double get latitude => throw _privateConstructorUsedError;
   double get longitude => throw _privateConstructorUsedError;
-  MarkerType get type => throw _privateConstructorUsedError;
+  MarkerType get markerType => throw _privateConstructorUsedError;
   DateTime get creationDate => throw _privateConstructorUsedError;
   String get reportedBy => throw _privateConstructorUsedError;
+  List<String>? get images => throw _privateConstructorUsedError;
   DateTime? get resolutionDate => throw _privateConstructorUsedError;
   String? get resolvedBy => throw _privateConstructorUsedError;
 
@@ -49,9 +50,10 @@ abstract class $MapMarkerModelCopyWith<$Res> {
       {String id,
       double latitude,
       double longitude,
-      MarkerType type,
+      MarkerType markerType,
       DateTime creationDate,
       String reportedBy,
+      List<String>? images,
       DateTime? resolutionDate,
       String? resolvedBy});
 }
@@ -74,9 +76,10 @@ class _$MapMarkerModelCopyWithImpl<$Res, $Val extends MapMarkerModel>
     Object? id = null,
     Object? latitude = null,
     Object? longitude = null,
-    Object? type = null,
+    Object? markerType = null,
     Object? creationDate = null,
     Object? reportedBy = null,
+    Object? images = freezed,
     Object? resolutionDate = freezed,
     Object? resolvedBy = freezed,
   }) {
@@ -93,9 +96,9 @@ class _$MapMarkerModelCopyWithImpl<$Res, $Val extends MapMarkerModel>
           ? _value.longitude
           : longitude // ignore: cast_nullable_to_non_nullable
               as double,
-      type: null == type
-          ? _value.type
-          : type // ignore: cast_nullable_to_non_nullable
+      markerType: null == markerType
+          ? _value.markerType
+          : markerType // ignore: cast_nullable_to_non_nullable
               as MarkerType,
       creationDate: null == creationDate
           ? _value.creationDate
@@ -105,6 +108,10 @@ class _$MapMarkerModelCopyWithImpl<$Res, $Val extends MapMarkerModel>
           ? _value.reportedBy
           : reportedBy // ignore: cast_nullable_to_non_nullable
               as String,
+      images: freezed == images
+          ? _value.images
+          : images // ignore: cast_nullable_to_non_nullable
+              as List<String>?,
       resolutionDate: freezed == resolutionDate
           ? _value.resolutionDate
           : resolutionDate // ignore: cast_nullable_to_non_nullable
@@ -129,9 +136,10 @@ abstract class _$$MapMarkerModelImplCopyWith<$Res>
       {String id,
       double latitude,
       double longitude,
-      MarkerType type,
+      MarkerType markerType,
       DateTime creationDate,
       String reportedBy,
+      List<String>? images,
       DateTime? resolutionDate,
       String? resolvedBy});
 }
@@ -152,9 +160,10 @@ class __$$MapMarkerModelImplCopyWithImpl<$Res>
     Object? id = null,
     Object? latitude = null,
     Object? longitude = null,
-    Object? type = null,
+    Object? markerType = null,
     Object? creationDate = null,
     Object? reportedBy = null,
+    Object? images = freezed,
     Object? resolutionDate = freezed,
     Object? resolvedBy = freezed,
   }) {
@@ -171,9 +180,9 @@ class __$$MapMarkerModelImplCopyWithImpl<$Res>
           ? _value.longitude
           : longitude // ignore: cast_nullable_to_non_nullable
               as double,
-      type: null == type
-          ? _value.type
-          : type // ignore: cast_nullable_to_non_nullable
+      markerType: null == markerType
+          ? _value.markerType
+          : markerType // ignore: cast_nullable_to_non_nullable
               as MarkerType,
       creationDate: null == creationDate
           ? _value.creationDate
@@ -183,6 +192,10 @@ class __$$MapMarkerModelImplCopyWithImpl<$Res>
           ? _value.reportedBy
           : reportedBy // ignore: cast_nullable_to_non_nullable
               as String,
+      images: freezed == images
+          ? _value._images
+          : images // ignore: cast_nullable_to_non_nullable
+              as List<String>?,
       resolutionDate: freezed == resolutionDate
           ? _value.resolutionDate
           : resolutionDate // ignore: cast_nullable_to_non_nullable
@@ -202,11 +215,13 @@ class _$MapMarkerModelImpl implements _MapMarkerModel {
       {required this.id,
       required this.latitude,
       required this.longitude,
-      required this.type,
+      required this.markerType,
       required this.creationDate,
       required this.reportedBy,
+      final List<String>? images,
       this.resolutionDate,
-      this.resolvedBy});
+      this.resolvedBy})
+      : _images = images;
 
   factory _$MapMarkerModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$MapMarkerModelImplFromJson(json);
@@ -218,11 +233,21 @@ class _$MapMarkerModelImpl implements _MapMarkerModel {
   @override
   final double longitude;
   @override
-  final MarkerType type;
+  final MarkerType markerType;
   @override
   final DateTime creationDate;
   @override
   final String reportedBy;
+  final List<String>? _images;
+  @override
+  List<String>? get images {
+    final value = _images;
+    if (value == null) return null;
+    if (_images is EqualUnmodifiableListView) return _images;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
+
   @override
   final DateTime? resolutionDate;
   @override
@@ -230,7 +255,7 @@ class _$MapMarkerModelImpl implements _MapMarkerModel {
 
   @override
   String toString() {
-    return 'MapMarkerModel(id: $id, latitude: $latitude, longitude: $longitude, type: $type, creationDate: $creationDate, reportedBy: $reportedBy, resolutionDate: $resolutionDate, resolvedBy: $resolvedBy)';
+    return 'MapMarkerModel(id: $id, latitude: $latitude, longitude: $longitude, markerType: $markerType, creationDate: $creationDate, reportedBy: $reportedBy, images: $images, resolutionDate: $resolutionDate, resolvedBy: $resolvedBy)';
   }
 
   @override
@@ -243,11 +268,13 @@ class _$MapMarkerModelImpl implements _MapMarkerModel {
                 other.latitude == latitude) &&
             (identical(other.longitude, longitude) ||
                 other.longitude == longitude) &&
-            (identical(other.type, type) || other.type == type) &&
+            (identical(other.markerType, markerType) ||
+                other.markerType == markerType) &&
             (identical(other.creationDate, creationDate) ||
                 other.creationDate == creationDate) &&
             (identical(other.reportedBy, reportedBy) ||
                 other.reportedBy == reportedBy) &&
+            const DeepCollectionEquality().equals(other._images, _images) &&
             (identical(other.resolutionDate, resolutionDate) ||
                 other.resolutionDate == resolutionDate) &&
             (identical(other.resolvedBy, resolvedBy) ||
@@ -256,8 +283,17 @@ class _$MapMarkerModelImpl implements _MapMarkerModel {
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, id, latitude, longitude, type,
-      creationDate, reportedBy, resolutionDate, resolvedBy);
+  int get hashCode => Object.hash(
+      runtimeType,
+      id,
+      latitude,
+      longitude,
+      markerType,
+      creationDate,
+      reportedBy,
+      const DeepCollectionEquality().hash(_images),
+      resolutionDate,
+      resolvedBy);
 
   /// Create a copy of MapMarkerModel
   /// with the given fields replaced by the non-null parameter values.
@@ -281,9 +317,10 @@ abstract class _MapMarkerModel implements MapMarkerModel {
       {required final String id,
       required final double latitude,
       required final double longitude,
-      required final MarkerType type,
+      required final MarkerType markerType,
       required final DateTime creationDate,
       required final String reportedBy,
+      final List<String>? images,
       final DateTime? resolutionDate,
       final String? resolvedBy}) = _$MapMarkerModelImpl;
 
@@ -297,11 +334,13 @@ abstract class _MapMarkerModel implements MapMarkerModel {
   @override
   double get longitude;
   @override
-  MarkerType get type;
+  MarkerType get markerType;
   @override
   DateTime get creationDate;
   @override
   String get reportedBy;
+  @override
+  List<String>? get images;
   @override
   DateTime? get resolutionDate;
   @override

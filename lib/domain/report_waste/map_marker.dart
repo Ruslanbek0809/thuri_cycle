@@ -12,9 +12,10 @@ class MapMarkerModel with _$MapMarkerModel {
     required String id,
     required double latitude,
     required double longitude,
-    required MarkerType type,
+    required MarkerType markerType,
     required DateTime creationDate,
     required String reportedBy,
+    List<String>? images,
     DateTime? resolutionDate,
     String? resolvedBy,
   }) = _MapMarkerModel;

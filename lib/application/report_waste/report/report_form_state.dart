@@ -7,15 +7,17 @@ class ReportFormState with _$ReportFormState {
     required List<ImageWithFileModel> images,
     required bool isSubmitting,
     required bool submissionSuccess,
+    required Option<Either<FirebaseFailure, Unit>> failureOrSuccessOption,
     String? errorMessage,
     MapMarkerModel? createdMarker,
     String? imageUploadError,
   }) = _ReportFormState;
 
-  factory ReportFormState.initial() => const ReportFormState(
+  factory ReportFormState.initial() => ReportFormState(
         markerType: null,
         images: [],
         isSubmitting: false,
         submissionSuccess: false,
+        failureOrSuccessOption: none(),
       );
 }

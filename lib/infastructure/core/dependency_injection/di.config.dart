@@ -124,6 +124,8 @@ extension GetItInjectableX on _i174.GetIt {
     gh.lazySingleton<_i357.GuidesCollection>(
         () => _i357.GuidesCollection(gh<_i974.FirebaseFirestore>()));
     gh.lazySingleton<_i145.ILocationFacade>(() => _i389.LocationRepository());
+    gh.lazySingleton<_i357.MapMarkersCollection>(
+        () => _i357.MapMarkersCollection(gh<_i974.FirebaseFirestore>()));
     gh.lazySingleton<_i1048.MapPreferences>(
         () => _i1048.MapPreferences(gh<_i460.SharedPreferences>()));
     gh.factory<_i225.SettingsFormCubit>(
@@ -157,11 +159,9 @@ extension GetItInjectableX on _i174.GetIt {
           gh<_i1048.MapPreferences>(),
         ));
     gh.lazySingleton<_i299.IReportFacade>(() => _i195.ReportWasteRepository(
-          gh<_i974.FirebaseFirestore>(),
           gh<_i137.FirebaseStorageService>(),
+          gh<_i357.MapMarkersCollection>(),
         ));
-    gh.factory<_i401.ReportFormCubit>(
-        () => _i401.ReportFormCubit(gh<_i299.IReportFacade>()));
     gh.factory<_i790.CommunityArticlesCubit>(
         () => _i790.CommunityArticlesCubit(gh<_i153.ICommunity>()));
     gh.factory<_i243.CommunityGuidesCubit>(
@@ -170,6 +170,8 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i884.CommunityFeaturedCubit(gh<_i153.ICommunity>()));
     gh.factory<_i749.CommunitySingleGuideCubit>(
         () => _i749.CommunitySingleGuideCubit(gh<_i153.ICommunity>()));
+    gh.factory<_i401.ReportFormCubit>(
+        () => _i401.ReportFormCubit(gh<_i299.IReportFacade>()));
     return this;
   }
 }

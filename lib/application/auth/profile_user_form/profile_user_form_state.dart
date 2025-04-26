@@ -5,7 +5,7 @@ class ProfileUserFormState with _$ProfileUserFormState {
   factory ProfileUserFormState({
     required UserModel userModel,
     required bool isSubmitting,
-    required Option<Either<Unit, FirebaseFailure>> failureOrSuccessOption,
+    required Option<Either<FirebaseFailure, Unit>> failureOrSuccessOption,
   }) = _ProfileUserFormState;
 
   factory ProfileUserFormState.initial() => ProfileUserFormState(

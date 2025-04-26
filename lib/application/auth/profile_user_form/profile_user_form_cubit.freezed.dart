@@ -18,7 +18,7 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$ProfileUserFormState {
   UserModel get userModel => throw _privateConstructorUsedError;
   bool get isSubmitting => throw _privateConstructorUsedError;
-  Option<Either<Unit, FirebaseFailure>> get failureOrSuccessOption =>
+  Option<Either<FirebaseFailure, Unit>> get failureOrSuccessOption =>
       throw _privateConstructorUsedError;
 
   /// Create a copy of ProfileUserFormState
@@ -37,7 +37,7 @@ abstract class $ProfileUserFormStateCopyWith<$Res> {
   $Res call(
       {UserModel userModel,
       bool isSubmitting,
-      Option<Either<Unit, FirebaseFailure>> failureOrSuccessOption});
+      Option<Either<FirebaseFailure, Unit>> failureOrSuccessOption});
 
   $UserModelCopyWith<$Res> get userModel;
 }
@@ -74,7 +74,7 @@ class _$ProfileUserFormStateCopyWithImpl<$Res,
       failureOrSuccessOption: null == failureOrSuccessOption
           ? _value.failureOrSuccessOption
           : failureOrSuccessOption // ignore: cast_nullable_to_non_nullable
-              as Option<Either<Unit, FirebaseFailure>>,
+              as Option<Either<FirebaseFailure, Unit>>,
     ) as $Val);
   }
 
@@ -100,7 +100,7 @@ abstract class _$$ProfileUserFormStateImplCopyWith<$Res>
   $Res call(
       {UserModel userModel,
       bool isSubmitting,
-      Option<Either<Unit, FirebaseFailure>> failureOrSuccessOption});
+      Option<Either<FirebaseFailure, Unit>> failureOrSuccessOption});
 
   @override
   $UserModelCopyWith<$Res> get userModel;
@@ -135,7 +135,7 @@ class __$$ProfileUserFormStateImplCopyWithImpl<$Res>
       failureOrSuccessOption: null == failureOrSuccessOption
           ? _value.failureOrSuccessOption
           : failureOrSuccessOption // ignore: cast_nullable_to_non_nullable
-              as Option<Either<Unit, FirebaseFailure>>,
+              as Option<Either<FirebaseFailure, Unit>>,
     ));
   }
 }
@@ -153,7 +153,7 @@ class _$ProfileUserFormStateImpl implements _ProfileUserFormState {
   @override
   final bool isSubmitting;
   @override
-  final Option<Either<Unit, FirebaseFailure>> failureOrSuccessOption;
+  final Option<Either<FirebaseFailure, Unit>> failureOrSuccessOption;
 
   @override
   String toString() {
@@ -192,7 +192,7 @@ abstract class _ProfileUserFormState implements ProfileUserFormState {
   factory _ProfileUserFormState(
       {required final UserModel userModel,
       required final bool isSubmitting,
-      required final Option<Either<Unit, FirebaseFailure>>
+      required final Option<Either<FirebaseFailure, Unit>>
           failureOrSuccessOption}) = _$ProfileUserFormStateImpl;
 
   @override
@@ -200,7 +200,7 @@ abstract class _ProfileUserFormState implements ProfileUserFormState {
   @override
   bool get isSubmitting;
   @override
-  Option<Either<Unit, FirebaseFailure>> get failureOrSuccessOption;
+  Option<Either<FirebaseFailure, Unit>> get failureOrSuccessOption;
 
   /// Create a copy of ProfileUserFormState
   /// with the given fields replaced by the non-null parameter values.

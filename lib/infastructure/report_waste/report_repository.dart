@@ -1,9 +1,11 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
 import 'package:injectable/injectable.dart';
+import 'package:thuri_cycle/domain/core/firebase_failure.dart';
 import 'package:thuri_cycle/domain/report_waste/i_report.dart';
 import 'package:thuri_cycle/domain/report_waste/image_with_file.dart';
 import 'package:thuri_cycle/domain/report_waste/map_marker.dart';
+import 'package:thuri_cycle/infastructure/core/firebase_config/collections.dart';
 import 'package:thuri_cycle/infastructure/core/firebase_config/firebase_failure_handler.dart';
 import 'package:thuri_cycle/infastructure/core/firebase_config/storage/firebase_storage.dart';
 import 'package:thuri_cycle/presentation/core/utils/constants.dart';
@@ -11,22 +13,12 @@ import 'package:thuri_cycle/presentation/core/utils/constants.dart';
 @LazySingleton(as: IReportFacade)
 class ReportWasteRepository implements IReportFacade {
   ReportWasteRepository(
-    this._firebaseFirestore,
     this._firebaseStorage,
+    this._mapMarkersCollection,
   );
 
-  final FirebaseFirestore _firebaseFirestore;
   final FirebaseStorageService _firebaseStorage;
-
-  @override
-  Future<MapMarkerModel> createReportMarker({
-    required double latitude,
-    required double longitude,
-    required MarkerType type,
-  }) {
-    // TODO: implement createReportMarker
-    throw UnimplementedError();
-  }
+  final MapMarkersCollection _mapMarkersCollection;
 
   @override
   Future<List<String>> uploadMultipleImages(
@@ -43,5 +35,34 @@ class ReportWasteRepository implements IReportFacade {
         );
       }),
     );
+  }
+
+  @override
+  Future<Either<FirebaseFailure, Unit>> submitReport({
+    required double latitude,
+    required double longitude,
+    required MarkerType markerType,
+    required List<ImageWithFileModel> images,
+    required String reportedBy,
+  }) {
+    return firebaseFailureHandler(() async {
+      final imageUrls = await uploadMultipleImages(images);
+
+      final marker = MapMarkerModel(
+        id: '',
+        // Firestore will assign it.
+        // It is gonna be removed by withConverter of MapMarkersCollection
+        latitude: latitude,
+        longitude: longitude,
+        markerType: markerType,
+        images: imageUrls,
+        creationDate: DateTime.now(),
+        reportedBy: reportedBy,
+      );
+
+      await _mapMarkersCollection.withConverter.add(marker);
+
+      return unit;
+    });
   }
 }

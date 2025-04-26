@@ -106,7 +106,7 @@ class MapMarkerFormCubit extends Cubit<MapMarkerFormState> {
     return state.allMarkers.where(
       (e) =>
           (state.includeResolved || !e.isResolved()) &&
-          state.shownTypes.contains(e.type),
+          state.shownTypes.contains(e.markerType),
     );
   }
 
