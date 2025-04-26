@@ -195,3 +195,9 @@ double responsiveFontSize(BuildContext context, double baseSize) {
 //   final scaledSize = baseSize * scale * textScaleFactor;
 //   return scaledSize.clamp(min, max);
 // }
+
+extension NullableExtension<T> on T? {
+  R? map<R>(R? Function(T t) f) {
+    return this == null ? null : f(this as T);
+  }
+}

@@ -1,0 +1,124 @@
+// import 'dart:io';
+
+// import 'package:collection/collection.dart';
+// import 'package:flutter/foundation.dart';
+// import 'package:flutter/material.dart';
+// import 'package:image_picker/image_picker.dart';
+// import 'package:thuri_cycle/presentation/core/utils/constants.dart';
+// import 'package:thuri_cycle/presentation/core/utils/methods/shortcuts.dart';
+
+// class AddImagesWidget extends StatelessWidget {
+//   const AddImagesWidget(
+//     this.images,
+//     this.addImageCallback,
+//     this.removeImageCallback, {
+//     super.key,
+//   });
+//   static const imageHeight = 256.0;
+
+//   final List<Pair<Uint8List, String?>> images;
+//   final void Function(Pair<Uint8List, String?>)? addImageCallback;
+//   final void Function(int)? removeImageCallback;
+
+//   @override
+//   Widget build(BuildContext context) {
+//     final colors = Theme.of(context).colorScheme;
+//     final bgColor = colors.primaryContainer;
+//     final fgColor = colors.onPrimaryContainer;
+//     // see ElevatedButton lines 195 and 200 (using same colors here)
+//     final bgDisabledColor =
+//         Color.alphaBlend(colors.onSurface.withOpacity(0.12), colors.surface);
+//     final fgDisabledColor =
+//         Color.alphaBlend(colors.onSurface.withOpacity(0.38), colors.surface);
+
+//     return SingleChildScrollView(
+//       scrollDirection: Axis.horizontal,
+//       child: Row(
+//         mainAxisSize: MainAxisSize.min,
+//         children: <Widget>[const SizedBox(width: 16)]
+//             .followedBy(
+//           images.expandIndexed<Widget>(
+//             (index, image) => [
+//               Stack(
+//                 alignment: Alignment.topRight,
+//                 children: [
+//                   ClipRRect(
+//                     borderRadius: const BorderRadius.all(Radius.circular(16)),
+//                     child: Image.memory(
+//                       image.first,
+//                       height: imageHeight,
+//                       fit: BoxFit.cover,
+//                     ),
+//                   ),
+//                   Padding(
+//                     padding: const EdgeInsets.all(4),
+//                     child: Material(
+//                       color: Colors.transparent,
+//                       clipBehavior: Clip.hardEdge,
+//                       borderRadius: const BorderRadius.all(Radius.circular(12)),
+//                       child: Ink(
+//                         color: removeImageCallback == null
+//                             ? bgDisabledColor
+//                             : bgColor,
+//                         child: InkWell(
+//                           onTap:
+//                               removeImageCallback?.map((f) => () => f(index)),
+//                           child: SizedBox(
+//                             width: 32,
+//                             height: 32,
+//                             child: Icon(
+//                               Icons.close,
+//                               size: 24,
+//                               color: removeImageCallback == null
+//                                   ? fgDisabledColor
+//                                   : fgColor,
+//                             ),
+//                           ),
+//                         ),
+//                       ),
+//                     ),
+//                   ),
+//                 ],
+//               ),
+//               const SizedBox(width: 16),
+//             ],
+//           ),
+//         )
+//             .followedBy([
+//           Ink(
+//             decoration: BoxDecoration(
+//               color: addImageCallback == null ? bgDisabledColor : bgColor,
+//               borderRadius: const BorderRadius.all(Radius.circular(16)),
+//             ),
+//             child: InkWell(
+//               onTap: addImageCallback?.map((_) => captureImage),
+//               borderRadius: const BorderRadius.all(Radius.circular(16)),
+//               child: SizedBox(
+//                 width: imageHeight / 1.618,
+//                 height: imageHeight,
+//                 child: Icon(
+//                   Icons.add_a_photo,
+//                   size: 64,
+//                   color: addImageCallback == null ? fgDisabledColor : fgColor,
+//                 ),
+//               ),
+//             ),
+//           ),
+//           const SizedBox(width: 16),
+//         ]).toList(growable: false),
+//       ),
+//     );
+//   }
+
+//   Future<void> captureImage() async {
+//     await ImagePicker()
+//         .pickImage(source: ImageSource.camera)
+//         .then((value) async {
+//       if (value != null && addImageCallback != null) {
+//         addImageCallback!(
+//           Pair(await File(value.path).readAsBytes(), value.mimeType),
+//         );
+//       }
+//     });
+//   }
+// }

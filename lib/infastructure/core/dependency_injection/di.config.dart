@@ -39,10 +39,13 @@ import 'package:thuri_cycle/application/report_waste/location/location_cubit.dar
     as _i990;
 import 'package:thuri_cycle/application/report_waste/map_marker_form_cubit.dart'
     as _i115;
+import 'package:thuri_cycle/application/report_waste/report/report_form_cubit.dart'
+    as _i401;
 import 'package:thuri_cycle/domain/app/theme_model.dart' as _i836;
 import 'package:thuri_cycle/domain/auth/i_auth_facade.dart' as _i917;
 import 'package:thuri_cycle/domain/community/i_community.dart' as _i153;
 import 'package:thuri_cycle/domain/report_waste/i_location.dart' as _i145;
+import 'package:thuri_cycle/domain/report_waste/i_report.dart' as _i299;
 import 'package:thuri_cycle/domain/report_waste/i_report_waste.dart' as _i452;
 import 'package:thuri_cycle/infastructure/auth/auth_repository.dart' as _i767;
 import 'package:thuri_cycle/infastructure/community/community_repository.dart'
@@ -65,6 +68,8 @@ import 'package:thuri_cycle/infastructure/core/local_storage/map_preferences.dar
     as _i1048;
 import 'package:thuri_cycle/infastructure/report_waste/location_repository.dart'
     as _i389;
+import 'package:thuri_cycle/infastructure/report_waste/report_repository.dart'
+    as _i195;
 import 'package:thuri_cycle/infastructure/report_waste/report_waste_repository.dart'
     as _i521;
 import 'package:thuri_cycle/infastructure/scroll_controller/scroll_controller_service.dart'
@@ -110,14 +115,14 @@ extension GetItInjectableX on _i174.GetIt {
       dispose: (i) => i.dispose(),
     );
     gh.lazySingleton<_i227.AppCubit>(() => _i227.AppCubit());
+    gh.lazySingleton<_i452.IReportWasteFacade>(
+        () => _i521.ReportWasteRepository(gh<_i974.FirebaseFirestore>()));
     gh.lazySingleton<_i357.UserCollection>(
         () => _i357.UserCollection(gh<_i974.FirebaseFirestore>()));
     gh.lazySingleton<_i357.ArticlesCollection>(
         () => _i357.ArticlesCollection(gh<_i974.FirebaseFirestore>()));
     gh.lazySingleton<_i357.GuidesCollection>(
         () => _i357.GuidesCollection(gh<_i974.FirebaseFirestore>()));
-    gh.lazySingleton<_i521.ReportWasteRepository>(
-        () => _i521.ReportWasteRepository(gh<_i974.FirebaseFirestore>()));
     gh.lazySingleton<_i145.ILocationFacade>(() => _i389.LocationRepository());
     gh.lazySingleton<_i1048.MapPreferences>(
         () => _i1048.MapPreferences(gh<_i460.SharedPreferences>()));
@@ -151,6 +156,12 @@ extension GetItInjectableX on _i174.GetIt {
           gh<_i452.IReportWasteFacade>(),
           gh<_i1048.MapPreferences>(),
         ));
+    gh.lazySingleton<_i299.IReportFacade>(() => _i195.ReportWasteRepository(
+          gh<_i974.FirebaseFirestore>(),
+          gh<_i137.FirebaseStorageService>(),
+        ));
+    gh.factory<_i401.ReportFormCubit>(
+        () => _i401.ReportFormCubit(gh<_i299.IReportFacade>()));
     gh.factory<_i790.CommunityArticlesCubit>(
         () => _i790.CommunityArticlesCubit(gh<_i153.ICommunity>()));
     gh.factory<_i243.CommunityGuidesCubit>(

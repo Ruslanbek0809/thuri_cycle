@@ -14,6 +14,7 @@ import 'package:thuri_cycle/presentation/report_waste/widgets/bottom_controls_wi
 import 'package:thuri_cycle/presentation/report_waste/widgets/fast_markers_layer.dart';
 import 'package:thuri_cycle/presentation/report_waste/widgets/map_controls_widget.dart';
 import 'package:thuri_cycle/presentation/report_waste/widgets/settings_controls_widget.dart';
+import 'package:thuri_cycle/router.gr.dart';
 
 //TODO: Look for changes from old project for this page and apply any needed features from it if needed
 //TODO: Add getMarkers
@@ -145,8 +146,9 @@ class _MapPageState extends State<MapPage> with WidgetsBindingObserver {
                           Marker(
                             rotate: true,
                             point: latLng,
-                            child:
-                                SvgPicture.asset('assets/current_location.svg'),
+                            child: SvgPicture.asset(
+                              'assets/current_location.svg',
+                            ),
                           ),
                         ],
                       );
@@ -213,8 +215,12 @@ class _MapPageState extends State<MapPage> with WidgetsBindingObserver {
               Align(
                 alignment: Alignment.bottomCenter,
                 child: BottomControlsWidget(
-                  onAddWidgetPressed: () {
-                    // openReportPage();
+                  onAddWidgetPressed: () async {
+                    await context.router.push(
+                      const ReportRoute(
+                          // reportFormCubit: context.read<ReportFormCubit>(),
+                          ),
+                    );
                   },
                 ),
               ),

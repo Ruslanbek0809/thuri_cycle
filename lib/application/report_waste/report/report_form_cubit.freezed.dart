@@ -17,8 +17,7 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$ReportFormState {
   MarkerType? get markerType => throw _privateConstructorUsedError;
-  List<Pair<Uint8List, String?>> get images =>
-      throw _privateConstructorUsedError;
+  List<ImageWithFileModel> get images => throw _privateConstructorUsedError;
   bool get isSubmitting => throw _privateConstructorUsedError;
   bool get submissionSuccess => throw _privateConstructorUsedError;
   String? get errorMessage => throw _privateConstructorUsedError;
@@ -40,7 +39,7 @@ abstract class $ReportFormStateCopyWith<$Res> {
   @useResult
   $Res call(
       {MarkerType? markerType,
-      List<Pair<Uint8List, String?>> images,
+      List<ImageWithFileModel> images,
       bool isSubmitting,
       bool submissionSuccess,
       String? errorMessage,
@@ -81,7 +80,7 @@ class _$ReportFormStateCopyWithImpl<$Res, $Val extends ReportFormState>
       images: null == images
           ? _value.images
           : images // ignore: cast_nullable_to_non_nullable
-              as List<Pair<Uint8List, String?>>,
+              as List<ImageWithFileModel>,
       isSubmitting: null == isSubmitting
           ? _value.isSubmitting
           : isSubmitting // ignore: cast_nullable_to_non_nullable
@@ -130,7 +129,7 @@ abstract class _$$ReportFormStateImplCopyWith<$Res>
   @useResult
   $Res call(
       {MarkerType? markerType,
-      List<Pair<Uint8List, String?>> images,
+      List<ImageWithFileModel> images,
       bool isSubmitting,
       bool submissionSuccess,
       String? errorMessage,
@@ -170,7 +169,7 @@ class __$$ReportFormStateImplCopyWithImpl<$Res>
       images: null == images
           ? _value._images
           : images // ignore: cast_nullable_to_non_nullable
-              as List<Pair<Uint8List, String?>>,
+              as List<ImageWithFileModel>,
       isSubmitting: null == isSubmitting
           ? _value.isSubmitting
           : isSubmitting // ignore: cast_nullable_to_non_nullable
@@ -200,7 +199,7 @@ class __$$ReportFormStateImplCopyWithImpl<$Res>
 class _$ReportFormStateImpl implements _ReportFormState {
   const _$ReportFormStateImpl(
       {required this.markerType,
-      required final List<Pair<Uint8List, String?>> images,
+      required final List<ImageWithFileModel> images,
       required this.isSubmitting,
       required this.submissionSuccess,
       this.errorMessage,
@@ -210,9 +209,9 @@ class _$ReportFormStateImpl implements _ReportFormState {
 
   @override
   final MarkerType? markerType;
-  final List<Pair<Uint8List, String?>> _images;
+  final List<ImageWithFileModel> _images;
   @override
-  List<Pair<Uint8List, String?>> get images {
+  List<ImageWithFileModel> get images {
     if (_images is EqualUnmodifiableListView) return _images;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_images);
@@ -278,7 +277,7 @@ class _$ReportFormStateImpl implements _ReportFormState {
 abstract class _ReportFormState implements ReportFormState {
   const factory _ReportFormState(
       {required final MarkerType? markerType,
-      required final List<Pair<Uint8List, String?>> images,
+      required final List<ImageWithFileModel> images,
       required final bool isSubmitting,
       required final bool submissionSuccess,
       final String? errorMessage,
@@ -288,7 +287,7 @@ abstract class _ReportFormState implements ReportFormState {
   @override
   MarkerType? get markerType;
   @override
-  List<Pair<Uint8List, String?>> get images;
+  List<ImageWithFileModel> get images;
   @override
   bool get isSubmitting;
   @override

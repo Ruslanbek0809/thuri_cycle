@@ -4,7 +4,7 @@ part of 'report_form_cubit.dart';
 class ReportFormState with _$ReportFormState {
   const factory ReportFormState({
     required MarkerType? markerType,
-    required List<Pair<Uint8List, String?>> images,
+    required List<ImageWithFileModel> images,
     required bool isSubmitting,
     required bool submissionSuccess,
     String? errorMessage,

@@ -8,6 +8,7 @@ import 'package:thuri_cycle/domain/report_waste/location_info.dart';
 import 'package:thuri_cycle/domain/report_waste/map_marker.dart';
 import 'package:thuri_cycle/l10n/l10n.dart';
 import 'package:thuri_cycle/presentation/core/utils/constants.dart';
+import 'package:thuri_cycle/presentation/report_waste/widgets/add_images_widget.dart';
 import 'package:thuri_cycle/presentation/report_waste/widgets/error_messages.dart';
 import 'package:thuri_cycle/presentation/report_waste/widgets/error_text.dart';
 
@@ -15,8 +16,27 @@ import 'package:thuri_cycle/presentation/report_waste/widgets/error_text.dart';
 //TODO: Implement send function using form
 //TODO: Implement proper image adding
 @RoutePage()
-class ReportPage extends StatefulWidget {
-  const ReportPage({super.key});
+class ReportPage extends StatefulWidget
+//  implements AutoRouteWrapper
+{
+  const ReportPage({
+    // required this.reportFormCubit,
+    super.key,
+  });
+  // final ReportFormCubit reportFormCubit;
+
+  // @override
+  // Widget wrappedRoute(BuildContext context) {
+  //   return BlocProvider.value(value: reportFormCubit, child: this);
+  // }
+
+  // @override
+  // Widget wrappedRoute(BuildContext context) {
+  //   return BlocProvider(
+  //     create: (_) => getIt<ReportFormCubit>(),
+  //     child: this,
+  //   );
+  // }
 
   @override
   State<ReportPage> createState() => _ReportPageState();
@@ -31,6 +51,14 @@ class ReportedResult {
 class _ReportPageState extends State<ReportPage> {
   List<Pair<Uint8List, String?>> images = [];
   MarkerType? markerType;
+
+  @override
+  void initState() {
+    super.initState();
+    context
+        .read<ReportFormCubit>()
+        .reset(); //TODO [optimization]: If possible try to move it just before MapPage (Use AutoRouteWrapper) (REMOVE this)
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -77,47 +105,37 @@ class _ReportPageState extends State<ReportPage> {
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  // Add Image Button
-                  IconButton(
-                    onPressed: () async {
-                      // final image = await pickImage();
-                      // if (image != null) {
-                      //   context
-                      //       .read<ReportFormCubit>()
-                      //       .addImage(image.bytes, image.name);
-                      // }
-                    },
-                    icon: const Icon(Icons.add_a_photo),
+                  AddImagesWidget(
+                    state.images,
+                    (imageWithImageModel) => context
+                        .read<ReportFormCubit>()
+                        .addImage(imageWithImageModel),
+                    (index) =>
+                        context.read<ReportFormCubit>().removeImageAt(index),
                   ),
-                  // AddImagesWidget(
-                  //   images,
-                  //   loading
-                  //       ? null
-                  //       : (image) => setState(() => images.add(image)),
-                  //   loading
-                  //       ? null
-                  //       : (index) => setState(() => images.removeAt(index)),
-                  // ),
                   const SizedBox(
                     height: 12,
                     width: double
                         .infinity, // to make the column have maximum width
                   ),
                   DropdownButton<MarkerType>(
+                    hint: Text(context.l10n.markerType),
                     value: state.markerType,
-                    onChanged: (type) =>
-                        context.read<ReportFormCubit>().setMarkerType(type!),
-                    items: MarkerType.values
-                        .map(
-                          (type) => DropdownMenuItem(
-                            value: type,
-                            child: Text(type.toString()),
-                          ),
-                        )
-                        .toList(),
+                    onChanged: state.isSubmitting
+                        ? null
+                        : (type) => context
+                            .read<ReportFormCubit>()
+                            .setMarkerType(type!),
+                    items: MarkerType.values.map(
+                      (type) {
+                        return DropdownMenuItem(
+                          value: type,
+                          child: Text(type.toString()),
+                        );
+                      },
+                    ).toList(),
                   ),
                   // DropdownButton(
-                  //   hint: Text(context.l10n.markerType),
                   //   items: MarkerType.values
                   //       .where((element) => element != MarkerType.unknown)
                   //       .map(
@@ -151,10 +169,10 @@ class _ReportPageState extends State<ReportPage> {
                           : () {
                               final pos = locationInfo?.position;
                               if (pos != null) {
-                                context.read<ReportFormCubit>().submitReport(
-                                      latitude: pos.latitude,
-                                      longitude: pos.longitude,
-                                    );
+                                // context.read<ReportFormCubit>().submitReport(
+                                //       latitude: pos.latitude,
+                                //       longitude: pos.longitude,
+                                //     );
                               }
                             },
                       // onPressed: errorMessage == null ? send : null,

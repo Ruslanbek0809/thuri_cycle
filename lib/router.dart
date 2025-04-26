@@ -38,11 +38,15 @@ class AppRouter extends RootStackRouter {
             ),
             AutoRoute(
               path: 'map',
-              page: MapRoute.page,
+              page: const EmptyShellRoute('MapRoute'),
+              children: [
+                AutoRoute(path: '', page: MapRoute.page, initial: true),
+                AutoRoute(path: 'report', page: ReportRoute.page),
+              ],
             ),
             // AutoRoute(
-            //   path: 'report-waste',
-            //   page: ReportWasteRoute.page,
+            //   path: 'map',
+            //   page: MapRoute.page,
             // ),
 
             // RecyclingGuideRoute
@@ -52,18 +56,9 @@ class AppRouter extends RootStackRouter {
               children: [
                 AutoRoute(path: '', page: CommunityRoute.page, initial: true),
                 AutoRoute(path: ':article', page: ArticleRoute.page),
-                // AutoRoute(path: ':postId', page: PostDetailRoute.page),
-                AutoRoute(
-                  path: ':recycling-guide',
-                  page: RecyclingGuideRoute.page,
-                ),
               ],
             ),
             // AutoRoute(path: 'community', page: CommunityRoute.page),
-            // AutoRoute(
-            //   path: 'recycling-guide',
-            //   page: RecyclingGuideRoute.page,
-            // ),
             AutoRoute(
               path: 'profile',
               page: ProfileRoute.page,

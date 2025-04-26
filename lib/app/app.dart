@@ -8,6 +8,7 @@ import 'package:thuri_cycle/application/auth/profile_user_form/profile_user_form
 import 'package:thuri_cycle/application/profile/settings_form_cubit.dart';
 import 'package:thuri_cycle/application/report_waste/location/location_cubit.dart';
 import 'package:thuri_cycle/application/report_waste/map_marker_form_cubit.dart';
+import 'package:thuri_cycle/application/report_waste/report/report_form_cubit.dart';
 import 'package:thuri_cycle/infastructure/core/dependency_injection/di.dart';
 import 'package:thuri_cycle/l10n/l10n.dart';
 import 'package:thuri_cycle/presentation/core/utils/constants.dart';
@@ -39,16 +40,19 @@ class _AppState extends State<App> {
           lazy: false,
           // Since you’re watching user model from start, lazy: false is fine here.
           // If I initialize it only when user goes to profile page, then lazy: true would fit here.
-          create: (context) => getIt<ProfileUserFormCubit>(),
+          create: (_) => getIt<ProfileUserFormCubit>(),
         ),
-        BlocProvider(create: (context) => getIt<SettingsFormCubit>()),
-        //TODO [optimization]: If possible try to move it just before MapPage
+        BlocProvider(create: (_) => getIt<SettingsFormCubit>()),
+        //TODO [optimization]: If possible try to move it just before MapPage (Use AutoRouteWrapper)
         BlocProvider<MapMarkerFormCubit>(
-          create: (context) => getIt<MapMarkerFormCubit>(),
+          create: (_) => getIt<MapMarkerFormCubit>(),
         ),
-        //TODO [optimization]: If possible try to move it just before MapPage
+        //TODO [optimization]: If possible try to move it just before MapPage (Use AutoRouteWrapper)
         BlocProvider<LocationCubit>(
-          create: (context) => getIt<LocationCubit>(),
+          create: (_) => getIt<LocationCubit>(),
+        ),
+        BlocProvider<ReportFormCubit>(
+          create: (_) => getIt<ReportFormCubit>(),
         ),
       ],
       child: BlocListener<AuthBloc, AuthState>(
