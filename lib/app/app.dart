@@ -51,6 +51,7 @@ class _AppState extends State<App> {
         BlocProvider<LocationCubit>(
           create: (_) => getIt<LocationCubit>(),
         ),
+        //TODO [optimization]: If possible try to move it just before MapPage (Use AutoRouteWrapper)
         BlocProvider<ReportFormCubit>(
           create: (_) => getIt<ReportFormCubit>(),
         ),

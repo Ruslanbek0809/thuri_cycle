@@ -15,6 +15,8 @@ class AddImagesWidget extends StatelessWidget {
   final void Function(ImageWithFileModel)? onAddImage;
   final void Function(int)? onRemoveImage;
 
+  static const imageHeight = 256.0;
+
   Future<void> _captureImage(BuildContext context) async {
     final picker = ImagePicker();
     final image = await picker.pickImage(source: ImageSource.camera);
@@ -36,8 +38,6 @@ class AddImagesWidget extends StatelessWidget {
     final fgDisabledColor =
         Color.alphaBlend(colors.onSurface.withOpacity(0.38), colors.surface);
 
-    const double imageHeight = 100;
-
     return SingleChildScrollView(
       scrollDirection: Axis.horizontal,
       child: Row(
@@ -55,7 +55,6 @@ class AddImagesWidget extends StatelessWidget {
                     child: Image.file(
                       image.file,
                       height: imageHeight,
-                      width: imageHeight,
                       fit: BoxFit.cover,
                     ),
                   ),
@@ -101,7 +100,7 @@ class AddImagesWidget extends StatelessWidget {
               onTap: () => _captureImage(context),
               borderRadius: const BorderRadius.all(Radius.circular(16)),
               child: const SizedBox(
-                width: imageHeight,
+                width: imageHeight / 1.618,
                 height: imageHeight,
                 child: Icon(Icons.add_a_photo, size: 32),
               ),

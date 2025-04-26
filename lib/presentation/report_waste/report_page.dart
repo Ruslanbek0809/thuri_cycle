@@ -5,7 +5,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:thuri_cycle/application/report_waste/location/location_cubit.dart';
 import 'package:thuri_cycle/application/report_waste/report/report_form_cubit.dart';
 import 'package:thuri_cycle/domain/report_waste/location_info.dart';
-import 'package:thuri_cycle/domain/report_waste/map_marker.dart';
 import 'package:thuri_cycle/l10n/l10n.dart';
 import 'package:thuri_cycle/presentation/core/utils/constants.dart';
 import 'package:thuri_cycle/presentation/report_waste/widgets/add_images_widget.dart';
@@ -16,13 +15,10 @@ import 'package:thuri_cycle/presentation/report_waste/widgets/error_text.dart';
 //TODO: Implement send function using form
 //TODO: Implement proper image adding
 @RoutePage()
-class ReportPage extends StatefulWidget
+class ReportPage extends StatefulWidget {
+  const ReportPage({super.key});
 //  implements AutoRouteWrapper
-{
-  const ReportPage({
-    // required this.reportFormCubit,
-    super.key,
-  });
+  // required this.reportFormCubit,
   // final ReportFormCubit reportFormCubit;
 
   // @override
@@ -42,11 +38,11 @@ class ReportPage extends StatefulWidget
   State<ReportPage> createState() => _ReportPageState();
 }
 
-class ReportedResult {
-  ReportedResult(this.newMapMarkerModel, this.errorAddingImages);
-  final MapMarkerModel newMapMarkerModel;
-  final String? errorAddingImages;
-}
+// class ReportedResult {
+//   ReportedResult(this.newMapMarkerModel, this.errorAddingImages);
+//   final MapMarkerModel newMapMarkerModel;
+//   final String? errorAddingImages;
+// }
 
 class _ReportPageState extends State<ReportPage> {
   List<Pair<Uint8List, String?>> images = [];
@@ -126,37 +122,23 @@ class _ReportPageState extends State<ReportPage> {
                         : (type) => context
                             .read<ReportFormCubit>()
                             .setMarkerType(type!),
-                    items: MarkerType.values.map(
-                      (type) {
+                    items: MarkerType.values
+                        .where((element) => element != MarkerType.unknown)
+                        .map(
+                      (markerType) {
                         return DropdownMenuItem(
-                          value: type,
-                          child: Text(type.toString()),
+                          value: markerType,
+                          child: Row(
+                            children: [
+                              markerType.getThemedIcon(context),
+                              const SizedBox(width: 8),
+                              Text(markerType.getName(context)),
+                            ],
+                          ),
                         );
                       },
                     ).toList(),
                   ),
-                  // DropdownButton(
-                  //   items: MarkerType.values
-                  //       .where((element) => element != MarkerType.unknown)
-                  //       .map(
-                  //         (e) => DropdownMenuItem(
-                  //           value: e,
-                  //           child: Row(
-                  //             children: [
-                  //               e.getThemedIcon(context),
-                  //               const SizedBox(width: 8),
-                  //               Text(e.getName(context)),
-                  //             ],
-                  //           ),
-                  //         ),
-                  //       )
-                  //       .toList(growable: false),
-                  //   onChanged: loading
-                  //       ? null
-                  //       : (MarkerType? newMarkerType) =>
-                  //           setState(() => markerType = newMarkerType),
-                  //   value: markerType,
-                  // ),
                   const SizedBox(height: 12),
                   if (errorMessage != null)
                     Text(errorMessage.toLocalizedString(context.l10n)),
@@ -175,7 +157,6 @@ class _ReportPageState extends State<ReportPage> {
                                     );
                               }
                             },
-                      // onPressed: errorMessage == null ? send : null,
                       child: Text(context.l10n.send),
                     ),
                   ErrorText('Hey', context.l10n.errorReporting),

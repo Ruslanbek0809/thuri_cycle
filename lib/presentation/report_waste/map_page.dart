@@ -217,10 +217,9 @@ class _MapPageState extends State<MapPage> with WidgetsBindingObserver {
                 child: BottomControlsWidget(
                   onAddWidgetPressed: () async {
                     await context.router.push(
-                      const ReportRoute(
-                          // reportFormCubit: context.read<ReportFormCubit>(),
-                          ),
+                      const ReportRoute(),
                     );
+                    // reportFormCubit: context.read<ReportFormCubit>(),
                   },
                 ),
               ),
