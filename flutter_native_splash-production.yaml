@@ -1,0 +1,9 @@
+# flutter_native_splash:
+#   color: "#ffffff"
+#   image: assets/app_logo.png
+#   # branding: assets/branding-production.png
+#   color_dark: "#19191A"
+#   image_dark: assets/app_logo.png
+#   # branding_dark: assets/branding-production.png
+
+#   web: false

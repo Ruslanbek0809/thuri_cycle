@@ -51,8 +51,10 @@ dependencies:
   flutter_markdown: ^0.7.7 #TODO: Check if not neeeded, remove this
   collection: ^1.19.1
   package_info_plus: ^8.3.0
+  path: ^1.9.1
   
-  flutter_native_splash: ^2.4.5
+  flutter_native_splash: ^2.4.5 #TODO: Check this native splash screen before uploading the app for production
+  flutter_launcher_icons: ^0.14.3
 
   # MAPS
   flutter_map: ^8.1.1
@@ -73,8 +75,6 @@ dependencies:
   flutter_staggered_grid_view: ^0.7.0
   modal_bottom_sheet: ^3.0.0
   material_symbols_icons: ^4.2815.0
-  path: ^1.9.1
-  flutter_launcher_icons: ^0.14.3
   
 dev_dependencies:
   bloc_test: ^10.0.0
@@ -88,6 +88,24 @@ dev_dependencies:
   injectable_generator: ^2.7.0
   auto_route_generator: ^10.0.1
   json_serializable: ^6.9.4
+
+# Native splash screen settings.
+flutter_native_splash:
+  color: "#FFFFFF"
+  image: assets/app_logo.png
+  # color_dark: "#19191A"
+  # image_dark: assets/app_logo.png # DARK
+  # background_image: assets/splash.png # LIGHT
+  # background_image_dark: assets/splash.png # DARK
+  # image: assets/splash.png # LIGHT
+  # image_dark: assets/splash.png # DARK
+  # android_12:
+  #   # image: assets/logo_transparent_medium.png # LIGHT
+  #   icon_background_color: "#0085FD"
+  #   # image_dark: assets/logo_transparent_medium.png # DARK
+  #   icon_background_color_dark: "#0085FD"
+  #   # icon_background_color_dark: "#000000"
+  fullscreen: true
 
 flutter:
   uses-material-design: true
