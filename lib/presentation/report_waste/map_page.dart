@@ -125,12 +125,14 @@ class _MapPageState extends State<MapPage> with WidgetsBindingObserver {
               },
             ),
             children: [
+              // Part of flutter_map package
               TileLayer(
                 urlTemplate: 'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
               ),
               //TODO: Add more features of LocationProvider
               // TODO: Check
               // TODO [optimization]: Optimize LocationCubit by using LocationInfo and keeping current last position
+              // Current location
               BlocBuilder<LocationCubit, LocationState>(
                 buildWhen: (previous, current) => previous != current,
                 builder: (context, state) {
@@ -175,7 +177,8 @@ class _MapPageState extends State<MapPage> with WidgetsBindingObserver {
                   ), // theme-independent grey
                 ),
               ),
-              // Map controls //TODO: Check
+              // Map controls
+              //TODO: Check
               //TODO [optimization]: Add ScoreboardPage later on
               BlocBuilder<LocationCubit, LocationState>(
                 builder: (context, state) {

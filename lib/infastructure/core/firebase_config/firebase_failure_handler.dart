@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
 import 'package:thuri_cycle/domain/core/firebase_failure.dart';
+import 'package:thuri_cycle/presentation/core/utils/methods/aliases.dart';
 
 typedef FirebaseRepoFunction<T> = Future<T> Function();
 
@@ -21,12 +22,12 @@ Future<Either<FirebaseFailure, T>> firebaseFailureHandler<T>(
       case 'unavailable':
         return left(const FirebaseFailure.networkError());
       default:
-        // talker.handle('FirebaseException FirebaseFailure.custom: $e');
+        talker.handle('FirebaseException FirebaseFailure.custom: $e');
         return left(FirebaseFailure.custom(e.message ?? 'Unexpected error'));
     }
-  } catch (e, _) {
+  } catch (e, stackTrace) {
     // reportException(e);
-    // talker.handle('FirebaseFailure.unexpected: $e', stackTrace);
+    talker.handle('FirebaseFailure.unexpected: $e', stackTrace);
 
     return left(const FirebaseFailure.unexpected());
   }

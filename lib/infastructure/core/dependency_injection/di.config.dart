@@ -46,7 +46,6 @@ import 'package:thuri_cycle/domain/auth/i_auth_facade.dart' as _i917;
 import 'package:thuri_cycle/domain/community/i_community.dart' as _i153;
 import 'package:thuri_cycle/domain/report_waste/i_location.dart' as _i145;
 import 'package:thuri_cycle/domain/report_waste/i_report.dart' as _i299;
-import 'package:thuri_cycle/domain/report_waste/i_report_waste.dart' as _i452;
 import 'package:thuri_cycle/infastructure/auth/auth_repository.dart' as _i767;
 import 'package:thuri_cycle/infastructure/community/community_repository.dart'
     as _i443;
@@ -70,8 +69,6 @@ import 'package:thuri_cycle/infastructure/report_waste/location_repository.dart'
     as _i389;
 import 'package:thuri_cycle/infastructure/report_waste/report_repository.dart'
     as _i195;
-import 'package:thuri_cycle/infastructure/report_waste/report_waste_repository.dart'
-    as _i521;
 import 'package:thuri_cycle/infastructure/scroll_controller/scroll_controller_service.dart'
     as _i795;
 
@@ -115,8 +112,6 @@ extension GetItInjectableX on _i174.GetIt {
       dispose: (i) => i.dispose(),
     );
     gh.lazySingleton<_i227.AppCubit>(() => _i227.AppCubit());
-    gh.lazySingleton<_i452.IReportWasteFacade>(
-        () => _i521.ReportWasteRepository(gh<_i974.FirebaseFirestore>()));
     gh.lazySingleton<_i357.UserCollection>(
         () => _i357.UserCollection(gh<_i974.FirebaseFirestore>()));
     gh.lazySingleton<_i357.ArticlesCollection>(
@@ -154,13 +149,13 @@ extension GetItInjectableX on _i174.GetIt {
         ));
     gh.factory<_i990.LocationCubit>(
         () => _i990.LocationCubit(gh<_i145.ILocationFacade>()));
-    gh.factory<_i115.MapMarkerFormCubit>(() => _i115.MapMarkerFormCubit(
-          gh<_i452.IReportWasteFacade>(),
-          gh<_i1048.MapPreferences>(),
-        ));
-    gh.lazySingleton<_i299.IReportFacade>(() => _i195.ReportWasteRepository(
+    gh.lazySingleton<_i299.IReportFacade>(() => _i195.ReportRepository(
           gh<_i137.FirebaseStorageService>(),
           gh<_i357.MapMarkersCollection>(),
+        ));
+    gh.factory<_i115.MapMarkerFormCubit>(() => _i115.MapMarkerFormCubit(
+          gh<_i299.IReportFacade>(),
+          gh<_i1048.MapPreferences>(),
         ));
     gh.factory<_i790.CommunityArticlesCubit>(
         () => _i790.CommunityArticlesCubit(gh<_i153.ICommunity>()));

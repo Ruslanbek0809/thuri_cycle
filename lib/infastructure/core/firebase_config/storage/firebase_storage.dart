@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:injectable/injectable.dart';
+import 'package:thuri_cycle/presentation/core/utils/methods/aliases.dart';
 
 @lazySingleton
 class FirebaseStorageService {
@@ -30,7 +31,10 @@ class FirebaseStorageService {
     final taskSnapshot = await uploadTask;
 
     if (taskSnapshot.state == TaskState.success) {
-      downloadUrl = await storageReference.getDownloadURL();
+      // downloadUrl = await storageReference.getDownloadURL();
+
+      // To fix file path issue when uploading & retrieving firebase storage issue
+      downloadUrl = path;
     }
 
     return downloadUrl;
@@ -41,6 +45,7 @@ class FirebaseStorageService {
       return '';
     }
 
+    talker.verbose('getImageUrl() imagePath: $imagePath');
     try {
       final storageReference = imagePath.contains('gs://')
           ? _firebaseStorage.refFromURL(imagePath)
