@@ -105,6 +105,11 @@ class MapMarkerFormCubit extends Cubit<MapMarkerFormState> {
 
   Iterable<MapMarkerModel> get visibleMarkers {
     return state.allMarkers;
+    // .where(
+    //   (e) =>
+    //       (state.includeResolved || !e.isResolved()) &&
+    //       state.shownTypes.contains(e.markerType),
+    // ); //TODO: Adjust this visibleMarkers 
   }
 
   MapMarkerModel? getClosestMarker(LatLng location) {
