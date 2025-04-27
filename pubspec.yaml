@@ -74,6 +74,7 @@ dependencies:
   modal_bottom_sheet: ^3.0.0
   material_symbols_icons: ^4.2815.0
   path: ^1.9.1
+  flutter_launcher_icons: ^0.14.3
   
 dev_dependencies:
   bloc_test: ^10.0.0
