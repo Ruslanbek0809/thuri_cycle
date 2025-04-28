@@ -4,21 +4,18 @@ import 'package:latlong2/latlong.dart';
 import 'package:thuri_cycle/l10n/l10n.dart';
 import 'package:thuri_cycle/presentation/core/utils/methods/shortcuts.dart';
 
-//TODO: Handle this marker types (icons and names)
 enum MarkerType {
-  // the comments have the alternative icons
-  // useful icons for the future: oil_barrel
-  unknown(1, Colors.grey, Icons.help_outline),
-  plastic(2, Colors.indigo, Icons.recycling),
-  paper(3, Colors.yellow, Icons.newspaper),
-  undifferentiated(
-    4,
-    Colors.red,
-    Icons.sync_disabled,
-  ), // cleaning_services, celebration
-  glass(5, Colors.green, Icons.liquor),
-  compost(6, Colors.brown, Icons.compost),
-  electronics(7, Colors.purple, Icons.fax); // electric_bolt
+  unknown(0, Colors.grey, Icons.help_outline),
+  plasticAndPackaging(1, Colors.yellow, Icons.recycling),
+  paper(2, Colors.blue, Icons.description),
+  glass(3, Colors.green, Icons.wine_bar),
+  organic(4, Colors.brown, Icons.eco),
+  residual(5, Colors.black, Icons.delete),
+  electronics(6, Colors.purple, Icons.devices),
+  hazardous(7, Colors.red, Icons.warning),
+  bulky(8, Colors.orange, Icons.weekend),
+  textiles(9, Colors.teal, Icons.checkroom),
+  batteries(10, Colors.deepOrange, Icons.battery_charging_full);
 
   const MarkerType(this.id, this.color, this.icon);
   final int id;
@@ -41,18 +38,26 @@ enum MarkerType {
     switch (this) {
       case MarkerType.unknown:
         return l10n.markerTypeUnknown;
-      case MarkerType.plastic:
-        return l10n.markerTypePlastic;
+      case MarkerType.plasticAndPackaging:
+        return l10n.markerTypePlasticAndPackaging;
       case MarkerType.paper:
         return l10n.markerTypePaper;
-      case MarkerType.undifferentiated:
-        return l10n.markerTypeUndifferentiated;
       case MarkerType.glass:
         return l10n.markerTypeGlass;
-      case MarkerType.compost:
-        return l10n.markerTypeCompost;
+      case MarkerType.organic:
+        return l10n.markerTypeOrganic;
+      case MarkerType.residual:
+        return l10n.markerTypeResidual;
       case MarkerType.electronics:
         return l10n.markerTypeElectronics;
+      case MarkerType.hazardous:
+        return l10n.markerTypeHazardous;
+      case MarkerType.bulky:
+        return l10n.markerTypeBulky;
+      case MarkerType.textiles:
+        return l10n.markerTypeTextiles;
+      case MarkerType.batteries:
+        return l10n.markerTypeBatteries;
     }
   }
 }
@@ -63,7 +68,6 @@ class Pair<A, B> {
   final A first;
   final B second;
 }
-
 
 final $constants = Constants();
 
@@ -332,7 +336,7 @@ class _Navigation {
             height: getTabletType() ? 52 : 26,
             width: getTabletType() ? 52 : 26,
           ),
-          label: 'Add',
+          label: context.l10n.report,
         ),
         NavigationDestination(
           icon: SvgPicture.asset(

@@ -158,7 +158,7 @@ class _MapPageState extends State<MapPage> with WidgetsBindingObserver {
                   );
                 },
               ),
-              // TODO: Check
+              // Lays out markers on the map
               FastMarkersLayer(
                 context.read<MapMarkerFormCubit>().visibleMarkers,
               ),

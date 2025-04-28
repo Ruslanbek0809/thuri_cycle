@@ -38,10 +38,14 @@ Map<String, dynamic> _$$MapMarkerModelImplToJson(
 
 const _$MarkerTypeEnumMap = {
   MarkerType.unknown: 'unknown',
-  MarkerType.plastic: 'plastic',
+  MarkerType.plasticAndPackaging: 'plasticAndPackaging',
   MarkerType.paper: 'paper',
-  MarkerType.undifferentiated: 'undifferentiated',
   MarkerType.glass: 'glass',
-  MarkerType.compost: 'compost',
+  MarkerType.organic: 'organic',
+  MarkerType.residual: 'residual',
   MarkerType.electronics: 'electronics',
+  MarkerType.hazardous: 'hazardous',
+  MarkerType.bulky: 'bulky',
+  MarkerType.textiles: 'textiles',
+  MarkerType.batteries: 'batteries',
 };

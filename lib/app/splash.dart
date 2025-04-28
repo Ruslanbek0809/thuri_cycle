@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:thuri_cycle/presentation/core/utils/constants.dart';
-import 'package:thuri_cycle/presentation/core/utils/methods/aliases.dart';
 
 import 'package:thuri_cycle/router.gr.dart';
 
@@ -22,7 +21,6 @@ class SplashPage extends HookWidget {
     useEffect(
       () {
         Future<void> navigateToNextPage() async {
-          talker.info('SplashPage navigateToNextPage()');
           // final prefs = await prefsFuture;
           // final isOnboardingSeen =
           //     prefs.getBool($constants.isOnboardingSeen) ?? false;

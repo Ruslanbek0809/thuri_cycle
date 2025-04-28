@@ -153,10 +153,6 @@ extension GetItInjectableX on _i174.GetIt {
           gh<_i137.FirebaseStorageService>(),
           gh<_i357.MapMarkersCollection>(),
         ));
-    gh.factory<_i115.MapMarkerFormCubit>(() => _i115.MapMarkerFormCubit(
-          gh<_i299.IReportFacade>(),
-          gh<_i1048.MapPreferences>(),
-        ));
     gh.factory<_i790.CommunityArticlesCubit>(
         () => _i790.CommunityArticlesCubit(gh<_i153.ICommunity>()));
     gh.factory<_i243.CommunityGuidesCubit>(
@@ -167,6 +163,10 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i749.CommunitySingleGuideCubit(gh<_i153.ICommunity>()));
     gh.factory<_i401.ReportFormCubit>(
         () => _i401.ReportFormCubit(gh<_i299.IReportFacade>()));
+    gh.factory<_i115.MapMarkerFormCubit>(() => _i115.MapMarkerFormCubit(
+          gh<_i299.IReportFacade>(),
+          gh<_i1048.MapPreferences>(),
+        ));
     return this;
   }
 }

@@ -34,14 +34,17 @@ class AppRouter extends RootStackRouter {
             AutoRoute(
               path: 'scan-waste',
               page: ScanWasteRoute.page,
-              // meta: const {'hideBottomNav': true},
             ),
             AutoRoute(
               path: 'map',
               page: const EmptyShellRoute('MapRoute'),
               children: [
                 AutoRoute(path: '', page: MapRoute.page, initial: true),
-                AutoRoute(path: 'report', page: ReportRoute.page),
+                AutoRoute(
+                  path: 'report',
+                  page: ReportRoute.page,
+                  meta: const {'hideBottomNav': true},
+                ),
               ],
             ),
             // AutoRoute(
