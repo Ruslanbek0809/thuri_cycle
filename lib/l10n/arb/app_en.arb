@@ -86,7 +86,21 @@
     "addImage": "Add an image",
     "selectMarkerType": "Select a marker type",
     "locationIsLoading": "Location is loading, please wait…",
-    "tooFarToResolve": "You are too far to resolve",
     "send": "Send",
+    "usePpe": "Make sure to use gloves or appropriate personal protective equipment to pick up trash",
+    "resolvedBy": "Resolved by {user}",
+    "@resolvedBy": {
+        "placeholders": {
+        "user": {
+            "type": "String"
+            }
+        }
+    },
+    "loginToResolve": "Login to resolve",
+    "getCloserToResolve": "Get closer to resolve",
+    "resolve": "Resolve",
+    "alreadyResolved": "Already resolved",
+    "tooFarToResolve": "You are too far to resolve",
+    "close": "Close",
     "comingInNextUpdate": "Coming in the next update"
 }

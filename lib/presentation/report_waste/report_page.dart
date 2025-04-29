@@ -254,7 +254,7 @@ class _ReportPageState extends State<ReportPage> {
                       //             final pos = locationInfo?.position;
                       //             if (pos != null) {
                       //               context
-                      //                   .read<ReportFormCubit>()
+                      //                   .read<ReportFormCubit>() 
                       //                   .submitReport(
                       //                     latitude: pos.latitude,
                       //                     longitude: pos.longitude,

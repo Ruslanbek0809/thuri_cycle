@@ -84,7 +84,21 @@
     "addImage": "Añadir una imagen",
     "selectMarkerType": "Seleccionar un tipo de marcador",
     "locationIsLoading": "La ubicación se está cargando, por favor espere…",
-    "tooFarToResolve": "Está demasiado lejos para resolver",
     "send": "Enviar",
+    "usePpe": "Asegúrese de usar guantes o equipo de protección personal adecuado para recoger la basura",
+    "resolvedBy": "Resuelto por {usuario}",
+    "@resolvedBy": {
+    "placeholders": {
+    "user": {
+    "type": "String"
+             }
+         }
+    },
+    "loginToResolve": "Inicia sesión para resolver",
+    "getCloserToResolve": "Acércate a la resolución",
+    "resolve": "Resolver",
+    "alreadyResolved": "Ya resuelto",
+    "tooFarToResolve": "Estás demasiado lejos para resolver",
+    "close": "Cerrar",
     "comingInNextUpdate": "En la próxima actualización"
 }
