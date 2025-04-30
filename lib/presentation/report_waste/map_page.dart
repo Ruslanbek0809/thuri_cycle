@@ -104,7 +104,7 @@ class _MapPageState extends State<MapPage> with WidgetsBindingObserver {
               initialZoom: state.initialZoom,
               // OSM supports at most the zoom value 19
               maxZoom: 18.45,
-              onTap: (tapPosition, tapLatLng) {
+              onTap: (tapPosition, tapLatLng) async {
                 final minMarker = context
                     .read<MapMarkerFormCubit>()
                     .getClosestMarker(tapLatLng);
@@ -121,6 +121,10 @@ class _MapPageState extends State<MapPage> with WidgetsBindingObserver {
                     .abs(); //TODO: Check changes here in this file 1 more time
                 if (max(dx, dy) < markerScale * 0.7) {
                   // openMarkerPage(minMarker);
+
+                  await context.router.push(
+                    SingleMarkerRoute(mapMarker: minMarker),
+                  );
                 }
               },
             ),

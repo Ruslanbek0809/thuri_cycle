@@ -3,11 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:thuri_cycle/presentation/core/utils/constants.dart';
 import 'package:thuri_cycle/presentation/core/utils/methods/shortcuts.dart';
 
+//TODO [optimization]: Add proper placeholder in place of phImage
 class CustomBorderedAvatarImage extends StatelessWidget {
   const CustomBorderedAvatarImage({
     super.key,
     this.image,
-    this.phImage = 'assets/placeholder_1_1.svg',
+    this.phImage = '',
     this.fit = BoxFit.cover,
     this.radius = 0.0,
     this.decoration,

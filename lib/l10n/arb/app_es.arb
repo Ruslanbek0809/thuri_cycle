@@ -86,13 +86,21 @@
     "locationIsLoading": "La ubicación se está cargando, por favor espere…",
     "send": "Enviar",
     "usePpe": "Asegúrese de usar guantes o equipo de protección personal adecuado para recoger la basura",
-    "resolvedBy": "Resuelto por {usuario}",
+    "reportedBy": "Reportado por {user}",
+    "@reportedBy": {
+    "placeholders": {
+    "user": {
+    "type": "String"
+    }
+    }
+    },
+    "resolvedBy": "Resuelto por {user}",
     "@resolvedBy": {
     "placeholders": {
     "user": {
     "type": "String"
-             }
-         }
+    }
+    }
     },
     "loginToResolve": "Inicia sesión para resolver",
     "getCloserToResolve": "Acércate a la resolución",

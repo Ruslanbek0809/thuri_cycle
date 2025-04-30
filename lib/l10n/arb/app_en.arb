@@ -88,12 +88,20 @@
     "locationIsLoading": "Location is loading, please wait…",
     "send": "Send",
     "usePpe": "Make sure to use gloves or appropriate personal protective equipment to pick up trash",
+    "reportedBy": "Reported by {user}",
+    "@reportedBy": {
+        "placeholders": {
+        "user": {
+            "type": "String"
+        }
+        }
+    },
     "resolvedBy": "Resolved by {user}",
     "@resolvedBy": {
         "placeholders": {
         "user": {
             "type": "String"
-            }
+        }
         }
     },
     "loginToResolve": "Login to resolve",

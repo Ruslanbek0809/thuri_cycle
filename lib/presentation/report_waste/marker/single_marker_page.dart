@@ -1,30 +1,11 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:get_it_mixin/get_it_mixin.dart';
-import 'package:insigno_frontend/networking/authentication.dart';
-import 'package:insigno_frontend/networking/backend.dart';
-import 'package:insigno_frontend/networking/data/map_marker.dart';
-import 'package:insigno_frontend/networking/data/marker.dart';
-import 'package:insigno_frontend/page/marker/add_images_widget.dart';
-import 'package:insigno_frontend/page/marker/image_list_widget.dart';
-import 'package:insigno_frontend/page/marker/report_as_inappropriate_dialog.dart';
-import 'package:insigno_frontend/page/marker/resolve_page.dart';
-import 'package:insigno_frontend/page/user/user_page.dart';
-import 'package:insigno_frontend/page/util/marker_type_app_bar_title.dart';
-import 'package:insigno_frontend/provider/location_provider.dart';
-import 'package:insigno_frontend/util/error_text.dart';
-import 'package:insigno_frontend/util/image.dart';
-import 'package:insigno_frontend/util/nullable.dart';
 import 'package:thuri_cycle/domain/auth/user_model/user_model.dart';
 import 'package:thuri_cycle/domain/report_waste/map_marker.dart';
 import 'package:thuri_cycle/domain/report_waste/single_marker.dart';
 import 'package:thuri_cycle/l10n/l10n.dart';
-import 'package:thuri_cycle/presentation/core/utils/methods/shortcuts.dart';
-import 'package:thuri_cycle/presentation/core/widgets/custom/custom_image.dart';
 import 'package:thuri_cycle/presentation/report_waste/marker/widgets/marker_photos_list_widget.dart';
-import 'package:thuri_cycle/presentation/report_waste/widgets/add_images_widget.dart';
-import 'package:thuri_cycle/presentation/report_waste/widgets/error_text.dart';
+import 'package:thuri_cycle/presentation/report_waste/marker/widgets/marker_type_app_bar_title.dart';
 
 @RoutePage()
 class SingleMarkerPage extends StatefulWidget {
@@ -87,16 +68,19 @@ class _SingleMarkerPageState extends State<SingleMarkerPage> {
 
     return Scaffold(
       appBar: AppBar(
-        title: MarkerTypeAppBarTitle(mapMarker.type),
-        actions: isLoggedIn && (singleMarkerModel.canBeReported ?? false)
-            ? [
-                IconButton(
-                  onPressed: openReportAsInappropriateDialog,
-                  icon: const Icon(Icons.report),
-                  tooltip: l10n.reportAsInappropriate,
-                ),
-              ]
-            : null,
+        title: MarkerTypeAppBarTitle(singleMarkerModel.marker.markerType),
+        actions:
+            // isLoggedIn && (singleMarkerModel.canBeReported ?? false)
+            //     ?
+            [
+          IconButton(
+            onPressed: () {},
+            // onPressed: openReportAsInappropriateDialog,
+            icon: const Icon(Icons.report),
+            tooltip: context.l10n.reportAsInappropriate,
+          ),
+        ],
+        // : null,
       ),
       body: WillPopScope(
         onWillPop: () async {
@@ -111,16 +95,17 @@ class _SingleMarkerPageState extends State<SingleMarkerPage> {
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
-                if (singleMarkerModel.marker.images?.isNotEmpty == true)
+                if (singleMarkerModel.marker.images?.isNotEmpty ?? false)
                   MarkerPhotoListWidget(
-                    singleMarkerModel!.marker!.images.map(
-                      (image) => CustomImage(
-                        image: image,
-                        // width: getSize(context).width,
-                        height: AddImagesWidget.imageHeight,
-                      ),
-                    ),
+                    imageUrls: singleMarkerModel.marker.images ?? [],
                   ),
+                // MarkerPhotoListWidget(
+                //   singleMarkerModel.marker.images,
+                //   singleMarkerModel.marker.images.map(
+                //     (image) => imageFromNetwork(
+                //         imageId: image, height: AddImagesWidget.imageHeight),
+                //   ),
+                // ),
                 // ErrorText(markerError, l10n.errorLoading),
                 // ErrorText(
                 //   widget.errorAddingImages,
@@ -142,31 +127,32 @@ class _SingleMarkerPageState extends State<SingleMarkerPage> {
                   width:
                       double.infinity, // to make the column have maximum width
                 ),
-                if (singleMarkerModel!.marker == null || marker?.resolutionDate != null)
-                  const SizedBox() // do not show any error if the marker is already resolved
-                else if (!isLoggedIn)
-                  Text(context.l10n.loginToResolve, textAlign: TextAlign.center)
-                else if (!nearEnoughToResolve)
-                  Text(
-                    context.l10n.getCloserToResolve,
-                    textAlign: TextAlign.center,
+                if (singleMarkerModel.marker.resolutionDate != null)
+                  const SizedBox(), // do not show any error if the marker is already resolved
+                // else if (!isLoggedIn)
+                Text(context.l10n.loginToResolve, textAlign: TextAlign.center),
+                // else if (!nearEnoughToResolve)
+                Text(
+                  context.l10n.getCloserToResolve,
+                  textAlign: TextAlign.center,
+                ),
+                // if (singleMarkerModel.marker == null) const CircularProgressIndicator(),
+                ElevatedButton(
+                  onPressed: () {},
+                  // onPressed:
+                  //     (singleMarkerModel.marker?.resolutionDate == null &&
+                  //             isLoggedIn &&
+                  //             nearEnoughToResolve)
+                  //         ? openResolvePage
+                  //         : null,
+                  child: Text(
+                    singleMarkerModel.marker.resolutionDate == null
+                        ? context.l10n.resolve
+                        : context.l10n.alreadyResolved,
                   ),
-                if (marker == null) const CircularProgressIndicator(),
-                if (marker != null)
-                  ElevatedButton(
-                    onPressed: (marker?.resolutionDate == null &&
-                            isLoggedIn &&
-                            nearEnoughToResolve)
-                        ? openResolvePage
-                        : null,
-                    child: Text(
-                      marker?.resolutionDate == null
-                          ? context.l10n.resolve
-                          : context.l10n.alreadyResolved,
-                    ),
-                  ),
+                ),
                 // Provides helpful info
-                if (marker != null && marker?.resolutionDate == null)
+                if (singleMarkerModel.marker.resolutionDate == null)
                   Padding(
                     padding: const EdgeInsets.only(top: 8, left: 16, right: 16),
                     child: Text(
@@ -175,37 +161,41 @@ class _SingleMarkerPageState extends State<SingleMarkerPage> {
                       textAlign: TextAlign.center,
                     ),
                   ),
-                if (marker != null) const SizedBox(height: 8),
-                if (marker != null)
-                  OverflowBar(
-                    overflowAlignment: OverflowBarAlignment.center,
-                    children: [
+                const SizedBox(height: 8),
+                OverflowBar(
+                  overflowAlignment: OverflowBarAlignment.center,
+                  children: [
+                    TextButton(
+                      onPressed: () {},
+                      // onPressed: () => Navigator.pushNamed(
+                      //   context,
+                      //   UserPage.routeName,
+                      //   arguments: mapMarker.reportedBy,
+                      // ),
+                      child: Text(
+                        context.l10n.reportedBy(
+                          singleMarkerModel.reportedByUser.name ??
+                              'No Reported user',
+                        ),
+                      ),
+                    ),
+                    if (singleMarkerModel.resolvedByUser != null)
                       TextButton(
                         onPressed: () {},
                         // onPressed: () => Navigator.pushNamed(
                         //   context,
                         //   UserPage.routeName,
-                        //   arguments: mapMarker.reportedBy,
+                        //   arguments: mapMarker.resolvedBy,
                         // ),
                         child: Text(
-                          context.l10n.reportedBy(marker!.reportedByUser.name),
-                        ),
-                      ),
-                      if (marker!.resolvedByUser != null)
-                        TextButton(
-                          onPressed: () {},
-                          // onPressed: () => Navigator.pushNamed(
-                          //   context,
-                          //   UserPage.routeName,
-                          //   arguments: mapMarker.resolvedBy,
-                          // ),
-                          child: Text(
-                            context.l10n
-                                .resolvedBy(marker!.resolvedByUser!.name),
+                          context.l10n.resolvedBy(
+                            singleMarkerModel.resolvedByUser?.name ??
+                                'No Resolved user',
                           ),
                         ),
-                    ],
-                  ),
+                      ),
+                  ],
+                ),
               ],
             ),
           ),

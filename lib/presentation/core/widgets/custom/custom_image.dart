@@ -2,12 +2,12 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
+//TODO [optimization]: Add proper placeholder in place of image and phImage
 class CustomImage extends StatelessWidget {
   const CustomImage({
     super.key,
-    this.image = 'assets/placeholder_3_1.svg',
-    this.phImage =
-        'assets/placeholder_3_1.svg', // 'assets/placeholder_3_1.svg',
+    this.image = '',
+    this.phImage = '',
     this.width,
     this.height,
     this.fit = BoxFit.cover,
