@@ -76,7 +76,7 @@
         "placeholders": {
         "error": {
             "type": "String"
-        }
+            }
         }
     },
     "markerType": "Marker type",
@@ -93,7 +93,7 @@
         "placeholders": {
         "user": {
             "type": "String"
-        }
+            }
         }
     },
     "resolvedBy": "Resolved by {user}",
@@ -101,7 +101,7 @@
         "placeholders": {
         "user": {
             "type": "String"
-        }
+            }
         }
     },
     "loginToResolve": "Login to resolve",

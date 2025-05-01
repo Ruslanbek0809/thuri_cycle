@@ -11,7 +11,6 @@ import 'package:thuri_cycle/presentation/core/utils/helpers/bottom_sheet_helper.
 import 'package:thuri_cycle/presentation/core/utils/methods/shortcuts.dart';
 import 'package:thuri_cycle/presentation/core/widgets/custom/custom_elevated_gradient_button.dart';
 import 'package:thuri_cycle/presentation/core/widgets/custom/custom_loading_indicator.dart';
-import 'package:thuri_cycle/presentation/report_waste/widgets/add_images_widget.dart';
 import 'package:thuri_cycle/presentation/report_waste/widgets/add_report_photos_widget.dart';
 import 'package:thuri_cycle/presentation/report_waste/widgets/error_messages.dart';
 import 'package:thuri_cycle/presentation/report_waste/widgets/report_marker_type_card.dart';
@@ -77,19 +76,19 @@ class _ReportPageState extends State<ReportPage> {
     //         get<Authentication>().isLoggedIn())
     //     .data;
 
-    final errorMessage = getErrorMessage(
-      // isLoggedIn,
-      locationInfo,
-      whilePositionLoading: () {
-        if (images.isEmpty) {
-          return ErrorMessage.addImage;
-        } else if (markerType == null) {
-          return ErrorMessage.selectMarkerType;
-        } else {
-          return null;
-        }
-      },
-    );
+    // final errorMessage = getErrorMessage(
+    //   // isLoggedIn,
+    //   locationInfo,
+    //   whilePositionLoading: () {
+    //     if (images.isEmpty) {
+    //       return ErrorMessage.addImage;
+    //     } else if (markerType == null) {
+    //       return ErrorMessage.selectMarkerType;
+    //     } else {
+    //       return null;
+    //     }
+    //   },
+    // );
 
     return Scaffold(
       resizeToAvoidBottomInset: false,
@@ -255,7 +254,7 @@ class _ReportPageState extends State<ReportPage> {
                       //             final pos = locationInfo?.position;
                       //             if (pos != null) {
                       //               context
-                      //                   .read<ReportFormCubit>() 
+                      //                   .read<ReportFormCubit>()
                       //                   .submitReport(
                       //                     latitude: pos.latitude,
                       //                     longitude: pos.longitude,

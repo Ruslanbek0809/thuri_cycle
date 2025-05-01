@@ -3,9 +3,7 @@ import 'dart:async';
 import 'package:animations/animations.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
-import 'package:thuri_cycle/application/auth/auth_bloc.dart';
 import 'package:thuri_cycle/presentation/core/utils/constants.dart';
 import 'package:thuri_cycle/presentation/core/utils/methods/aliases.dart';
 import 'package:thuri_cycle/presentation/core/utils/methods/shortcuts.dart';
@@ -50,8 +48,8 @@ class _AppWrapperState extends State<AppWrapper> with WidgetsBindingObserver {
 
   @override
   Widget build(BuildContext context) {
-    final authBlocState = BlocProvider.of<AuthBloc>(context, listen: true)
-        .state; //* listen parameter LISTENS for realtime changes on AuthCubit
+    // final authBlocState = BlocProvider.of<AuthBloc>(context, listen: true)
+    //     .state; //* listen parameter LISTENS for realtime changes on AuthCubit
 
     return AutoTabsScaffold(
       resizeToAvoidBottomInset: false,
@@ -163,7 +161,7 @@ class _AppWrapperState extends State<AppWrapper> with WidgetsBindingObserver {
               //   //   );
               //   // }
               // } else {
-                tabsRouter.setActiveIndex(index);
+              tabsRouter.setActiveIndex(index);
               // }
             },
             labelBehavior: NavigationDestinationLabelBehavior.alwaysShow,

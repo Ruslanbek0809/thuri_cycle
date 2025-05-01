@@ -1,0 +1,114 @@
+{
+    "@@locale": "de",
+    "homeAppBarTitle": "Startseite",
+    "@homeAppBarTitle": {
+    "description": "Text in der App-Leiste der Startseite"
+    },
+    "continuee": "Weiter",
+    "welcome": "Willkommen bei Flipgoo!",
+    "chooseOthers": "Andere Anmeldeoptionen auswählen",
+    "confirmation": "Bestätigung",
+    "profile": "Profil",
+    "logIn": "Anmelden",
+    "loginToDoAction": "Bitte melden Sie sich in Ihrem Konto an, um diese Aktion auszuführen!",
+    "cancel": "Abbrechen",
+    "login": "Anmelden",
+    "clear": "Löschen",
+    "noConnection": "Keine Verbindung",
+    "retry": "Wiederholen",
+    "error": "Fehler",
+    "serverError": "Serverfehler",
+    "unexpectedError": "Unerwarteter Fehler",
+    "cancelled": "Abgebrochen",
+    "emailAlreadyInUse": "E-Mail-Adresse wird bereits verwendet",
+    "invalidEmailPassword": "Ungültige E-Mail- und Passwortkombination",
+    "tooManyRequests": "Zu viele Anfragen",
+    "bySigningYouAgree": "Mit der Anmeldung stimmen Sie unseren Nutzungsbedingungen zu",
+    "and": "und",
+    "success": "Erfolgreich!",
+    "successLoggedIn": "Sie haben sich erfolgreich angemeldet!",
+    "or": "oder",
+    "signInWithGoogle": "Mit Google anmelden",
+    "signInWithApple": "Mit Apple anmelden",
+    "yourPhoneDoesntSupportAppleSignIn": "Ihr Telefon unterstützt die Apple-Anmeldemethode nicht. Bitte aktualisieren Sie die iOS-Version Ihrer App und versuchen Sie es erneut!",
+    "termsOfUse": "Nutzungsbedingungen",
+    "privacyPolicy": "Datenschutzrichtlinie",
+    "contactUs": "Kontakt",
+    "rateUs": "Bewerten Sie uns",
+    "appVersion": "App-Version",
+    "theme": "Design",
+    "language": "Sprache",
+    "darkMode": "Dunkelmodus",
+    "viewProfile": "Profil anzeigen",
+    "pleaseLoginOrRegisterToUse": "Bitte melden Sie sich in Ihrem Konto an oder registrieren Sie sich, um diese Anwendung zu nutzen!",
+    "camera": "Kamera",
+    "gallery": "Galerie",
+    "deletePhoto": "Foto löschen",
+    "wasteType": "Abfallart",
+    "selectWasteType": "Abfallart auswählen",
+    "markerTypeUnknown": "Unbekannte Art",
+    "markerTypePlasticAndPackaging": "Kunststoff & Verpackung",
+    "markerTypePaper": "Papier",
+    "markerTypeGlass": "Glas",
+    "markerTypeOrganic": "Organischer Abfall",
+    "markerTypeResidual": "Restmüll",
+    "markerTypeElectronics": "Elektronik",
+    "markerTypeHazardous": "Gefährlicher Abfall",
+    "markerTypeBulky": "Sperrmüll",
+    "markerTypeTextiles": "Textilien",
+    "markerTypeBatteries": "Batterien",
+    "addPhotos": "Laden Sie ein oder mehrere deutliche Fotos des Abfalls hoch",
+    "chooseClearPhotos": "Stellen Sie sicher, dass der Abfall gut sichtbar ist, um die Bearbeitung zu erleichtern.",
+    "settings": "Einstellungen",
+    "filterMarkers": "Markierungen filtern",
+    "refresh": "Aktualisieren",
+    "ok": "OK",
+    "includeResolved": "Erledigte Fälle einschließen",
+    "scoreboard": "Anzeigetafel",
+    "goToPosition": "Gehe zu deiner Position",
+    "user": "Benutzer",
+    "report": "Melden",
+    "reportAsInappropriate": "Als unangemessen melden",
+    "confirmReportAsInappropriate": "Möchten Sie diesen Marker wirklich als unangemessen melden?",
+    "reportedBy": "Gemeldet von {user}",
+    "errorReporting": "Fehler beim Melden: {error}",
+    "@errorReporting": {
+    "placeholders": {
+    "error": {
+    "type": "String"
+                }
+            }
+        },
+    "markerType": "Markierungstyp",
+    "loginRequired": "Anmeldung erforderlich",
+    "grantLocationPermission": "Berechtigung zum Zugriff auf den Standort erteilen",
+    "enableLocationServices": "Standortdienste aktivieren",
+    "addImage": "Bild hinzufügen",
+    "selectMarkerType": "Markierungstyp auswählen",
+    "locationIsLoading": "Standort wird geladen, bitte warten…",
+    "send": "Senden",
+    "usePpe": "Verwenden Sie Handschuhe oder geeignete persönliche Schutzausrüstung. Müll einsammeln",
+    "reportedBy": "Gemeldet von {user}",
+    "@reportedBy": {
+    "placeholders": {
+    "user": {
+    "type": "String"
+                }
+            }
+        },
+    "resolvedBy": "Gelöst von {user}",
+    "@resolvedBy": {
+    "placeholders": {
+    "user": {
+    "type": "String"
+                }
+            }
+        },
+    "loginToResolve": "Anmelden, um das Problem zu lösen",
+    "getCloserToResolve": "Näher an die Lösung herankommen",
+    "resolve": "Lösen",
+    "alreadyResolved": "Bereits gelöst",
+    "tooFarToResolve": "Du bist zu weit weg, um das Problem zu lösen",
+    "close": "Schließen",
+    "comingInNextUpdate": "Kommt im nächsten Update"
+}
