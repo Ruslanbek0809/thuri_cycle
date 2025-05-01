@@ -207,6 +207,7 @@ class _ProfilePageState extends State<ProfilePage> {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
+                          //TODO: Implement now
                           ProfileItemCard(
                             title: context.l10n.termsOfUse,
                             svgName: 'assets/profile/terms.svg',
@@ -215,41 +216,45 @@ class _ProfilePageState extends State<ProfilePage> {
                               //     .push(const TermsOfUseRoute());
                             },
                           ),
+                          //TODO: Implement later on
+                          // const CustomDivider(),
+                          // ProfileItemCard(
+                          //   title: context.l10n.privacyPolicy,
+                          //   svgName: 'assets/profile/privacy.svg',
+                          //   onTap: () async {
+                          //     // await context.router
+                          //     //     .push(const PrivacyPolicyRoute());
+                          //   },
+                          // ),
                           const CustomDivider(),
-                          ProfileItemCard(
-                            title: context.l10n.privacyPolicy,
-                            svgName: 'assets/profile/privacy.svg',
-                            onTap: () async {
-                              // await context.router
-                              //     .push(const PrivacyPolicyRoute());
-                            },
-                          ),
-                          const CustomDivider(),
-                          ProfileItemCard(
-                            title: context.l10n.contactUs,
-                            svgName: 'assets/profile/contact_us.svg',
-                            onTap: () async {
-                              // await context.router.push(const ContactUsRoute());
-                            },
-                          ),
-                          const CustomDivider(),
-                          ProfileItemCard(
-                            title: context.l10n.rateUs,
-                            svgName: 'assets/profile/rate_us.svg',
-                            onTap: () async {
-                              // await context
-                              //     .read<SettingsFormCubit>()
-                              //     .requestInAppReview();
-                            },
-                          ),
-                          const CustomDivider(),
-                          ProfileItemCard(
-                            title: 'FAQ',
-                            svgName: 'assets/profile/faq.svg',
-                            onTap: () async {
-                              // await context.router.push(const FaqRoute());
-                            },
-                          ),
+                          //TODO: Implement later on
+                          // ProfileItemCard(
+                          //   title: context.l10n.contactUs,
+                          //   svgName: 'assets/profile/contact_us.svg',
+                          //   onTap: () async {
+                          //     // await context.router.push(const ContactUsRoute());
+                          //   },
+                          // ),
+                          //TODO: Implement later on
+                          // const CustomDivider(),
+                          // ProfileItemCard(
+                          //   title: context.l10n.rateUs,
+                          //   svgName: 'assets/profile/rate_us.svg',
+                          //   onTap: () async {
+                          //     // await context
+                          //     //     .read<SettingsFormCubit>()
+                          //     //     .requestInAppReview();
+                          //   },
+                          // ),
+                          //TODO: Implement later on
+                          // const CustomDivider(),
+                          // ProfileItemCard(
+                          //   title: 'FAQ',
+                          //   svgName: 'assets/profile/faq.svg',
+                          //   onTap: () async {
+                          //     // await context.router.push(const FaqRoute());
+                          //   },
+                          // ),
                           const CustomDivider(),
                           ProfileUpdatesItemCard(
                             title: context.l10n.appVersion,

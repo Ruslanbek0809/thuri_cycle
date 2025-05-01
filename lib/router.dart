@@ -40,7 +40,11 @@ class AppRouter extends RootStackRouter {
               page: const EmptyShellRoute('MapRoute'),
               children: [
                 AutoRoute(path: '', page: MapRoute.page, initial: true),
-                AutoRoute(path: 'single-marker', page: SingleMarkerRoute.page),
+                AutoRoute(
+                  path: 'single-marker',
+                  page: SingleMarkerRoute.page,
+                  meta: const {'hideBottomNav': true},
+                ),
                 AutoRoute(
                   path: 'report',
                   page: ReportRoute.page,

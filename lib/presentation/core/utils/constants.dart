@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:latlong2/latlong.dart';
 import 'package:thuri_cycle/l10n/l10n.dart';
 import 'package:thuri_cycle/presentation/core/utils/methods/shortcuts.dart';
@@ -98,6 +97,8 @@ class Constants {
   final lastMapLatitude = 'lastMapLatitude';
   final lastMapLongitude = 'lastMapLongitude';
   final lastMapZoom = 'lastMapZoom';
+
+  final imageHeight = 256.0;
 
   /// Theme defaults.
   late final theme = _Theme();
@@ -300,67 +301,41 @@ class _Navigation {
   ) =>
       [
         NavigationDestination(
-          icon: SvgPicture.asset(
-            'assets/bottom/home.svg',
-            height: getTabletType() ? 52 : 26,
-            width: getTabletType() ? 52 : 26,
+          icon: Icon(
+            Icons.location_on_outlined,
+            size: getTabletType() ? 52 : 26,
+            color: $constants.palette.navigationColor,
           ),
-          selectedIcon: SvgPicture.asset(
-            'assets/bottom/home_active.svg',
-            height: getTabletType() ? 52 : 26,
-            width: getTabletType() ? 52 : 26,
+          selectedIcon: Icon(
+            Icons.location_on,
+            size: getTabletType() ? 52 : 26,
+            color: $constants.palette.main,
           ),
-          label: 'Home',
+          label: 'Waste Map',
         ),
         NavigationDestination(
-          icon: SvgPicture.asset(
-            'assets/bottom/reel.svg',
-            height: getTabletType() ? 52 : 26,
-            width: getTabletType() ? 52 : 26,
+          icon: Icon(
+            Icons.groups_outlined,
+            size: getTabletType() ? 52 : 26,
+            color: $constants.palette.navigationColor,
           ),
-          selectedIcon: SvgPicture.asset(
-            'assets/bottom/reel_active.svg',
-            height: getTabletType() ? 52 : 26,
-            width: getTabletType() ? 52 : 26,
+          selectedIcon: Icon(
+            Icons.groups,
+            size: getTabletType() ? 52 : 26,
+            color: $constants.palette.main,
           ),
-          label: 'Reels',
+          label: 'Community',
         ),
         NavigationDestination(
-          icon: SvgPicture.asset(
-            'assets/bottom/add_product.svg',
-            height: getTabletType() ? 52 : 26,
-            width: getTabletType() ? 52 : 26,
+          icon: Icon(
+            Icons.account_circle_outlined,
+            size: getTabletType() ? 52 : 26,
+            color: $constants.palette.navigationColor,
           ),
-          selectedIcon: SvgPicture.asset(
-            'assets/bottom/add_product_active.svg',
-            height: getTabletType() ? 52 : 26,
-            width: getTabletType() ? 52 : 26,
-          ),
-          label: context.l10n.report,
-        ),
-        NavigationDestination(
-          icon: SvgPicture.asset(
-            'assets/bottom/inbox.svg',
-            height: getTabletType() ? 52 : 26,
-            width: getTabletType() ? 52 : 26,
-          ),
-          selectedIcon: SvgPicture.asset(
-            'assets/bottom/inbox_active.svg',
-            height: getTabletType() ? 52 : 26,
-            width: getTabletType() ? 52 : 26,
-          ),
-          label: 'Inbox',
-        ),
-        NavigationDestination(
-          icon: SvgPicture.asset(
-            'assets/bottom/profile.svg',
-            height: getTabletType() ? 52 : 26,
-            width: getTabletType() ? 52 : 26,
-          ),
-          selectedIcon: SvgPicture.asset(
-            'assets/bottom/profile_active.svg',
-            height: getTabletType() ? 52 : 26,
-            width: getTabletType() ? 52 : 26,
+          selectedIcon: Icon(
+            Icons.account_circle,
+            size: getTabletType() ? 52 : 26,
+            color: $constants.palette.main,
           ),
           label: 'Profile',
         ),

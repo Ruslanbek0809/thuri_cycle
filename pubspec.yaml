@@ -118,5 +118,4 @@ flutter:
   # assets:
   assets:
     - assets/
-    - assets/bottom/
     - assets/profile/

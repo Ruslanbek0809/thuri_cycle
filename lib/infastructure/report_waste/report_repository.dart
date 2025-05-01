@@ -10,7 +10,6 @@ import 'package:thuri_cycle/infastructure/core/firebase_config/collections.dart'
 import 'package:thuri_cycle/infastructure/core/firebase_config/firebase_failure_handler.dart';
 import 'package:thuri_cycle/infastructure/core/firebase_config/storage/firebase_storage.dart';
 import 'package:thuri_cycle/presentation/core/utils/constants.dart';
-import 'package:thuri_cycle/presentation/core/utils/methods/aliases.dart';
 
 @LazySingleton(as: IReportFacade)
 class ReportRepository implements IReportFacade {
@@ -40,8 +39,6 @@ class ReportRepository implements IReportFacade {
           return marker.copyWith(images: resolvedImages);
         }),
       );
-
-      talker.verbose('getMarkersFromFb() enriched: $enriched');
 
       // return _getJson("/map/get_near", params: {
       //   "y": latitude.toString(),

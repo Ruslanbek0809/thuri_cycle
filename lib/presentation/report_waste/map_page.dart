@@ -10,6 +10,7 @@ import 'package:thuri_cycle/application/report_waste/map_marker_form_cubit.dart'
 import 'package:thuri_cycle/domain/report_waste/location_info.dart';
 import 'package:thuri_cycle/domain/report_waste/map_marker.dart';
 import 'package:thuri_cycle/presentation/core/utils/constants.dart';
+import 'package:thuri_cycle/presentation/core/utils/methods/shortcuts.dart';
 import 'package:thuri_cycle/presentation/report_waste/widgets/bottom_controls_widget.dart';
 import 'package:thuri_cycle/presentation/report_waste/widgets/fast_markers_layer.dart';
 import 'package:thuri_cycle/presentation/report_waste/widgets/map_controls_widget.dart';
@@ -129,14 +130,14 @@ class _MapPageState extends State<MapPage> with WidgetsBindingObserver {
               },
             ),
             children: [
-              // Part of flutter_map package
+              //*----------------- Part of flutter_map package ---------------------//
               TileLayer(
                 urlTemplate: 'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
               ),
               //TODO: Add more features of LocationProvider
               // TODO: Check
               // TODO [optimization]: Optimize LocationCubit by using LocationInfo and keeping current last position
-              // Current location
+              //*----------------- CURRENT LOCATION ---------------------//
               BlocBuilder<LocationCubit, LocationState>(
                 buildWhen: (previous, current) => previous != current,
                 builder: (context, state) {
@@ -153,8 +154,13 @@ class _MapPageState extends State<MapPage> with WidgetsBindingObserver {
                             rotate: true,
                             point: latLng,
                             child: SvgPicture.asset(
-                              'assets/current_location.svg',
+                              'assets/icons/current_location.svg',
                             ),
+                            // Icon(
+                            //   Icons.my_location,
+                            //   size: getTabletType() ? 52 : 26,
+                            //   color: Theme.of(context).primaryColor,
+                            // ),
                           ),
                         ],
                       );
@@ -162,7 +168,7 @@ class _MapPageState extends State<MapPage> with WidgetsBindingObserver {
                   );
                 },
               ),
-              // Lays out markers on the map
+              //*----------------- Lays out markers on the map ---------------------//
               FastMarkersLayer(
                 context.read<MapMarkerFormCubit>().visibleMarkers,
               ),
@@ -181,7 +187,7 @@ class _MapPageState extends State<MapPage> with WidgetsBindingObserver {
                   ), // theme-independent grey
                 ),
               ),
-              // Map controls
+              //*----------------- MAP CONTROLS ---------------------//
               //TODO: Check
               //TODO [optimization]: Add ScoreboardPage later on
               BlocBuilder<LocationCubit, LocationState>(
@@ -207,6 +213,7 @@ class _MapPageState extends State<MapPage> with WidgetsBindingObserver {
                   );
                 },
               ),
+              //*----------------- SETTINGS CONTROLS ---------------------//
               Align(
                 alignment: Alignment.topLeft,
                 child: SettingsControlsWidget(

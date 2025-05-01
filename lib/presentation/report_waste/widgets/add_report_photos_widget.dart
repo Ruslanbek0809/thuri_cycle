@@ -18,7 +18,7 @@ class AddReportPhotosWidget extends StatelessWidget {
   final void Function(ImageWithFileModel)? onAddImage;
   final void Function(int)? onRemoveImage;
 
-  static const imageHeight = 256.0;
+  // static const imageHeight = 256.0;
 
   Future<void> _captureImage(BuildContext context) async {
     final picker = ImagePicker();
@@ -59,7 +59,7 @@ class AddReportPhotosWidget extends StatelessWidget {
                     ),
                     child: Image.file(
                       image.file,
-                      height: imageHeight,
+                      height: $constants.imageHeight,
                       fit: BoxFit.cover,
                     ),
                   ),
@@ -127,8 +127,8 @@ class AddReportPhotosWidget extends StatelessWidget {
               ),
               padding: EdgeInsets.zero,
               child: Container(
-                width: imageHeight / 1.618,
-                height: imageHeight,
+                width: $constants.imageHeight / 1.618,
+                height: $constants.imageHeight,
                 // height: boxConstraints,
                 // width: boxConstraints,
                 decoration: BoxDecoration(

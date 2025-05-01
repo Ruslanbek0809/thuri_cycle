@@ -3,18 +3,16 @@ import 'package:collection/collection.dart';
 import 'package:easy_image_viewer/easy_image_viewer.dart';
 import 'package:flutter/material.dart';
 import 'package:thuri_cycle/l10n/l10n.dart';
+import 'package:thuri_cycle/presentation/core/utils/constants.dart';
 import 'package:thuri_cycle/presentation/core/widgets/custom/custom_image.dart';
-import 'package:thuri_cycle/presentation/report_waste/widgets/add_images_widget.dart';
 
 //TODO [optimization]: Change it to carousel slider
 class MarkerPhotoListWidget extends StatelessWidget {
   const MarkerPhotoListWidget({
     required this.imageUrls,
-    // required this.imageProviders,
     super.key,
   });
   final List<String> imageUrls;
-  // final Iterable<Image> imageProviders;
 
   @override
   Widget build(BuildContext context) {
@@ -60,7 +58,7 @@ class MarkerPhotoListWidget extends StatelessWidget {
                     child: CustomImage(
                       image: image,
                       // width: getSize(context).width,
-                      height: AddImagesWidget.imageHeight,
+                      height: $constants.imageHeight,
                     ),
                   ),
                 ),

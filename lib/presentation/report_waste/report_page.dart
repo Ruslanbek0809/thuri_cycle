@@ -12,6 +12,7 @@ import 'package:thuri_cycle/presentation/core/utils/methods/shortcuts.dart';
 import 'package:thuri_cycle/presentation/core/widgets/custom/custom_elevated_gradient_button.dart';
 import 'package:thuri_cycle/presentation/core/widgets/custom/custom_loading_indicator.dart';
 import 'package:thuri_cycle/presentation/report_waste/widgets/add_images_widget.dart';
+import 'package:thuri_cycle/presentation/report_waste/widgets/add_report_photos_widget.dart';
 import 'package:thuri_cycle/presentation/report_waste/widgets/error_messages.dart';
 import 'package:thuri_cycle/presentation/report_waste/widgets/report_marker_type_card.dart';
 
@@ -226,7 +227,7 @@ class _ReportPageState extends State<ReportPage> {
                       ),
                       //*----------------- PHOTOS UPLOAD SECTION ---------------------//
                       SizedBox(height: $constants.insets.sm + 2),
-                      AddImagesWidget(
+                      AddReportPhotosWidget(
                         state.images,
                         (imageWithImageModel) => context
                             .read<ReportFormCubit>()
