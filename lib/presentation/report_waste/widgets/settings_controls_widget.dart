@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:thuri_cycle/l10n/l10n.dart';
+import 'package:thuri_cycle/presentation/core/utils/constants.dart';
 
 //TODO: Add SettingsPage
 class SettingsControlsWidget extends StatelessWidget {
@@ -18,25 +19,33 @@ class SettingsControlsWidget extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.only(top: 8),
             child: FloatingActionButton(
-              materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+              mini: true,
               heroTag: 'settings',
               onPressed: () {},
               // onPressed: () =>
               //     Navigator.pushNamed(context, SettingsPage.routeName),
               tooltip: context.l10n.settings,
-              mini: true,
-              child: const Icon(Icons.settings),
+              backgroundColor: $constants.palette.main,
+              materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+              child: Icon(
+                Icons.settings,
+                color: $constants.palette.white,
+              ),
             ),
           ),
           Padding(
             padding: const EdgeInsets.only(top: 8),
             child: FloatingActionButton(
-              materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+              mini: true,
               heroTag: 'filter',
               onPressed: onFilterPressed,
               tooltip: context.l10n.filterMarkers,
-              mini: true,
-              child: const Icon(Icons.filter_alt),
+              backgroundColor: $constants.palette.main,
+              materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+              child: Icon(
+                Icons.filter_alt,
+                color: $constants.palette.white,
+              ),
             ),
           ),
         ],

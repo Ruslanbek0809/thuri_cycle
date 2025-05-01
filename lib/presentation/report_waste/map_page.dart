@@ -153,7 +153,7 @@ class _MapPageState extends State<MapPage> with WidgetsBindingObserver {
                             rotate: true,
                             point: latLng,
                             child: SvgPicture.asset(
-                              'assets/icons/current_location.svg',
+                              'assets/current_location.svg',
                             ),
                             // Icon(
                             //   Icons.my_location,

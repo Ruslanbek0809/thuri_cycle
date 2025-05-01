@@ -101,10 +101,14 @@ class ArticlePage extends StatelessWidget {
                     ],
                   ),
                   if (expandable)
-                  // if (expandable && expandedPositon != null)
+                    // if (expandable && expandedPositon != null)
                     Padding(
                       padding: const EdgeInsets.only(
-                          left: 8, right: 8, top: 10, bottom: 10),
+                        left: 8,
+                        right: 8,
+                        top: 10,
+                        bottom: 10,
+                      ),
                       child: Text(
                         article.summary,
                         textAlign: TextAlign.start,
@@ -133,7 +137,9 @@ class ArticlePage extends StatelessWidget {
                   children: [
                     Container(
                       padding: const EdgeInsets.symmetric(
-                          horizontal: 16, vertical: 6),
+                        horizontal: 16,
+                        vertical: 6,
+                      ),
                       decoration: BoxDecoration(
                         color: AppColors.primary.withOpacity(0.2),
                         borderRadius: BorderRadius.circular(20),
@@ -141,9 +147,10 @@ class ArticlePage extends StatelessWidget {
                       child: Text(
                         article.tag.toUpperCase(),
                         style: AppTextStyles.primaryExtraBold14.copyWith(
-                            color: AppColors.secondary,
-                            height: 1.42,
-                            fontSize: 12),
+                          color: AppColors.secondary,
+                          height: 1.42,
+                          fontSize: 12,
+                        ),
                       ),
                     ),
                     const SizedBox(height: 10),
@@ -209,7 +216,8 @@ class ArticlePage extends StatelessWidget {
                   ),
                 ),
                 SizedBox(
-                    height: MediaQuery.of(context).viewPadding.bottom + 100),
+                  height: MediaQuery.of(context).viewPadding.bottom + 100,
+                ),
               ],
             ),
           ),

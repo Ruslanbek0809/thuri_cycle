@@ -213,11 +213,12 @@ class _Palette {
   final purple = const Color(0xFF0080FF);
   final magenta = const Color(0xFFFF00FF);
 
-  final main = const Color(0xFF0085FD);
+  final main = const Color(0xFF60A86C);
 
   // final main = const Color(0xFF2F54CB);
-  final mainFade = const Color(0xFFC9D6FF);
-  final mainSecond = const Color(0xFF758DDE);
+
+  final mainFade = const Color(0xFFD2EBDA);
+  final mainSecond = const Color(0xFF4D8A58);
   final second = const Color(0xFFF5F5F5);
   final lightBackground = const Color(0xFFFFFFFF);
   final secondaryBackground = const Color(0xFFECEDF1);
@@ -266,8 +267,8 @@ class _Theme {
   final tryToGetColorPaletteFromWallpaper = false;
   final defaultLightBackgroundColor = $constants.palette.lightBackground;
   final defaultDarkBackgroundColor = $constants.palette.darkBackground;
-  final defaultThemeColor = const Color(0xFF0085FD);
-  final defaultFontFamily = 'Gilroy';
+  final defaultThemeColor = const Color(0xFF60A86C);
+  final defaultFontFamily = 'Manrope';
   final double defaultElevation = 0;
   final double defaultBorderRadius = 10;
 }

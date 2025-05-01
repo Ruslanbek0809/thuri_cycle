@@ -48,8 +48,8 @@ class _AppWrapperState extends State<AppWrapper> with WidgetsBindingObserver {
 
   @override
   Widget build(BuildContext context) {
-    // final authBlocState = BlocProvider.of<AuthBloc>(context, listen: true)
-    //     .state; //* listen parameter LISTENS for realtime changes on AuthCubit
+    // //* listens real-time changes on AuthCubit
+    // final authBlocState = context.watch<AuthBloc>().state; 
 
     return AutoTabsScaffold(
       resizeToAvoidBottomInset: false,

@@ -32,15 +32,14 @@ enum ErrorMessage {
 }
 
 ErrorMessage? getErrorMessage(
-  // bool? isLoggedIn,
   LocationInfoModel? locationInfoModel, {
+  bool? isLoggedIn,
   ErrorMessage? Function()? whilePositionLoading,
   ErrorMessage? Function()? afterPositionLoaded,
 }) {
-  // if (!(isLoggedIn ?? false)) {
-  //   return ErrorMessage.loginRequired;
-  // } else
-  if (locationInfoModel?.permissionGranted == false) {
+  if (!(isLoggedIn ?? false)) {
+    return ErrorMessage.loginRequired;
+  } else if (locationInfoModel?.permissionGranted == false) {
     return ErrorMessage.grantLocationPermission;
   } else if (locationInfoModel?.servicesEnabled == false) {
     return ErrorMessage.enableLocationServices;

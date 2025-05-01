@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:thuri_cycle/application/report_waste/location/location_cubit.dart';
 import 'package:thuri_cycle/l10n/l10n.dart';
+import 'package:thuri_cycle/presentation/core/utils/constants.dart';
 
 class MapControlsWidget extends StatefulWidget {
   const MapControlsWidget({super.key, this.onTap});
@@ -56,16 +57,20 @@ class _MapControlsWidgetState extends State<MapControlsWidget>
               ),
               child: FloatingActionButton(
                 materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                heroTag: 'scoreboard',
+                mini: true,
                 onPressed: () {},
                 // onPressed: () => Navigator.pushNamed(
                 //   context,
                 //   ScoreboardPage.routeName,
                 //   arguments: position?.toLatLng() ?? widget.mapController.center,
                 // ),
+                heroTag: 'scoreboard',
                 tooltip: context.l10n.scoreboard,
-                mini: true,
-                child: const Icon(Icons.emoji_events),
+                backgroundColor: $constants.palette.main,
+                child: Icon(
+                  Icons.emoji_events,
+                  color: $constants.palette.white,
+                ),
               ),
             ),
             AnimatedBuilder(
@@ -87,12 +92,16 @@ class _MapControlsWidgetState extends State<MapControlsWidget>
                     bottom: 16,
                   ),
                   child: FloatingActionButton(
-                    materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                    mini: true,
                     heroTag: 'reposition',
                     onPressed: widget.onTap,
                     tooltip: context.l10n.goToPosition,
-                    mini: true,
-                    child: const Icon(Icons.filter_tilt_shift),
+                    backgroundColor: $constants.palette.main,
+                    materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                    child: Icon(
+                      Icons.filter_tilt_shift,
+                      color: $constants.palette.white,
+                    ),
                   ),
                 ),
               ),
