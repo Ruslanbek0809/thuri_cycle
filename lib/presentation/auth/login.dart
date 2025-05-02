@@ -3,10 +3,12 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:phone_form_field/phone_form_field.dart';
 import 'package:sign_in_with_apple/sign_in_with_apple.dart';
 import 'package:thuri_cycle/application/auth/auth_form/auth_form_cubit.dart';
 import 'package:thuri_cycle/infastructure/core/dependency_injection/di.dart';
 import 'package:thuri_cycle/l10n/l10n.dart';
+import 'package:thuri_cycle/presentation/auth/widgets/login_phone_textfield.dart';
 import 'package:thuri_cycle/presentation/core/utils/constants.dart';
 import 'package:thuri_cycle/presentation/core/utils/helpers/snackbar_helper.dart';
 import 'package:thuri_cycle/presentation/core/utils/methods/aliases.dart';
@@ -17,9 +19,9 @@ import 'package:thuri_cycle/presentation/core/widgets/custom/custom_loading_indi
 import 'package:thuri_cycle/presentation/core/widgets/custom/custom_logo.dart';
 import 'package:thuri_cycle/presentation/core/widgets/custom/custom_outline_child_button.dart';
 import 'package:thuri_cycle/presentation/core/widgets/keyboard_dismisser.dart';
+import 'package:thuri_cycle/router.gr.dart';
 import 'package:universal_platform/universal_platform.dart';
 import 'package:url_launcher/url_launcher.dart';
-// import 'package:phone_form_field/phone_form_field.dart';
 
 @RoutePage()
 class LoginPage extends StatefulWidget {
@@ -31,7 +33,7 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPageState extends State<LoginPage> {
   final phoneFormKey = GlobalKey<FormState>();
-  // PhoneController phoneController = PhoneController();
+  PhoneController phoneController = PhoneController();
   final FocusNode focusNode = FocusNode();
 
   @override
@@ -44,94 +46,45 @@ class _LoginPageState extends State<LoginPage> {
         listeners: [
           BlocListener<AuthFormCubit, AuthFormState>(
             listenWhen: (previous, current) =>
-                previous.optionOfSuccessOrFailure !=
-                current.optionOfSuccessOrFailure,
+                previous.fbPhoneAuthLoginOptionOfSuccessOrFailure !=
+                current.fbPhoneAuthLoginOptionOfSuccessOrFailure,
             listener: (context, state) {
-              state.optionOfSuccessOrFailure.fold(
+              state.fbPhoneAuthLoginOptionOfSuccessOrFailure.fold(
                 () {},
                 (either) {
-                  return either.fold(
+                  either.fold(
                     (failure) {
-                      // context.read<AuthFormCubit>().setIsLoadingToFalse();
-                      // scaffoldMessengerKey.currentState
-                      //   ?..hideCurrentSnackBar()
-                      //   ..showSnackBar(
-                      //     SnackBarHelper.createError(
-                      //       message: failure.maybeMap(
-                      //         serverError: (_) => context.l10n.serverError,
-                      //         orElse: () => context.l10n.unexpectedError,
-                      //       ),
-                      //     ),
-                      //   );
+                      context.read<AuthFormCubit>().setIsLoadingToFalse();
+                      scaffoldMessengerKey.currentState
+                        ?..hideCurrentSnackBar()
+                        ..showSnackBar(SnackBarHelper.createError(
+                          message: failure.map(
+                            serverError: (_) => context.l10n.serverError,
+                            cancelledByUser: (_) => context.l10n.cancelled,
+                            emailAlreadyInUse: (_) =>
+                                context.l10n.emailAlreadyInUse,
+                            invalidEmailAndPasswordCombination: (_) =>
+                                context.l10n.invalidEmailPassword,
+                            invalidPhoneNumber: (_) =>
+                                context.l10n.invalidPhoneNumber,
+                            tooManyRequests: (_) =>
+                                context.l10n.tooManyRequests,
+                          ),
+                        ),);
                     },
-                    (signInMethod) async {
-                      // context.read<AuthBloc>().add(
-                      //       const AuthEvent.authExtensiveCheckRequested(),
-                      //     );
-                      // if (context.mounted) {
-                      //   await context
-                      //       .read<ProfileUserFormCubit>()
-                      //       .getProfileUser()
-                      //       .then((value) async {
-                      //     if (context.mounted) {
-                      //       context.read<AuthFormCubit>().setIsLoadingToFalse();
-                      //     }
-                      //     if (context.mounted) {
-                      //       scaffoldMessengerKey.currentState
-                      //         ?..hideCurrentSnackBar()
-                      //         ..showSnackBar(
-                      //           SnackBarHelper.createSuccess(
-                      //             title: context.l10n.success,
-                      //             message: context.l10n.successLoggedIn,
-                      //             duration: const Duration(seconds: 2),
-                      //           ),
-                      //         );
-                      //     }
-                      //     if (context.mounted) {
-                      //       context
-                      //           .read<AuthBloc>()
-                      //           .add(const AuthEvent.authCheckRequested());
+                    (_) async {
+                      context.read<AuthFormCubit>().setIsLoadingToFalse();
 
-                      //       context.router.popUntilRoot();
+                      final phoneNumber = phoneController.value.nsn.isNotEmpty
+                          ? '+${phoneController.value.countryCode}${phoneController.value.nsn}'
+                          : '';
 
-                      //       // await context.router.push(
-                      //       //   WelcomeProfileRoute(
-                      //       //     signInName: signInMethod.whenOrNull(
-                      //       //       google: (userName) => userName,
-                      //       //       apple: (userName) => userName,
-                      //       //     ),
-                      //       //     // mobile: phoneController.value?.nsn != null &&
-                      //       //     //         phoneController.value!.nsn.isNotEmpty
-                      //       //     //     ? ('+') +
-                      //       //     //         (phoneController.value?.countryCode ??
-                      //       //     //             '') +
-                      //       //     //         (phoneController.value?.nsn ?? '')
-                      //       //     //     : null,
-                      //       //     mobile: phoneController.value?.nsn != null &&
-                      //       //             phoneController.value!.nsn.isNotEmpty
-                      //       //         ? phoneController.value?.nsn ?? ''
-                      //       //         : null,
-                      //       //     mobileIsoCode: phoneController.value?.isoCode !=
-                      //       //             null
-                      //       //         ? phoneController.value?.isoCode.toJson() ??
-                      //       //             ''
-                      //       //         : null,
-                      //       //   ),
-                      //       // );
-                      //     }
-                      //   }).catchError((value) {
-                      //     if (context.mounted) {
-                      //       context.read<AuthFormCubit>().setIsLoadingToFalse();
-                      //       scaffoldMessengerKey.currentState
-                      //         ?..hideCurrentSnackBar()
-                      //         ..showSnackBar(
-                      //           SnackBarHelper.createError(
-                      //             message: context.l10n.unexpectedError,
-                      //           ),
-                      //         );
-                      //     }
-                      //   });
-                      // }
+                      await context.router.push(
+                        OtpRoute(
+                          phoneNumber: phoneNumber,
+                          authFormCubit: context.read<AuthFormCubit>(),
+                        ),
+                      );
                     },
                   );
                 },
@@ -140,47 +93,45 @@ class _LoginPageState extends State<LoginPage> {
           ),
           BlocListener<AuthFormCubit, AuthFormState>(
             listenWhen: (previous, current) =>
-                previous.fbPhoneAuthLoginOptionOfSuccessOrFailure !=
-                current.fbPhoneAuthLoginOptionOfSuccessOrFailure,
+                previous.fbPhoneAuthOtpOptionOfSuccessOrFailure !=
+                current.fbPhoneAuthOtpOptionOfSuccessOrFailure,
             listener: (context, state) {
-              state.fbPhoneAuthLoginOptionOfSuccessOrFailure.fold(
+              state.fbPhoneAuthOtpOptionOfSuccessOrFailure.fold(
                 () {},
                 (either) {
-                  return either.fold(
+                  either.fold(
                     (failure) {
-                      // context.read<AuthFormCubit>().setIsLoadingToFalse();
-                      // scaffoldMessengerKey.currentState
-                      //   ?..hideCurrentSnackBar()
-                      //   ..showSnackBar(
-                      //     SnackBarHelper.createError(
-                      //       message: failure.map(
-                      //         serverError: (_) => context.l10n.serverError,
-                      //         cancelledByUser: (_) => context.l10n.cancelled,
-                      //         emailAlreadyInUse: (_) =>
-                      //             context.l10n.emailAlreadyInUse,
-                      //         invalidEmailAndPasswordCombination: (_) =>
-                      //             context.l10n.invalidEmailPassword,
-                      //         invalidPhoneNumber: (_) =>
-                      //             context.l10n.invalidPhoneNumber,
-                      //         tooManyRequests: (_) =>
-                      //             context.l10n.tooManyRequests,
-                      //       ),
-                      //     ),
-                      //   );
-                    },
-                    (success) async {
                       context.read<AuthFormCubit>().setIsLoadingToFalse();
-                      // await context.router.push(
-                      //   OtpRoute(
-                      //     phoneNumber: phoneController.value?.nsn != null &&
-                      //             phoneController.value!.nsn.isNotEmpty
-                      //         ? ('+') +
-                      //             (phoneController.value?.countryCode ?? '') +
-                      //             (phoneController.value?.nsn ?? '')
-                      //         : '',
-                      //     authFormCubit: context.read<AuthFormCubit>(),
-                      //   ),
-                      // );
+                      scaffoldMessengerKey.currentState
+                        ?..hideCurrentSnackBar()
+                        ..showSnackBar(SnackBarHelper.createError(
+                          message: failure.map(
+                            serverError: (_) => context.l10n.serverError,
+                            cancelledByUser: (_) => context.l10n.cancelled,
+                            emailAlreadyInUse: (_) =>
+                                context.l10n.emailAlreadyInUse,
+                            invalidEmailAndPasswordCombination: (_) =>
+                                context.l10n.invalidEmailPassword,
+                            invalidPhoneNumber: (_) =>
+                                context.l10n.invalidPhoneNumber,
+                            tooManyRequests: (_) =>
+                                context.l10n.tooManyRequests,
+                          ),
+                        ),);
+                    },
+                    (_) async {
+                      context.read<AuthFormCubit>().setIsLoadingToFalse();
+
+                      final phoneNumber = phoneController.value.nsn.isNotEmpty
+                          ? '+${phoneController.value.countryCode}${phoneController.value.nsn}'
+                          : '';
+
+                      await context.router.push(
+                        OtpRoute(
+                          phoneNumber: phoneNumber,
+                          authFormCubit: context.read<AuthFormCubit>(),
+                        ),
+                      );
                     },
                   );
                 },
@@ -226,11 +177,11 @@ class _LoginPageState extends State<LoginPage> {
                               ),
                             ),
                             //*----------------- PHONE ---------------------//
-                            // LoginPhoneTextField(
-                            //   key: const Key('loginPhone'),
-                            //   phoneController: phoneController,
-                            //   focusNode: focusNode,
-                            // ),
+                            LoginPhoneTextField(
+                              key: const Key('loginPhone'),
+                              phoneController: phoneController,
+                              focusNode: focusNode,
+                            ),
                             //*----------------- AGREE TERMS ---------------------//
                             Padding(
                               padding:
@@ -337,33 +288,25 @@ class _LoginPageState extends State<LoginPage> {
                                         getTabletType() ? 80 : 50,
                                       ),
                                       onPressed: () async {
-                                        // if (phoneController.value?.nsn !=
-                                        //         null &&
-                                        //     phoneController
-                                        //         .value!.nsn.isNotEmpty) {
-                                        //   await context
-                                        //       .read<AuthFormCubit>()
-                                        //       .verifyPhone(
-                                        //         ('+') +
-                                        //             (phoneController.value
-                                        //                     ?.countryCode ??
-                                        //                 '') +
-                                        //             (phoneController
-                                        //                     .value?.nsn ??
-                                        //                 ''),
-                                        //       );
-                                        // } else {
-                                        // if (context.mounted) {
-                                        //   scaffoldMessengerKey.currentState
-                                        //     ?..hideCurrentSnackBar()
-                                        //     ..showSnackBar(
-                                        //       SnackBarHelper.createError(
-                                        //         message: context
-                                        //             .l10n.phoneNumberIsNotValid,
-                                        //       ),
-                                        //     );
-                                        // }
-                                        // }
+                                        if (phoneController
+                                            .value.nsn.isNotEmpty) {
+                                          await context
+                                              .read<AuthFormCubit>()
+                                              .verifyPhone(
+                                                '+${phoneController.value.countryCode}${phoneController.value.nsn}',
+                                              );
+                                        } else {
+                                          if (context.mounted) {
+                                            scaffoldMessengerKey.currentState
+                                              ?..hideCurrentSnackBar()
+                                              ..showSnackBar(
+                                                SnackBarHelper.createError(
+                                                  message: context.l10n
+                                                      .phoneNumberIsNotValid,
+                                                ),
+                                              );
+                                          }
+                                        }
                                       },
                                       child: Text(
                                         context.l10n.login,

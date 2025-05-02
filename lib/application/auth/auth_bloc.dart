@@ -38,36 +38,6 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     );
   }
 
-  // Future<void> authExtensiveCheckRequested(
-  //   AuthExtensiveCheckRequested event,
-  //   Emitter<AuthState> emit,
-  // ) async {
-  //   final userOption = await iAuth.getSignedInUser();
-  //   userOption.fold(
-  //     () => emit(const AuthState.unauthenticated()),
-  //     (firebaseUser) async {
-  //       final userIdTokenOption =
-  //           await iAuth.getSignedInUserIdToken(firebaseUser);
-  //       userIdTokenOption.fold(
-  //         (l) => emit(const AuthState.unauthenticated()),
-  //         (idToken) async {
-  //           talker.warning(
-  //             '[AuthBloc] SUCCESS authCheckRequested() => idToken: $idToken',
-  //           );
-  //           await _secureStorage.write(
-  //             key: $constants.authTokenStorage,
-  //             value: idToken,
-  //           );
-  //           emit(const AuthState.authenticated());
-  //           // await _dioTokenRefresh.fresh
-  //           //     .setToken(idToken)
-  //           //     .then((value) => emit(const AuthState.authenticated()));
-  //         },
-  //       );
-  //     },
-  //   );
-  // }
-
   Future<void> signedOut(
     SignedOut event,
     Emitter<AuthState> emit,

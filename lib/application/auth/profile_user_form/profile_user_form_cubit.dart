@@ -23,15 +23,13 @@ class ProfileUserFormCubit extends Cubit<ProfileUserFormState> {
 
   final IAuth iAuth;
 
-  // StreamSubscription<UserModel>? _userSubscription;
-
   StreamSubscription<Option<UserModel>>? _userSubscription;
 
   void watchUserModelFromFb() {
     _userSubscription?.cancel();
-    _userSubscription = iAuth.watchUserModelFromFb().listen((userOption) {
+    _userSubscription = iAuth.watchUserProfileFromFB().listen((userOption) {
       userOption.fold(
-        () => null, // do nothing if user doesn't exist
+        () => null, // TODO [optimization]: Handle null part
         (userModel) => emit(state.copyWith(userModel: userModel)),
       );
     });

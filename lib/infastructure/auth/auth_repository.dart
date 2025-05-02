@@ -1,6 +1,5 @@
 import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart' as firebase_auth;
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:injectable/injectable.dart';
 import 'package:sign_in_with_apple/sign_in_with_apple.dart';
@@ -23,36 +22,27 @@ class AuthRepository implements IAuth {
   AuthRepository(
     this._firebaseAuth,
     this._userCollection,
-    // this._secureStorage,
     this._googleSignIn,
+    // this._secureStorage,
   );
 
-  final FirebaseAuth _firebaseAuth;
+  final firebase_auth.FirebaseAuth _firebaseAuth;
   final UserCollection _userCollection;
-  // final FlutterSecureStorage _secureStorage;
   final GoogleSignIn _googleSignIn;
+  // final FlutterSecureStorage _secureStorage;
 
   //*----------------- FIREBASE ---------------------//
 
   @override
-  Future<Option<UserModel>> getUserModelFromFb() async {
+  Stream<Option<UserModel>> watchUserProfileFromFB() async* {
     final uid = _firebaseAuth.currentUser?.uid;
-    if (uid == null) return none();
 
-    final user = await _userCollection.futureSingleByID(uid);
-    return optionOf(user);
-  }
+    if (uid == null) {
+      yield none();
+      return;
+    }
 
-  @override
-  Stream<Option<UserModel>> watchUserModelFromFb() {
-    final uid = _firebaseAuth.currentUser?.uid;
-    if (uid == null) return Stream.value(none());
-
-    return _userCollection.streamSingle(uid).map(optionOf);
-    // •	.map(optionOf)
-    // Converts each UserModel? into an Option<UserModel> from the dartz package:
-    // •	If the model is null, it becomes none().
-    // •	If it has a value, it becomes some(userModel)
+    yield* _userCollection.streamSingle(uid).map(optionOf).distinct();
   }
 
   // @override
@@ -74,21 +64,21 @@ class AuthRepository implements IAuth {
   //     optionOf(_firebaseAuth.currentUser?.toDomain());
 
   @override
-  Future<Option<User>> getSignedInUser() async =>
+  Future<Option<firebase_auth.User>> getSignedInUser() async =>
       optionOf(_firebaseAuth.currentUser);
 
-  // @override
-  // Future<Either<AuthFailure, String?>> getSignedInUserIdToken(
-  //   User firebaseUser,
-  // ) async {
-  //   try {
-  //     return firebaseUser.getIdToken().then(right);
-  //   } on firebase_auth.FirebaseAuthException catch (error) {
-  //     talker.error('[AuthRepository] getSignedInUser() error: $error');
-  //     // reportExceptionToSentry(error);
-  //     return left(const AuthFailure.serverError());
-  //   }
-  // }
+  @override
+  Future<Either<AuthFailure, String?>> getSignedInUserIdToken(
+    firebase_auth.User firebaseUser,
+  ) async {
+    try {
+      return firebaseUser.getIdToken().then(right);
+    } on firebase_auth.FirebaseAuthException catch (error) {
+      talker.error('[AuthRepository] getSignedInUser() error: $error');
+      // reportExceptionToSentry(error);
+      return left(const AuthFailure.serverError());
+    }
+  }
 
   @override
   Future<Either<AuthFailure, SignInMethod>> signInWithGoogle() async {
@@ -184,7 +174,8 @@ class AuthRepository implements IAuth {
       }
 
       //* Create an `OAuthCredential` from the credential returned by Apple.
-      final oauthCredential = OAuthProvider('apple.com').credential(
+      final oauthCredential =
+          firebase_auth.OAuthProvider('apple.com').credential(
         idToken: appleCredential.identityToken,
         accessToken: appleCredential.authorizationCode,
       );
@@ -222,7 +213,7 @@ class AuthRepository implements IAuth {
             talker.warning(
               '[AuthRepository] signInWithApple() Email updated to: ${appleCredential.email}',
             );
-          } on FirebaseAuthException catch (e) {
+          } on firebase_auth.FirebaseAuthException catch (e) {
             if (e.code == 'email-already-in-use') {
               talker.error(
                 '[AuthRepository] signInWithApple() Email already in use: ${appleCredential.email}',
@@ -299,6 +290,54 @@ class AuthRepository implements IAuth {
     }
   }
 
+  //*----------------- PHONE ---------------------//
+
+  @override
+  Future<void> verifyPhone({
+    required String phoneNumber,
+    required void Function(firebase_auth.PhoneAuthCredential)
+        verificationCompleted,
+    required void Function(firebase_auth.FirebaseAuthException)
+        verificationFailed,
+    required void Function(String, int?) codeSent,
+    required void Function(String) codeAutoRetrievalTimeout,
+    int? forceResendingToken,
+  }) async {
+    await _firebaseAuth.verifyPhoneNumber(
+      timeout: const Duration(seconds: 60),
+      forceResendingToken: forceResendingToken,
+      phoneNumber: phoneNumber,
+      verificationCompleted: verificationCompleted,
+      verificationFailed: verificationFailed,
+      codeSent: codeSent,
+      codeAutoRetrievalTimeout: codeAutoRetrievalTimeout,
+    );
+  }
+
+  @override
+  Future<Either<AuthFailure, SignInMethod>> verifyFbOtp({
+    required String verificationId,
+    required String otpCode,
+  }) async {
+    talker.verbose('[AuthRepository] verifyFbOtp()');
+    try {
+      //* Creates a new credential
+      final authCredential = firebase_auth.PhoneAuthProvider.credential(
+        verificationId: verificationId,
+        smsCode: otpCode,
+      );
+
+      await _firebaseAuth.signInWithCredential(authCredential);
+
+      talker.verbose('[AuthRepository] verifyFbOtp() success');
+
+      return right(const SignInMethod.firebaseOtp());
+    } catch (error) {
+      // reportException(error);
+      return left(const AuthFailure.serverError());
+    }
+  }
+
   @override
   Future<void> signOut() {
     return Future.wait([
@@ -333,284 +372,4 @@ class AuthRepository implements IAuth {
       _firebaseAuth.signOut(),
     ]);
   }
-
-  //*----------------- SERVER ---------------------//
-
-  // @override
-  // Future<Either<AlertModel, UserModel>> getProfileUser() async {
-  //   return dioExceptionHandler<UserModel>(() async {
-  //     final queryParams = <String, dynamic>{};
-
-  //     if (UniversalPlatform.isAndroid || UniversalPlatform.isIOS) {
-  //       queryParams['type'] = UniversalPlatform.isAndroid ? 'android' : 'ios';
-  //     }
-
-  //     final prefs = await SharedPreferences.getInstance();
-  //     final fcmToken = prefs.getString($constants.fcmToken);
-  //     if (fcmToken != null) {
-  //       talker.warning('getProfileUser() fcmToken != null: $fcmToken');
-  //       queryParams['registration_id'] = fcmToken;
-  //     }
-
-  //     final profileUserFormData = FormData.fromMap(queryParams);
-
-  //     talker.log(
-  //       '[AuthRepository] getProfileUser() => queryParams at the END: $queryParams',
-  //     );
-
-  //     return dioExceptionHandler<UserModel>(() async {
-  //       final response = await _dioService.dio.get<Map<String, dynamic>>(
-  //         'user/',
-  //         data: profileUserFormData,
-  //       );
-
-  //       talker.log(
-  //         '[AuthRepository] SUCCESS getProfileUser() => response.data: ${response.data}',
-  //       );
-
-  //       final user = UserModel.fromJson(response.data!);
-  //       await iHive.addOrUpdateUserModelToHive(userModel: user);
-
-  //       return right(user);
-  //     });
-  //   });
-  // }
-
-  // @override
-  // Future<Either<AlertModel, UserModel>> updateProfileUser(
-  //   UserModel userModel,
-  //   // XFile? userImageFile,
-  //   // bool isDeleteUserImageTriggered,
-  //   // XFile? backgroundImageFile,
-  //   // bool isDeleteUserBackgroundImageTriggered,
-  // ) async {
-  //   talker.warning(
-  //     '[AuthRepository] updateProfileUser() => userModel: $userModel'
-  //     // userImageFile: $userImageFile, backgroundImageFile: $backgroundImageFile',
-  //   );
-  //   return dioExceptionHandler<UserModel>(() async {
-  //     final queryParams = <String, dynamic>{};
-  //     if (userModel.firstName != null) {
-  //       if (userModel.firstName!.isNotEmpty) {
-  //         queryParams['first_name'] = userModel.firstName;
-  //       } else {
-  //         queryParams['first_name'] = '';
-  //       }
-  //     }
-  //     if (userModel.lastName != null) {
-  //       queryParams['last_name'] = userModel.lastName;
-  //       if (userModel.lastName!.isNotEmpty) {
-  //         queryParams['last_name'] = userModel.lastName;
-  //       } else {
-  //         queryParams['last_name'] = '';
-  //       }
-  //     }
-  //     if (userModel.bio != null) {
-  //       queryParams['bio'] = userModel.bio;
-  //       if (userModel.bio!.isNotEmpty) {
-  //         queryParams['bio'] = userModel.bio;
-  //       } else {
-  //         queryParams['bio'] = '';
-  //       }
-  //     }
-  //     if (userModel.gender != null) {
-  //       queryParams['gender'] = userModel.gender!.id;
-  //     }
-  //     if (userModel.birthday != null) {
-  //       queryParams['birthday'] = userModel.birthday;
-  //     }
-  //     if (userImageFile != null) {
-  //       final fileName = userImageFile.path.split('/').last;
-  //       queryParams['avatar'] = await MultipartFile.fromFile(
-  //         userImageFile.path,
-  //         filename: fileName,
-  //       );
-  //     } else if (isDeleteUserImageTriggered) {
-  //       queryParams['avatar'] = null;
-  //     }
-  //     if (backgroundImageFile != null) {
-  //       final fileName = backgroundImageFile.path.split('/').last;
-  //       queryParams['wallpaper'] = await MultipartFile.fromFile(
-  //         backgroundImageFile.path,
-  //         filename: fileName,
-  //       );
-  //     } else if (isDeleteUserBackgroundImageTriggered) {
-  //       queryParams['wallpaper'] = null;
-  //     }
-
-  //     if (userModel.mobile != null && userModel.mobile!.isNotEmpty) {
-  //       queryParams['mobile'] = userModel.mobile;
-  //       queryParams['mobile_iso_code'] = userModel.mobileIsoCode;
-  //     }
-
-  //     if (userModel.email != null) {
-  //       if (userModel.email!.isNotEmpty) {
-  //         queryParams['email'] = userModel.email;
-  //       } else {
-  //         queryParams['email'] = '';
-  //       }
-  //     }
-
-  //     if (userModel.emailHidden != null) {
-  //       queryParams['email_hidden'] = userModel.emailHidden;
-  //     }
-  //     if (userModel.mobileHidden != null) {
-  //       queryParams['mobile_hidden'] = userModel.mobileHidden;
-  //     }
-
-  //     if ((userModel.isSelectedFromMap ?? false) &&
-  //         (userModel.location != null && userModel.location!.isNotEmpty)) {
-  //       queryParams['address_extra'] = null;
-  //       queryParams['location'] = userModel.location;
-  //       queryParams['latitude'] = userModel.latitude;
-  //       queryParams['longitude'] = userModel.longitude;
-  //     } else {
-  //       if (userModel.addressText != null &&
-  //           userModel.addressText!.isNotEmpty) {
-  //         queryParams['address_extra'] = userModel.addressText;
-  //         queryParams['location'] = null;
-  //         queryParams['latitude'] = null;
-  //         queryParams['longitude'] = null;
-  //       }
-  //     }
-
-  //     talker.log(
-  //       '[AuthRepository] updateProfileUser() => queryParams at the END: $queryParams',
-  //     );
-
-  //     final profileUserFormData = FormData.fromMap(queryParams);
-
-  //     final response = await _dioService.dio.patch<Map<String, dynamic>>(
-  //       'user/',
-  //       data: profileUserFormData,
-  //     );
-  //     // final response = await _dioClient.patch<Map<String, dynamic>>(
-  //     //   'user/',
-  //     //   data: updateUserFormData,
-  //     // );
-
-  //     talker.log(
-  //       '[AuthRepository] SUCCESS updateProfileUser() => response.data: ${response.data}',
-  //     );
-
-  //     final user = UserModel.fromJson(response.data!);
-  //     await iHive.addOrUpdateUserModelToHive(userModel: user);
-
-  //     return right(user);
-  //   });
-  // }
-
-  // @override
-  // Future<Either<AlertModel, UploadedImageModel>> uploadBusinessImage(
-  //   CroppedFile? croppedFile,
-  // ) async {
-  //   talker.warning(
-  //     '[AuthRepository] uploadBusinessImage() => croppedFile: $croppedFile',
-  //   );
-  //   return dioExceptionHandler<UploadedImageModel>(() async {
-  //     final queryParams = <String, dynamic>{};
-
-  //     if (croppedFile != null) {
-  //       final fileName = croppedFile.path.split('/').last;
-  //       queryParams['image'] = await MultipartFile.fromFile(
-  //         croppedFile.path,
-  //         filename: fileName,
-  //       );
-  //     }
-
-  //     talker.log('queryParams at the END: $queryParams');
-
-  //     final uploadBusinessImageFormData = FormData.fromMap(queryParams);
-
-  //     final dioWithCustomParams = _dioService.getDioWithCustomParams();
-  //     final response = await dioWithCustomParams.post<Map<String, dynamic>>(
-  //       'business/images/',
-  //       data: uploadBusinessImageFormData,
-  //     );
-  //     // final response = await dioWithCustomParams.patch<Map<String, dynamic>>(
-  //     // 'business/images/',
-  //     // data: uploadBusinessImageFormData,
-  //     // );
-
-  //     talker.verbose(
-  //       '[AuthRepository] SUCCESS uploadBusinessImage() => response.data: ${response.data}',
-  //     );
-
-  //     final imageModel = ImageModel.fromJson(response.data!);
-  //     final uploadedImage = UploadedImageModel(
-  //       id: imageModel.id!,
-  //       croppedFile: croppedFile,
-  //     );
-
-  //     return right(uploadedImage);
-  //   });
-  // }
-
-  // @override
-  // Future<Either<AlertModel, Unit>> deleteUser() async {
-  //   talker.verbose('[AuthRepository] deleteUser()');
-
-  //   return dioExceptionHandler<Unit>(() async {
-  //     final response = await _dioService.dio.delete<dynamic>(
-  //       'user/',
-  //     );
-  //     // final response = await _dioClient.delete<dynamic>(
-  //     //   'user/',
-  //     // );
-
-  //     talker.verbose(
-  //       '[AuthRepository] SUCCESS deleteUser() => response.data: ${response.data}',
-  //     );
-
-  //     return right(unit);
-  //   });
-  // }
-
-// @override
-// Future<Either<AlertModel, UserModel>> updateUserImageFile(
-//   UserModel userModel,
-//   XFile? userImageFile,
-// ) async {
-//   talker.verbose(
-//     '[AuthRepository] updateUserImageFile() => userModel: $userModel, userImageFile: $userImageFile',
-//   );
-//   return dioExceptionHandler<UserModel>(() async {
-//     final queryParams = <String, dynamic>{};
-
-//     if (userImageFile != null) {
-//       final fileName = userImageFile.path.split('/').last;
-//       queryParams['image'] = await MultipartFile.fromFile(
-//         userImageFile.path,
-//         filename: fileName,
-//       );
-//     } else {
-//       queryParams['image'] = null;
-//     }
-
-//     talker.verbose('queryParams at the END: $queryParams');
-
-//     final FormData updateUserImageFormData = FormData.fromMap(queryParams);
-
-//     final response = await _dioService.dio.patch<Map<String, dynamic>>(
-//       'users/${userModel.id}/',
-//       data: userImageFile != null
-//           ? updateUserImageFormData
-//           : {
-//               'image': null
-//             }, //* FormData IGNORES empty data so use query directly
-//     );
-//     // final response = await _dioClient.patch<Map<String, dynamic>>(
-//     //   'users/${userModel.id}/',
-//     //   data: updateUserFormData,
-//     // );
-
-//     talker.verbose(
-//       '[AuthRepository] SUCCESS updateUserImageFile() => response.data: ${response.data}',
-//     );
-
-//     final user = UserModel.fromJson(response.data!);
-
-//     return right(user);
-//   });
-// }
 }

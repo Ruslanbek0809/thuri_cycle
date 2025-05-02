@@ -27,6 +27,9 @@ mixin _$AuthFormState {
   Option<Either<AuthFailure, Unit>>
       get fbPhoneAuthOtpOptionOfSuccessOrFailure =>
           throw _privateConstructorUsedError;
+  Option<Either<AuthFailure, SignInMethod>>
+      get otpVerificationOptionOfSuccessOrFailure =>
+          throw _privateConstructorUsedError;
 
   /// Create a copy of AuthFormState
   /// with the given fields replaced by the non-null parameter values.
@@ -48,8 +51,9 @@ abstract class $AuthFormStateCopyWith<$Res> {
       Option<Either<AuthFailure, SignInMethod>> optionOfSuccessOrFailure,
       Option<Either<AuthFailure, Unit>>
           fbPhoneAuthLoginOptionOfSuccessOrFailure,
-      Option<Either<AuthFailure, Unit>>
-          fbPhoneAuthOtpOptionOfSuccessOrFailure});
+      Option<Either<AuthFailure, Unit>> fbPhoneAuthOtpOptionOfSuccessOrFailure,
+      Option<Either<AuthFailure, SignInMethod>>
+          otpVerificationOptionOfSuccessOrFailure});
 }
 
 /// @nodoc
@@ -73,6 +77,7 @@ class _$AuthFormStateCopyWithImpl<$Res, $Val extends AuthFormState>
     Object? optionOfSuccessOrFailure = null,
     Object? fbPhoneAuthLoginOptionOfSuccessOrFailure = null,
     Object? fbPhoneAuthOtpOptionOfSuccessOrFailure = null,
+    Object? otpVerificationOptionOfSuccessOrFailure = null,
   }) {
     return _then(_value.copyWith(
       isLoading: null == isLoading
@@ -101,6 +106,11 @@ class _$AuthFormStateCopyWithImpl<$Res, $Val extends AuthFormState>
           ? _value.fbPhoneAuthOtpOptionOfSuccessOrFailure
           : fbPhoneAuthOtpOptionOfSuccessOrFailure // ignore: cast_nullable_to_non_nullable
               as Option<Either<AuthFailure, Unit>>,
+      otpVerificationOptionOfSuccessOrFailure: null ==
+              otpVerificationOptionOfSuccessOrFailure
+          ? _value.otpVerificationOptionOfSuccessOrFailure
+          : otpVerificationOptionOfSuccessOrFailure // ignore: cast_nullable_to_non_nullable
+              as Option<Either<AuthFailure, SignInMethod>>,
     ) as $Val);
   }
 }
@@ -120,8 +130,9 @@ abstract class _$$AuthStateImplCopyWith<$Res>
       Option<Either<AuthFailure, SignInMethod>> optionOfSuccessOrFailure,
       Option<Either<AuthFailure, Unit>>
           fbPhoneAuthLoginOptionOfSuccessOrFailure,
-      Option<Either<AuthFailure, Unit>>
-          fbPhoneAuthOtpOptionOfSuccessOrFailure});
+      Option<Either<AuthFailure, Unit>> fbPhoneAuthOtpOptionOfSuccessOrFailure,
+      Option<Either<AuthFailure, SignInMethod>>
+          otpVerificationOptionOfSuccessOrFailure});
 }
 
 /// @nodoc
@@ -143,6 +154,7 @@ class __$$AuthStateImplCopyWithImpl<$Res>
     Object? optionOfSuccessOrFailure = null,
     Object? fbPhoneAuthLoginOptionOfSuccessOrFailure = null,
     Object? fbPhoneAuthOtpOptionOfSuccessOrFailure = null,
+    Object? otpVerificationOptionOfSuccessOrFailure = null,
   }) {
     return _then(_$AuthStateImpl(
       isLoading: null == isLoading
@@ -171,6 +183,11 @@ class __$$AuthStateImplCopyWithImpl<$Res>
           ? _value.fbPhoneAuthOtpOptionOfSuccessOrFailure
           : fbPhoneAuthOtpOptionOfSuccessOrFailure // ignore: cast_nullable_to_non_nullable
               as Option<Either<AuthFailure, Unit>>,
+      otpVerificationOptionOfSuccessOrFailure: null ==
+              otpVerificationOptionOfSuccessOrFailure
+          ? _value.otpVerificationOptionOfSuccessOrFailure
+          : otpVerificationOptionOfSuccessOrFailure // ignore: cast_nullable_to_non_nullable
+              as Option<Either<AuthFailure, SignInMethod>>,
     ));
   }
 }
@@ -184,7 +201,8 @@ class _$AuthStateImpl implements _AuthState {
       required this.forceResendingToken,
       required this.optionOfSuccessOrFailure,
       required this.fbPhoneAuthLoginOptionOfSuccessOrFailure,
-      required this.fbPhoneAuthOtpOptionOfSuccessOrFailure});
+      required this.fbPhoneAuthOtpOptionOfSuccessOrFailure,
+      required this.otpVerificationOptionOfSuccessOrFailure});
 
   @override
   final bool isLoading;
@@ -200,10 +218,13 @@ class _$AuthStateImpl implements _AuthState {
   @override
   final Option<Either<AuthFailure, Unit>>
       fbPhoneAuthOtpOptionOfSuccessOrFailure;
+  @override
+  final Option<Either<AuthFailure, SignInMethod>>
+      otpVerificationOptionOfSuccessOrFailure;
 
   @override
   String toString() {
-    return 'AuthFormState(isLoading: $isLoading, verificationId: $verificationId, forceResendingToken: $forceResendingToken, optionOfSuccessOrFailure: $optionOfSuccessOrFailure, fbPhoneAuthLoginOptionOfSuccessOrFailure: $fbPhoneAuthLoginOptionOfSuccessOrFailure, fbPhoneAuthOtpOptionOfSuccessOrFailure: $fbPhoneAuthOtpOptionOfSuccessOrFailure)';
+    return 'AuthFormState(isLoading: $isLoading, verificationId: $verificationId, forceResendingToken: $forceResendingToken, optionOfSuccessOrFailure: $optionOfSuccessOrFailure, fbPhoneAuthLoginOptionOfSuccessOrFailure: $fbPhoneAuthLoginOptionOfSuccessOrFailure, fbPhoneAuthOtpOptionOfSuccessOrFailure: $fbPhoneAuthOtpOptionOfSuccessOrFailure, otpVerificationOptionOfSuccessOrFailure: $otpVerificationOptionOfSuccessOrFailure)';
   }
 
   @override
@@ -227,7 +248,11 @@ class _$AuthStateImpl implements _AuthState {
             (identical(other.fbPhoneAuthOtpOptionOfSuccessOrFailure,
                     fbPhoneAuthOtpOptionOfSuccessOrFailure) ||
                 other.fbPhoneAuthOtpOptionOfSuccessOrFailure ==
-                    fbPhoneAuthOtpOptionOfSuccessOrFailure));
+                    fbPhoneAuthOtpOptionOfSuccessOrFailure) &&
+            (identical(other.otpVerificationOptionOfSuccessOrFailure,
+                    otpVerificationOptionOfSuccessOrFailure) ||
+                other.otpVerificationOptionOfSuccessOrFailure ==
+                    otpVerificationOptionOfSuccessOrFailure));
   }
 
   @override
@@ -238,7 +263,8 @@ class _$AuthStateImpl implements _AuthState {
       forceResendingToken,
       optionOfSuccessOrFailure,
       fbPhoneAuthLoginOptionOfSuccessOrFailure,
-      fbPhoneAuthOtpOptionOfSuccessOrFailure);
+      fbPhoneAuthOtpOptionOfSuccessOrFailure,
+      otpVerificationOptionOfSuccessOrFailure);
 
   /// Create a copy of AuthFormState
   /// with the given fields replaced by the non-null parameter values.
@@ -259,7 +285,9 @@ abstract class _AuthState implements AuthFormState {
       required final Option<Either<AuthFailure, Unit>>
           fbPhoneAuthLoginOptionOfSuccessOrFailure,
       required final Option<Either<AuthFailure, Unit>>
-          fbPhoneAuthOtpOptionOfSuccessOrFailure}) = _$AuthStateImpl;
+          fbPhoneAuthOtpOptionOfSuccessOrFailure,
+      required final Option<Either<AuthFailure, SignInMethod>>
+          otpVerificationOptionOfSuccessOrFailure}) = _$AuthStateImpl;
 
   @override
   bool get isLoading;
@@ -274,6 +302,9 @@ abstract class _AuthState implements AuthFormState {
       get fbPhoneAuthLoginOptionOfSuccessOrFailure;
   @override
   Option<Either<AuthFailure, Unit>> get fbPhoneAuthOtpOptionOfSuccessOrFailure;
+  @override
+  Option<Either<AuthFailure, SignInMethod>>
+      get otpVerificationOptionOfSuccessOrFailure;
 
   /// Create a copy of AuthFormState
   /// with the given fields replaced by the non-null parameter values.

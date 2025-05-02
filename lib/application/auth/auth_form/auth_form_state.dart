@@ -11,6 +11,8 @@ class AuthFormState with _$AuthFormState {
         fbPhoneAuthLoginOptionOfSuccessOrFailure,
     required Option<Either<AuthFailure, Unit>>
         fbPhoneAuthOtpOptionOfSuccessOrFailure,
+    required Option<Either<AuthFailure, SignInMethod>>
+        otpVerificationOptionOfSuccessOrFailure,
   }) = _AuthState;
 
   factory AuthFormState.initial() => AuthFormState(
@@ -20,6 +22,7 @@ class AuthFormState with _$AuthFormState {
         optionOfSuccessOrFailure: none(),
         fbPhoneAuthLoginOptionOfSuccessOrFailure: none(),
         fbPhoneAuthOtpOptionOfSuccessOrFailure: none(),
+        otpVerificationOptionOfSuccessOrFailure: none(),
       );
 }
 

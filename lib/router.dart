@@ -20,6 +20,10 @@ class AppRouter extends RootStackRouter {
           path: '/login',
           page: LoginRoute.page,
         ),
+        AutoRoute(
+          path: '/otp',
+          page: OtpRoute.page,
+        ),
 
         // Main bottom navigation wrapper
         AutoRoute(

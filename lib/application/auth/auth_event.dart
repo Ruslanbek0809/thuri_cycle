@@ -3,7 +3,5 @@ part of 'auth_bloc.dart';
 @freezed
 class AuthEvent with _$AuthEvent {
   const factory AuthEvent.authCheckRequested() = AuthCheckRequested;
-  const factory AuthEvent.authExtensiveCheckRequested() =
-      AuthExtensiveCheckRequested;
   const factory AuthEvent.signedOut() = SignedOut;
 }
