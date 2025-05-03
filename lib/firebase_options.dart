@@ -69,6 +69,8 @@ class DefaultFirebaseOptions {
     messagingSenderId: '770288966254',
     projectId: 'thuri-cycle',
     storageBucket: 'thuri-cycle.firebasestorage.app',
+    androidClientId: '770288966254-ictc3142usrd5q8kdpmlmmvo4jhaodpo.apps.googleusercontent.com',
+    iosClientId: '770288966254-pa83r0khghqufdte8klfrtn5ne8166gv.apps.googleusercontent.com',
     iosBundleId: 'com.roosnoff.thuricycle.thuri-cycle',
   );
 

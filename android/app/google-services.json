@@ -12,7 +12,20 @@
           "package_name": "com.roosnoff.thuricycle.thuri_cycle"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "770288966254-ictc3142usrd5q8kdpmlmmvo4jhaodpo.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.roosnoff.thuricycle.thuri_cycle",
+            "certificate_hash": "5a95c48f8ad5c25c500aa334117f2c32bbf69cbd"
+          }
+        },
+        {
+          "client_id": "770288966254-64v2mt3k79oqj32qbrvlh0h5uuqjpuf2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyBbKKu4FW6hkNSC0JHqeibqawLRRhT3cpE"
@@ -20,7 +33,19 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "770288966254-64v2mt3k79oqj32qbrvlh0h5uuqjpuf2.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "770288966254-pa83r0khghqufdte8klfrtn5ne8166gv.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.roosnoff.thuricycle.thuri-cycle"
+              }
+            }
+          ]
         }
       }
     }
