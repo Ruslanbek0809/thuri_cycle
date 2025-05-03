@@ -16,9 +16,7 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$SettingsFormState {
-// required LanguageModel? languageModel,
-// required bool isLanguagesLoading,
-// required List<LanguageModel> languages,
+  LanguageModel? get languageModel => throw _privateConstructorUsedError;
   PackageInfo? get packageInfo => throw _privateConstructorUsedError;
   bool get isLoading => throw _privateConstructorUsedError;
   bool get showError => throw _privateConstructorUsedError;
@@ -39,10 +37,13 @@ abstract class $SettingsFormStateCopyWith<$Res> {
       _$SettingsFormStateCopyWithImpl<$Res, SettingsFormState>;
   @useResult
   $Res call(
-      {PackageInfo? packageInfo,
+      {LanguageModel? languageModel,
+      PackageInfo? packageInfo,
       bool isLoading,
       bool showError,
       Option<Either<AlertModel, Unit>> optionOfSuccessOrFailure});
+
+  $LanguageModelCopyWith<$Res>? get languageModel;
 }
 
 /// @nodoc
@@ -60,12 +61,17 @@ class _$SettingsFormStateCopyWithImpl<$Res, $Val extends SettingsFormState>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? languageModel = freezed,
     Object? packageInfo = freezed,
     Object? isLoading = null,
     Object? showError = null,
     Object? optionOfSuccessOrFailure = null,
   }) {
     return _then(_value.copyWith(
+      languageModel: freezed == languageModel
+          ? _value.languageModel
+          : languageModel // ignore: cast_nullable_to_non_nullable
+              as LanguageModel?,
       packageInfo: freezed == packageInfo
           ? _value.packageInfo
           : packageInfo // ignore: cast_nullable_to_non_nullable
@@ -84,6 +90,20 @@ class _$SettingsFormStateCopyWithImpl<$Res, $Val extends SettingsFormState>
               as Option<Either<AlertModel, Unit>>,
     ) as $Val);
   }
+
+  /// Create a copy of SettingsFormState
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $LanguageModelCopyWith<$Res>? get languageModel {
+    if (_value.languageModel == null) {
+      return null;
+    }
+
+    return $LanguageModelCopyWith<$Res>(_value.languageModel!, (value) {
+      return _then(_value.copyWith(languageModel: value) as $Val);
+    });
+  }
 }
 
 /// @nodoc
@@ -95,10 +115,14 @@ abstract class _$$SettingsFormStateImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {PackageInfo? packageInfo,
+      {LanguageModel? languageModel,
+      PackageInfo? packageInfo,
       bool isLoading,
       bool showError,
       Option<Either<AlertModel, Unit>> optionOfSuccessOrFailure});
+
+  @override
+  $LanguageModelCopyWith<$Res>? get languageModel;
 }
 
 /// @nodoc
@@ -114,12 +138,17 @@ class __$$SettingsFormStateImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? languageModel = freezed,
     Object? packageInfo = freezed,
     Object? isLoading = null,
     Object? showError = null,
     Object? optionOfSuccessOrFailure = null,
   }) {
     return _then(_$SettingsFormStateImpl(
+      languageModel: freezed == languageModel
+          ? _value.languageModel
+          : languageModel // ignore: cast_nullable_to_non_nullable
+              as LanguageModel?,
       packageInfo: freezed == packageInfo
           ? _value.packageInfo
           : packageInfo // ignore: cast_nullable_to_non_nullable
@@ -144,14 +173,14 @@ class __$$SettingsFormStateImplCopyWithImpl<$Res>
 
 class _$SettingsFormStateImpl implements _SettingsFormState {
   _$SettingsFormStateImpl(
-      {required this.packageInfo,
+      {required this.languageModel,
+      required this.packageInfo,
       required this.isLoading,
       required this.showError,
       required this.optionOfSuccessOrFailure});
 
-// required LanguageModel? languageModel,
-// required bool isLanguagesLoading,
-// required List<LanguageModel> languages,
+  @override
+  final LanguageModel? languageModel;
   @override
   final PackageInfo? packageInfo;
   @override
@@ -163,7 +192,7 @@ class _$SettingsFormStateImpl implements _SettingsFormState {
 
   @override
   String toString() {
-    return 'SettingsFormState(packageInfo: $packageInfo, isLoading: $isLoading, showError: $showError, optionOfSuccessOrFailure: $optionOfSuccessOrFailure)';
+    return 'SettingsFormState(languageModel: $languageModel, packageInfo: $packageInfo, isLoading: $isLoading, showError: $showError, optionOfSuccessOrFailure: $optionOfSuccessOrFailure)';
   }
 
   @override
@@ -171,6 +200,8 @@ class _$SettingsFormStateImpl implements _SettingsFormState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$SettingsFormStateImpl &&
+            (identical(other.languageModel, languageModel) ||
+                other.languageModel == languageModel) &&
             (identical(other.packageInfo, packageInfo) ||
                 other.packageInfo == packageInfo) &&
             (identical(other.isLoading, isLoading) ||
@@ -183,8 +214,8 @@ class _$SettingsFormStateImpl implements _SettingsFormState {
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, packageInfo, isLoading, showError, optionOfSuccessOrFailure);
+  int get hashCode => Object.hash(runtimeType, languageModel, packageInfo,
+      isLoading, showError, optionOfSuccessOrFailure);
 
   /// Create a copy of SettingsFormState
   /// with the given fields replaced by the non-null parameter values.
@@ -198,15 +229,15 @@ class _$SettingsFormStateImpl implements _SettingsFormState {
 
 abstract class _SettingsFormState implements SettingsFormState {
   factory _SettingsFormState(
-      {required final PackageInfo? packageInfo,
+      {required final LanguageModel? languageModel,
+      required final PackageInfo? packageInfo,
       required final bool isLoading,
       required final bool showError,
       required final Option<Either<AlertModel, Unit>>
           optionOfSuccessOrFailure}) = _$SettingsFormStateImpl;
 
-// required LanguageModel? languageModel,
-// required bool isLanguagesLoading,
-// required List<LanguageModel> languages,
+  @override
+  LanguageModel? get languageModel;
   @override
   PackageInfo? get packageInfo;
   @override

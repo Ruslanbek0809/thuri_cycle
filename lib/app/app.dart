@@ -42,7 +42,10 @@ class _AppState extends State<App> {
           // If I initialize it only when user goes to profile page, then lazy: true would fit here.
           create: (_) => getIt<ProfileUserFormCubit>(),
         ),
-        BlocProvider(create: (_) => getIt<SettingsFormCubit>()),
+        BlocProvider(
+          lazy: false,
+          create: (_) => getIt<SettingsFormCubit>()..initializeLanguageModel(),
+        ),
         //TODO [optimization]: If possible try to move it just before MapPage (Use AutoRouteWrapper)
         BlocProvider<MapMarkerFormCubit>(
           create: (_) => getIt<MapMarkerFormCubit>(),

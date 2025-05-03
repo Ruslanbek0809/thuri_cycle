@@ -19,6 +19,7 @@ import 'package:thuri_cycle/presentation/core/widgets/custom/custom_loading_indi
 import 'package:thuri_cycle/presentation/core/widgets/custom/custom_logo.dart';
 import 'package:thuri_cycle/presentation/core/widgets/keyboard_dismisser.dart';
 
+//TODO: Fix otp page duplication issue when code is resent
 @RoutePage()
 class OtpPage extends StatefulWidget implements AutoRouteWrapper {
   const OtpPage({

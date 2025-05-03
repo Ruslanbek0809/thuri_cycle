@@ -93,7 +93,6 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.factory<_i558.FlutterSecureStorage>(
         () => secureStorageInjection.storage());
-    gh.factory<_i1063.LocaleCubit>(() => _i1063.LocaleCubit());
     gh.singleton<_i207.Talker>(() => talkerModule.talkerFlutter);
     await gh.singletonAsync<_i836.ThemeModel>(
       () => _i836.ThemeModel.create(),
@@ -123,6 +122,8 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i357.MapMarkersCollection(gh<_i974.FirebaseFirestore>()));
     gh.lazySingleton<_i1048.MapPreferences>(
         () => _i1048.MapPreferences(gh<_i460.SharedPreferences>()));
+    gh.factory<_i1063.LocaleCubit>(
+        () => _i1063.LocaleCubit(gh<_i460.SharedPreferences>()));
     gh.factory<_i225.SettingsFormCubit>(
         () => _i225.SettingsFormCubit(gh<_i460.SharedPreferences>()));
     gh.lazySingleton<_i917.IAuth>(() => _i767.AuthRepository(

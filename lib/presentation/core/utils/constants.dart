@@ -91,6 +91,8 @@ class Constants {
   final fcmTopicIos = 'ios';
 
   final appLocale = 'appLocale';
+  final appLocaleID = 'appLocaleID';
+  final appLocaleName = 'appLocaleName';
 
   final isOnboardingSeen = 'isOnboardingSeen';
 

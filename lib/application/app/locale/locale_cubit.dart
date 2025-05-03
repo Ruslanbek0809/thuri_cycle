@@ -11,29 +11,23 @@ part 'locale_cubit.freezed.dart';
 
 @injectable
 class LocaleCubit extends Cubit<LocaleState> {
-  LocaleCubit()
-      : super(
-          LocaleState.initial(
-            const Locale('en'), //* SETS initial app locale (Default: en)
-          ),
-        );
+  LocaleCubit(
+    this.sharedPreferences,
+  ) : super(LocaleState.initial(const Locale('en')));
+
+  final SharedPreferences sharedPreferences;
 
   Future<void> initLocale() async {
-    final sharedPref = await SharedPreferences.getInstance();
-    final appLocale = sharedPref.getString($constants.appLocale);
-    emit(
-      state.copyWith(
-        locale: Locale(
-          appLocale ?? 'en', //* SETS initial app locale (Default: en)
-        ),
-      ),
-    );
+    final appLocale = sharedPreferences.getString($constants.appLocale);
+    emit(state.copyWith(locale: Locale(appLocale ?? 'en')));
   }
 
   Future<void> changeLocale(Locale newLocale) async {
     final locale = newLocale;
-    final sharedPref = await SharedPreferences.getInstance();
-    await sharedPref.setString($constants.appLocale, locale.languageCode);
+    await sharedPreferences.setString(
+      $constants.appLocale,
+      locale.languageCode,
+    );
     talker.info(
       'changeLocale() locale: $locale, locale.languageCode: ${locale.languageCode}, newLocale.languageCode: ${newLocale.languageCode}',
     );
