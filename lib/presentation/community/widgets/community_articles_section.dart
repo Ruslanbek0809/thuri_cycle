@@ -3,12 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:thuri_cycle/application/community/community_articles/community_articles_cubit.dart';
 import 'package:thuri_cycle/infastructure/core/firebase_config/firebase_failure_handler.dart';
-import 'package:thuri_cycle/presentation/recycling_guide/article_widgets/article/article.dart';
-import 'package:thuri_cycle/presentation/recycling_guide/article_widgets/article_widget.dart';
-import 'package:thuri_cycle/presentation/recycling_guide/article_widgets/article_widget_skeleton.dart';
-import 'package:thuri_cycle/presentation/recycling_guide/article_widgets/theme/src/app_colors.dart';
-import 'package:thuri_cycle/presentation/recycling_guide/article_widgets/theme/src/app_shadows.dart';
-import 'package:thuri_cycle/presentation/recycling_guide/article_widgets/theme/src/app_text_styles.dart';
+import 'package:thuri_cycle/l10n/l10n.dart';
+import 'package:thuri_cycle/domain/community/article/article.dart';
+import 'package:thuri_cycle/presentation/community/widgets/article_widgets/article_widget.dart';
+import 'package:thuri_cycle/presentation/community/widgets/article_widgets/article_widget_skeleton.dart';
+import 'package:thuri_cycle/presentation/community/widgets/article_widgets/theme/src/app_colors.dart';
+import 'package:thuri_cycle/presentation/community/widgets/article_widgets/theme/src/app_shadows.dart';
+import 'package:thuri_cycle/presentation/community/widgets/article_widgets/theme/src/app_text_styles.dart';
 import 'package:thuri_cycle/router.gr.dart';
 
 class CommunityArticlesSection extends StatelessWidget {
@@ -31,7 +32,7 @@ class CommunityArticlesSection extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20),
           child: Text(
-            'Read Articles',
+            context.l10n.readArticles,
             style: AppTextStyles.blackBlack22.copyWith(
               color: Colors.black,
               fontSize: 20,

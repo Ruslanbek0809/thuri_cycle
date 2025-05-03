@@ -95,7 +95,7 @@ class _LoginPageState extends State<LoginPage> {
                     padding:
                         EdgeInsets.symmetric(horizontal: $constants.insets.sm),
                     child: BlocBuilder<AuthFormCubit, AuthFormState>(
-                      buildWhen: (previous, current) => previous != current,
+                      buildWhen: (p, c) => p != c,
                       builder: (context, state) {
                         return Column(
                           crossAxisAlignment: CrossAxisAlignment.start,

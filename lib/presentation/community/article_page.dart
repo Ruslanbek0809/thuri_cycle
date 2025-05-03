@@ -6,12 +6,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:intl/intl.dart';
-import 'package:thuri_cycle/presentation/recycling_guide/article_widgets/app_icon_button.dart';
-import 'package:thuri_cycle/presentation/recycling_guide/article_widgets/article/article.dart';
-import 'package:thuri_cycle/presentation/recycling_guide/article_widgets/shared/app_markdown.dart';
-import 'package:thuri_cycle/presentation/recycling_guide/article_widgets/theme/src/app_colors.dart';
-import 'package:thuri_cycle/presentation/recycling_guide/article_widgets/theme/src/app_icons.dart';
-import 'package:thuri_cycle/presentation/recycling_guide/article_widgets/theme/src/app_text_styles.dart';
+import 'package:thuri_cycle/domain/community/article/article.dart';
+import 'package:thuri_cycle/l10n/l10n.dart';
+import 'package:thuri_cycle/presentation/core/utils/constants.dart';
+import 'package:thuri_cycle/presentation/community/widgets/article_widgets/app_icon_button.dart';
+import 'package:thuri_cycle/presentation/community/widgets/article_widgets/shared/app_markdown.dart';
+import 'package:thuri_cycle/presentation/community/widgets/article_widgets/theme/src/app_icons.dart';
+import 'package:thuri_cycle/presentation/community/widgets/article_widgets/theme/src/app_text_styles.dart';
 
 // import '../../providers/user_provider.dart';
 
@@ -54,7 +55,7 @@ class ArticlePage extends StatelessWidget {
               width: MediaQuery.of(context).size.width - 40,
               padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 8),
               decoration: BoxDecoration(
-                color: AppColors.white.withOpacity(0.9),
+                color: $constants.palette.white.withOpacity(0.9),
                 borderRadius: BorderRadius.circular(14),
                 border: Border.all(color: const Color(0x86CCCCCC)),
               ),
@@ -66,7 +67,7 @@ class ArticlePage extends StatelessWidget {
                       Container(
                         padding: const EdgeInsets.all(10),
                         decoration: BoxDecoration(
-                          color: AppColors.primary.withOpacity(0.2),
+                          color: $constants.palette.main.withOpacity(0.2),
                           borderRadius: BorderRadius.circular(12),
                         ),
                         child: AppIcons.icon(AppIcons.local),
@@ -76,15 +77,15 @@ class ArticlePage extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            'AI-Generated',
+                            context.l10n.aiGenerated,
                             style: AppTextStyles.blackBlack22.copyWith(
                               fontWeight: FontWeight.w900,
-                              color: AppColors.secondary,
+                              color: $constants.palette.main,
                               fontSize: 12,
                             ),
                           ),
                           Text(
-                            'Article summary',
+                            context.l10n.articleSummary,
                             style: AppTextStyles.blackBlack22
                                 .copyWith(fontSize: 16),
                           ),
@@ -92,7 +93,7 @@ class ArticlePage extends StatelessWidget {
                       ),
                       const Spacer(),
                       Text(
-                        'Hide',
+                        context.l10n.hide,
                         // expandedPositon == null ? 'Show' : 'Hide',
                         style: AppTextStyles.blackExtraBold16
                             .copyWith(fontSize: 14),
@@ -141,13 +142,13 @@ class ArticlePage extends StatelessWidget {
                         vertical: 6,
                       ),
                       decoration: BoxDecoration(
-                        color: AppColors.primary.withOpacity(0.2),
+                        color: $constants.palette.main.withOpacity(0.2),
                         borderRadius: BorderRadius.circular(20),
                       ),
                       child: Text(
                         article.tag.toUpperCase(),
                         style: AppTextStyles.primaryExtraBold14.copyWith(
-                          color: AppColors.secondary,
+                          color: $constants.palette.main,
                           height: 1.42,
                           fontSize: 12,
                         ),
@@ -165,7 +166,7 @@ class ArticlePage extends StatelessWidget {
                     ),
                     const SizedBox(height: 5),
                     Text(
-                      '${DateFormat('MMMM d y').format(article.date)}  •  KnowWaste',
+                      '${DateFormat('MMMM d y').format(article.date)}  •  ThuriCycle',
                       style: AppTextStyles.graySemiBold12,
                     ),
                     const SizedBox(height: 35),
@@ -235,7 +236,7 @@ class ArticlePage extends StatelessWidget {
                     bottom: 12,
                     top: MediaQuery.of(context).viewPadding.top,
                   ),
-                  color: AppColors.white.withOpacity(0.9),
+                  color: $constants.palette.white.withOpacity(0.9),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -244,13 +245,13 @@ class ArticlePage extends StatelessWidget {
                         // onTap: () => GoRouter.of(context).pop(),
                         size: 45,
                         iconSize: 22,
-                        fillColor: AppColors.primary.withOpacity(0.1),
+                        fillColor: $constants.palette.main.withOpacity(0.1),
                         icon: Icons.chevron_left_rounded,
                       ),
                       Text(
-                        'Article',
+                        context.l10n.article,
                         style: AppTextStyles.blackExtraBold18.copyWith(
-                          color: Colors.black,
+                          color: $constants.palette.black,
                         ),
                       ),
                       AppIconButton(
@@ -273,7 +274,7 @@ class ArticlePage extends StatelessWidget {
                         },
                         size: 45,
                         iconSize: 22,
-                        fillColor: AppColors.primary.withOpacity(0.1),
+                        fillColor: $constants.palette.main.withOpacity(0.1),
                         icon: Icons.bookmark_outline_rounded,
                         // icon: isBookmarked
                         //     ? Icons.bookmark_rounded

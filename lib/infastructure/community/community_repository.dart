@@ -1,12 +1,12 @@
 import 'package:dartz/dartz.dart';
 import 'package:injectable/injectable.dart';
+import 'package:thuri_cycle/domain/community/article/article.dart';
+import 'package:thuri_cycle/domain/community/guide/guide.dart';
 import 'package:thuri_cycle/domain/community/i_community.dart';
 import 'package:thuri_cycle/domain/core/firebase_failure.dart';
 import 'package:thuri_cycle/infastructure/core/firebase_config/collections.dart';
 import 'package:thuri_cycle/infastructure/core/firebase_config/firebase_failure_handler.dart';
 import 'package:thuri_cycle/infastructure/core/firebase_config/storage/firebase_storage.dart';
-import 'package:thuri_cycle/presentation/recycling_guide/article_widgets/article/article.dart';
-import 'package:thuri_cycle/presentation/recycling_guide/community/guide_widgets/guide/guide.dart';
 
 @LazySingleton(as: ICommunity)
 class CommunityRepository implements ICommunity {

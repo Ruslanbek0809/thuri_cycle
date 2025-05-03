@@ -8,12 +8,15 @@ import 'package:thuri_cycle/application/community/community_featured/community_f
 import 'package:thuri_cycle/application/community/community_guides/community_guides_cubit.dart';
 import 'package:thuri_cycle/application/community/community_single_guide/community_single_guide_cubit.dart';
 import 'package:thuri_cycle/infastructure/core/dependency_injection/di.dart';
-import 'package:thuri_cycle/presentation/recycling_guide/article_widgets/app_icon_button.dart';
-import 'package:thuri_cycle/presentation/recycling_guide/article_widgets/theme/src/app_colors.dart';
-import 'package:thuri_cycle/presentation/recycling_guide/article_widgets/theme/src/app_text_styles.dart';
-import 'package:thuri_cycle/presentation/recycling_guide/community/community_articles_section.dart';
-import 'package:thuri_cycle/presentation/recycling_guide/community/community_featured_section.dart';
-import 'package:thuri_cycle/presentation/recycling_guide/community/community_guide_section.dart';
+import 'package:thuri_cycle/l10n/l10n.dart';
+import 'package:thuri_cycle/presentation/community/widgets/article_widgets/app_icon_button.dart';
+import 'package:thuri_cycle/presentation/community/widgets/community_articles_section.dart';
+import 'package:thuri_cycle/presentation/community/widgets/community_featured_section.dart';
+import 'package:thuri_cycle/presentation/community/widgets/community_guide_section.dart';
+import 'package:thuri_cycle/presentation/core/utils/constants.dart';
+import 'package:thuri_cycle/presentation/core/utils/helpers/snackbar_helper.dart';
+import 'package:thuri_cycle/presentation/core/utils/methods/aliases.dart';
+import 'package:thuri_cycle/presentation/core/utils/methods/shortcuts.dart';
 
 //TODO: Look for changes from old project for this page and apply any needed features from it if needed
 //TODO [optimization]: Refactor everything inside the page later (plus add error widgets in bloc sections)
@@ -63,18 +66,18 @@ class _CommunityPageState extends State<CommunityPage> {
               edgeOffset: MediaQuery.of(context).viewPadding.top + 60,
               onRefresh: () async {
                 await HapticFeedback.lightImpact();
-                if (context.mounted) {
-                  await context
-                      .read<CommunityFeaturedCubit>()
-                      .getFeaturedArticle();
-                }
-                if (context.mounted) {
-                  await context.read<CommunityArticlesCubit>().getAllArticles();
-                }
+                // if (context.mounted) {
+                //   await context
+                //       .read<CommunityFeaturedCubit>()
+                //       .getFeaturedArticle();
+                // }
+                // if (context.mounted) {
+                //   await context.read<CommunityArticlesCubit>().getAllArticles();
+                // }
 
-                if (context.mounted) {
-                  await context.read<CommunityGuidesCubit>().getGuides();
-                }
+                // if (context.mounted) {
+                //   await context.read<CommunityGuidesCubit>().getGuides();
+                // }
               },
               // onRefresh: () async {
               //   HapticFeedback.lightImpact();
@@ -126,7 +129,7 @@ class _CommunityPageState extends State<CommunityPage> {
                   bottom: 12,
                   top: MediaQuery.of(context).viewPadding.top,
                 ),
-                color: AppColors.white,
+                color: $constants.palette.white,
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -134,29 +137,46 @@ class _CommunityPageState extends State<CommunityPage> {
                       tag: 'search_bar',
                       child: AppIconButton(
                         onTap: () {
+                          //TODO [optimization]: Add in the next update
+                          scaffoldMessengerKey.currentState
+                            ?..hideCurrentSnackBar()
+                            ..showSnackBar(
+                              SnackBarHelper.createInformation(
+                                message: context.l10n.comingInNextUpdate,
+                              ),
+                            );
                           // GoRouter.of(context).pushNamed(RouteNames.search);
                         },
                         size: 45,
                         iconSize: 22,
-                        fillColor: AppColors.primary.withOpacity(0.1),
+                        fillColor: $constants.palette.main.withOpacity(0.1),
                         icon: Icons.search_rounded,
                       ),
                     ),
                     Text(
-                      'Community',
-                      style: AppTextStyles.blackBlack22.copyWith(
-                        color: Colors.black,
-                        fontSize: 20,
-                      ),
+                      context.l10n.community,
+                      style: getTextTheme(context).titleLarge!.copyWith(
+                            fontSize: responsiveFontSize(context, 22),
+                            fontWeight: FontWeight.w700,
+                          ),
                     ),
                     Hero(
                       tag: 'search_close',
                       child: AppIconButton(
-                        onTap: () {},
+                        onTap: () {
+                          //TODO [optimization]: Add in the next update
+                          scaffoldMessengerKey.currentState
+                            ?..hideCurrentSnackBar()
+                            ..showSnackBar(
+                              SnackBarHelper.createInformation(
+                                message: context.l10n.comingInNextUpdate,
+                              ),
+                            );
+                        },
                         // onTap: () => GoRouter.of(context).pushNamed(RouteNames.bookmarks),
                         size: 45,
                         iconSize: 22,
-                        fillColor: AppColors.primary.withOpacity(0.1),
+                        fillColor: $constants.palette.main.withOpacity(0.1),
                         icon: Icons.bookmarks_rounded,
                       ),
                     ),

@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 //TODO [optimization]: If really needed, change to alternative one
 import 'package:flutter_markdown/flutter_markdown.dart';
-import 'package:thuri_cycle/presentation/recycling_guide/article_widgets/theme/theme.dart';
+import 'package:thuri_cycle/presentation/community/widgets/article_widgets/theme/theme.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 
 class AppMarkdown extends StatefulWidget {

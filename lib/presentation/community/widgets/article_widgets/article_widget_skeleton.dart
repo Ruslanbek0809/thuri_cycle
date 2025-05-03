@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:shimmer/shimmer.dart';
-import 'package:thuri_cycle/presentation/recycling_guide/article_widgets/shared/constants.dart';
-import 'package:thuri_cycle/presentation/recycling_guide/article_widgets/theme/src/app_colors.dart';
-import 'package:thuri_cycle/presentation/recycling_guide/article_widgets/theme/src/app_shadows.dart';
+import 'package:thuri_cycle/presentation/community/widgets/article_widgets/shared/constants.dart';
+import 'package:thuri_cycle/presentation/community/widgets/article_widgets/theme/src/app_colors.dart';
+import 'package:thuri_cycle/presentation/community/widgets/article_widgets/theme/src/app_shadows.dart';
 
 class ArticleWidgetSkeleton extends StatelessWidget {
   const ArticleWidgetSkeleton({super.key}) : isLarge = false;

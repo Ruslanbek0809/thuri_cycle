@@ -2,12 +2,14 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:shimmer/shimmer.dart';
+import 'package:thuri_cycle/domain/community/guide/guide.dart';
+import 'package:thuri_cycle/l10n/l10n.dart';
+import 'package:thuri_cycle/presentation/core/utils/constants.dart';
 import 'package:thuri_cycle/presentation/core/utils/methods/shortcuts.dart';
-import 'package:thuri_cycle/presentation/recycling_guide/article_widgets/shared/bouncing.dart';
-import 'package:thuri_cycle/presentation/recycling_guide/article_widgets/theme/src/app_colors.dart';
-import 'package:thuri_cycle/presentation/recycling_guide/article_widgets/theme/src/app_shadows.dart';
-import 'package:thuri_cycle/presentation/recycling_guide/article_widgets/theme/src/app_text_styles.dart';
-import 'package:thuri_cycle/presentation/recycling_guide/community/guide_widgets/guide/guide.dart';
+import 'package:thuri_cycle/presentation/community/widgets/article_widgets/shared/bouncing.dart';
+import 'package:thuri_cycle/presentation/community/widgets/article_widgets/theme/src/app_colors.dart';
+import 'package:thuri_cycle/presentation/community/widgets/article_widgets/theme/src/app_shadows.dart';
+import 'package:thuri_cycle/presentation/community/widgets/article_widgets/theme/src/app_text_styles.dart';
 
 class GuideWidget extends StatelessWidget {
   const GuideWidget({
@@ -17,16 +19,24 @@ class GuideWidget extends StatelessWidget {
   });
 
   final Guide guide;
-  final Function(Guide)? onTap;
+  final void Function(Guide)? onTap;
 
   @override
   Widget build(BuildContext context) => Bouncing(
         onTap: () => onTap?.call(guide),
         child: Container(
-          padding: const EdgeInsets.all(8),
+          padding: EdgeInsets.fromLTRB(
+            0,
+            $constants.insets.xs,
+            $constants.insets.xs,
+            $constants.insets.xs,
+          ),
+          width: getSize(context).width / 1.75,
           decoration: BoxDecoration(
-            color: AppColors.white,
-            borderRadius: BorderRadius.circular(12),
+            color: $constants.palette.white,
+            borderRadius: BorderRadius.circular(
+              $constants.insets.xs + $constants.insets.xxs,
+            ),
             border: Border.all(color: const Color(0xfff2f2f2)),
             boxShadow: [AppShadows.primary],
           ),
@@ -46,19 +56,21 @@ class GuideWidget extends StatelessWidget {
                         fit: BoxFit.cover,
                         progressIndicatorBuilder: (context, url, progress) =>
                             Shimmer.fromColors(
-                          baseColor: Colors.black.withOpacity(0.1),
-                          highlightColor: Colors.black.withOpacity(0.08),
+                          baseColor: $constants.palette.black.withOpacity(0.1),
+                          highlightColor:
+                              $constants.palette.black.withOpacity(0.08),
                           child: Container(
                             width: double.infinity,
                             color: AppColors.background,
                           ),
                         ),
                       ),
-                      Positioned.fill(
-                        child: ColoredBox(
-                          color: guide.color.hexToColor().withOpacity(0.8),
-                        ),
-                      ),
+                      //TODO [optimization]: Use color or remove
+                      // Positioned.fill(
+                      //   child: ColoredBox(
+                      //     color: guide.color.hexToColor().withOpacity(0.8),
+                      //   ),
+                      // ),
                       Padding(
                         padding: const EdgeInsets.all(10),
                         child: SvgPicture.network(guide.iconUrl),
@@ -73,10 +85,10 @@ class GuideWidget extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
-                    'How to recycle...',
+                    context.l10n.howToRecycle,
                     style: AppTextStyles.blackBlack22.copyWith(
                       fontWeight: FontWeight.w900,
-                      color: AppColors.secondary,
+                      color: $constants.palette.main,
                       fontSize: 13,
                     ),
                   ),

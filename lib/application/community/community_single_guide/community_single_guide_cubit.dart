@@ -1,12 +1,12 @@
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
+import 'package:thuri_cycle/domain/community/guide/guide.dart';
 import 'package:thuri_cycle/domain/community/i_community.dart';
 import 'package:thuri_cycle/domain/core/firebase_failure.dart';
-import 'package:thuri_cycle/presentation/recycling_guide/community/guide_widgets/guide/guide.dart';
 
-part 'community_single_guide_state.dart';
 part 'community_single_guide_cubit.freezed.dart';
+part 'community_single_guide_state.dart';
 
 @injectable
 class CommunitySingleGuideCubit extends Cubit<CommunitySingleGuideState> {

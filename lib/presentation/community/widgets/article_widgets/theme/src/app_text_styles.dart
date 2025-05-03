@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import 'package:thuri_cycle/presentation/recycling_guide/article_widgets/theme/src/app_colors.dart';
+import 'package:thuri_cycle/presentation/community/widgets/article_widgets/theme/src/app_colors.dart';
 
 /// Custom black styles for the app
 class AppTextStyles {

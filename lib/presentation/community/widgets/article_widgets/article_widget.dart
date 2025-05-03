@@ -2,14 +2,15 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:shimmer/shimmer.dart';
+import 'package:thuri_cycle/domain/community/article/article.dart';
+import 'package:thuri_cycle/l10n/l10n.dart';
 import 'package:thuri_cycle/presentation/core/utils/methods/shortcuts.dart';
-import 'package:thuri_cycle/presentation/recycling_guide/article_widgets/article/article.dart';
-import 'package:thuri_cycle/presentation/recycling_guide/article_widgets/shared/bouncing.dart';
-import 'package:thuri_cycle/presentation/recycling_guide/article_widgets/shared/constants.dart';
-import 'package:thuri_cycle/presentation/recycling_guide/article_widgets/theme/src/app_buttons.dart';
-import 'package:thuri_cycle/presentation/recycling_guide/article_widgets/theme/src/app_colors.dart';
-import 'package:thuri_cycle/presentation/recycling_guide/article_widgets/theme/src/app_shadows.dart';
-import 'package:thuri_cycle/presentation/recycling_guide/article_widgets/theme/src/app_text_styles.dart';
+import 'package:thuri_cycle/presentation/community/widgets/article_widgets/shared/bouncing.dart';
+import 'package:thuri_cycle/presentation/community/widgets/article_widgets/shared/constants.dart';
+import 'package:thuri_cycle/presentation/community/widgets/article_widgets/theme/src/app_buttons.dart';
+import 'package:thuri_cycle/presentation/community/widgets/article_widgets/theme/src/app_colors.dart';
+import 'package:thuri_cycle/presentation/community/widgets/article_widgets/theme/src/app_shadows.dart';
+import 'package:thuri_cycle/presentation/community/widgets/article_widgets/theme/src/app_text_styles.dart';
 
 class ArticleWidget extends StatelessWidget {
   // ignore: use_super_parameters
@@ -25,7 +26,7 @@ class ArticleWidget extends StatelessWidget {
   })  : isLarge = true;
 
   final Article article;
-  final Function(Article)? onTap;
+  final void Function(Article)? onTap;
   final bool isLarge;
 
   Widget _buildRegularArticle() => Container(
@@ -184,7 +185,7 @@ class ArticleWidget extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              'Article'.toUpperCase(),
+                              context.l10n.article.toUpperCase(),
                               style: AppTextStyles.blackBlack22.copyWith(
                                 color: AppColors.secondary,
                                 fontSize: 12,
@@ -206,7 +207,7 @@ class ArticleWidget extends StatelessWidget {
                               width: 120,
                               borderRadius: 40,
                               onTap: () => onTap?.call(article),
-                              child: const Text('Read Now'),
+                              child: Text(context.l10n.readNow),
                             ),
                           ],
                         ),

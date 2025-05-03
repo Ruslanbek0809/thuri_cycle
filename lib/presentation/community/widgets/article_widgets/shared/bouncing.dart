@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
+//TODO [optimization]: Use this bouncing in other parts of the app
 // Credit: https://github.com/MingSern/flutter_bounceable 
 class Bouncing extends StatefulWidget {
   /// Set it to `null` to disable `onTap`.

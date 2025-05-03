@@ -2,14 +2,15 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:thuri_cycle/application/community/community_featured/community_featured_cubit.dart';
+import 'package:thuri_cycle/domain/community/article/article.dart';
 import 'package:thuri_cycle/infastructure/core/firebase_config/firebase_failure_handler.dart';
-import 'package:thuri_cycle/presentation/recycling_guide/article_widgets/article/article.dart';
-import 'package:thuri_cycle/presentation/recycling_guide/article_widgets/article_widget.dart';
-import 'package:thuri_cycle/presentation/recycling_guide/article_widgets/article_widget_skeleton.dart';
-import 'package:thuri_cycle/presentation/recycling_guide/article_widgets/shared/constants.dart';
-import 'package:thuri_cycle/presentation/recycling_guide/article_widgets/theme/src/app_colors.dart';
-import 'package:thuri_cycle/presentation/recycling_guide/article_widgets/theme/src/app_shadows.dart';
-import 'package:thuri_cycle/presentation/recycling_guide/article_widgets/theme/src/app_text_styles.dart';
+import 'package:thuri_cycle/l10n/l10n.dart';
+import 'package:thuri_cycle/presentation/community/widgets/article_widgets/article_widget.dart';
+import 'package:thuri_cycle/presentation/community/widgets/article_widgets/article_widget_skeleton.dart';
+import 'package:thuri_cycle/presentation/community/widgets/article_widgets/shared/constants.dart';
+import 'package:thuri_cycle/presentation/community/widgets/article_widgets/theme/src/app_colors.dart';
+import 'package:thuri_cycle/presentation/community/widgets/article_widgets/theme/src/app_shadows.dart';
+import 'package:thuri_cycle/presentation/community/widgets/article_widgets/theme/src/app_text_styles.dart';
 import 'package:thuri_cycle/router.gr.dart';
 
 class CommunityFeaturedSection extends StatelessWidget {
@@ -35,7 +36,7 @@ class CommunityFeaturedSection extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            'Featured',
+            context.l10n.featured,
             style: AppTextStyles.blackBlack22,
           ),
           const SizedBox(height: 10),
@@ -58,7 +59,7 @@ class CommunityFeaturedSection extends StatelessWidget {
                                   .push(ArticleRoute(article: article));
                             },
                           )
-                        : articleContainer(text: 'Coming soon!'),
+                        : articleContainer(text: context.l10n.comingSoon),
                   ),
                 );
               },

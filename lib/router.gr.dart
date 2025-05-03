@@ -16,17 +16,14 @@ import 'package:thuri_cycle/app/onboarding.dart' as _i7;
 import 'package:thuri_cycle/app/splash.dart' as _i13;
 import 'package:thuri_cycle/application/auth/auth_form/auth_form_cubit.dart'
     as _i17;
+import 'package:thuri_cycle/domain/community/article/article.dart' as _i15;
 import 'package:thuri_cycle/domain/report_waste/map_marker.dart' as _i18;
 import 'package:thuri_cycle/presentation/auth/login.dart' as _i5;
 import 'package:thuri_cycle/presentation/auth/otp.dart' as _i8;
+import 'package:thuri_cycle/presentation/community/article_page.dart' as _i2;
+import 'package:thuri_cycle/presentation/community/community_page.dart' as _i3;
 import 'package:thuri_cycle/presentation/home/home.dart' as _i4;
 import 'package:thuri_cycle/presentation/profile/profile.dart' as _i9;
-import 'package:thuri_cycle/presentation/recycling_guide/article_page.dart'
-    as _i2;
-import 'package:thuri_cycle/presentation/recycling_guide/article_widgets/article/article.dart'
-    as _i15;
-import 'package:thuri_cycle/presentation/recycling_guide/community_page.dart'
-    as _i3;
 import 'package:thuri_cycle/presentation/report_waste/map_page.dart' as _i6;
 import 'package:thuri_cycle/presentation/report_waste/marker/single_marker_page.dart'
     as _i12;

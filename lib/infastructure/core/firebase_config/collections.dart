@@ -1,10 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:injectable/injectable.dart';
 import 'package:thuri_cycle/domain/auth/user_model/user_model.dart';
+import 'package:thuri_cycle/domain/community/article/article.dart';
+import 'package:thuri_cycle/domain/community/guide/guide.dart';
 import 'package:thuri_cycle/domain/report_waste/map_marker.dart';
 import 'package:thuri_cycle/infastructure/core/firebase_config/DB/firestore_collection.dart';
-import 'package:thuri_cycle/presentation/recycling_guide/article_widgets/article/article.dart';
-import 'package:thuri_cycle/presentation/recycling_guide/community/guide_widgets/guide/guide.dart';
 
 @lazySingleton
 class MapMarkersCollection extends FirestoreCollection<MapMarkerModel> {

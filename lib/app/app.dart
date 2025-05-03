@@ -71,7 +71,7 @@ class _AppState extends State<App> {
           buildWhen: (p, c) => p.theme != c.theme,
           builder: (context, appState) {
             return BlocBuilder<LocaleCubit, LocaleState>(
-              buildWhen: (previous, current) => previous != current,
+              buildWhen: (p, c) => p != c,
               builder: (context, localeState) {
                 return MaterialApp.router(
                   scaffoldMessengerKey: scaffoldMessengerKey,

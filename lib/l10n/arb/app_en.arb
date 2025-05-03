@@ -119,5 +119,16 @@
     "tooFarToResolve": "You are too far to resolve",
     "close": "Close",
     "chooseYourLocatioin": "Choose your location",
+    "community": "Community",
+    "featured": "Featured",
+    "comingSoon": "Coming soon!",
+    "article": "Article",
+    "readNow": "Read Now",
+    "recycling101": "Recycling 101",
+    "howToRecycle": "How to recycle...",
+    "readArticles": "Read Articles",
+    "aiGenerated": "AI-Generated",
+    "articleSummary": "Article summary",
+    "hide": "Hide",
     "comingInNextUpdate": "Coming in the next update"
 }

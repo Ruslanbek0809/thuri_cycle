@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:thuri_cycle/presentation/recycling_guide/article_widgets/shared/bouncing.dart';
-import 'package:thuri_cycle/presentation/recycling_guide/article_widgets/theme/src/app_icons.dart';
+import 'package:thuri_cycle/presentation/community/widgets/article_widgets/shared/bouncing.dart';
+import 'package:thuri_cycle/presentation/community/widgets/article_widgets/theme/src/app_icons.dart';
 
 class AppIconButton extends StatelessWidget {
   const AppIconButton({

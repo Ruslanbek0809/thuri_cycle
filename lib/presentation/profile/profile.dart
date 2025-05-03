@@ -113,7 +113,7 @@ class _ProfilePageState extends State<ProfilePage> {
         // ),
       ],
       child: BlocBuilder<SettingsFormCubit, SettingsFormState>(
-        buildWhen: (previous, current) => previous != current,
+        buildWhen: (p, c) => p != c,
         builder: (context, state) {
           return Scaffold(
             backgroundColor: Theme.of(context).brightness == Brightness.light
@@ -134,7 +134,7 @@ class _ProfilePageState extends State<ProfilePage> {
               ),
             ),
             body: BlocBuilder<AuthBloc, AuthState>(
-              buildWhen: (previous, current) => previous != current,
+              buildWhen: (p, c) => p != c,
               builder: (context, authState) => ListView(
                 controller: ScrollControllerService().profileScrollController,
                 children: [

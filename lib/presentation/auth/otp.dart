@@ -197,7 +197,7 @@ class _OtpPageState extends State<OtpPage> {
                       },
                     );
                   },
-                  buildWhen: (previous, current) => previous != current,
+                  buildWhen: (p, c) => p != c,
                   builder: (context, state) {
                     return Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
