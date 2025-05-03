@@ -36,7 +36,9 @@
     "yourPhoneDoesntSupportAppleSignIn": "Ihr Telefon unterstützt die Apple-Anmeldemethode nicht. Bitte aktualisieren Sie die iOS-Version Ihrer App und versuchen Sie es erneut!",
     "typeCodeSentTo": "Geben Sie einen Bestätigungscode ein, der an diese Adresse gesendet wurde.",
     "didntGetCode": "Kein Code erhalten?",
-    "resend": "Erneut senden.",
+    "resend": "Erneut senden.","authFailed": 
+    "Authentifizierung fehlgeschlagen",
+    "otpCodeResent": "OTP-Code wird erneut gesendet",
     "termsOfUse": "Nutzungsbedingungen",
     "privacyPolicy": "Datenschutzrichtlinie",
     "contactUs": "Kontakt",
@@ -116,5 +118,6 @@
     "alreadyResolved": "Bereits gelöst",
     "tooFarToResolve": "Du bist zu weit weg, um das Problem zu lösen",
     "close": "Schließen",
+    "chooseYourLocatioin": "Wählen Sie Ihren Standort",
     "comingInNextUpdate": "Kommt im nächsten Update"
 }

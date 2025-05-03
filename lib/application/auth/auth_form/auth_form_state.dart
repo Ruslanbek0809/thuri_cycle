@@ -4,6 +4,7 @@ part of 'auth_form_cubit.dart';
 class AuthFormState with _$AuthFormState {
   factory AuthFormState({
     required bool isLoading,
+    required bool isResend,
     required String? verificationId,
     required int? forceResendingToken,
     required Option<Either<AuthFailure, SignInMethod>> optionOfSuccessOrFailure,
@@ -17,6 +18,7 @@ class AuthFormState with _$AuthFormState {
 
   factory AuthFormState.initial() => AuthFormState(
         isLoading: false,
+        isResend: false,
         verificationId: null,
         forceResendingToken: null,
         optionOfSuccessOrFailure: none(),

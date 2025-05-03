@@ -88,27 +88,18 @@ class _LoginPhoneTextFieldState extends State<LoginPhoneTextField> {
       countryButtonStyle: CountryButtonStyle(
         flagSize: 24,
         textStyle: getTextTheme(context).titleMedium!.copyWith(
-              fontSize: responsiveFontSize(
-                context,
-                14.5,
-              ),
+              fontSize: responsiveFontSize(context, 14.5),
               color: getThemeData(context).hintColor,
             ),
       ),
       keyboardType: const TextInputType.numberWithOptions(decimal: true),
       textInputAction: TextInputAction.done,
       style: getTextTheme(context).titleMedium!.copyWith(
-            fontSize: responsiveFontSize(
-              context,
-              14.5,
-            ),
+            fontSize: responsiveFontSize(context, 14.5),
           ),
       decoration: getTextFieldDecoration(),
       validator: PhoneValidator.compose([
-        PhoneValidator.required(
-          context,
-          errorText: context.l10n.required,
-        ),
+        PhoneValidator.required(context, errorText: context.l10n.required),
         PhoneValidator.validMobile(
           context,
           errorText: context.l10n.invalidPhoneNumber,

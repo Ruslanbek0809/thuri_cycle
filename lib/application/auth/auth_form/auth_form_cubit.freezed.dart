@@ -17,6 +17,7 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$AuthFormState {
   bool get isLoading => throw _privateConstructorUsedError;
+  bool get isResend => throw _privateConstructorUsedError;
   String? get verificationId => throw _privateConstructorUsedError;
   int? get forceResendingToken => throw _privateConstructorUsedError;
   Option<Either<AuthFailure, SignInMethod>> get optionOfSuccessOrFailure =>
@@ -46,6 +47,7 @@ abstract class $AuthFormStateCopyWith<$Res> {
   @useResult
   $Res call(
       {bool isLoading,
+      bool isResend,
       String? verificationId,
       int? forceResendingToken,
       Option<Either<AuthFailure, SignInMethod>> optionOfSuccessOrFailure,
@@ -72,6 +74,7 @@ class _$AuthFormStateCopyWithImpl<$Res, $Val extends AuthFormState>
   @override
   $Res call({
     Object? isLoading = null,
+    Object? isResend = null,
     Object? verificationId = freezed,
     Object? forceResendingToken = freezed,
     Object? optionOfSuccessOrFailure = null,
@@ -83,6 +86,10 @@ class _$AuthFormStateCopyWithImpl<$Res, $Val extends AuthFormState>
       isLoading: null == isLoading
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isResend: null == isResend
+          ? _value.isResend
+          : isResend // ignore: cast_nullable_to_non_nullable
               as bool,
       verificationId: freezed == verificationId
           ? _value.verificationId
@@ -125,6 +132,7 @@ abstract class _$$AuthStateImplCopyWith<$Res>
   @useResult
   $Res call(
       {bool isLoading,
+      bool isResend,
       String? verificationId,
       int? forceResendingToken,
       Option<Either<AuthFailure, SignInMethod>> optionOfSuccessOrFailure,
@@ -149,6 +157,7 @@ class __$$AuthStateImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? isLoading = null,
+    Object? isResend = null,
     Object? verificationId = freezed,
     Object? forceResendingToken = freezed,
     Object? optionOfSuccessOrFailure = null,
@@ -160,6 +169,10 @@ class __$$AuthStateImplCopyWithImpl<$Res>
       isLoading: null == isLoading
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isResend: null == isResend
+          ? _value.isResend
+          : isResend // ignore: cast_nullable_to_non_nullable
               as bool,
       verificationId: freezed == verificationId
           ? _value.verificationId
@@ -197,6 +210,7 @@ class __$$AuthStateImplCopyWithImpl<$Res>
 class _$AuthStateImpl implements _AuthState {
   _$AuthStateImpl(
       {required this.isLoading,
+      required this.isResend,
       required this.verificationId,
       required this.forceResendingToken,
       required this.optionOfSuccessOrFailure,
@@ -206,6 +220,8 @@ class _$AuthStateImpl implements _AuthState {
 
   @override
   final bool isLoading;
+  @override
+  final bool isResend;
   @override
   final String? verificationId;
   @override
@@ -224,7 +240,7 @@ class _$AuthStateImpl implements _AuthState {
 
   @override
   String toString() {
-    return 'AuthFormState(isLoading: $isLoading, verificationId: $verificationId, forceResendingToken: $forceResendingToken, optionOfSuccessOrFailure: $optionOfSuccessOrFailure, fbPhoneAuthLoginOptionOfSuccessOrFailure: $fbPhoneAuthLoginOptionOfSuccessOrFailure, fbPhoneAuthOtpOptionOfSuccessOrFailure: $fbPhoneAuthOtpOptionOfSuccessOrFailure, otpVerificationOptionOfSuccessOrFailure: $otpVerificationOptionOfSuccessOrFailure)';
+    return 'AuthFormState(isLoading: $isLoading, isResend: $isResend, verificationId: $verificationId, forceResendingToken: $forceResendingToken, optionOfSuccessOrFailure: $optionOfSuccessOrFailure, fbPhoneAuthLoginOptionOfSuccessOrFailure: $fbPhoneAuthLoginOptionOfSuccessOrFailure, fbPhoneAuthOtpOptionOfSuccessOrFailure: $fbPhoneAuthOtpOptionOfSuccessOrFailure, otpVerificationOptionOfSuccessOrFailure: $otpVerificationOptionOfSuccessOrFailure)';
   }
 
   @override
@@ -234,6 +250,8 @@ class _$AuthStateImpl implements _AuthState {
             other is _$AuthStateImpl &&
             (identical(other.isLoading, isLoading) ||
                 other.isLoading == isLoading) &&
+            (identical(other.isResend, isResend) ||
+                other.isResend == isResend) &&
             (identical(other.verificationId, verificationId) ||
                 other.verificationId == verificationId) &&
             (identical(other.forceResendingToken, forceResendingToken) ||
@@ -259,6 +277,7 @@ class _$AuthStateImpl implements _AuthState {
   int get hashCode => Object.hash(
       runtimeType,
       isLoading,
+      isResend,
       verificationId,
       forceResendingToken,
       optionOfSuccessOrFailure,
@@ -278,6 +297,7 @@ class _$AuthStateImpl implements _AuthState {
 abstract class _AuthState implements AuthFormState {
   factory _AuthState(
       {required final bool isLoading,
+      required final bool isResend,
       required final String? verificationId,
       required final int? forceResendingToken,
       required final Option<Either<AuthFailure, SignInMethod>>
@@ -291,6 +311,8 @@ abstract class _AuthState implements AuthFormState {
 
   @override
   bool get isLoading;
+  @override
+  bool get isResend;
   @override
   String? get verificationId;
   @override

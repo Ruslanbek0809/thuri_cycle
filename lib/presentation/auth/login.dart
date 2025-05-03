@@ -33,7 +33,9 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPageState extends State<LoginPage> {
   final phoneFormKey = GlobalKey<FormState>();
-  PhoneController phoneController = PhoneController();
+  PhoneController phoneController = PhoneController(
+    initialValue: const PhoneNumber(isoCode: IsoCode.DE, nsn: ''),
+  );
   final FocusNode focusNode = FocusNode();
 
   @override
@@ -42,103 +44,47 @@ class _LoginPageState extends State<LoginPage> {
 
     return BlocProvider(
       create: (_) => getIt<AuthFormCubit>(),
-      child: MultiBlocListener(
-        listeners: [
-          BlocListener<AuthFormCubit, AuthFormState>(
-            listenWhen: (previous, current) =>
-                previous.fbPhoneAuthLoginOptionOfSuccessOrFailure !=
-                current.fbPhoneAuthLoginOptionOfSuccessOrFailure,
-            listener: (context, state) {
-              state.fbPhoneAuthLoginOptionOfSuccessOrFailure.fold(
-                () {},
-                (either) {
-                  either.fold(
-                    (failure) {
-                      context.read<AuthFormCubit>().setIsLoadingToFalse();
-                      scaffoldMessengerKey.currentState
-                        ?..hideCurrentSnackBar()
-                        ..showSnackBar(SnackBarHelper.createError(
-                          message: failure.map(
-                            serverError: (_) => context.l10n.serverError,
-                            cancelledByUser: (_) => context.l10n.cancelled,
-                            emailAlreadyInUse: (_) =>
-                                context.l10n.emailAlreadyInUse,
-                            invalidEmailAndPasswordCombination: (_) =>
-                                context.l10n.invalidEmailPassword,
-                            invalidPhoneNumber: (_) =>
-                                context.l10n.invalidPhoneNumber,
-                            tooManyRequests: (_) =>
-                                context.l10n.tooManyRequests,
-                          ),
-                        ),);
-                    },
-                    (_) async {
-                      context.read<AuthFormCubit>().setIsLoadingToFalse();
+      child: BlocListener<AuthFormCubit, AuthFormState>(
+        listenWhen: (previous, current) =>
+            previous.fbPhoneAuthLoginOptionOfSuccessOrFailure !=
+            current.fbPhoneAuthLoginOptionOfSuccessOrFailure,
+        listener: (context, state) {
+          state.fbPhoneAuthLoginOptionOfSuccessOrFailure.fold(() {}, (either) {
+            either.fold(
+              (failure) {
+                context.read<AuthFormCubit>().setIsLoadingToFalse();
+                scaffoldMessengerKey.currentState
+                  ?..hideCurrentSnackBar()
+                  ..showSnackBar(SnackBarHelper.createError(
+                    message: failure.map(
+                      serverError: (_) => context.l10n.serverError,
+                      cancelledByUser: (_) => context.l10n.cancelled,
+                      emailAlreadyInUse: (_) => context.l10n.emailAlreadyInUse,
+                      invalidEmailAndPasswordCombination: (_) =>
+                          context.l10n.invalidEmailPassword,
+                      invalidPhoneNumber: (_) =>
+                          context.l10n.invalidPhoneNumber,
+                      tooManyRequests: (_) => context.l10n.tooManyRequests,
+                    ),
+                  ));
+              },
+              (_) async {
+                context.read<AuthFormCubit>().setIsLoadingToFalse();
 
-                      final phoneNumber = phoneController.value.nsn.isNotEmpty
-                          ? '+${phoneController.value.countryCode}${phoneController.value.nsn}'
-                          : '';
+                final phoneNumber = phoneController.value.nsn.isNotEmpty
+                    ? '+${phoneController.value.countryCode}${phoneController.value.nsn}'
+                    : '';
 
-                      await context.router.push(
-                        OtpRoute(
-                          phoneNumber: phoneNumber,
-                          authFormCubit: context.read<AuthFormCubit>(),
-                        ),
-                      );
-                    },
-                  );
-                },
-              );
-            },
-          ),
-          BlocListener<AuthFormCubit, AuthFormState>(
-            listenWhen: (previous, current) =>
-                previous.fbPhoneAuthOtpOptionOfSuccessOrFailure !=
-                current.fbPhoneAuthOtpOptionOfSuccessOrFailure,
-            listener: (context, state) {
-              state.fbPhoneAuthOtpOptionOfSuccessOrFailure.fold(
-                () {},
-                (either) {
-                  either.fold(
-                    (failure) {
-                      context.read<AuthFormCubit>().setIsLoadingToFalse();
-                      scaffoldMessengerKey.currentState
-                        ?..hideCurrentSnackBar()
-                        ..showSnackBar(SnackBarHelper.createError(
-                          message: failure.map(
-                            serverError: (_) => context.l10n.serverError,
-                            cancelledByUser: (_) => context.l10n.cancelled,
-                            emailAlreadyInUse: (_) =>
-                                context.l10n.emailAlreadyInUse,
-                            invalidEmailAndPasswordCombination: (_) =>
-                                context.l10n.invalidEmailPassword,
-                            invalidPhoneNumber: (_) =>
-                                context.l10n.invalidPhoneNumber,
-                            tooManyRequests: (_) =>
-                                context.l10n.tooManyRequests,
-                          ),
-                        ),);
-                    },
-                    (_) async {
-                      context.read<AuthFormCubit>().setIsLoadingToFalse();
-
-                      final phoneNumber = phoneController.value.nsn.isNotEmpty
-                          ? '+${phoneController.value.countryCode}${phoneController.value.nsn}'
-                          : '';
-
-                      await context.router.push(
-                        OtpRoute(
-                          phoneNumber: phoneNumber,
-                          authFormCubit: context.read<AuthFormCubit>(),
-                        ),
-                      );
-                    },
-                  );
-                },
-              );
-            },
-          ),
-        ],
+                await context.router.push(
+                  OtpRoute(
+                    phoneNumber: phoneNumber,
+                    authFormCubit: context.read<AuthFormCubit>(),
+                  ),
+                );
+              },
+            );
+          });
+        },
         child: Scaffold(
           body: KeyboardDismisserWidget(
             child: Form(

@@ -44,17 +44,17 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   ) async {
     talker.warning('[AuthBloc] signedOut()');
     await iAuth.signOut().then((value) async {
-      await _secureStorage
-          .delete(key: $constants.authTokenStorage)
-          .then((value) async {
-        // await iHive.clearHiveUser().then((value) {
-        //   emit(const AuthState.unauthenticated());
-        // });
-        // await iHive.clearHiveFavorites();
-        // await Sentry.configureScope((scope) {
-        //   scope.setUser(null);
-        // });
-      });
+      // await _secureStorage
+      //     .delete(key: $constants.authTokenStorage)
+      //     .then((value) async {
+      //   // await iHive.clearHiveUser().then((value) {
+      //   //   emit(const AuthState.unauthenticated());
+      //   // });
+      //   // await iHive.clearHiveFavorites();
+      //   // await Sentry.configureScope((scope) {
+      //   //   scope.setUser(null);
+      //   // });
+      // });
     });
     // await _dioTokenRefresh.fresh.clearToken().then((value) async {
     //   await iAuth.signOut().then((value) async {

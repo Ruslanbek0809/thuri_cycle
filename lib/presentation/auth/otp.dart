@@ -59,210 +59,304 @@ class _OtpPageState extends State<OtpPage> {
               padding: EdgeInsets.symmetric(
                 horizontal: $constants.insets.sm,
               ),
-              child: BlocConsumer<AuthFormCubit, AuthFormState>(
-                listenWhen: (previous, current) =>
-                    previous.optionOfSuccessOrFailure !=
-                    current.optionOfSuccessOrFailure,
-                listener: (context, state) {
-                  state.optionOfSuccessOrFailure.fold(
-                    () {},
-                    (either) {
-                      either.fold(
-                        (failure) {
-                          context.read<AuthFormCubit>().setIsLoadingToFalse();
-                          scaffoldMessengerKey.currentState
-                            ?..hideCurrentSnackBar()
-                            ..showSnackBar(
-                              SnackBarHelper.createError(
-                                message: failure.map(
-                                  serverError: (_) => context.l10n.serverError,
-                                  cancelledByUser: (_) =>
-                                      context.l10n.cancelled,
-                                  emailAlreadyInUse: (_) =>
-                                      context.l10n.emailAlreadyInUse,
-                                  invalidEmailAndPasswordCombination: (_) =>
-                                      context.l10n.invalidEmailPassword,
-                                  invalidPhoneNumber: (_) =>
-                                      context.l10n.invalidPhoneNumber,
-                                  tooManyRequests: (_) =>
-                                      context.l10n.tooManyRequests,
-                                ),
-                              ),
-                            );
-                        },
-                        (_) async {
-                          context.read<AuthFormCubit>().setIsLoadingToFalse();
-                          context
-                              .read<AuthBloc>()
-                              .add(const AuthEvent.authCheckRequested());
-                          context.router.popUntilRoot();
-                          // await context.router
-                          //     .replaceAll([const AppWrapperRoute()]);
+              child: MultiBlocListener(
+                listeners: [
+                  //*----------------- OTP verification BlocListener ---------------------//
+                  BlocListener<AuthFormCubit, AuthFormState>(
+                    listenWhen: (previous, current) =>
+                        previous.otpVerificationOptionOfSuccessOrFailure !=
+                        current.otpVerificationOptionOfSuccessOrFailure,
+                    listener: (context, state) {
+                      state.otpVerificationOptionOfSuccessOrFailure.fold(
+                        () {},
+                        (either) {
+                          either.fold(
+                            (failure) {
+                              context
+                                  .read<AuthFormCubit>()
+                                  .setIsLoadingToFalse();
+                              scaffoldMessengerKey.currentState
+                                ?..hideCurrentSnackBar()
+                                ..showSnackBar(
+                                  SnackBarHelper.createError(
+                                    message: failure.map(
+                                      serverError: (_) =>
+                                          context.l10n.serverError,
+                                      cancelledByUser: (_) =>
+                                          context.l10n.cancelled,
+                                      emailAlreadyInUse: (_) =>
+                                          context.l10n.emailAlreadyInUse,
+                                      invalidEmailAndPasswordCombination: (_) =>
+                                          context.l10n.invalidEmailPassword,
+                                      invalidPhoneNumber: (_) =>
+                                          context.l10n.invalidPhoneNumber,
+                                      tooManyRequests: (_) =>
+                                          context.l10n.tooManyRequests,
+                                    ),
+                                  ),
+                                );
+                            },
+                            (_) async {
+                              context
+                                  .read<AuthFormCubit>()
+                                  .setIsLoadingToFalse();
+                              context
+                                  .read<AuthBloc>()
+                                  .add(const AuthEvent.authCheckRequested());
+                              context.router.popUntilRoot();
+                              // await context.router
+                              //     .replaceAll([const AppWrapperRoute()]);
+                            },
+                          );
                         },
                       );
                     },
-                  );
-                },
-                buildWhen: (previous, current) => previous != current,
-                builder: (context, state) {
-                  return Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      SizedBox(height: $constants.insets.offset),
-                      //*--------------- LOGO ---------------//
-                      Padding(
-                        padding: EdgeInsets.only(top: $constants.insets.xl),
-                        child: const CustomLogo(),
-                      ),
-                      //*--------------- CONFIRM TEXT ---------------//
-                      Padding(
-                        padding: EdgeInsets.only(
-                          top: $constants.insets.xxl,
-                          bottom: $constants.insets.sm,
+                  ),
+                  //*----------------- OTP resend BlocListener ---------------------//
+                  BlocListener<AuthFormCubit, AuthFormState>(
+                    listenWhen: (p, c) =>
+                        p.fbPhoneAuthLoginOptionOfSuccessOrFailure !=
+                        c.fbPhoneAuthLoginOptionOfSuccessOrFailure,
+                    listener: (context, state) {
+                      state.fbPhoneAuthLoginOptionOfSuccessOrFailure.fold(
+                        () {},
+                        (either) => either.fold(
+                          (failure) {
+                            if (state.isResend) {
+                              final message = failure.maybeMap(
+                                serverError: (_) => context.l10n.serverError,
+                                invalidPhoneNumber: (_) =>
+                                    context.l10n.invalidPhoneNumber,
+                                tooManyRequests: (_) =>
+                                    context.l10n.tooManyRequests,
+                                // Add others if needed
+                                orElse: () => context.l10n.authFailed,
+                              );
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                SnackBar(content: Text(message)),
+                              );
+                            }
+                          },
+                          (_) {
+                            if (state.isResend) {
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                SnackBar(
+                                  content: Text(context.l10n.otpCodeResent),
+                                ),
+                              );
+                            }
+                          },
                         ),
-                        child: Text(
-                          context.l10n.confirmation,
-                          style: getTextTheme(context).titleLarge!.copyWith(
-                                fontSize: responsiveFontSize(context, 25.5),
-                              ),
-                        ),
-                      ),
-                      Padding(
-                        padding: EdgeInsets.only(
-                          bottom: $constants.insets.md,
-                        ),
-                        child: RichText(
-                          text: TextSpan(
-                            style: getTextTheme(context).titleMedium!.copyWith(
-                                  fontSize: responsiveFontSize(
-                                    context,
-                                    14.5,
+                      );
+                    },
+                  ),
+                ],
+                child: BlocConsumer<AuthFormCubit, AuthFormState>(
+                  listenWhen: (previous, current) =>
+                      previous.otpVerificationOptionOfSuccessOrFailure !=
+                      current.otpVerificationOptionOfSuccessOrFailure,
+                  listener: (context, state) {
+                    state.otpVerificationOptionOfSuccessOrFailure.fold(
+                      () {},
+                      (either) {
+                        either.fold(
+                          (failure) {
+                            context.read<AuthFormCubit>().setIsLoadingToFalse();
+                            scaffoldMessengerKey.currentState
+                              ?..hideCurrentSnackBar()
+                              ..showSnackBar(
+                                SnackBarHelper.createError(
+                                  message: failure.map(
+                                    serverError: (_) =>
+                                        context.l10n.serverError,
+                                    cancelledByUser: (_) =>
+                                        context.l10n.cancelled,
+                                    emailAlreadyInUse: (_) =>
+                                        context.l10n.emailAlreadyInUse,
+                                    invalidEmailAndPasswordCombination: (_) =>
+                                        context.l10n.invalidEmailPassword,
+                                    invalidPhoneNumber: (_) =>
+                                        context.l10n.invalidPhoneNumber,
+                                    tooManyRequests: (_) =>
+                                        context.l10n.tooManyRequests,
                                   ),
                                 ),
-                            children: <TextSpan>[
-                              TextSpan(
-                                text: '${context.l10n.typeCodeSentTo} ',
-                              ),
-                              TextSpan(
-                                text: widget.phoneNumber,
-                                style:
-                                    getTextTheme(context).titleMedium!.copyWith(
+                              );
+                          },
+                          (_) async {
+                            context.read<AuthFormCubit>().setIsLoadingToFalse();
+                            context
+                                .read<AuthBloc>()
+                                .add(const AuthEvent.authCheckRequested());
+                            context.router.popUntilRoot();
+                            // await context.router
+                            //     .replaceAll([const AppWrapperRoute()]);
+                          },
+                        );
+                      },
+                    );
+                  },
+                  buildWhen: (previous, current) => previous != current,
+                  builder: (context, state) {
+                    return Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        SizedBox(height: $constants.insets.offset),
+                        //*--------------- LOGO ---------------//
+                        Padding(
+                          padding: EdgeInsets.only(top: $constants.insets.xl),
+                          child: const CustomLogo(),
+                        ),
+                        //*--------------- CONFIRM TEXT ---------------//
+                        Padding(
+                          padding: EdgeInsets.only(
+                            top: $constants.insets.xxl,
+                            bottom: $constants.insets.sm,
+                          ),
+                          child: Text(
+                            context.l10n.confirmation,
+                            style: getTextTheme(context).titleLarge!.copyWith(
+                                  fontSize: responsiveFontSize(context, 25.5),
+                                ),
+                          ),
+                        ),
+                        Padding(
+                          padding: EdgeInsets.only(
+                            bottom: $constants.insets.md,
+                          ),
+                          child: RichText(
+                            text: TextSpan(
+                              style: getTextTheme(context)
+                                  .titleMedium!
+                                  .copyWith(
+                                    fontSize: responsiveFontSize(context, 14.5),
+                                  ),
+                              children: <TextSpan>[
+                                TextSpan(
+                                  text: '${context.l10n.typeCodeSentTo} ',
+                                ),
+                                TextSpan(
+                                  text: widget.phoneNumber,
+                                  style: getTextTheme(context)
+                                      .titleMedium!
+                                      .copyWith(
+                                        fontSize:
+                                            responsiveFontSize(context, 14.5),
+                                        fontWeight: FontWeight.w600,
+                                        color: $constants.palette.main,
+                                      ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                        //*----------------- PinCodeTextField ---------------------//
+                        SizedBox(
+                          width: getSize(context).width,
+                          child: OtpPinCodeTextField(
+                            key: const Key('otp'),
+                            otpController: otpController,
+                            errorController: errorController,
+                            length: 6,
+                            textInputAction: TextInputAction.done,
+                            focusNode: focusNode,
+                            onChanged: (value) {},
+                          ),
+                        ),
+                        Padding(
+                          padding: EdgeInsets.only(top: $constants.insets.xxs),
+                          child: RichText(
+                            text: TextSpan(
+                              style: getTextTheme(context).titleSmall!.copyWith(
+                                    fontSize:
+                                        responsiveFontSize(context, 12.75),
+                                  ),
+                              children: <TextSpan>[
+                                TextSpan(text: '${context.l10n.didntGetCode} '),
+                                TextSpan(
+                                  text: context.l10n.resend,
+                                  style: getTextTheme(context)
+                                      .titleSmall!
+                                      .copyWith(
+                                        fontSize:
+                                            responsiveFontSize(context, 12.75),
+                                        fontWeight: FontWeight.w500,
+                                        color: $constants.palette.appBlue,
+                                        decoration: TextDecoration.underline,
+                                      ),
+                                  recognizer: TapGestureRecognizer()
+                                    ..onTap = () async {
+                                      if (widget.phoneNumber.isNotEmpty) {
+                                        talker.verbose(
+                                          'TapGestureRecognizer(), state.forceResendingToken: ${state.forceResendingToken}',
+                                        );
+                                        await context
+                                            .read<AuthFormCubit>()
+                                            .verifyPhone(
+                                              widget.phoneNumber,
+                                              forceResendingToken:
+                                                  state.forceResendingToken,
+                                              isResend: true,
+                                            );
+                                      }
+                                    },
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                        // const Spacer(),
+                        //*--------------- CONTINUE BUTTON ---------------//
+                        Padding(
+                          padding: EdgeInsets.only(
+                            top: $constants.insets.xl - $constants.insets.xs,
+                            bottom: safeBottomPadding + $constants.insets.xxl,
+                          ),
+                          child: state.isLoading
+                              ? Center(
+                                  child: CustomLoadingIndicator(
+                                    isSizedBox: true,
+                                    height: 50,
+                                    width: 50,
+                                    color: $constants.palette.main,
+                                  ),
+                                )
+                              : CustomElevatedGradientButton(
+                                  size: Size(getSize(context).width, 50),
+                                  onPressed: () async {
+                                    final currentOtp = otpController.text;
+                                    if (currentOtp.length != 6) {
+                                      errorController!.add(
+                                        ErrorAnimationType.shake,
+                                      ); //* Triggering error shake animation}
+                                    } else {
+                                      focusNode.unfocus();
+                                      talker.verbose(
+                                        'otpController.value: ${otpController.value}',
+                                      );
+                                      await context
+                                          .read<AuthFormCubit>()
+                                          .verifyFbOtp(currentOtp);
+                                    }
+                                  },
+                                  child: Text(
+                                    context.l10n.continuee,
+                                    style: getTextTheme(context)
+                                        .titleMedium!
+                                        .copyWith(
                                           fontSize: responsiveFontSize(
                                             context,
                                             14.5,
                                           ),
-                                          fontWeight: FontWeight.w600,
-                                          color: $constants.palette.main,
+                                          color: $constants.palette.white,
                                         ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                      //*----------------- PinCodeTextField ---------------------//
-                      SizedBox(
-                        width: getSize(context).width,
-                        child: OtpPinCodeTextField(
-                          key: const Key('otp'),
-                          otpController: otpController,
-                          errorController: errorController,
-                          length: 6,
-                          textInputAction: TextInputAction.done,
-                          focusNode: focusNode,
-                          onChanged: (value) {},
-                        ),
-                      ),
-                      Padding(
-                        padding: EdgeInsets.only(top: $constants.insets.xxs),
-                        child: RichText(
-                          text: TextSpan(
-                            style: getTextTheme(context).titleSmall!.copyWith(
-                                  fontSize: responsiveFontSize(context, 12.75),
+                                  ),
                                 ),
-                            children: <TextSpan>[
-                              TextSpan(text: '${context.l10n.didntGetCode} '),
-                              TextSpan(
-                                text: context.l10n.resend,
-                                style: getTextTheme(context)
-                                    .titleSmall!
-                                    .copyWith(
-                                      fontSize:
-                                          responsiveFontSize(context, 12.75),
-                                      fontWeight: FontWeight.w500,
-                                      color: $constants.palette.appBlue,
-                                      decoration: TextDecoration.underline,
-                                    ),
-                                recognizer: TapGestureRecognizer()
-                                  ..onTap = () async {
-                                    if (widget.phoneNumber.isNotEmpty) {
-                                      talker.verbose(
-                                        'TapGestureRecognizer(), state.forceResendingToken: ${state.forceResendingToken}',
-                                      );
-                                      await context
-                                          .read<AuthFormCubit>()
-                                          .verifyPhone(
-                                            widget.phoneNumber,
-                                            forceResendingToken:
-                                                state.forceResendingToken,
-                                          );
-                                    }
-                                  },
-                              ),
-                            ],
-                          ),
                         ),
-                      ),
-                      // const Spacer(),
-                      //*--------------- CONTINUE BUTTON ---------------//
-                      Padding(
-                        padding: EdgeInsets.only(
-                          top: $constants.insets.xl - $constants.insets.xs,
-                          bottom: safeBottomPadding + $constants.insets.xxl,
-                        ),
-                        child: state.isLoading
-                            ? Center(
-                                child: CustomLoadingIndicator(
-                                  isSizedBox: true,
-                                  height: 50,
-                                  width: 50,
-                                  color: $constants.palette.main,
-                                ),
-                              )
-                            : CustomElevatedGradientButton(
-                                size: Size(getSize(context).width, 50),
-                                onPressed: () async {
-                                  final currentOtp = otpController.text;
-                                  if (currentOtp.length != 6) {
-                                    errorController!.add(
-                                      ErrorAnimationType.shake,
-                                    ); //* Triggering error shake animation}
-                                  } else {
-                                    focusNode.unfocus();
-                                    talker.verbose(
-                                      'otpController.value: ${otpController.value}',
-                                    );
-                                    await context
-                                        .read<AuthFormCubit>()
-                                        .verifyFbOtp(currentOtp);
-                                  }
-                                },
-                                child: Text(
-                                  context.l10n.continuee,
-                                  style: getTextTheme(context)
-                                      .titleMedium!
-                                      .copyWith(
-                                        fontSize: responsiveFontSize(
-                                          context,
-                                          14.5,
-                                        ),
-                                        color: $constants.palette.white,
-                                      ),
-                                ),
-                              ),
-                      ),
-                    ],
-                  );
-                },
+                      ],
+                    );
+                  },
+                ),
               ),
             ),
             Positioned(

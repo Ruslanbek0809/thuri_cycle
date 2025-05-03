@@ -68,13 +68,14 @@ class AuthFormCubit extends Cubit<AuthFormState> {
   Future<void> verifyPhone(
     String phoneNumber, {
     int? forceResendingToken,
+    bool isResend = false,
   }) async {
     talker.info('[AuthCubit] verifyPhone() phoneNumber: $phoneNumber');
     emit(
       state.copyWith(
         isLoading: true,
         fbPhoneAuthLoginOptionOfSuccessOrFailure: none(),
-        fbPhoneAuthOtpOptionOfSuccessOrFailure: none(),
+        otpVerificationOptionOfSuccessOrFailure: none(),
       ),
     );
 
@@ -84,70 +85,54 @@ class AuthFormCubit extends Cubit<AuthFormState> {
       verificationCompleted: (PhoneAuthCredential credential) async {
         talker.verbose('verificationCompleted() credential: $credential');
         //* Not used.
+        //TODO [optimization]: You may choose to handle auto-login here
       },
       codeSent: (String verificationId, int? resendToken) {
         talker.verbose(
           'codeSent() verificationId: $verificationId, resendToken: $resendToken',
         );
-        if (forceResendingToken != null) {
-          emit(
-            state.copyWith(
-              isLoading: false,
-              verificationId: verificationId,
-              forceResendingToken: resendToken,
-              fbPhoneAuthOtpOptionOfSuccessOrFailure: optionOf(right(unit)),
-            ),
-          );
-        } else {
-          emit(
-            state.copyWith(
-              isLoading: false,
-              verificationId: verificationId,
-              forceResendingToken: resendToken,
-              fbPhoneAuthLoginOptionOfSuccessOrFailure: optionOf(right(unit)),
-            ),
-          );
-        }
+        emit(
+          state.copyWith(
+            isLoading: false,
+            isResend: isResend,
+            verificationId: verificationId,
+            forceResendingToken: resendToken,
+            fbPhoneAuthLoginOptionOfSuccessOrFailure: some(right(unit)),
+          ),
+        );
+        // if (forceResendingToken != null) {
+        //   emit(
+        //     state.copyWith(
+        //       isLoading: false,
+        //       verificationId: verificationId,
+        //       forceResendingToken: resendToken,
+        //       fbPhoneAuthOtpOptionOfSuccessOrFailure: optionOf(right(unit)),
+        //     ),
+        //   );
+        // } else {
+        //   emit(
+        //     state.copyWith(
+        //       isLoading: false,
+        //       verificationId: verificationId,
+        //       forceResendingToken: resendToken,
+        //       fbPhoneAuthLoginOptionOfSuccessOrFailure: optionOf(right(unit)),
+        //     ),
+        //   );
+        // }
       },
       verificationFailed: (FirebaseAuthException e) {
         talker.error('verificationFailed() e: $e');
-        if (e.code == 'invalid-phone-number') {
-          emit(
-            state.copyWith(
-              isLoading: false,
-              fbPhoneAuthLoginOptionOfSuccessOrFailure: optionOf(
-                left(const AuthFailure.invalidPhoneNumber()),
-              ),
-              fbPhoneAuthOtpOptionOfSuccessOrFailure: optionOf(
-                left(const AuthFailure.serverError()),
-              ),
-            ),
-          );
-        } else if (e.code == 'too-many-requests') {
-          emit(
-            state.copyWith(
-              isLoading: false,
-              fbPhoneAuthLoginOptionOfSuccessOrFailure: optionOf(
-                left(const AuthFailure.tooManyRequests()),
-              ),
-              fbPhoneAuthOtpOptionOfSuccessOrFailure: optionOf(
-                left(const AuthFailure.serverError()),
-              ),
-            ),
-          );
-        } else {
-          emit(
-            state.copyWith(
-              isLoading: false,
-              fbPhoneAuthLoginOptionOfSuccessOrFailure: optionOf(
-                left(const AuthFailure.serverError()),
-              ),
-              fbPhoneAuthOtpOptionOfSuccessOrFailure: optionOf(
-                left(const AuthFailure.serverError()),
-              ),
-            ),
-          );
-        }
+        final failure = e.code == 'invalid-phone-number'
+            ? const AuthFailure.invalidPhoneNumber()
+            : e.code == 'too-many-requests'
+                ? const AuthFailure.tooManyRequests()
+                : const AuthFailure.serverError();
+        emit(
+          state.copyWith(
+            isLoading: false,
+            fbPhoneAuthLoginOptionOfSuccessOrFailure: some(left(failure)),
+          ),
+        );
       },
       codeAutoRetrievalTimeout: (String verificationId) {
         talker.error(
@@ -156,16 +141,8 @@ class AuthFormCubit extends Cubit<AuthFormState> {
         emit(
           state.copyWith(
             isLoading: false,
-            fbPhoneAuthLoginOptionOfSuccessOrFailure: optionOf(
-              left(
-                const AuthFailure.serverError(),
-              ),
-            ),
-            fbPhoneAuthOtpOptionOfSuccessOrFailure: optionOf(
-              left(
-                const AuthFailure.serverError(),
-              ),
-            ),
+            fbPhoneAuthLoginOptionOfSuccessOrFailure:
+                some(left(const AuthFailure.serverError())),
           ),
         );
       },

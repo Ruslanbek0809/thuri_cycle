@@ -2,12 +2,15 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:thuri_cycle/application/app/app_cubit.dart';
+import 'package:thuri_cycle/application/app/locale/locale_cubit.dart';
 import 'package:thuri_cycle/application/auth/auth_bloc.dart';
 import 'package:thuri_cycle/application/profile/settings_form_cubit.dart';
+import 'package:thuri_cycle/domain/profile/language/language.dart';
 import 'package:thuri_cycle/infastructure/core/dependency_injection/di.dart';
 import 'package:thuri_cycle/infastructure/scroll_controller/scroll_controller_service.dart';
 import 'package:thuri_cycle/l10n/l10n.dart';
 import 'package:thuri_cycle/presentation/core/utils/constants.dart';
+import 'package:thuri_cycle/presentation/core/utils/helpers/bottom_sheet_helper.dart';
 import 'package:thuri_cycle/presentation/core/utils/helpers/simple_dialog_helper.dart';
 import 'package:thuri_cycle/presentation/core/utils/methods/shortcuts.dart';
 import 'package:thuri_cycle/presentation/core/widgets/custom/custom_divider.dart';
@@ -152,9 +155,8 @@ class _ProfilePageState extends State<ProfilePage> {
                       ),
                     ),
                     child: Padding(
-                      padding: EdgeInsets.symmetric(
-                        vertical: $constants.insets.xxs,
-                      ),
+                      padding:
+                          EdgeInsets.symmetric(vertical: $constants.insets.xxs),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
@@ -163,7 +165,42 @@ class _ProfilePageState extends State<ProfilePage> {
                             title: context.l10n.language,
                             svgName: 'assets/profile/language.svg',
                             value: 'English',
-                            onTap: () async {},
+                            onTap: () async {
+                              final languages = <LanguageModel>[
+                                LanguageModel(
+                                  id: 1,
+                                  name: 'English',
+                                  shortName: 'en',
+                                ),
+                                LanguageModel(
+                                  id: 2,
+                                  name: 'Deutsch',
+                                  shortName: 'de',
+                                ),
+                              ];
+                              await BottomSheetHelper.showLanguagesSheet(
+                                context,
+                                languages,
+                                state.languageModel,
+                              ).then<void>((value) async {
+                                if (value == null) return;
+                                // if (context.mounted) {
+                                //   context.read<RestartCubit>().restartApp();
+                                // }
+                                if (context.mounted) {
+                                  await context
+                                      .read<SettingsFormCubit>()
+                                      .languageChanged(value);
+                                }
+                                if (context.mounted) {
+                                  await context
+                                      .read<LocaleCubit>()
+                                      .changeLocale(
+                                        Locale(value.shortName ?? 'en'),
+                                      );
+                                }
+                              });
+                            },
                           ),
                           const CustomDivider(),
                           //*------------------ DARK MODE ---------------------//
@@ -260,7 +297,11 @@ class _ProfilePageState extends State<ProfilePage> {
                             title: context.l10n.appVersion,
                             svgName: 'assets/profile/updates.svg',
                             value: 'V ${state.packageInfo?.version}',
-                            onTap: () async {},
+                            onTap: () async {
+                              // context
+                              //     .read<AuthBloc>()
+                              //     .add(const AuthEvent.signedOut());
+                            },
                           ),
                         ],
                       ),

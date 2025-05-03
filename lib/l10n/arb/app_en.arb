@@ -37,6 +37,8 @@
     "typeCodeSentTo": "Type a verification code sent to",
     "didntGetCode": "Didn’t get a code?",
     "resend": "Resend",
+    "authFailed": "Authentication failed",
+    "otpCodeResent": "OTP code is resent",
     "termsOfUse": "Terms of use",
     "privacyPolicy": "Privacy Policy",
     "contactUs": "Contact us",
@@ -116,5 +118,6 @@
     "alreadyResolved": "Already resolved",
     "tooFarToResolve": "You are too far to resolve",
     "close": "Close",
+    "chooseYourLocatioin": "Choose your location",
     "comingInNextUpdate": "Coming in the next update"
 }
