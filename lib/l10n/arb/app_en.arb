@@ -5,7 +5,7 @@
         "description": "Text shown in the AppBar of the Home Page"
     },
     "continuee": "Continue",
-    "welcome": "Welcome to the Flipgoo!",
+    "welcome": "Welcome to ThuriCycle!",
     "chooseOthers": "Choose other login options",
     "confirmation": "Confirmation",
     "profile": "Profile",
@@ -73,6 +73,29 @@
     "ok": "OK",
     "includeResolved": "Include resolved",
     "scoreboard": "Scoreboard",
+    "global": "Global",
+    "km1": "1 km",
+    "km10": "10 km",
+    "km100": "100 km",
+    "points": "{points} points",
+    "@points": {
+        "placeholders": {
+        "points": {
+            "type": "double",
+            "format": "decimalPattern"
+            }
+        }
+    },
+    "additional_points": "+{points}",
+    "@additional_points": {
+        "placeholders": {
+        "points": {
+            "type": "double",
+            "format": "decimalPattern"
+            }
+        }
+    },
+    "noActiveSpecialScoreboard": "There is no special scoreboard active at the moment. Follow MindsHub on social media to find out about Insigno events!",
     "goToPosition": "Go to your position",
     "user": "User",
     "report": "Report",
@@ -118,7 +141,7 @@
     "alreadyResolved": "Already resolved",
     "tooFarToResolve": "You are too far to resolve",
     "close": "Close",
-    "chooseYourLocatioin": "Choose your location",
+    "chooseYourLanguage": "Choose your language",
     "community": "Community",
     "featured": "Featured",
     "comingSoon": "Coming soon!",
@@ -131,5 +154,6 @@
     "articleSummary": "Article summary",
     "hide": "Hide",
     "recyclingGuide": "Recycling Guide",
+    "reportedSuccessfully": "Reported successfully",
     "comingInNextUpdate": "Coming in the next update"
 }

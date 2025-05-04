@@ -1,8 +1,12 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:latlong2/latlong.dart';
 import 'package:thuri_cycle/application/report_waste/location/location_cubit.dart';
+import 'package:thuri_cycle/domain/report_waste/location_info.dart';
 import 'package:thuri_cycle/l10n/l10n.dart';
 import 'package:thuri_cycle/presentation/core/utils/constants.dart';
+import 'package:thuri_cycle/router.gr.dart';
 
 class MapControlsWidget extends StatefulWidget {
   const MapControlsWidget({super.key, this.onTap});
@@ -35,6 +39,13 @@ class _MapControlsWidgetState extends State<MapControlsWidget>
   @override
   Widget build(BuildContext context) {
     final mediaQuery = MediaQuery.of(context);
+    final locationState = context.watch<LocationCubit>().state;
+    LocationInfoModel? locationInfo;
+
+    locationState.maybeWhen(
+      success: (info) => locationInfo = info,
+      orElse: () => null,
+    );
 
     return BlocListener<LocationCubit, LocationState>(
       listenWhen: (prev, curr) => prev != curr,
@@ -58,7 +69,14 @@ class _MapControlsWidgetState extends State<MapControlsWidget>
               child: FloatingActionButton(
                 materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
                 mini: true,
-                onPressed: () {},
+                onPressed: () async {
+                  await context.router.push(
+                    ScoreboardRoute(
+                      mapCenter: locationInfo?.latLng ??
+                          const LatLng(50.6844, 10.9255),
+                    ),
+                  );
+                },
                 // onPressed: () => Navigator.pushNamed(
                 //   context,
                 //   ScoreboardPage.routeName,

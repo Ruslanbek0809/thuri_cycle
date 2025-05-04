@@ -104,18 +104,19 @@ class _BottomControlsWidgetState extends State<BottomControlsWidget>
                       color: $constants.palette.white,
                     ),
             ),
+
+            //TODO: Handle this middle part properly
             Expanded(
               child: Padding(
                 padding: EdgeInsets.symmetric(horizontal: $constants.insets.sm),
-                child:
-                    // SizedBox.expand(),
-                    AnimatedList(
-                  physics: const NeverScrollableScrollPhysics(),
-                  key: _listKey,
-                  shrinkWrap: true,
-                  initialItemCount: (errorMessage != null ? 1 : 0),
-                  itemBuilder: _buildMessage,
-                ),
+                child: const SizedBox.expand(),
+                // AnimatedList(
+                //   physics: const NeverScrollableScrollPhysics(),
+                //   key: _listKey,
+                //   shrinkWrap: true,
+                //   initialItemCount: (errorMessage != null ? 1 : 0),
+                //   itemBuilder: _buildMessage,
+                // ),
               ),
             ),
             FloatingActionButton(

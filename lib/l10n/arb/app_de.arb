@@ -5,7 +5,7 @@
     "description": "Text in der App-Leiste der Startseite"
     },
     "continuee": "Weiter",
-    "welcome": "Willkommen bei Flipgoo!",
+    "welcome": "Willkommen bei ThuriCycle!",
     "chooseOthers": "Andere Anmeldeoptionen auswählen",
     "confirmation": "Bestätigung",
     "profile": "Profil",
@@ -73,6 +73,29 @@
     "ok": "OK",
     "includeResolved": "Erledigte Fälle einschließen",
     "scoreboard": "Anzeigetafel",
+    "global": "Global",
+    "km1": "1 km",
+    "km10": "10 km",
+    "km100": "100 km",
+    "points": "{points} Punkte",
+    "@points": {
+        "placeholders": {
+        "points": {
+            "type": "double",
+            "format": "decimalPattern"
+            }
+        }
+    },
+    "additional_points": "+{points}",
+    "@additional_points": {
+        "placeholders": {
+        "points": {
+            "type": "double",
+            "format": "decimalPattern"
+            }
+        }
+    },
+    "noActiveSpecialScoreboard": "Derzeit ist keine spezielle Anzeigetafel aktiv. Folgen Sie MindsHub in den sozialen Medien, um über Insignia-Events informiert zu werden!",
     "goToPosition": "Gehe zu deiner Position",
     "user": "Benutzer",
     "report": "Melden",
@@ -118,7 +141,7 @@
     "alreadyResolved": "Bereits gelöst",
     "tooFarToResolve": "Du bist zu weit weg, um das Problem zu lösen",
     "close": "Schließen",
-    "chooseYourLocatioin": "Wählen Sie Ihren Standort",
+    "chooseYourLanguage": "Wählen Sie Ihre Sprache",
     "community": "Community",
     "featured": "Empfohlen",
     "comingSoon": "Demnächst verfügbar!",
@@ -131,5 +154,6 @@
     "articleSummary": "Artikelzusammenfassung",
     "hide": "Ausblenden",
     "recyclingGuide": "Recycling-Leitfaden",
+    "reportedSuccessfully": "Erfolgreich gemeldet",
     "comingInNextUpdate": "Kommt im nächsten Update"
 }

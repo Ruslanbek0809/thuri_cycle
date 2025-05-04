@@ -188,7 +188,6 @@ class _MapPageState extends State<MapPage> with WidgetsBindingObserver {
               ),
               //*----------------- MAP CONTROLS ---------------------//
               //TODO: Check
-              //TODO [optimization]: Add ScoreboardPage later on
               BlocBuilder<LocationCubit, LocationState>(
                 builder: (context, state) {
                   final locationInfoModel = state.maybeWhen(

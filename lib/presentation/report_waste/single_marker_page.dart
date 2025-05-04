@@ -1,11 +1,16 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:thuri_cycle/application/auth/auth_bloc.dart';
+import 'package:thuri_cycle/application/report_waste/location/location_cubit.dart';
 import 'package:thuri_cycle/domain/auth/user_model/user_model.dart';
+import 'package:thuri_cycle/domain/report_waste/location_info.dart';
 import 'package:thuri_cycle/domain/report_waste/map_marker.dart';
 import 'package:thuri_cycle/domain/report_waste/single_marker.dart';
 import 'package:thuri_cycle/l10n/l10n.dart';
-import 'package:thuri_cycle/presentation/report_waste/marker/widgets/marker_photos_list_widget.dart';
-import 'package:thuri_cycle/presentation/report_waste/marker/widgets/marker_type_app_bar_title.dart';
+import 'package:thuri_cycle/presentation/core/utils/methods/shortcuts.dart';
+import 'package:thuri_cycle/presentation/report_waste/widgets/marker_photos_list_widget.dart';
+import 'package:thuri_cycle/presentation/report_waste/widgets/marker_type_app_bar_title.dart';
 
 @RoutePage()
 class SingleMarkerPage extends StatefulWidget {
@@ -52,6 +57,14 @@ class _SingleMarkerPageState extends State<SingleMarkerPage> {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
 
+    final authBlocState = context.watch<AuthBloc>().state;
+    final locationState = context.watch<LocationCubit>().state;
+    LocationInfoModel? locationInfo;
+
+    locationState.maybeWhen(
+      success: (info) => locationInfo = info,
+      orElse: () => null,
+    );
     // final MapMarker mapMarker = (marker ?? widget.mapMarker);
     // final position = watchStream(
     //   (LocationProvider location) => location.getLocationStream(),
@@ -63,8 +76,9 @@ class _SingleMarkerPageState extends State<SingleMarkerPage> {
     //       get<Authentication>().isLoggedIn(),
     //     ).data ??
     //     false;
-    // final bool nearEnoughToResolve =
-    //     position?.position?.map(mapMarker.isNearEnoughToResolve) ?? false;
+    final nearEnoughToResolve = locationInfo?.position
+            ?.map(singleMarkerModel.marker.isNearEnoughToResolve) ??
+        false;
 
     return Scaffold(
       appBar: AppBar(
@@ -128,14 +142,14 @@ class _SingleMarkerPageState extends State<SingleMarkerPage> {
                       double.infinity, // to make the column have maximum width
                 ),
                 if (singleMarkerModel.marker.resolutionDate != null)
-                  const SizedBox(), // do not show any error if the marker is already resolved
-                // else if (!isLoggedIn)
-                Text(context.l10n.loginToResolve, textAlign: TextAlign.center),
-                // else if (!nearEnoughToResolve)
-                Text(
-                  context.l10n.getCloserToResolve,
-                  textAlign: TextAlign.center,
-                ),
+                  const SizedBox() // do not show any error if the marker is already resolved
+                else if (authBlocState == const AuthState.unauthenticated())
+                  Text(context.l10n.loginToResolve, textAlign: TextAlign.center)
+                else if (!nearEnoughToResolve)
+                  Text(
+                    context.l10n.getCloserToResolve,
+                    textAlign: TextAlign.center,
+                  ),
                 // if (singleMarkerModel.marker == null) const CircularProgressIndicator(),
                 ElevatedButton(
                   onPressed: () {},
@@ -174,7 +188,7 @@ class _SingleMarkerPageState extends State<SingleMarkerPage> {
                       // ),
                       child: Text(
                         context.l10n.reportedBy(
-                          singleMarkerModel.reportedByUser.name ??
+                          singleMarkerModel.reportedByUser.username ??
                               'No Reported user',
                         ),
                       ),
@@ -189,7 +203,7 @@ class _SingleMarkerPageState extends State<SingleMarkerPage> {
                         // ),
                         child: Text(
                           context.l10n.resolvedBy(
-                            singleMarkerModel.resolvedByUser?.name ??
+                            singleMarkerModel.resolvedByUser?.username ??
                                 'No Resolved user',
                           ),
                         ),

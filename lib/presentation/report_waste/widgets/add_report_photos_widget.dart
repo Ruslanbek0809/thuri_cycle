@@ -7,6 +7,7 @@ import 'package:thuri_cycle/domain/report_waste/image_with_file.dart';
 import 'package:thuri_cycle/presentation/core/utils/constants.dart';
 import 'package:thuri_cycle/presentation/core/utils/methods/shortcuts.dart';
 
+//TODO [optimization]: There is padding on top and bottom when there are images before placeholder widget
 class AddReportPhotosWidget extends StatelessWidget {
   const AddReportPhotosWidget(
     this.images,

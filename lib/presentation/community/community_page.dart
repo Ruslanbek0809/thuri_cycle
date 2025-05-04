@@ -42,7 +42,6 @@ class _CommunityPageState extends State<CommunityPage> {
         BlocProvider(
           create: (_) => getIt<CommunityGuidesCubit>()..getGuides(),
         ),
-        //TODO: Handle single guide
         BlocProvider(
           create: (_) => getIt<CommunitySingleGuideCubit>(),
         ),
@@ -66,6 +65,7 @@ class _CommunityPageState extends State<CommunityPage> {
               edgeOffset: MediaQuery.of(context).viewPadding.top + 60,
               onRefresh: () async {
                 await HapticFeedback.lightImpact();
+                //TODO: Implement these but handle bloc provider properly for this
                 // if (context.mounted) {
                 //   await context
                 //       .read<CommunityFeaturedCubit>()

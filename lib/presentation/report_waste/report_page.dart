@@ -2,22 +2,28 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:thuri_cycle/application/auth/auth_bloc.dart';
+import 'package:thuri_cycle/application/auth/profile_user_form/profile_user_form_cubit.dart';
 import 'package:thuri_cycle/application/report_waste/location/location_cubit.dart';
 import 'package:thuri_cycle/application/report_waste/report/report_form_cubit.dart';
 import 'package:thuri_cycle/domain/report_waste/location_info.dart';
+import 'package:thuri_cycle/infastructure/core/firebase_config/firebase_failure_handler.dart';
 import 'package:thuri_cycle/l10n/l10n.dart';
 import 'package:thuri_cycle/presentation/core/utils/constants.dart';
 import 'package:thuri_cycle/presentation/core/utils/helpers/bottom_sheet_helper.dart';
+import 'package:thuri_cycle/presentation/core/utils/helpers/dialog_helper.dart';
+import 'package:thuri_cycle/presentation/core/utils/helpers/snackbar_helper.dart';
+import 'package:thuri_cycle/presentation/core/utils/methods/aliases.dart';
 import 'package:thuri_cycle/presentation/core/utils/methods/shortcuts.dart';
 import 'package:thuri_cycle/presentation/core/widgets/custom/custom_elevated_gradient_button.dart';
 import 'package:thuri_cycle/presentation/core/widgets/custom/custom_loading_indicator.dart';
 import 'package:thuri_cycle/presentation/report_waste/widgets/add_report_photos_widget.dart';
-import 'package:thuri_cycle/presentation/report_waste/widgets/error_messages.dart';
 import 'package:thuri_cycle/presentation/report_waste/widgets/report_marker_type_card.dart';
+import 'package:thuri_cycle/router.gr.dart';
 
-//TODO: Add login feature
 //TODO: Implement send function using form
-//TODO: Implement proper image adding
+//TODO: Return this reported marker to the map (check old project)
+//TODO [optimization]: Handle errorMessage
 @RoutePage()
 class ReportPage extends StatefulWidget {
   const ReportPage({super.key});
@@ -55,26 +61,24 @@ class _ReportPageState extends State<ReportPage> {
   @override
   void initState() {
     super.initState();
-    context
-        .read<ReportFormCubit>()
-        .reset(); //TODO [optimization]: If possible try to move it just before MapPage (Use AutoRouteWrapper) (REMOVE this)
+    //TODO [optimization]: If possible try to move it just before MapPage (Use AutoRouteWrapper) (REMOVE this)
+    context.read<ReportFormCubit>().reset();
   }
 
   @override
   Widget build(BuildContext context) {
-    final locationState =
-        BlocProvider.of<LocationCubit>(context, listen: true).state;
+    final authBlocState = context.watch<AuthBloc>().state;
+    final profileUserFormCubitState =
+        context.watch<ProfileUserFormCubit>().state;
+    final userModel = profileUserFormCubitState.userModel;
+
+    final locationState = context.watch<LocationCubit>().state;
     LocationInfoModel? locationInfo;
 
     locationState.maybeWhen(
       success: (info) => locationInfo = info,
       orElse: () => null,
     );
-
-    // final isLoggedIn = watchStream(
-    //         (Authentication authentication) => authentication.getIsLoggedInStream(),
-    //         get<Authentication>().isLoggedIn())
-    //     .data;
 
     // final errorMessage = getErrorMessage(
     //   // isLoggedIn,
@@ -106,9 +110,36 @@ class _ReportPageState extends State<ReportPage> {
         ),
       ),
       body: BlocConsumer<ReportFormCubit, ReportFormState>(
+        listenWhen: (previous, current) =>
+            previous.failureOrSuccessOption != current.failureOrSuccessOption,
         listener: (context, state) {
-          // TODO: implement listener
+          state.failureOrSuccessOption.fold(() {}, (either) {
+            either.fold(
+              (failure) {
+                scaffoldMessengerKey.currentState
+                  ?..hideCurrentSnackBar()
+                  ..showSnackBar(
+                    SnackBarHelper.createError(
+                      message: mapFailureToMessage(failure),
+                    ),
+                  );
+              },
+              (_) async {
+                scaffoldMessengerKey.currentState
+                  ?..hideCurrentSnackBar()
+                  ..showSnackBar(
+                    SnackBarHelper.createSuccess(
+                      message: context.l10n.reportedSuccessfully,
+                    ),
+                  );
+
+                //TODO [optimization]: If possible try to move it just before MapPage (Use AutoRouteWrapper) (REMOVE this)
+                context.read<ReportFormCubit>().reset();
+              },
+            );
+          });
         },
+        buildWhen: (p, c) => p != c,
         builder: (context, state) {
           return Column(
             children: [
@@ -129,7 +160,6 @@ class _ReportPageState extends State<ReportPage> {
                           padding: EdgeInsets.all($constants.insets.sm),
                           child: ReportMarkerTypeCard(
                             label: context.l10n.wasteType,
-                            // label: context.l10n.selectWasteType,
                             markerType: state.markerType,
                             onTap: state.isSubmitting
                                 ? null
@@ -240,35 +270,13 @@ class _ReportPageState extends State<ReportPage> {
                         width: double
                             .infinity, // to make the column have maximum width
                       ),
-                      //TODO: Handle this
                       // if (errorMessage != null)
                       //   Text(errorMessage.toLocalizedString(context.l10n)),
-
-                      // if (state.isSubmitting)
-                      //   const CircularProgressIndicator()
-                      // else
-                      //   ElevatedButton(
-                      //     onPressed: state.isSubmitting
-                      //         ? null
-                      //         : () {
-                      //             final pos = locationInfo?.position;
-                      //             if (pos != null) {
-                      //               context
-                      //                   .read<ReportFormCubit>()
-                      //                   .submitReport(
-                      //                     latitude: pos.latitude,
-                      //                     longitude: pos.longitude,
-                      //                   );
-                      //             }
-                      //           },
-                      //     child: Text(context.l10n.send),
-                      //   ),
-                      // ErrorText(error, context.l10n.errorReporting),
                     ],
                   ),
                 ),
               ),
-              //*----------------- PUBLISH BUTTON ---------------------//
+              //*----------------- SUBMIT BUTTON ---------------------//
               if (state.isSubmitting)
                 Card(
                   shape: const RoundedRectangleBorder(),
@@ -308,13 +316,35 @@ class _ReportPageState extends State<ReportPage> {
                             ),
                       ),
                       onPressed: () async {
-                        // if (await checkRequiredFields(state) == true) {
-                        //   if (context.mounted) {
-                        //     await context
-                        //         .read<AddProductFormCubit>()
-                        //         .addProduct();
-                        //   }
-                        // }
+                        if (authBlocState ==
+                            const AuthState.unauthenticated()) {
+                          if (context.mounted) {
+                            await DialogHelper.showCustomAlertDialog(
+                              context,
+                              title: context.l10n.logIn,
+                              content: context.l10n.loginToDoAction,
+                              cancelText: context.l10n.cancel,
+                              confirmText: context.l10n.logIn,
+                            ).then<void>((value) async {
+                              if (value ?? false) {
+                                if (context.mounted) {
+                                  await context.router.push(const LoginRoute());
+                                }
+                              }
+                            });
+                          }
+                        } else {
+                          // if (await checkRequiredFields(state) == true) {
+                          final pos = locationInfo?.position;
+                          if (pos != null) {
+                            await context.read<ReportFormCubit>().submitReport(
+                                  latitude: pos.latitude,
+                                  longitude: pos.longitude,
+                                  userId: userModel.uid,
+                                );
+                          }
+                          // }
+                        }
                       },
                     ),
                   ),
