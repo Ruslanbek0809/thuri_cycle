@@ -66,7 +66,7 @@ class _LanguageBottomSheetState extends State<LanguageBottomSheet> {
                     },
                   ),
                   Text(
-                    context.l10n.chooseYourLocatioin,
+                    context.l10n.chooseYourLanguage,
                     style: getTextTheme(context).titleMedium!.copyWith(
                           fontSize: responsiveFontSize(context, 18),
                           fontWeight: FontWeight.w700,

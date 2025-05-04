@@ -7,7 +7,6 @@ import 'package:thuri_cycle/router.gr.dart';
 class AppRouter extends RootStackRouter {
   @override
   List<AutoRoute> get routes => [
-        // Show splash page first
         AutoRoute(
           path: '/splash',
           page: SplashRoute.page,
@@ -54,6 +53,11 @@ class AppRouter extends RootStackRouter {
                   page: ReportRoute.page,
                   meta: const {'hideBottomNav': true},
                 ),
+                AutoRoute(
+                  path: 'scoreboard',
+                  page: ScoreboardRoute.page,
+                  meta: const {'hideBottomNav': true},
+                ),
               ],
             ),
             // AutoRoute(
@@ -67,8 +71,16 @@ class AppRouter extends RootStackRouter {
               page: const EmptyShellRoute('CommunityRoute'),
               children: [
                 AutoRoute(path: '', page: CommunityRoute.page, initial: true),
-                AutoRoute(path: ':single-article', page: SingleArticleRoute.page),
-                AutoRoute(path: ':single-guide', page: SingleGuideRoute.page),
+                AutoRoute(
+                  path: ':single-article',
+                  page: SingleArticleRoute.page,
+                  meta: const {'hideBottomNav': true},
+                ),
+                AutoRoute(
+                  path: ':single-guide',
+                  page: SingleGuideRoute.page,
+                  meta: const {'hideBottomNav': true},
+                ),
               ],
             ),
             // AutoRoute(path: 'community', page: CommunityRoute.page),

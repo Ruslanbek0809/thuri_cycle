@@ -23,6 +23,7 @@ import 'package:thuri_cycle/router.gr.dart';
 import 'package:universal_platform/universal_platform.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+//TODO: Test if needed work on Google & Apple signins
 @RoutePage()
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -121,7 +122,7 @@ class _LoginPageState extends State<LoginPage> {
                                 style:
                                     getTextTheme(context).titleLarge!.copyWith(
                                           fontSize:
-                                              responsiveFontSize(context, 25.5),
+                                              responsiveFontSize(context, 22),
                                         ),
                               ),
                             ),

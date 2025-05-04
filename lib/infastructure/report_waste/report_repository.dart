@@ -81,9 +81,9 @@ class ReportRepository implements IReportFacade {
       final imageUrls = await uploadMultipleImages(images);
 
       final marker = MapMarkerModel(
-        id: '',
         // Firestore will assign it.
         // It is gonna be removed by withConverter of MapMarkersCollection
+        id: '',
         latitude: latitude,
         longitude: longitude,
         markerType: markerType,

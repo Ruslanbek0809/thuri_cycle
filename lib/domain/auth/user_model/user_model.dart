@@ -13,17 +13,16 @@ class UserModel with _$UserModel {
     // @JsonKey(includeToJson: false) UserStats? stats,
     String? email,
     String? username,
-    String? name,
     String? phoneNumber,
     String? profilePicture,
     @Default(true) bool? isAnonymous,
     // @Default([]) List<String> bookmarks,
     @JsonKey(name: 'fcm_token') String? fcmToken,
+    num? points,
   }) = _UserModel;
 
   factory UserModel.initial({UserModel? user}) => UserModel(
         uid: user?.uid,
-        name: user?.name,
         username: user?.username,
         email: user?.email,
         phoneNumber: user?.phoneNumber,
@@ -31,6 +30,7 @@ class UserModel with _$UserModel {
         isAnonymous: user?.isAnonymous,
         // bookmarks: user?.bookmarks,
         fcmToken: user?.fcmToken,
+        points: user?.points,
       );
 
   factory UserModel.fromJson(Map<String, Object?> json) =>

@@ -1,44 +1,18 @@
 // import 'package:auto_route/auto_route.dart';
-// import 'package:flipgoo_app/application/auth/auth_bloc.dart';
-// import 'package:flipgoo_app/application/auth/profile_user_form/profile_user_form_cubit.dart';
-// import 'package:flipgoo_app/application/profile/settings_form_cubit.dart';
-// import 'package:flipgoo_app/domain/hive/hive_country.dart';
-// import 'package:flipgoo_app/l10n/l10n.dart';
-// import 'package:flipgoo_app/library/countries_country_code_map.dart';
-// import 'package:flipgoo_app/presentation/core/utils/constants.dart';
-// import 'package:flipgoo_app/presentation/core/utils/helpers/dialog_helper.dart';
-// import 'package:flipgoo_app/presentation/core/utils/helpers/snackbar_helper.dart';
-// import 'package:flipgoo_app/presentation/core/utils/methods/aliases.dart';
-// import 'package:flipgoo_app/presentation/core/utils/methods/shortcuts.dart';
-// import 'package:flipgoo_app/presentation/core/widgets/custom/custom_bordered_avatar_image.dart';
-// import 'package:flipgoo_app/presentation/core/widgets/custom/custom_elevated_gradient_button.dart';
-// import 'package:flipgoo_app/presentation/core/widgets/custom/custom_image.dart';
-// import 'package:flipgoo_app/presentation/core/widgets/custom/custom_loading_indicator.dart';
-// import 'package:flipgoo_app/presentation/core/widgets/custom/custom_lottie_avatar.dart';
-// import 'package:flipgoo_app/presentation/core/widgets/custom/custom_opacity_back_button.dart';
-// import 'package:flipgoo_app/presentation/core/widgets/custom/custom_outline_child_button.dart';
-// import 'package:flipgoo_app/presentation/core/widgets/custom/custom_svg_icon.dart';
-// import 'package:flipgoo_app/presentation/core/widgets/custom/custom_text_button.dart';
-// import 'package:flipgoo_app/presentation/core/widgets/keyboard_dismisser.dart';
-// import 'package:flipgoo_app/presentation/profile/profile_users/widgets/profile_users_address_hook.dart';
-// import 'package:flipgoo_app/presentation/profile/profile_users/widgets/profile_users_background_image_picked_file.dart';
-// import 'package:flipgoo_app/presentation/profile/profile_users/widgets/profile_users_circle_avatar_picked_file.dart';
-// import 'package:flipgoo_app/presentation/profile/profile_users/widgets/profile_users_edit_with_label_hook.dart';
-// import 'package:flipgoo_app/presentation/profile/profile_users/widgets/profile_users_image_picker_bottom_sheet.dart';
-// import 'package:flipgoo_app/presentation/profile/profile_users/widgets/profile_users_item_card.dart';
-// import 'package:flipgoo_app/presentation/profile/profile_users/widgets/profile_users_phone_textfield.dart';
-// import 'package:flipgoo_app/presentation/profile/profile_users/widgets/profile_users_phone_verify_modal_bottom_sheet.dart';
-// import 'package:flipgoo_app/presentation/profile/profile_users/widgets/profile_users_svg_item_card.dart';
-// import 'package:flipgoo_app/presentation/routes/router.gr.dart';
 // import 'package:flutter/material.dart';
 // import 'package:flutter_bloc/flutter_bloc.dart';
 // import 'package:flutter_svg/flutter_svg.dart';
-// import 'package:hive_flutter/hive_flutter.dart';
 // import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 // import 'package:phone_form_field/phone_form_field.dart';
+// import 'package:thuri_cycle/application/auth/auth_bloc.dart';
+// import 'package:thuri_cycle/application/auth/profile_user_form/profile_user_form_cubit.dart';
+// import 'package:thuri_cycle/l10n/l10n.dart';
+// import 'package:thuri_cycle/presentation/core/utils/constants.dart';
+// import 'package:thuri_cycle/presentation/core/utils/helpers/snackbar_helper.dart';
+// import 'package:thuri_cycle/presentation/core/utils/methods/aliases.dart';
+// import 'package:thuri_cycle/presentation/core/widgets/custom/custom_image.dart';
+// import 'package:thuri_cycle/presentation/core/widgets/keyboard_dismisser.dart';
 
-//TODO: Background image should be static
-//TODO [optimization]: Add lottie custom avatar???
 // @RoutePage()
 // class ProfileUserEditInfoPage extends StatefulWidget {
 //   const ProfileUserEditInfoPage({super.key});
@@ -53,13 +27,23 @@
 //   bool isBottomSheetOpen = false;
 
 //   @override
+//   void initState() {
+//     super.initState();
+//     context
+//         .read<ProfileUserFormCubit>()
+//         .assignInitialProfileUserMainPhoneController();
+//     context.read<ProfileUserFormCubit>().assignInitialProfileUserAddressState();
+//     // context.read<ProfileUserFormCubit>().getGenders();
+//   }
+
+//   @override
 //   Widget build(BuildContext context) {
 //     final safeTopPadding = MediaQuery.of(context).padding.top;
 //     return BlocListener<AuthBloc, AuthState>(
 //       listener: (context, state) {
 //         state.maybeMap(
 //           unauthenticated: (_) {
-//             logIt.warn('UserInfoPage [AuthBloc] unauthenticated');
+//             talker.warning('UserInfoPage [AuthBloc] unauthenticated');
 //             context.router.popUntilRoot();
 //           },
 //           orElse: () {},
@@ -67,17 +51,10 @@
 //       },
 //       child: BlocConsumer<ProfileUserFormCubit, ProfileUserFormState>(
 //         listenWhen: (previous, current) =>
-//             previous.cancelSubscriptionOptionOfSuccessOrFailure !=
-//                 current.cancelSubscriptionOptionOfSuccessOrFailure ||
-//             previous.getPhoneVerificationCodeSuccessOrFailure !=
-//                 current.getPhoneVerificationCodeSuccessOrFailure ||
-//             previous.deleteUserOptionOfSuccessOrFailure !=
-//                 current.deleteUserOptionOfSuccessOrFailure ||
-//             previous.optionOfSuccessOrFailure !=
-//                 current.optionOfSuccessOrFailure,
+//             previous.failureOrSuccessOption != current.failureOrSuccessOption,
 //         listener: (context, state) {
 //           //* SUCCESS or FAILURE listener for FORM type of BLOC
-//           state.optionOfSuccessOrFailure.fold(
+//           state.failureOrSuccessOption.fold(
 //             () => null,
 //             (a) => a.fold(
 //               (alert) {
@@ -99,101 +76,6 @@
 //                       duration: const Duration(seconds: 2),
 //                     ),
 //                   );
-//               },
-//             ),
-//           );
-//           state.getPhoneVerificationCodeSuccessOrFailure.fold(
-//             () => null,
-//             (a) => a.fold(
-//               (alert) {
-//                 scaffoldMessengerKey.currentState
-//                   ?..hideCurrentSnackBar()
-//                   ..showSnackBar(
-//                     SnackBarHelper.createError(
-//                       message: alert.message,
-//                     ),
-//                   );
-//               },
-//               (r) async {
-//                 // UniversalPlatform.isIOS
-//                 //     ? showCupertinoModalBottomSheet(
-//                 //         context: context,
-//                 //         expand: true,
-//                 //         enableDrag: false,
-//                 //         backgroundColor: Colors.transparent,
-//                 //         builder: (context) => const FilterCupertinoModalBottomSheet(),
-//                 //       )
-//                 //     :
-//                 if (!isBottomSheetOpen) {
-//                   isBottomSheetOpen = true;
-//                   await showMaterialModalBottomSheet<void>(
-//                     context: context,
-//                     builder: (context) =>
-//                         ProfileUsersPhoneVerifyModalBottomSheet(
-//                       phoneNumber: r,
-//                       onResendPressed: () async {
-//                         await context
-//                             .read<ProfileUserFormCubit>()
-//                             .getPhoneVerificationCode(r);
-//                       },
-//                     ),
-//                   ).whenComplete(() {
-//                     isBottomSheetOpen = false;
-//                   });
-//                 }
-//               },
-//             ),
-//           );
-//           state.deleteUserOptionOfSuccessOrFailure.fold(
-//             () => null,
-//             (a) => a.fold(
-//               (alert) {
-//                 scaffoldMessengerKey.currentState
-//                   ?..hideCurrentSnackBar()
-//                   ..showSnackBar(
-//                     SnackBarHelper.createError(
-//                       message: alert.message,
-//                     ),
-//                   );
-//               },
-//               (r) async {
-//                 scaffoldMessengerKey.currentState
-//                   ?..hideCurrentSnackBar()
-//                   ..showSnackBar(
-//                     SnackBarHelper.createSuccess(
-//                       title: context.l10n.success,
-//                       message: context.l10n.accountDeleteSuccess,
-//                       duration: const Duration(seconds: 2),
-//                     ),
-//                   );
-
-//                 context.read<AuthBloc>().add(const AuthEvent.signedOut());
-//               },
-//             ),
-//           );
-//           state.cancelSubscriptionOptionOfSuccessOrFailure.fold(
-//             () => null,
-//             (a) => a.fold(
-//               (alert) {
-//                 scaffoldMessengerKey.currentState
-//                   ?..hideCurrentSnackBar()
-//                   ..showSnackBar(
-//                     SnackBarHelper.createError(
-//                       message: alert.message,
-//                     ),
-//                   );
-//               },
-//               (r) async {
-//                 scaffoldMessengerKey.currentState
-//                   ?..hideCurrentSnackBar()
-//                   ..showSnackBar(
-//                     SnackBarHelper.createSuccess(
-//                       message: context.l10n.yourSubscriptionCancelledSuccess,
-//                     ),
-//                   );
-//                 if (context.mounted) {
-//                   await context.router.maybePop();
-//                 }
 //               },
 //             ),
 //           );

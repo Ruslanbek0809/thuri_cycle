@@ -9,7 +9,7 @@ class CustomLogo extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: SvgPicture.asset(
-        'assets/app_logo.png',
+        'assets/app_logo_svg.svg',
         height: getSize(context).width / 3,
         width: getSize(context).width / 3,
       ),

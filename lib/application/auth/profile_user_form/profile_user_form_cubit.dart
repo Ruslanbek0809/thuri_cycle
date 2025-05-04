@@ -38,7 +38,7 @@ class ProfileUserFormCubit extends Cubit<ProfileUserFormState> {
   void nameChanged(String newName) {
     emit(
       state.copyWith(
-        userModel: state.userModel.copyWith(name: newName),
+        userModel: state.userModel.copyWith(username: newName),
         failureOrSuccessOption: none(),
       ),
     );

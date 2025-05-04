@@ -124,10 +124,7 @@ class _ProfilePageState extends State<ProfilePage> {
               title: Text(
                 context.l10n.profile,
                 style: getTextTheme(context).titleLarge!.copyWith(
-                      fontSize: responsiveFontSize(
-                        context,
-                        22,
-                      ),
+                      fontSize: responsiveFontSize(context, 22),
                       fontWeight: FontWeight.w700,
                       letterSpacing: 0.5,
                     ),

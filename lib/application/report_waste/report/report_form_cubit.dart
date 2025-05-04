@@ -36,6 +36,7 @@ class ReportFormCubit extends Cubit<ReportFormState> {
   Future<void> submitReport({
     required double latitude,
     required double longitude,
+    required String? userId,
   }) async {
     emit(state.copyWith(isSubmitting: true));
 
@@ -44,7 +45,7 @@ class ReportFormCubit extends Cubit<ReportFormState> {
       longitude: longitude,
       markerType: state.markerType!,
       images: state.images,
-      reportedBy: 'admin', // TODO: Implement this later. Not now. 
+      reportedBy: userId ?? 'unknown', // TODO [optimization]: Handle when userId is not known 
     );
 
     emit(

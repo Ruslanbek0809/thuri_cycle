@@ -5,6 +5,7 @@ import 'package:thuri_cycle/l10n/l10n.dart';
 import 'package:thuri_cycle/presentation/core/utils/constants.dart';
 import 'package:thuri_cycle/presentation/core/utils/methods/shortcuts.dart';
 import 'package:thuri_cycle/presentation/core/widgets/custom/custom_bordered_avatar_image.dart';
+import 'package:thuri_cycle/presentation/core/widgets/custom/custom_svg_avatar.dart';
 
 class ProfileUserCard extends StatefulWidget {
   const ProfileUserCard({super.key});
@@ -29,7 +30,9 @@ class _ProfileUserCardState extends State<ProfileUserCard> {
           final userModel = state.userModel;
           return InkWell(
             onTap: () async {
-              //TODO: Do I need this?
+              // await context.router.push(
+              //   const ProfileUserEditInfoRoute(),
+              // );
             },
             child: Ink(
               padding: EdgeInsets.symmetric(
@@ -42,7 +45,8 @@ class _ProfileUserCardState extends State<ProfileUserCard> {
                   Expanded(
                     child: Row(
                       children: [
-                        if (userModel.profilePicture != null)
+                        if (userModel.profilePicture != null &&
+                            userModel.profilePicture!.isNotEmpty)
                           CustomBorderedAvatarImage(
                             image: userModel.profilePicture,
                             radius: 25,
@@ -50,6 +54,11 @@ class _ProfileUserCardState extends State<ProfileUserCard> {
                               getTabletType() ? 100 : 60,
                               getTabletType() ? 100 : 60,
                             ),
+                          )
+                        else
+                          CustomSvgAvatar(
+                            width: getTabletType() ? 100 : 60,
+                            height: getTabletType() ? 100 : 60,
                           ),
                         Expanded(
                           child: Padding(
@@ -63,7 +72,7 @@ class _ProfileUserCardState extends State<ProfileUserCard> {
                                   children: [
                                     Flexible(
                                       child: Text(
-                                        userModel.name ?? '',
+                                        userModel.username ?? '',
                                         maxLines: 2,
                                         overflow: TextOverflow.ellipsis,
                                         style: getTextTheme(context)
@@ -75,27 +84,6 @@ class _ProfileUserCardState extends State<ProfileUserCard> {
                                               ),
                                               fontWeight: FontWeight.w600,
                                             ),
-                                      ),
-                                    ),
-                                    Flexible(
-                                      child: Padding(
-                                        padding: EdgeInsets.only(
-                                          left: $constants.insets.xxs,
-                                        ),
-                                        child: Text(
-                                          '@${userModel.username ?? ''}',
-                                          maxLines: 2,
-                                          overflow: TextOverflow.ellipsis,
-                                          style: getTextTheme(context)
-                                              .titleMedium!
-                                              .copyWith(
-                                                fontSize: responsiveFontSize(
-                                                  context,
-                                                  16,
-                                                ),
-                                                fontWeight: FontWeight.w600,
-                                              ),
-                                        ),
                                       ),
                                     ),
                                     // //*--------------- BLUE TICK ---------------//

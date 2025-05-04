@@ -5,7 +5,7 @@ class CustomAvatarImage extends StatelessWidget {
   const CustomAvatarImage({
     super.key,
     this.image,
-    this.phImage = 'assets/placeholder_1_1.svg',
+    this.phImage = 'assets/app_logo.png',
     this.fit = BoxFit.cover,
     this.radius = 0.0,
   });
