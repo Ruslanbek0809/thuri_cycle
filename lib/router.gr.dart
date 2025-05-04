@@ -29,9 +29,9 @@ import 'package:thuri_cycle/presentation/community/single_guide_page.dart'
 import 'package:thuri_cycle/presentation/home/home.dart' as _i3;
 import 'package:thuri_cycle/presentation/profile/profile.dart' as _i8;
 import 'package:thuri_cycle/presentation/report_waste/map_page.dart' as _i5;
-import 'package:thuri_cycle/presentation/report_waste/marker/single_marker_page.dart'
-    as _i13;
 import 'package:thuri_cycle/presentation/report_waste/report_page.dart' as _i9;
+import 'package:thuri_cycle/presentation/report_waste/single_marker_page.dart'
+    as _i13;
 import 'package:thuri_cycle/presentation/scan_waste/scan_waste.dart' as _i10;
 
 /// generated route for

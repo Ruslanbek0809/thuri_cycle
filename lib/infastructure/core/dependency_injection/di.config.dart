@@ -126,11 +126,6 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i1063.LocaleCubit(gh<_i460.SharedPreferences>()));
     gh.factory<_i225.SettingsFormCubit>(
         () => _i225.SettingsFormCubit(gh<_i460.SharedPreferences>()));
-    gh.lazySingleton<_i917.IAuth>(() => _i767.AuthRepository(
-          gh<_i59.FirebaseAuth>(),
-          gh<_i357.UserCollection>(),
-          gh<_i116.GoogleSignIn>(),
-        ));
     gh.lazySingleton<_i137.FirebaseStorageService>(
         () => _i137.FirebaseStorageService(gh<_i457.FirebaseStorage>()));
     gh.lazySingleton<_i575.FirestoreService>(
@@ -140,10 +135,12 @@ extension GetItInjectableX on _i174.GetIt {
           gh<_i357.ArticlesCollection>(),
           gh<_i357.GuidesCollection>(),
         ));
-    gh.factory<_i250.AuthFormCubit>(
-        () => _i250.AuthFormCubit(gh<_i917.IAuth>()));
-    gh.factory<_i124.ProfileUserFormCubit>(
-        () => _i124.ProfileUserFormCubit(gh<_i917.IAuth>()));
+    gh.lazySingleton<_i917.IAuth>(() => _i767.AuthRepository(
+          gh<_i59.FirebaseAuth>(),
+          gh<_i575.FirestoreService>(),
+          gh<_i357.UserCollection>(),
+          gh<_i116.GoogleSignIn>(),
+        ));
     gh.factory<_i390.AuthBloc>(() => _i390.AuthBloc(
           gh<_i917.IAuth>(),
           gh<_i558.FlutterSecureStorage>(),
@@ -162,6 +159,10 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i884.CommunityFeaturedCubit(gh<_i153.ICommunity>()));
     gh.factory<_i749.CommunitySingleGuideCubit>(
         () => _i749.CommunitySingleGuideCubit(gh<_i153.ICommunity>()));
+    gh.factory<_i250.AuthFormCubit>(
+        () => _i250.AuthFormCubit(gh<_i917.IAuth>()));
+    gh.factory<_i124.ProfileUserFormCubit>(
+        () => _i124.ProfileUserFormCubit(gh<_i917.IAuth>()));
     gh.factory<_i401.ReportFormCubit>(
         () => _i401.ReportFormCubit(gh<_i299.IReportFacade>()));
     gh.factory<_i115.MapMarkerFormCubit>(() => _i115.MapMarkerFormCubit(

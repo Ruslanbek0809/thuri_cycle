@@ -298,9 +298,10 @@ class _ProfilePageState extends State<ProfilePage> {
                             svgName: 'assets/profile/updates.svg',
                             value: 'V ${state.packageInfo?.version}',
                             onTap: () async {
-                              // context
-                              //     .read<AuthBloc>()
-                              //     .add(const AuthEvent.signedOut());
+                              //TODO: Don't forget to remove this when EditProfilePage is implemented
+                              context
+                                  .read<AuthBloc>()
+                                  .add(const AuthEvent.signedOut());
                             },
                           ),
                         ],

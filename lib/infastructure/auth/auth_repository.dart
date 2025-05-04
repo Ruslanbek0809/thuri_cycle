@@ -7,6 +7,7 @@ import 'package:thuri_cycle/application/auth/auth_form/auth_form_cubit.dart';
 import 'package:thuri_cycle/domain/auth/auth_failure.dart';
 import 'package:thuri_cycle/domain/auth/i_auth_facade.dart';
 import 'package:thuri_cycle/domain/auth/user_model/user_model.dart';
+import 'package:thuri_cycle/infastructure/core/firebase_config/DB/firestore_service.dart';
 import 'package:thuri_cycle/infastructure/core/firebase_config/collections.dart';
 import 'package:thuri_cycle/presentation/core/utils/methods/aliases.dart';
 import 'package:thuri_cycle/presentation/core/utils/methods/shortcuts.dart';
@@ -21,12 +22,14 @@ import 'package:thuri_cycle/presentation/core/utils/methods/shortcuts.dart';
 class AuthRepository implements IAuth {
   AuthRepository(
     this._firebaseAuth,
+    this._firestoreService,
     this._userCollection,
     this._googleSignIn,
     // this._secureStorage,
   );
 
   final firebase_auth.FirebaseAuth _firebaseAuth;
+  final FirestoreService _firestoreService;
   final UserCollection _userCollection;
   final GoogleSignIn _googleSignIn;
   // final FlutterSecureStorage _secureStorage;
@@ -106,6 +109,8 @@ class AuthRepository implements IAuth {
       final userCredential =
           await _firebaseAuth.signInWithCredential(authCredential);
 
+      await _processLinkedUser(userCredential);
+
       final userName =
           userCredential.user?.displayName ?? ''; //* Get the display name
 
@@ -183,6 +188,8 @@ class AuthRepository implements IAuth {
       //* Sign in with the OAuthCredential
       final userCredential =
           await _firebaseAuth.signInWithCredential(oauthCredential);
+
+      await _processLinkedUser(userCredential);
 
       //* Update display name if it's missing or empty
       final displayNameFromApple = [
@@ -327,7 +334,10 @@ class AuthRepository implements IAuth {
         smsCode: otpCode,
       );
 
-      await _firebaseAuth.signInWithCredential(authCredential);
+      final userCredential =
+          await _firebaseAuth.signInWithCredential(authCredential);
+
+      await _processLinkedUser(userCredential);
 
       talker.verbose('[AuthRepository] verifyFbOtp() success');
 
@@ -338,38 +348,83 @@ class AuthRepository implements IAuth {
     }
   }
 
+  //*----------------- FIRESTORE INTEGRATION FOR USERCREDENTIAL ---------------------//
+
+  //TODO [optimization]: Add more data if needed to it from Google account's default name or Apple User name, and optimize this function with the one below comparingly
+  Future<void> _processLinkedUser(
+    firebase_auth.UserCredential userCredential,
+  ) async {
+    final user = userCredential.user;
+    if (user == null) {
+      talker.warning('[AuthRepository] No user returned from Firebase');
+      return;
+    }
+
+    final uid = user.uid;
+    final email = user.email ?? '';
+    final name = user.displayName ?? user.email ?? user.phoneNumber ?? '';
+    final photoUrl = user.photoURL ?? '';
+    final phoneNumber = user.phoneNumber ?? '';
+
+    final userModel = UserModel(
+      uid: uid,
+      email: email,
+      username: name,
+      phoneNumber: phoneNumber,
+      profilePicture: photoUrl,
+    );
+
+    final userDocPath = 'users/${user.uid}';
+    final exists = await _firestoreService.docExists(userDocPath);
+
+    if (!exists) {
+      await _firestoreService.create(userDocPath, userModel.toJson());
+      talker.verbose('[AuthRepository] New user document created for $uid');
+    } else {
+      await _firestoreService.set(userDocPath, userModel.toJson());
+      talker.verbose('[AuthRepository] User document already exists for $uid');
+    }
+  }
+
+  // @override
+  // Future<User?> processLinkedUser({required UserCredential? credential}) async {
+  //   try {
+  //     // Don't update if the user profile is null
+  //     if (credential?.additionalUserInfo?.profile == null) {
+  //       return null;
+  //     }
+
+  //     // Don't update if the user exists
+  //     if (!credential!.additionalUserInfo!.isNewUser) {
+  //       return credential.user;
+  //     }
+
+  //     // Pull data from profile and populate Firestore entry
+  //     final userID = credential.user!.uid;
+  //     final providerID = credential.additionalUserInfo!.providerId!;
+  //     final profile = credential.additionalUserInfo!.profile!;
+
+  //     final userData = {
+  //       'uid': userID,
+  //       'isAnonymous': false,
+  //       'email': profile['email'],
+  //       'name': providerID == 'google.com' ? profile['name'] : 'Apple User',
+  //       if (providerID == 'google.com') 'profilePicture': profile['picture'],
+  //     };
+
+  //     await firestore.set('users/$userID', userData);
+
+  //     return credential.user;
+  //   } catch (e) {
+  //     rethrow;
+  //   }
+  // }
+
   @override
   Future<void> signOut() {
     return Future.wait([
-      // dioExceptionHandler<Unit>(() async {
-      //   final queryParams = <String, dynamic>{};
-
-      //   if (UniversalPlatform.isAndroid || UniversalPlatform.isIOS) {
-      //     queryParams['type'] = UniversalPlatform.isAndroid ? 'android' : 'ios';
-      //   }
-
-      //   final prefs = await SharedPreferences.getInstance();
-      //   final fcmToken = prefs.getString($constants.fcmToken);
-      //   if (fcmToken != null) {
-      //     talker.warning('getProfileUser() fcmToken != null: $fcmToken');
-      //     queryParams['registration_id'] = fcmToken;
-      //   }
-
-      //   talker.log(
-      //     '[AuthRepository] signOut() => queryParams at the END: $queryParams',
-      //   );
-
-      //   return dioExceptionHandler<Unit>(() async {
-      //     await _dioService.dio.post<Map<String, dynamic>>(
-      //       'user/logout',
-      //       data: queryParams,
-      //     );
-
-      //     return right(unit);
-      //   });
-      // }),
-      _googleSignIn.signOut(),
       _firebaseAuth.signOut(),
+      _googleSignIn.signOut(),
     ]);
   }
 }
