@@ -55,18 +55,21 @@ class _LoginPageState extends State<LoginPage> {
                 context.read<AuthFormCubit>().setIsLoadingToFalse();
                 scaffoldMessengerKey.currentState
                   ?..hideCurrentSnackBar()
-                  ..showSnackBar(SnackBarHelper.createError(
-                    message: failure.map(
-                      serverError: (_) => context.l10n.serverError,
-                      cancelledByUser: (_) => context.l10n.cancelled,
-                      emailAlreadyInUse: (_) => context.l10n.emailAlreadyInUse,
-                      invalidEmailAndPasswordCombination: (_) =>
-                          context.l10n.invalidEmailPassword,
-                      invalidPhoneNumber: (_) =>
-                          context.l10n.invalidPhoneNumber,
-                      tooManyRequests: (_) => context.l10n.tooManyRequests,
+                  ..showSnackBar(
+                    SnackBarHelper.createError(
+                      message: failure.map( 
+                        serverError: (_) => context.l10n.serverError,
+                        cancelledByUser: (_) => context.l10n.cancelled,
+                        emailAlreadyInUse: (_) =>
+                            context.l10n.emailAlreadyInUse,
+                        invalidEmailAndPasswordCombination: (_) =>
+                            context.l10n.invalidEmailPassword,
+                        invalidPhoneNumber: (_) =>
+                            context.l10n.invalidPhoneNumber,
+                        tooManyRequests: (_) => context.l10n.tooManyRequests,
+                      ),
                     ),
-                  ));
+                  );
               },
               (_) async {
                 context.read<AuthFormCubit>().setIsLoadingToFalse();

@@ -67,7 +67,8 @@ class AppRouter extends RootStackRouter {
               page: const EmptyShellRoute('CommunityRoute'),
               children: [
                 AutoRoute(path: '', page: CommunityRoute.page, initial: true),
-                AutoRoute(path: ':article', page: ArticleRoute.page),
+                AutoRoute(path: ':single-article', page: SingleArticleRoute.page),
+                AutoRoute(path: ':single-guide', page: SingleGuideRoute.page),
               ],
             ),
             // AutoRoute(path: 'community', page: CommunityRoute.page),

@@ -50,13 +50,14 @@ class CommunityFeaturedSection extends StatelessWidget {
                   child: state.maybeWhen(
                     orElse: Container.new,
                     loading: () => const ArticleWidgetSkeleton.large(),
-                    failed: (e) => articleContainer(text: mapFailureToMessage(e)),
+                    failed: (e) =>
+                        articleContainer(text: mapFailureToMessage(e)),
                     success: (article) => article != null
                         ? ArticleWidget.large(
                             article: article,
                             onTap: (Article article) async {
                               await context.router
-                                  .push(ArticleRoute(article: article));
+                                  .push(SingleArticleRoute(article: article));
                             },
                           )
                         : articleContainer(text: context.l10n.comingSoon),

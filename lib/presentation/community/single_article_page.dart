@@ -8,11 +8,11 @@ import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:intl/intl.dart';
 import 'package:thuri_cycle/domain/community/article/article.dart';
 import 'package:thuri_cycle/l10n/l10n.dart';
-import 'package:thuri_cycle/presentation/core/utils/constants.dart';
 import 'package:thuri_cycle/presentation/community/widgets/article_widgets/app_icon_button.dart';
 import 'package:thuri_cycle/presentation/community/widgets/article_widgets/shared/app_markdown.dart';
 import 'package:thuri_cycle/presentation/community/widgets/article_widgets/theme/src/app_icons.dart';
 import 'package:thuri_cycle/presentation/community/widgets/article_widgets/theme/src/app_text_styles.dart';
+import 'package:thuri_cycle/presentation/core/utils/constants.dart';
 
 // import '../../providers/user_provider.dart';
 
@@ -22,8 +22,8 @@ GlobalKey _summaryKey = GlobalKey();
 
 //TODO: Look for changes from old project for this page and apply any needed features from it if needed
 @RoutePage()
-class ArticlePage extends StatelessWidget {
-  const ArticlePage({required this.article, super.key});
+class SingleArticlePage extends StatelessWidget {
+  const SingleArticlePage({required this.article, super.key});
 
   final Article article;
 

@@ -4,26 +4,29 @@ import 'package:intl/intl.dart';
 import 'package:shimmer/shimmer.dart';
 import 'package:thuri_cycle/domain/community/article/article.dart';
 import 'package:thuri_cycle/l10n/l10n.dart';
-import 'package:thuri_cycle/presentation/core/utils/methods/shortcuts.dart';
 import 'package:thuri_cycle/presentation/community/widgets/article_widgets/shared/bouncing.dart';
 import 'package:thuri_cycle/presentation/community/widgets/article_widgets/shared/constants.dart';
 import 'package:thuri_cycle/presentation/community/widgets/article_widgets/theme/src/app_buttons.dart';
 import 'package:thuri_cycle/presentation/community/widgets/article_widgets/theme/src/app_colors.dart';
 import 'package:thuri_cycle/presentation/community/widgets/article_widgets/theme/src/app_shadows.dart';
 import 'package:thuri_cycle/presentation/community/widgets/article_widgets/theme/src/app_text_styles.dart';
+import 'package:thuri_cycle/presentation/core/utils/constants.dart';
+import 'package:thuri_cycle/presentation/core/utils/methods/shortcuts.dart';
 
 class ArticleWidget extends StatelessWidget {
   // ignore: use_super_parameters
   const ArticleWidget({
-    required this.article, Key? key,
+    required this.article,
+    Key? key,
     this.onTap,
   })  : isLarge = false,
         super(key: key);
 
   const ArticleWidget.large({
-    required this.article, super.key,
+    required this.article,
+    super.key,
     this.onTap,
-  })  : isLarge = true;
+  }) : isLarge = true;
 
   final Article article;
   final void Function(Article)? onTap;
@@ -31,7 +34,7 @@ class ArticleWidget extends StatelessWidget {
 
   Widget _buildRegularArticle() => Container(
         decoration: BoxDecoration(
-          color: AppColors.white,
+          color: $constants.palette.white,
           borderRadius: BorderRadius.circular(12),
           border: Border.all(color: const Color(0xfff2f2f2)),
           boxShadow: [AppShadows.primary],
@@ -54,8 +57,9 @@ class ArticleWidget extends StatelessWidget {
                       height: 140,
                       progressIndicatorBuilder: (context, url, progress) =>
                           Shimmer.fromColors(
-                        baseColor: Colors.black.withOpacity(0.1),
-                        highlightColor: Colors.black.withOpacity(0.08),
+                        baseColor: $constants.palette.black.withOpacity(0.1),
+                        highlightColor:
+                            $constants.palette.black.withOpacity(0.08),
                         child: Container(
                           width: double.infinity,
                           color: AppColors.background,
@@ -68,8 +72,8 @@ class ArticleWidget extends StatelessWidget {
                       decoration: BoxDecoration(
                         gradient: LinearGradient(
                           colors: [
-                            Colors.black.withOpacity(0.8),
-                            AppColors.primary.withOpacity(0.1),
+                            $constants.palette.black.withOpacity(0.8),
+                            $constants.palette.main.withOpacity(0.1),
                           ],
                           begin: Alignment.bottomCenter,
                           end: Alignment.topCenter,
@@ -109,28 +113,31 @@ class ArticleWidget extends StatelessWidget {
                       DateFormat('MMM d, y').format(article.date),
                       style: AppTextStyles.blackBlack22.copyWith(
                         fontWeight: FontWeight.w900,
-                        color: AppColors.secondary,
+                        color: $constants.palette.main,
                         fontSize: 12,
                       ),
                     ),
                     const SizedBox(height: 3),
                     Text(
                       article.title,
+                      maxLines: 4,
                       style: AppTextStyles.blackBlack22
                           .copyWith(fontSize: 17.5, height: 1.2),
                     ),
                     const Spacer(),
                     Container(
                       padding: const EdgeInsets.symmetric(
-                          horizontal: 16, vertical: 6),
+                        horizontal: 16,
+                        vertical: 6,
+                      ),
                       decoration: BoxDecoration(
-                        color: AppColors.primary.withOpacity(0.2),
+                        color: $constants.palette.main.withOpacity(0.2),
                         borderRadius: BorderRadius.circular(10),
                       ),
                       child: Text(
                         article.tag,
                         style: AppTextStyles.primaryBold14
-                            .copyWith(color: AppColors.secondary),
+                            .copyWith(color: $constants.palette.main),
                       ),
                     ),
                   ],
