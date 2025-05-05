@@ -9,10 +9,13 @@ import 'package:thuri_cycle/application/report_waste/location/location_cubit.dar
 import 'package:thuri_cycle/application/report_waste/map_marker_form_cubit.dart';
 import 'package:thuri_cycle/domain/report_waste/location_info.dart';
 import 'package:thuri_cycle/domain/report_waste/map_marker.dart';
+import 'package:thuri_cycle/l10n/l10n.dart';
 import 'package:thuri_cycle/presentation/core/utils/constants.dart';
+import 'package:thuri_cycle/presentation/core/utils/helpers/snackbar_helper.dart';
+import 'package:thuri_cycle/presentation/core/utils/methods/aliases.dart';
 import 'package:thuri_cycle/presentation/report_waste/widgets/bottom_controls_widget.dart';
 import 'package:thuri_cycle/presentation/report_waste/widgets/fast_markers_layer.dart';
-import 'package:thuri_cycle/presentation/report_waste/widgets/map_controls_widget.dart';
+import 'package:thuri_cycle/presentation/report_waste/widgets/map_controls_scoreboard_widget.dart';
 import 'package:thuri_cycle/presentation/report_waste/widgets/settings_controls_widget.dart';
 import 'package:thuri_cycle/router.gr.dart';
 
@@ -153,7 +156,7 @@ class _MapPageState extends State<MapPage> with WidgetsBindingObserver {
                             rotate: true,
                             point: latLng,
                             child: SvgPicture.asset(
-                              'assets/current_location.svg',
+                              'assets/current_location1.svg',
                             ),
                             // Icon(
                             //   Icons.my_location,
@@ -171,23 +174,18 @@ class _MapPageState extends State<MapPage> with WidgetsBindingObserver {
               FastMarkersLayer(
                 context.read<MapMarkerFormCubit>().visibleMarkers,
               ),
-              // Recognition text
+              //*----------------- RECOGNITION TEXT ---------------------//
               const Align(
                 alignment: Alignment.bottomLeft,
                 child: Text(
                   ' © OpenStreetMap contributors',
                   style: TextStyle(
-                    color: Color.fromARGB(
-                      255,
-                      127,
-                      127,
-                      127,
-                    ),
+                    color: Color.fromARGB(255, 127, 127, 127),
                   ), // theme-independent grey
                 ),
               ),
-              //*----------------- MAP CONTROLS ---------------------//
-              //TODO: Check
+              //*----------------- MAP CONTROLS & SCOREBOARD ---------------------//
+              //TODO: Check map controls part
               BlocBuilder<LocationCubit, LocationState>(
                 builder: (context, state) {
                   final locationInfoModel = state.maybeWhen(
@@ -197,7 +195,7 @@ class _MapPageState extends State<MapPage> with WidgetsBindingObserver {
 
                   return Align(
                     alignment: Alignment.topRight,
-                    child: MapControlsWidget(
+                    child: MapControlsAndScoreboardWidget(
                       onTap: () {
                         if (locationInfoModel != null &&
                             locationInfoModel.position != null) {
@@ -215,14 +213,21 @@ class _MapPageState extends State<MapPage> with WidgetsBindingObserver {
               Align(
                 alignment: Alignment.topLeft,
                 child: SettingsControlsWidget(
-                  () {},
+                  () {
+                    scaffoldMessengerKey.currentState
+                      ?..hideCurrentSnackBar()
+                      ..showSnackBar(
+                        SnackBarHelper.createInformation(
+                          message: context.l10n.comingInNextUpdate,
+                        ),
+                      );
+                  },
                   // () => mapMarkerProvider.openMarkerFiltersDialog(
                   //   context,
                   //   mapController.camera.center,
-                  // ), //TODO: Add dialog
+                  // ),
                 ),
               ),
-              //TODO: Add login feature
               //TODO: initStateFeatures??
               Align(
                 alignment: Alignment.bottomCenter,

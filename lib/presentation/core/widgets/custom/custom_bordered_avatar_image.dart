@@ -8,7 +8,7 @@ class CustomBorderedAvatarImage extends StatelessWidget {
   const CustomBorderedAvatarImage({
     super.key,
     this.image,
-    this.phImage = '',
+    this.phImage = 'assets/app_logo.png',
     this.fit = BoxFit.cover,
     this.radius = 0.0,
     this.decoration,

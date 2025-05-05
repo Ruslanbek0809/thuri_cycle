@@ -6,8 +6,8 @@ import 'package:flutter_svg/flutter_svg.dart';
 class CustomImage extends StatelessWidget {
   const CustomImage({
     super.key,
-    this.image = '',
-    this.phImage = '',
+    this.image = 'assets/app_logo.png',
+    this.phImage = 'assets/app_logo.png',
     this.width,
     this.height,
     this.fit = BoxFit.cover,

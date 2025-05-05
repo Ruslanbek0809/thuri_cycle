@@ -3,16 +3,16 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 
 class AnimatedMessageBox extends AnimatedWidget {
-  const AnimatedMessageBox(
-      {super.key,
-      required Animation<double> animation,
-      required this.message,
-      required this.containerColor,
-      required this.onContainerColor,
-      this.onTap,
-      this.maxLines = 2,
-      this.paddingTop = 4})
-      : super(listenable: animation);
+  const AnimatedMessageBox({
+    required Animation<double> animation,
+    required this.message,
+    required this.containerColor,
+    required this.onContainerColor,
+    super.key,
+    this.onTap,
+    this.maxLines = 2,
+    this.paddingTop = 4,
+  }) : super(listenable: animation);
   final String message;
   final Color containerColor;
   final Color onContainerColor;

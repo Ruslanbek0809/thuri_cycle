@@ -48,6 +48,16 @@ class AuthRepository implements IAuth {
     yield* _userCollection.streamSingle(uid).map(optionOf).distinct();
   }
 
+  @override
+  Future<Option<UserModel>> getUserModelByID(String uid) async {
+    final user = await _userCollection.futureSingleByID(uid);
+    if (user != null) {
+      return some(user);
+    } else {
+      return none();
+    }
+  }
+
   // @override
   // Future<void> updateProfile(UserModel user) async {
   //   await _userCollection.doc(user.uid).update(user.toJson());

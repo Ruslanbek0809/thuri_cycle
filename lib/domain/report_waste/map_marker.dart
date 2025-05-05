@@ -15,7 +15,8 @@ class MapMarkerModel with _$MapMarkerModel {
     required MarkerType markerType,
     required DateTime creationDate,
     required String reportedBy,
-    List<String>? images,
+    required List<String> images,
+    List<String>? resolutionImages,
     DateTime? resolutionDate,
     String? resolvedBy,
   }) = _MapMarkerModel;

@@ -6,6 +6,7 @@ import 'package:thuri_cycle/domain/auth/user_model/user_model.dart';
 
 abstract class IAuth {
   Stream<Option<UserModel>> watchUserProfileFromFB();
+  Future<Option<UserModel>> getUserModelByID(String uid);
   // Future<Option<UserModel>> getUserModelFromFB();
 
   // Future<Option<FirebaseUser>> getSignedInUser();

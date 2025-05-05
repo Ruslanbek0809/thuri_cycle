@@ -155,5 +155,18 @@
     "hide": "Ausblenden",
     "recyclingGuide": "Recycling-Leitfaden",
     "reportedSuccessfully": "Erfolgreich gemeldet",
+    "yes": "Ja",
+    "no": "Nein",
+    "acceptToReviewDialogTitle": "Möchten Sie an der Bildbewertung teilnehmen?",
+    "acceptToReviewDialogText": "Durch die Bewertung von Bildern anderer Nutzer können Sie regelmäßig Punkte sammeln. Sie können jedoch unmoderierten Bildern mit sensiblen Inhalten ausgesetzt sein. Mit dem Tippen auf \"{yes}\" erklären Sie daher, dass Sie volljährig sind und sich der Risiken bewusst sind.",
+    "@acceptToReviewDialogText": {
+        "placeholders": {
+            "yes": {
+                    "type": "String"
+            }
+        }
+    },
+    "acceptToReviewSwitchTitle": "An der Bildbewertung teilnehmen",
+    "acceptToReviewSwitchDescription": "Durch die Bewertung von Bildern anderer Nutzer können Sie regelmäßig Punkte sammeln. Sie können jedoch unmoderierten Bildern mit sensiblen Inhalten ausgesetzt sein.",
     "comingInNextUpdate": "Kommt im nächsten Update"
 }

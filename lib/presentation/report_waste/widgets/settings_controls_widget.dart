@@ -1,8 +1,10 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:thuri_cycle/l10n/l10n.dart';
 import 'package:thuri_cycle/presentation/core/utils/constants.dart';
+import 'package:thuri_cycle/router.gr.dart';
 
-//TODO: Add SettingsPage
+//TODO [optimization]: Add filter dialog
 class SettingsControlsWidget extends StatelessWidget {
   const SettingsControlsWidget(this.onFilterPressed, {super.key});
   final VoidCallback onFilterPressed;
@@ -21,9 +23,9 @@ class SettingsControlsWidget extends StatelessWidget {
             child: FloatingActionButton(
               mini: true,
               heroTag: 'settings',
-              onPressed: () {},
-              // onPressed: () =>
-              //     Navigator.pushNamed(context, SettingsPage.routeName),
+              onPressed: () async {
+                await context.router.push(const SettingsRoute());
+              },
               tooltip: context.l10n.settings,
               backgroundColor: $constants.palette.main,
               materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,

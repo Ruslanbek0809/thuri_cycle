@@ -26,7 +26,8 @@ mixin _$MapMarkerModel {
   MarkerType get markerType => throw _privateConstructorUsedError;
   DateTime get creationDate => throw _privateConstructorUsedError;
   String get reportedBy => throw _privateConstructorUsedError;
-  List<String>? get images => throw _privateConstructorUsedError;
+  List<String> get images => throw _privateConstructorUsedError;
+  List<String>? get resolutionImages => throw _privateConstructorUsedError;
   DateTime? get resolutionDate => throw _privateConstructorUsedError;
   String? get resolvedBy => throw _privateConstructorUsedError;
 
@@ -53,7 +54,8 @@ abstract class $MapMarkerModelCopyWith<$Res> {
       MarkerType markerType,
       DateTime creationDate,
       String reportedBy,
-      List<String>? images,
+      List<String> images,
+      List<String>? resolutionImages,
       DateTime? resolutionDate,
       String? resolvedBy});
 }
@@ -79,7 +81,8 @@ class _$MapMarkerModelCopyWithImpl<$Res, $Val extends MapMarkerModel>
     Object? markerType = null,
     Object? creationDate = null,
     Object? reportedBy = null,
-    Object? images = freezed,
+    Object? images = null,
+    Object? resolutionImages = freezed,
     Object? resolutionDate = freezed,
     Object? resolvedBy = freezed,
   }) {
@@ -108,9 +111,13 @@ class _$MapMarkerModelCopyWithImpl<$Res, $Val extends MapMarkerModel>
           ? _value.reportedBy
           : reportedBy // ignore: cast_nullable_to_non_nullable
               as String,
-      images: freezed == images
+      images: null == images
           ? _value.images
           : images // ignore: cast_nullable_to_non_nullable
+              as List<String>,
+      resolutionImages: freezed == resolutionImages
+          ? _value.resolutionImages
+          : resolutionImages // ignore: cast_nullable_to_non_nullable
               as List<String>?,
       resolutionDate: freezed == resolutionDate
           ? _value.resolutionDate
@@ -139,7 +146,8 @@ abstract class _$$MapMarkerModelImplCopyWith<$Res>
       MarkerType markerType,
       DateTime creationDate,
       String reportedBy,
-      List<String>? images,
+      List<String> images,
+      List<String>? resolutionImages,
       DateTime? resolutionDate,
       String? resolvedBy});
 }
@@ -163,7 +171,8 @@ class __$$MapMarkerModelImplCopyWithImpl<$Res>
     Object? markerType = null,
     Object? creationDate = null,
     Object? reportedBy = null,
-    Object? images = freezed,
+    Object? images = null,
+    Object? resolutionImages = freezed,
     Object? resolutionDate = freezed,
     Object? resolvedBy = freezed,
   }) {
@@ -192,9 +201,13 @@ class __$$MapMarkerModelImplCopyWithImpl<$Res>
           ? _value.reportedBy
           : reportedBy // ignore: cast_nullable_to_non_nullable
               as String,
-      images: freezed == images
+      images: null == images
           ? _value._images
           : images // ignore: cast_nullable_to_non_nullable
+              as List<String>,
+      resolutionImages: freezed == resolutionImages
+          ? _value._resolutionImages
+          : resolutionImages // ignore: cast_nullable_to_non_nullable
               as List<String>?,
       resolutionDate: freezed == resolutionDate
           ? _value.resolutionDate
@@ -218,10 +231,12 @@ class _$MapMarkerModelImpl implements _MapMarkerModel {
       required this.markerType,
       required this.creationDate,
       required this.reportedBy,
-      final List<String>? images,
+      required final List<String> images,
+      final List<String>? resolutionImages,
       this.resolutionDate,
       this.resolvedBy})
-      : _images = images;
+      : _images = images,
+        _resolutionImages = resolutionImages;
 
   factory _$MapMarkerModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$MapMarkerModelImplFromJson(json);
@@ -238,12 +253,21 @@ class _$MapMarkerModelImpl implements _MapMarkerModel {
   final DateTime creationDate;
   @override
   final String reportedBy;
-  final List<String>? _images;
+  final List<String> _images;
   @override
-  List<String>? get images {
-    final value = _images;
-    if (value == null) return null;
+  List<String> get images {
     if (_images is EqualUnmodifiableListView) return _images;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_images);
+  }
+
+  final List<String>? _resolutionImages;
+  @override
+  List<String>? get resolutionImages {
+    final value = _resolutionImages;
+    if (value == null) return null;
+    if (_resolutionImages is EqualUnmodifiableListView)
+      return _resolutionImages;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(value);
   }
@@ -255,7 +279,7 @@ class _$MapMarkerModelImpl implements _MapMarkerModel {
 
   @override
   String toString() {
-    return 'MapMarkerModel(id: $id, latitude: $latitude, longitude: $longitude, markerType: $markerType, creationDate: $creationDate, reportedBy: $reportedBy, images: $images, resolutionDate: $resolutionDate, resolvedBy: $resolvedBy)';
+    return 'MapMarkerModel(id: $id, latitude: $latitude, longitude: $longitude, markerType: $markerType, creationDate: $creationDate, reportedBy: $reportedBy, images: $images, resolutionImages: $resolutionImages, resolutionDate: $resolutionDate, resolvedBy: $resolvedBy)';
   }
 
   @override
@@ -275,6 +299,8 @@ class _$MapMarkerModelImpl implements _MapMarkerModel {
             (identical(other.reportedBy, reportedBy) ||
                 other.reportedBy == reportedBy) &&
             const DeepCollectionEquality().equals(other._images, _images) &&
+            const DeepCollectionEquality()
+                .equals(other._resolutionImages, _resolutionImages) &&
             (identical(other.resolutionDate, resolutionDate) ||
                 other.resolutionDate == resolutionDate) &&
             (identical(other.resolvedBy, resolvedBy) ||
@@ -292,6 +318,7 @@ class _$MapMarkerModelImpl implements _MapMarkerModel {
       creationDate,
       reportedBy,
       const DeepCollectionEquality().hash(_images),
+      const DeepCollectionEquality().hash(_resolutionImages),
       resolutionDate,
       resolvedBy);
 
@@ -320,7 +347,8 @@ abstract class _MapMarkerModel implements MapMarkerModel {
       required final MarkerType markerType,
       required final DateTime creationDate,
       required final String reportedBy,
-      final List<String>? images,
+      required final List<String> images,
+      final List<String>? resolutionImages,
       final DateTime? resolutionDate,
       final String? resolvedBy}) = _$MapMarkerModelImpl;
 
@@ -340,7 +368,9 @@ abstract class _MapMarkerModel implements MapMarkerModel {
   @override
   String get reportedBy;
   @override
-  List<String>? get images;
+  List<String> get images;
+  @override
+  List<String>? get resolutionImages;
   @override
   DateTime? get resolutionDate;
   @override

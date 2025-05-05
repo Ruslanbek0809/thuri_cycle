@@ -58,6 +58,11 @@ class AppRouter extends RootStackRouter {
                   page: ScoreboardRoute.page,
                   meta: const {'hideBottomNav': true},
                 ),
+                AutoRoute(
+                  path: 'settings',
+                  page: SettingsRoute.page,
+                  meta: const {'hideBottomNav': true},
+                ),
               ],
             ),
             // AutoRoute(

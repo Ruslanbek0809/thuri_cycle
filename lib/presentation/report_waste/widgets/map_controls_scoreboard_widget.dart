@@ -8,16 +8,16 @@ import 'package:thuri_cycle/l10n/l10n.dart';
 import 'package:thuri_cycle/presentation/core/utils/constants.dart';
 import 'package:thuri_cycle/router.gr.dart';
 
-class MapControlsWidget extends StatefulWidget {
-  const MapControlsWidget({super.key, this.onTap});
+class MapControlsAndScoreboardWidget extends StatefulWidget {
+  const MapControlsAndScoreboardWidget({super.key, this.onTap});
   final VoidCallback? onTap;
 
   @override
-  State<MapControlsWidget> createState() => _MapControlsWidgetState();
+  State<MapControlsAndScoreboardWidget> createState() => _MapControlsAndScoreboardWidgetState();
 }
 
-class _MapControlsWidgetState extends State<MapControlsWidget>
-    with SingleTickerProviderStateMixin<MapControlsWidget> {
+class _MapControlsAndScoreboardWidgetState extends State<MapControlsAndScoreboardWidget>
+    with SingleTickerProviderStateMixin<MapControlsAndScoreboardWidget> {
   static const Duration repositionAnimDuration = Duration(milliseconds: 200);
   late final AnimationController repositionAnim;
 

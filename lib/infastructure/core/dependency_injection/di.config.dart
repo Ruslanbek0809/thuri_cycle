@@ -41,6 +41,8 @@ import 'package:thuri_cycle/application/report_waste/map_marker_form_cubit.dart'
     as _i115;
 import 'package:thuri_cycle/application/report_waste/report/report_form_cubit.dart'
     as _i401;
+import 'package:thuri_cycle/application/report_waste/single_marker_form_cubit/single_marker_form_cubit.dart'
+    as _i804;
 import 'package:thuri_cycle/domain/app/theme_model.dart' as _i836;
 import 'package:thuri_cycle/domain/auth/i_auth_facade.dart' as _i917;
 import 'package:thuri_cycle/domain/community/i_community.dart' as _i153;
@@ -163,6 +165,8 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i250.AuthFormCubit(gh<_i917.IAuth>()));
     gh.factory<_i124.ProfileUserFormCubit>(
         () => _i124.ProfileUserFormCubit(gh<_i917.IAuth>()));
+    gh.factory<_i804.SingleMarkerFormCubit>(
+        () => _i804.SingleMarkerFormCubit(gh<_i917.IAuth>()));
     gh.factory<_i401.ReportFormCubit>(
         () => _i401.ReportFormCubit(gh<_i299.IReportFacade>()));
     gh.factory<_i115.MapMarkerFormCubit>(() => _i115.MapMarkerFormCubit(

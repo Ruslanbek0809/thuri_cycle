@@ -15,7 +15,10 @@ _$MapMarkerModelImpl _$$MapMarkerModelImplFromJson(Map<String, dynamic> json) =>
       creationDate: DateTime.parse(json['creationDate'] as String),
       reportedBy: json['reportedBy'] as String,
       images:
-          (json['images'] as List<dynamic>?)?.map((e) => e as String).toList(),
+          (json['images'] as List<dynamic>).map((e) => e as String).toList(),
+      resolutionImages: (json['resolutionImages'] as List<dynamic>?)
+          ?.map((e) => e as String)
+          .toList(),
       resolutionDate: json['resolutionDate'] == null
           ? null
           : DateTime.parse(json['resolutionDate'] as String),
@@ -32,6 +35,7 @@ Map<String, dynamic> _$$MapMarkerModelImplToJson(
       'creationDate': instance.creationDate.toIso8601String(),
       'reportedBy': instance.reportedBy,
       'images': instance.images,
+      'resolutionImages': instance.resolutionImages,
       'resolutionDate': instance.resolutionDate?.toIso8601String(),
       'resolvedBy': instance.resolvedBy,
     };
