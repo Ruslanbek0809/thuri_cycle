@@ -17,6 +17,14 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$ProfileUserFormState {
   UserModel get userModel => throw _privateConstructorUsedError;
+  UserModel get userModelForEditing => throw _privateConstructorUsedError;
+  ImageWithFileModel? get userImageWithFileModel =>
+      throw _privateConstructorUsedError;
+  bool get isDeleteUserImageTriggered => throw _privateConstructorUsedError;
+  PhoneController? get userPhone => throw _privateConstructorUsedError;
+  bool get isGettingPhoneVerificationCode => throw _privateConstructorUsedError;
+  bool get isPhoneVerifying => throw _privateConstructorUsedError;
+  bool get isLoading => throw _privateConstructorUsedError;
   bool get isSubmitting => throw _privateConstructorUsedError;
   Option<Either<FirebaseFailure, Unit>> get failureOrSuccessOption =>
       throw _privateConstructorUsedError;
@@ -36,10 +44,19 @@ abstract class $ProfileUserFormStateCopyWith<$Res> {
   @useResult
   $Res call(
       {UserModel userModel,
+      UserModel userModelForEditing,
+      ImageWithFileModel? userImageWithFileModel,
+      bool isDeleteUserImageTriggered,
+      PhoneController? userPhone,
+      bool isGettingPhoneVerificationCode,
+      bool isPhoneVerifying,
+      bool isLoading,
       bool isSubmitting,
       Option<Either<FirebaseFailure, Unit>> failureOrSuccessOption});
 
   $UserModelCopyWith<$Res> get userModel;
+  $UserModelCopyWith<$Res> get userModelForEditing;
+  $ImageWithFileModelCopyWith<$Res>? get userImageWithFileModel;
 }
 
 /// @nodoc
@@ -59,6 +76,13 @@ class _$ProfileUserFormStateCopyWithImpl<$Res,
   @override
   $Res call({
     Object? userModel = null,
+    Object? userModelForEditing = null,
+    Object? userImageWithFileModel = freezed,
+    Object? isDeleteUserImageTriggered = null,
+    Object? userPhone = freezed,
+    Object? isGettingPhoneVerificationCode = null,
+    Object? isPhoneVerifying = null,
+    Object? isLoading = null,
     Object? isSubmitting = null,
     Object? failureOrSuccessOption = null,
   }) {
@@ -67,6 +91,34 @@ class _$ProfileUserFormStateCopyWithImpl<$Res,
           ? _value.userModel
           : userModel // ignore: cast_nullable_to_non_nullable
               as UserModel,
+      userModelForEditing: null == userModelForEditing
+          ? _value.userModelForEditing
+          : userModelForEditing // ignore: cast_nullable_to_non_nullable
+              as UserModel,
+      userImageWithFileModel: freezed == userImageWithFileModel
+          ? _value.userImageWithFileModel
+          : userImageWithFileModel // ignore: cast_nullable_to_non_nullable
+              as ImageWithFileModel?,
+      isDeleteUserImageTriggered: null == isDeleteUserImageTriggered
+          ? _value.isDeleteUserImageTriggered
+          : isDeleteUserImageTriggered // ignore: cast_nullable_to_non_nullable
+              as bool,
+      userPhone: freezed == userPhone
+          ? _value.userPhone
+          : userPhone // ignore: cast_nullable_to_non_nullable
+              as PhoneController?,
+      isGettingPhoneVerificationCode: null == isGettingPhoneVerificationCode
+          ? _value.isGettingPhoneVerificationCode
+          : isGettingPhoneVerificationCode // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isPhoneVerifying: null == isPhoneVerifying
+          ? _value.isPhoneVerifying
+          : isPhoneVerifying // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isLoading: null == isLoading
+          ? _value.isLoading
+          : isLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
       isSubmitting: null == isSubmitting
           ? _value.isSubmitting
           : isSubmitting // ignore: cast_nullable_to_non_nullable
@@ -87,6 +139,31 @@ class _$ProfileUserFormStateCopyWithImpl<$Res,
       return _then(_value.copyWith(userModel: value) as $Val);
     });
   }
+
+  /// Create a copy of ProfileUserFormState
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $UserModelCopyWith<$Res> get userModelForEditing {
+    return $UserModelCopyWith<$Res>(_value.userModelForEditing, (value) {
+      return _then(_value.copyWith(userModelForEditing: value) as $Val);
+    });
+  }
+
+  /// Create a copy of ProfileUserFormState
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $ImageWithFileModelCopyWith<$Res>? get userImageWithFileModel {
+    if (_value.userImageWithFileModel == null) {
+      return null;
+    }
+
+    return $ImageWithFileModelCopyWith<$Res>(_value.userImageWithFileModel!,
+        (value) {
+      return _then(_value.copyWith(userImageWithFileModel: value) as $Val);
+    });
+  }
 }
 
 /// @nodoc
@@ -99,11 +176,22 @@ abstract class _$$ProfileUserFormStateImplCopyWith<$Res>
   @useResult
   $Res call(
       {UserModel userModel,
+      UserModel userModelForEditing,
+      ImageWithFileModel? userImageWithFileModel,
+      bool isDeleteUserImageTriggered,
+      PhoneController? userPhone,
+      bool isGettingPhoneVerificationCode,
+      bool isPhoneVerifying,
+      bool isLoading,
       bool isSubmitting,
       Option<Either<FirebaseFailure, Unit>> failureOrSuccessOption});
 
   @override
   $UserModelCopyWith<$Res> get userModel;
+  @override
+  $UserModelCopyWith<$Res> get userModelForEditing;
+  @override
+  $ImageWithFileModelCopyWith<$Res>? get userImageWithFileModel;
 }
 
 /// @nodoc
@@ -120,6 +208,13 @@ class __$$ProfileUserFormStateImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? userModel = null,
+    Object? userModelForEditing = null,
+    Object? userImageWithFileModel = freezed,
+    Object? isDeleteUserImageTriggered = null,
+    Object? userPhone = freezed,
+    Object? isGettingPhoneVerificationCode = null,
+    Object? isPhoneVerifying = null,
+    Object? isLoading = null,
     Object? isSubmitting = null,
     Object? failureOrSuccessOption = null,
   }) {
@@ -128,6 +223,34 @@ class __$$ProfileUserFormStateImplCopyWithImpl<$Res>
           ? _value.userModel
           : userModel // ignore: cast_nullable_to_non_nullable
               as UserModel,
+      userModelForEditing: null == userModelForEditing
+          ? _value.userModelForEditing
+          : userModelForEditing // ignore: cast_nullable_to_non_nullable
+              as UserModel,
+      userImageWithFileModel: freezed == userImageWithFileModel
+          ? _value.userImageWithFileModel
+          : userImageWithFileModel // ignore: cast_nullable_to_non_nullable
+              as ImageWithFileModel?,
+      isDeleteUserImageTriggered: null == isDeleteUserImageTriggered
+          ? _value.isDeleteUserImageTriggered
+          : isDeleteUserImageTriggered // ignore: cast_nullable_to_non_nullable
+              as bool,
+      userPhone: freezed == userPhone
+          ? _value.userPhone
+          : userPhone // ignore: cast_nullable_to_non_nullable
+              as PhoneController?,
+      isGettingPhoneVerificationCode: null == isGettingPhoneVerificationCode
+          ? _value.isGettingPhoneVerificationCode
+          : isGettingPhoneVerificationCode // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isPhoneVerifying: null == isPhoneVerifying
+          ? _value.isPhoneVerifying
+          : isPhoneVerifying // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isLoading: null == isLoading
+          ? _value.isLoading
+          : isLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
       isSubmitting: null == isSubmitting
           ? _value.isSubmitting
           : isSubmitting // ignore: cast_nullable_to_non_nullable
@@ -145,11 +268,32 @@ class __$$ProfileUserFormStateImplCopyWithImpl<$Res>
 class _$ProfileUserFormStateImpl implements _ProfileUserFormState {
   _$ProfileUserFormStateImpl(
       {required this.userModel,
+      required this.userModelForEditing,
+      required this.userImageWithFileModel,
+      required this.isDeleteUserImageTriggered,
+      required this.userPhone,
+      required this.isGettingPhoneVerificationCode,
+      required this.isPhoneVerifying,
+      required this.isLoading,
       required this.isSubmitting,
       required this.failureOrSuccessOption});
 
   @override
   final UserModel userModel;
+  @override
+  final UserModel userModelForEditing;
+  @override
+  final ImageWithFileModel? userImageWithFileModel;
+  @override
+  final bool isDeleteUserImageTriggered;
+  @override
+  final PhoneController? userPhone;
+  @override
+  final bool isGettingPhoneVerificationCode;
+  @override
+  final bool isPhoneVerifying;
+  @override
+  final bool isLoading;
   @override
   final bool isSubmitting;
   @override
@@ -157,7 +301,7 @@ class _$ProfileUserFormStateImpl implements _ProfileUserFormState {
 
   @override
   String toString() {
-    return 'ProfileUserFormState(userModel: $userModel, isSubmitting: $isSubmitting, failureOrSuccessOption: $failureOrSuccessOption)';
+    return 'ProfileUserFormState(userModel: $userModel, userModelForEditing: $userModelForEditing, userImageWithFileModel: $userImageWithFileModel, isDeleteUserImageTriggered: $isDeleteUserImageTriggered, userPhone: $userPhone, isGettingPhoneVerificationCode: $isGettingPhoneVerificationCode, isPhoneVerifying: $isPhoneVerifying, isLoading: $isLoading, isSubmitting: $isSubmitting, failureOrSuccessOption: $failureOrSuccessOption)';
   }
 
   @override
@@ -167,6 +311,24 @@ class _$ProfileUserFormStateImpl implements _ProfileUserFormState {
             other is _$ProfileUserFormStateImpl &&
             (identical(other.userModel, userModel) ||
                 other.userModel == userModel) &&
+            (identical(other.userModelForEditing, userModelForEditing) ||
+                other.userModelForEditing == userModelForEditing) &&
+            (identical(other.userImageWithFileModel, userImageWithFileModel) ||
+                other.userImageWithFileModel == userImageWithFileModel) &&
+            (identical(other.isDeleteUserImageTriggered,
+                    isDeleteUserImageTriggered) ||
+                other.isDeleteUserImageTriggered ==
+                    isDeleteUserImageTriggered) &&
+            (identical(other.userPhone, userPhone) ||
+                other.userPhone == userPhone) &&
+            (identical(other.isGettingPhoneVerificationCode,
+                    isGettingPhoneVerificationCode) ||
+                other.isGettingPhoneVerificationCode ==
+                    isGettingPhoneVerificationCode) &&
+            (identical(other.isPhoneVerifying, isPhoneVerifying) ||
+                other.isPhoneVerifying == isPhoneVerifying) &&
+            (identical(other.isLoading, isLoading) ||
+                other.isLoading == isLoading) &&
             (identical(other.isSubmitting, isSubmitting) ||
                 other.isSubmitting == isSubmitting) &&
             (identical(other.failureOrSuccessOption, failureOrSuccessOption) ||
@@ -174,8 +336,18 @@ class _$ProfileUserFormStateImpl implements _ProfileUserFormState {
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, userModel, isSubmitting, failureOrSuccessOption);
+  int get hashCode => Object.hash(
+      runtimeType,
+      userModel,
+      userModelForEditing,
+      userImageWithFileModel,
+      isDeleteUserImageTriggered,
+      userPhone,
+      isGettingPhoneVerificationCode,
+      isPhoneVerifying,
+      isLoading,
+      isSubmitting,
+      failureOrSuccessOption);
 
   /// Create a copy of ProfileUserFormState
   /// with the given fields replaced by the non-null parameter values.
@@ -191,12 +363,33 @@ class _$ProfileUserFormStateImpl implements _ProfileUserFormState {
 abstract class _ProfileUserFormState implements ProfileUserFormState {
   factory _ProfileUserFormState(
       {required final UserModel userModel,
+      required final UserModel userModelForEditing,
+      required final ImageWithFileModel? userImageWithFileModel,
+      required final bool isDeleteUserImageTriggered,
+      required final PhoneController? userPhone,
+      required final bool isGettingPhoneVerificationCode,
+      required final bool isPhoneVerifying,
+      required final bool isLoading,
       required final bool isSubmitting,
       required final Option<Either<FirebaseFailure, Unit>>
           failureOrSuccessOption}) = _$ProfileUserFormStateImpl;
 
   @override
   UserModel get userModel;
+  @override
+  UserModel get userModelForEditing;
+  @override
+  ImageWithFileModel? get userImageWithFileModel;
+  @override
+  bool get isDeleteUserImageTriggered;
+  @override
+  PhoneController? get userPhone;
+  @override
+  bool get isGettingPhoneVerificationCode;
+  @override
+  bool get isPhoneVerifying;
+  @override
+  bool get isLoading;
   @override
   bool get isSubmitting;
   @override

@@ -34,12 +34,14 @@ Future<Either<FirebaseFailure, T>> firebaseFailureHandler<T>(
 }
 
 String mapFailureToMessage(FirebaseFailure failure) {
+  //TODO: Add translations
   return failure.when(
     unexpected: () => 'Something went wrong.',
     permissionDenied: () => 'You do not have permission.',
     notFound: () => 'Requested item not found.',
     networkError: () => 'Network error. Please try again later.',
-    custom: (msg) => msg,
+    userNotFound: () => 'User was not found',
+    custom: (msg) => msg, 
   );
   // failure.maybeMap(
   //   insufficientPermission: (_) => 'Insufficient permissions',

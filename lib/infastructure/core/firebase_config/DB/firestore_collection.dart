@@ -97,4 +97,13 @@ class FirestoreCollection<T> {
   Query<T> whereEqual(String field, dynamic value) {
     return withConverter.where(field, isEqualTo: value);
   }
+
+  //TODO [optimization]: Connect firestore service somehow and remove FirebaseFirestore from here:
+  // Future<void> update(String id, Map<String, dynamic> data) {
+  //   return firestoreService.update('$path/$id', data);
+  // }
+  Future<void> update(String path, Map<String, dynamic> data) {
+    final db = FirebaseFirestore.instance;
+    return db.doc(path).update(data);
+  }
 }

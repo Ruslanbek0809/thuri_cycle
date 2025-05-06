@@ -1,14 +1,13 @@
 import 'dart:io';
 
+import 'package:flutter/material.dart';
 import 'package:thuri_cycle/presentation/core/utils/constants.dart';
 import 'package:thuri_cycle/presentation/core/utils/methods/shortcuts.dart';
-import 'package:flutter/material.dart';
-import 'package:image_picker/image_picker.dart';
 
 class ProfileUsersCircleAvatarPickedFile extends StatelessWidget {
   const ProfileUsersCircleAvatarPickedFile({this.pickedFile, super.key});
 
-  final XFile? pickedFile;
+  final File? pickedFile;
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +35,7 @@ class ProfileUsersCircleAvatarPickedFile extends StatelessWidget {
                 ) {
                   return const Center(
                     child: Text(
-                      'This image type is not supported',
+                      'This image type is not supported', //TODO: Add translations
                     ),
                   );
                 },

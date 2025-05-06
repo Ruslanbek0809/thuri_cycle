@@ -34,7 +34,7 @@ class ReportRepository implements IReportFacade {
         markers.map((marker) async {
           // ignore: omit_local_variable_types
           final List<String> resolvedImages = await Future.wait(
-            marker.images?.map(_firebaseStorage.getImageUrl) ?? [],
+            marker.images.map(_firebaseStorage.getImageUrl),
           );
           return marker.copyWith(images: resolvedImages);
         }),

@@ -168,5 +168,14 @@
     },
     "acceptToReviewSwitchTitle": "An der Bildbewertung teilnehmen",
     "acceptToReviewSwitchDescription": "Durch die Bewertung von Bildern anderer Nutzer können Sie regelmäßig Punkte sammeln. Sie können jedoch unmoderierten Bildern mit sensiblen Inhalten ausgesetzt sein.",
+    "username": "Benutzername",
+    "phoneNumber": "Telefonnummer",
+    "email": "E-Mail",
+    "successUpdateInfo": "Sie haben Ihre Daten erfolgreich aktualisiert!",
+    "logout": "Abmelden",
+    "logOut": "Abmelden",
+    "logOutInfo": "Möchten Sie sich wirklich abmelden?",
+    "save": "Speichern",
+    "usernameIsRequired": "Benutzername ist erforderlich",
     "comingInNextUpdate": "Kommt im nächsten Update"
 }

@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:injectable/injectable.dart';
+import 'package:thuri_cycle/presentation/core/utils/methods/aliases.dart';
 
 @lazySingleton
 class FirebaseStorageService {
@@ -12,7 +13,7 @@ class FirebaseStorageService {
   Future<String> uploadImage({
     required File file,
     required String path,
-    Function(double)? onUploadProgress,
+    void Function(double)? onUploadProgress,
   }) async {
     final storageReference = FirebaseStorage.instance.ref().child(path);
     final uploadTask = storageReference.putFile(
@@ -53,6 +54,18 @@ class FirebaseStorageService {
       return _firebaseStorage
           .ref('thumbnails/kw-not-found.jpg')
           .getDownloadURL();
+    }
+  }
+
+  Future<void> deleteImage(String imagePath) async {
+    try {
+      final ref = imagePath.contains('gs://')
+          ? _firebaseStorage.refFromURL(imagePath)
+          : _firebaseStorage.ref(imagePath);
+      await ref.delete();
+    } catch (e) {
+      talker.error('_firebaseStorage deleteImage error: $e');
+      rethrow;
     }
   }
 }

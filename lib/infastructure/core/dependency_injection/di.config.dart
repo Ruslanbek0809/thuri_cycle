@@ -140,9 +140,16 @@ extension GetItInjectableX on _i174.GetIt {
     gh.lazySingleton<_i917.IAuth>(() => _i767.AuthRepository(
           gh<_i59.FirebaseAuth>(),
           gh<_i575.FirestoreService>(),
+          gh<_i137.FirebaseStorageService>(),
           gh<_i357.UserCollection>(),
           gh<_i116.GoogleSignIn>(),
         ));
+    gh.factory<_i250.AuthFormCubit>(
+        () => _i250.AuthFormCubit(gh<_i917.IAuth>()));
+    gh.factory<_i124.ProfileUserFormCubit>(
+        () => _i124.ProfileUserFormCubit(gh<_i917.IAuth>()));
+    gh.factory<_i804.SingleMarkerFormCubit>(
+        () => _i804.SingleMarkerFormCubit(gh<_i917.IAuth>()));
     gh.factory<_i390.AuthBloc>(() => _i390.AuthBloc(
           gh<_i917.IAuth>(),
           gh<_i558.FlutterSecureStorage>(),
@@ -161,12 +168,6 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i884.CommunityFeaturedCubit(gh<_i153.ICommunity>()));
     gh.factory<_i749.CommunitySingleGuideCubit>(
         () => _i749.CommunitySingleGuideCubit(gh<_i153.ICommunity>()));
-    gh.factory<_i250.AuthFormCubit>(
-        () => _i250.AuthFormCubit(gh<_i917.IAuth>()));
-    gh.factory<_i124.ProfileUserFormCubit>(
-        () => _i124.ProfileUserFormCubit(gh<_i917.IAuth>()));
-    gh.factory<_i804.SingleMarkerFormCubit>(
-        () => _i804.SingleMarkerFormCubit(gh<_i917.IAuth>()));
     gh.factory<_i401.ReportFormCubit>(
         () => _i401.ReportFormCubit(gh<_i299.IReportFacade>()));
     gh.factory<_i115.MapMarkerFormCubit>(() => _i115.MapMarkerFormCubit(

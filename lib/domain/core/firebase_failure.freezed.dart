@@ -22,6 +22,7 @@ mixin _$FirebaseFailure {
     required TResult Function() permissionDenied,
     required TResult Function() notFound,
     required TResult Function() networkError,
+    required TResult Function() userNotFound,
     required TResult Function(String message) custom,
   }) =>
       throw _privateConstructorUsedError;
@@ -31,6 +32,7 @@ mixin _$FirebaseFailure {
     TResult? Function()? permissionDenied,
     TResult? Function()? notFound,
     TResult? Function()? networkError,
+    TResult? Function()? userNotFound,
     TResult? Function(String message)? custom,
   }) =>
       throw _privateConstructorUsedError;
@@ -40,6 +42,7 @@ mixin _$FirebaseFailure {
     TResult Function()? permissionDenied,
     TResult Function()? notFound,
     TResult Function()? networkError,
+    TResult Function()? userNotFound,
     TResult Function(String message)? custom,
     required TResult orElse(),
   }) =>
@@ -50,6 +53,7 @@ mixin _$FirebaseFailure {
     required TResult Function(_PermissionDenied value) permissionDenied,
     required TResult Function(_NotFound value) notFound,
     required TResult Function(_NetworkError value) networkError,
+    required TResult Function(_UserNotFound value) userNotFound,
     required TResult Function(_Custom value) custom,
   }) =>
       throw _privateConstructorUsedError;
@@ -59,6 +63,7 @@ mixin _$FirebaseFailure {
     TResult? Function(_PermissionDenied value)? permissionDenied,
     TResult? Function(_NotFound value)? notFound,
     TResult? Function(_NetworkError value)? networkError,
+    TResult? Function(_UserNotFound value)? userNotFound,
     TResult? Function(_Custom value)? custom,
   }) =>
       throw _privateConstructorUsedError;
@@ -68,6 +73,7 @@ mixin _$FirebaseFailure {
     TResult Function(_PermissionDenied value)? permissionDenied,
     TResult Function(_NotFound value)? notFound,
     TResult Function(_NetworkError value)? networkError,
+    TResult Function(_UserNotFound value)? userNotFound,
     TResult Function(_Custom value)? custom,
     required TResult orElse(),
   }) =>
@@ -140,6 +146,7 @@ class _$UnexpectedImpl implements _Unexpected {
     required TResult Function() permissionDenied,
     required TResult Function() notFound,
     required TResult Function() networkError,
+    required TResult Function() userNotFound,
     required TResult Function(String message) custom,
   }) {
     return unexpected();
@@ -152,6 +159,7 @@ class _$UnexpectedImpl implements _Unexpected {
     TResult? Function()? permissionDenied,
     TResult? Function()? notFound,
     TResult? Function()? networkError,
+    TResult? Function()? userNotFound,
     TResult? Function(String message)? custom,
   }) {
     return unexpected?.call();
@@ -164,6 +172,7 @@ class _$UnexpectedImpl implements _Unexpected {
     TResult Function()? permissionDenied,
     TResult Function()? notFound,
     TResult Function()? networkError,
+    TResult Function()? userNotFound,
     TResult Function(String message)? custom,
     required TResult orElse(),
   }) {
@@ -180,6 +189,7 @@ class _$UnexpectedImpl implements _Unexpected {
     required TResult Function(_PermissionDenied value) permissionDenied,
     required TResult Function(_NotFound value) notFound,
     required TResult Function(_NetworkError value) networkError,
+    required TResult Function(_UserNotFound value) userNotFound,
     required TResult Function(_Custom value) custom,
   }) {
     return unexpected(this);
@@ -192,6 +202,7 @@ class _$UnexpectedImpl implements _Unexpected {
     TResult? Function(_PermissionDenied value)? permissionDenied,
     TResult? Function(_NotFound value)? notFound,
     TResult? Function(_NetworkError value)? networkError,
+    TResult? Function(_UserNotFound value)? userNotFound,
     TResult? Function(_Custom value)? custom,
   }) {
     return unexpected?.call(this);
@@ -204,6 +215,7 @@ class _$UnexpectedImpl implements _Unexpected {
     TResult Function(_PermissionDenied value)? permissionDenied,
     TResult Function(_NotFound value)? notFound,
     TResult Function(_NetworkError value)? networkError,
+    TResult Function(_UserNotFound value)? userNotFound,
     TResult Function(_Custom value)? custom,
     required TResult orElse(),
   }) {
@@ -263,6 +275,7 @@ class _$PermissionDeniedImpl implements _PermissionDenied {
     required TResult Function() permissionDenied,
     required TResult Function() notFound,
     required TResult Function() networkError,
+    required TResult Function() userNotFound,
     required TResult Function(String message) custom,
   }) {
     return permissionDenied();
@@ -275,6 +288,7 @@ class _$PermissionDeniedImpl implements _PermissionDenied {
     TResult? Function()? permissionDenied,
     TResult? Function()? notFound,
     TResult? Function()? networkError,
+    TResult? Function()? userNotFound,
     TResult? Function(String message)? custom,
   }) {
     return permissionDenied?.call();
@@ -287,6 +301,7 @@ class _$PermissionDeniedImpl implements _PermissionDenied {
     TResult Function()? permissionDenied,
     TResult Function()? notFound,
     TResult Function()? networkError,
+    TResult Function()? userNotFound,
     TResult Function(String message)? custom,
     required TResult orElse(),
   }) {
@@ -303,6 +318,7 @@ class _$PermissionDeniedImpl implements _PermissionDenied {
     required TResult Function(_PermissionDenied value) permissionDenied,
     required TResult Function(_NotFound value) notFound,
     required TResult Function(_NetworkError value) networkError,
+    required TResult Function(_UserNotFound value) userNotFound,
     required TResult Function(_Custom value) custom,
   }) {
     return permissionDenied(this);
@@ -315,6 +331,7 @@ class _$PermissionDeniedImpl implements _PermissionDenied {
     TResult? Function(_PermissionDenied value)? permissionDenied,
     TResult? Function(_NotFound value)? notFound,
     TResult? Function(_NetworkError value)? networkError,
+    TResult? Function(_UserNotFound value)? userNotFound,
     TResult? Function(_Custom value)? custom,
   }) {
     return permissionDenied?.call(this);
@@ -327,6 +344,7 @@ class _$PermissionDeniedImpl implements _PermissionDenied {
     TResult Function(_PermissionDenied value)? permissionDenied,
     TResult Function(_NotFound value)? notFound,
     TResult Function(_NetworkError value)? networkError,
+    TResult Function(_UserNotFound value)? userNotFound,
     TResult Function(_Custom value)? custom,
     required TResult orElse(),
   }) {
@@ -386,6 +404,7 @@ class _$NotFoundImpl implements _NotFound {
     required TResult Function() permissionDenied,
     required TResult Function() notFound,
     required TResult Function() networkError,
+    required TResult Function() userNotFound,
     required TResult Function(String message) custom,
   }) {
     return notFound();
@@ -398,6 +417,7 @@ class _$NotFoundImpl implements _NotFound {
     TResult? Function()? permissionDenied,
     TResult? Function()? notFound,
     TResult? Function()? networkError,
+    TResult? Function()? userNotFound,
     TResult? Function(String message)? custom,
   }) {
     return notFound?.call();
@@ -410,6 +430,7 @@ class _$NotFoundImpl implements _NotFound {
     TResult Function()? permissionDenied,
     TResult Function()? notFound,
     TResult Function()? networkError,
+    TResult Function()? userNotFound,
     TResult Function(String message)? custom,
     required TResult orElse(),
   }) {
@@ -426,6 +447,7 @@ class _$NotFoundImpl implements _NotFound {
     required TResult Function(_PermissionDenied value) permissionDenied,
     required TResult Function(_NotFound value) notFound,
     required TResult Function(_NetworkError value) networkError,
+    required TResult Function(_UserNotFound value) userNotFound,
     required TResult Function(_Custom value) custom,
   }) {
     return notFound(this);
@@ -438,6 +460,7 @@ class _$NotFoundImpl implements _NotFound {
     TResult? Function(_PermissionDenied value)? permissionDenied,
     TResult? Function(_NotFound value)? notFound,
     TResult? Function(_NetworkError value)? networkError,
+    TResult? Function(_UserNotFound value)? userNotFound,
     TResult? Function(_Custom value)? custom,
   }) {
     return notFound?.call(this);
@@ -450,6 +473,7 @@ class _$NotFoundImpl implements _NotFound {
     TResult Function(_PermissionDenied value)? permissionDenied,
     TResult Function(_NotFound value)? notFound,
     TResult Function(_NetworkError value)? networkError,
+    TResult Function(_UserNotFound value)? userNotFound,
     TResult Function(_Custom value)? custom,
     required TResult orElse(),
   }) {
@@ -509,6 +533,7 @@ class _$NetworkErrorImpl implements _NetworkError {
     required TResult Function() permissionDenied,
     required TResult Function() notFound,
     required TResult Function() networkError,
+    required TResult Function() userNotFound,
     required TResult Function(String message) custom,
   }) {
     return networkError();
@@ -521,6 +546,7 @@ class _$NetworkErrorImpl implements _NetworkError {
     TResult? Function()? permissionDenied,
     TResult? Function()? notFound,
     TResult? Function()? networkError,
+    TResult? Function()? userNotFound,
     TResult? Function(String message)? custom,
   }) {
     return networkError?.call();
@@ -533,6 +559,7 @@ class _$NetworkErrorImpl implements _NetworkError {
     TResult Function()? permissionDenied,
     TResult Function()? notFound,
     TResult Function()? networkError,
+    TResult Function()? userNotFound,
     TResult Function(String message)? custom,
     required TResult orElse(),
   }) {
@@ -549,6 +576,7 @@ class _$NetworkErrorImpl implements _NetworkError {
     required TResult Function(_PermissionDenied value) permissionDenied,
     required TResult Function(_NotFound value) notFound,
     required TResult Function(_NetworkError value) networkError,
+    required TResult Function(_UserNotFound value) userNotFound,
     required TResult Function(_Custom value) custom,
   }) {
     return networkError(this);
@@ -561,6 +589,7 @@ class _$NetworkErrorImpl implements _NetworkError {
     TResult? Function(_PermissionDenied value)? permissionDenied,
     TResult? Function(_NotFound value)? notFound,
     TResult? Function(_NetworkError value)? networkError,
+    TResult? Function(_UserNotFound value)? userNotFound,
     TResult? Function(_Custom value)? custom,
   }) {
     return networkError?.call(this);
@@ -573,6 +602,7 @@ class _$NetworkErrorImpl implements _NetworkError {
     TResult Function(_PermissionDenied value)? permissionDenied,
     TResult Function(_NotFound value)? notFound,
     TResult Function(_NetworkError value)? networkError,
+    TResult Function(_UserNotFound value)? userNotFound,
     TResult Function(_Custom value)? custom,
     required TResult orElse(),
   }) {
@@ -585,6 +615,135 @@ class _$NetworkErrorImpl implements _NetworkError {
 
 abstract class _NetworkError implements FirebaseFailure {
   const factory _NetworkError() = _$NetworkErrorImpl;
+}
+
+/// @nodoc
+abstract class _$$UserNotFoundImplCopyWith<$Res> {
+  factory _$$UserNotFoundImplCopyWith(
+          _$UserNotFoundImpl value, $Res Function(_$UserNotFoundImpl) then) =
+      __$$UserNotFoundImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$UserNotFoundImplCopyWithImpl<$Res>
+    extends _$FirebaseFailureCopyWithImpl<$Res, _$UserNotFoundImpl>
+    implements _$$UserNotFoundImplCopyWith<$Res> {
+  __$$UserNotFoundImplCopyWithImpl(
+      _$UserNotFoundImpl _value, $Res Function(_$UserNotFoundImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of FirebaseFailure
+  /// with the given fields replaced by the non-null parameter values.
+}
+
+/// @nodoc
+
+class _$UserNotFoundImpl implements _UserNotFound {
+  const _$UserNotFoundImpl();
+
+  @override
+  String toString() {
+    return 'FirebaseFailure.userNotFound()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$UserNotFoundImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() unexpected,
+    required TResult Function() permissionDenied,
+    required TResult Function() notFound,
+    required TResult Function() networkError,
+    required TResult Function() userNotFound,
+    required TResult Function(String message) custom,
+  }) {
+    return userNotFound();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? unexpected,
+    TResult? Function()? permissionDenied,
+    TResult? Function()? notFound,
+    TResult? Function()? networkError,
+    TResult? Function()? userNotFound,
+    TResult? Function(String message)? custom,
+  }) {
+    return userNotFound?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? unexpected,
+    TResult Function()? permissionDenied,
+    TResult Function()? notFound,
+    TResult Function()? networkError,
+    TResult Function()? userNotFound,
+    TResult Function(String message)? custom,
+    required TResult orElse(),
+  }) {
+    if (userNotFound != null) {
+      return userNotFound();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Unexpected value) unexpected,
+    required TResult Function(_PermissionDenied value) permissionDenied,
+    required TResult Function(_NotFound value) notFound,
+    required TResult Function(_NetworkError value) networkError,
+    required TResult Function(_UserNotFound value) userNotFound,
+    required TResult Function(_Custom value) custom,
+  }) {
+    return userNotFound(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Unexpected value)? unexpected,
+    TResult? Function(_PermissionDenied value)? permissionDenied,
+    TResult? Function(_NotFound value)? notFound,
+    TResult? Function(_NetworkError value)? networkError,
+    TResult? Function(_UserNotFound value)? userNotFound,
+    TResult? Function(_Custom value)? custom,
+  }) {
+    return userNotFound?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Unexpected value)? unexpected,
+    TResult Function(_PermissionDenied value)? permissionDenied,
+    TResult Function(_NotFound value)? notFound,
+    TResult Function(_NetworkError value)? networkError,
+    TResult Function(_UserNotFound value)? userNotFound,
+    TResult Function(_Custom value)? custom,
+    required TResult orElse(),
+  }) {
+    if (userNotFound != null) {
+      return userNotFound(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _UserNotFound implements FirebaseFailure {
+  const factory _UserNotFound() = _$UserNotFoundImpl;
 }
 
 /// @nodoc
@@ -659,6 +818,7 @@ class _$CustomImpl implements _Custom {
     required TResult Function() permissionDenied,
     required TResult Function() notFound,
     required TResult Function() networkError,
+    required TResult Function() userNotFound,
     required TResult Function(String message) custom,
   }) {
     return custom(message);
@@ -671,6 +831,7 @@ class _$CustomImpl implements _Custom {
     TResult? Function()? permissionDenied,
     TResult? Function()? notFound,
     TResult? Function()? networkError,
+    TResult? Function()? userNotFound,
     TResult? Function(String message)? custom,
   }) {
     return custom?.call(message);
@@ -683,6 +844,7 @@ class _$CustomImpl implements _Custom {
     TResult Function()? permissionDenied,
     TResult Function()? notFound,
     TResult Function()? networkError,
+    TResult Function()? userNotFound,
     TResult Function(String message)? custom,
     required TResult orElse(),
   }) {
@@ -699,6 +861,7 @@ class _$CustomImpl implements _Custom {
     required TResult Function(_PermissionDenied value) permissionDenied,
     required TResult Function(_NotFound value) notFound,
     required TResult Function(_NetworkError value) networkError,
+    required TResult Function(_UserNotFound value) userNotFound,
     required TResult Function(_Custom value) custom,
   }) {
     return custom(this);
@@ -711,6 +874,7 @@ class _$CustomImpl implements _Custom {
     TResult? Function(_PermissionDenied value)? permissionDenied,
     TResult? Function(_NotFound value)? notFound,
     TResult? Function(_NetworkError value)? networkError,
+    TResult? Function(_UserNotFound value)? userNotFound,
     TResult? Function(_Custom value)? custom,
   }) {
     return custom?.call(this);
@@ -723,6 +887,7 @@ class _$CustomImpl implements _Custom {
     TResult Function(_PermissionDenied value)? permissionDenied,
     TResult Function(_NotFound value)? notFound,
     TResult Function(_NetworkError value)? networkError,
+    TResult Function(_UserNotFound value)? userNotFound,
     TResult Function(_Custom value)? custom,
     required TResult orElse(),
   }) {

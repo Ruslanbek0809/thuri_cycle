@@ -1,3 +1,4 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:thuri_cycle/application/auth/profile_user_form/profile_user_form_cubit.dart';
@@ -6,6 +7,7 @@ import 'package:thuri_cycle/presentation/core/utils/constants.dart';
 import 'package:thuri_cycle/presentation/core/utils/methods/shortcuts.dart';
 import 'package:thuri_cycle/presentation/core/widgets/custom/custom_bordered_avatar_image.dart';
 import 'package:thuri_cycle/presentation/core/widgets/custom/custom_svg_avatar.dart';
+import 'package:thuri_cycle/router.gr.dart';
 
 class ProfileUserCard extends StatefulWidget {
   const ProfileUserCard({super.key});
@@ -30,9 +32,9 @@ class _ProfileUserCardState extends State<ProfileUserCard> {
           final userModel = state.userModel;
           return InkWell(
             onTap: () async {
-              // await context.router.push(
-              //   const ProfileUserEditInfoRoute(),
-              // );
+              await context.router.push(
+                const ProfileUserEditRoute(),
+              );
             },
             child: Ink(
               padding: EdgeInsets.symmetric(

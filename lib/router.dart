@@ -91,7 +91,15 @@ class AppRouter extends RootStackRouter {
             // AutoRoute(path: 'community', page: CommunityRoute.page),
             AutoRoute(
               path: 'profile',
-              page: ProfileRoute.page,
+              page: const EmptyShellRoute('ProfileRoute'),
+              children: [
+                AutoRoute(path: '', page: ProfileRoute.page, initial: true),
+                AutoRoute(
+                  path: 'profile-user-edit',
+                  page: ProfileUserEditRoute.page,
+                  meta: const {'hideBottomNav': true},
+                ),
+              ],
             ),
           ],
         ),

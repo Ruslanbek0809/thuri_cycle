@@ -7,8 +7,12 @@ import 'package:thuri_cycle/application/auth/auth_form/auth_form_cubit.dart';
 import 'package:thuri_cycle/domain/auth/auth_failure.dart';
 import 'package:thuri_cycle/domain/auth/i_auth_facade.dart';
 import 'package:thuri_cycle/domain/auth/user_model/user_model.dart';
+import 'package:thuri_cycle/domain/core/firebase_failure.dart';
+import 'package:thuri_cycle/domain/report_waste/image_with_file.dart';
 import 'package:thuri_cycle/infastructure/core/firebase_config/DB/firestore_service.dart';
 import 'package:thuri_cycle/infastructure/core/firebase_config/collections.dart';
+import 'package:thuri_cycle/infastructure/core/firebase_config/firebase_failure_handler.dart';
+import 'package:thuri_cycle/infastructure/core/firebase_config/storage/firebase_storage.dart';
 import 'package:thuri_cycle/presentation/core/utils/methods/aliases.dart';
 import 'package:thuri_cycle/presentation/core/utils/methods/shortcuts.dart';
 
@@ -23,6 +27,7 @@ class AuthRepository implements IAuth {
   AuthRepository(
     this._firebaseAuth,
     this._firestoreService,
+    this._firebaseStorageService,
     this._userCollection,
     this._googleSignIn,
     // this._secureStorage,
@@ -30,11 +35,12 @@ class AuthRepository implements IAuth {
 
   final firebase_auth.FirebaseAuth _firebaseAuth;
   final FirestoreService _firestoreService;
+  final FirebaseStorageService _firebaseStorageService;
   final UserCollection _userCollection;
   final GoogleSignIn _googleSignIn;
   // final FlutterSecureStorage _secureStorage;
 
-  //*----------------- FIREBASE ---------------------//
+  //*----------------- FB USER ---------------------//
 
   @override
   Stream<Option<UserModel>> watchUserProfileFromFB() async* {
@@ -49,6 +55,45 @@ class AuthRepository implements IAuth {
   }
 
   @override
+  Future<Either<FirebaseFailure, UserModel>> updateProfileUser(
+    UserModel user,
+    ImageWithFileModel? newImage, {
+    bool deleteImageTriggered = false,
+  }) async {
+    return firebaseFailureHandler(() async {
+      final uid = user.uid;
+      if (uid == null) {
+        //TODO [optimization]: Handle this FirebaseException later to move inside firebaseFailureHandler
+        throw firebase_auth.FirebaseException(
+          plugin: 'firebase-auth',
+          code: 'user-not-found',
+          message: 'User ID is null',
+        );
+      }
+
+      var newImageUrl = user.profilePicture;
+
+      if (deleteImageTriggered && user.profilePicture != null) {
+        await _firebaseStorageService.deleteImage(user.profilePicture!);
+        newImageUrl = null;
+      }
+
+      if (newImage != null) {
+        newImageUrl = await _firebaseStorageService.uploadImage(
+          file: newImage.file,
+          path: 'users/$uid/profile.jpg',
+        );
+      }
+
+      talker.verbose('uid: $uid');
+      final updatedUser = user.copyWith(profilePicture: newImageUrl);
+      await _userCollection.update(uid, updatedUser.toJson());
+
+      return updatedUser;
+    });
+  }
+
+  @override
   Future<Option<UserModel>> getUserModelByID(String uid) async {
     final user = await _userCollection.futureSingleByID(uid);
     if (user != null) {
@@ -57,20 +102,6 @@ class AuthRepository implements IAuth {
       return none();
     }
   }
-
-  // @override
-  // Future<void> updateProfile(UserModel user) async {
-  //   await _userCollection.doc(user.uid).update(user.toJson());
-  // }
-
-  // @override
-  // Future<void> createUserIfNotExists(UserModel user) async {
-  //   final docRef = _userCollection.doc(user.uid);
-  //   final doc = await docRef.get();
-  //   if (!doc.exists) {
-  //     await docRef.set(user.toJson());
-  //   }
-  // }
 
   // @override
   // Future<Option<FirebaseUser>> getSignedInUser() async =>
@@ -92,6 +123,8 @@ class AuthRepository implements IAuth {
       return left(const AuthFailure.serverError());
     }
   }
+
+  //*----------------- SIGNINs / SIGNOUT ---------------------//
 
   @override
   Future<Either<AuthFailure, SignInMethod>> signInWithGoogle() async {

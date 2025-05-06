@@ -8,5 +8,6 @@ class FirebaseFailure with _$FirebaseFailure {
   const factory FirebaseFailure.permissionDenied() = _PermissionDenied;
   const factory FirebaseFailure.notFound() = _NotFound;
   const factory FirebaseFailure.networkError() = _NetworkError;
+  const factory FirebaseFailure.userNotFound() = _UserNotFound;
   const factory FirebaseFailure.custom(String message) = _Custom;
 }

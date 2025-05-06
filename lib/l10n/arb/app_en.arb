@@ -168,5 +168,14 @@
     },
     "acceptToReviewSwitchTitle": "Participate in reviewing images",
     "acceptToReviewSwitchDescription": "Reviewing images posted by other users allows you to earn some points periodically, however you might be exposed to unmoderated images with sensitive content",
+    "username": "Username",
+    "phoneNumber": "Phone number",
+    "email": "E-mail",
+    "successUpdateInfo": "You have successfully updated your info!",
+    "logout": "Logout",
+    "logOut": "Log out",
+    "logOutInfo": "Do you really want to log out?",
+    "save": "Save",
+    "usernameIsRequired": "Username is required",
     "comingInNextUpdate": "Coming in the next update"
 }

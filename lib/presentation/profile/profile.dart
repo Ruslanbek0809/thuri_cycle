@@ -12,6 +12,8 @@ import 'package:thuri_cycle/l10n/l10n.dart';
 import 'package:thuri_cycle/presentation/core/utils/constants.dart';
 import 'package:thuri_cycle/presentation/core/utils/helpers/bottom_sheet_helper.dart';
 import 'package:thuri_cycle/presentation/core/utils/helpers/simple_dialog_helper.dart';
+import 'package:thuri_cycle/presentation/core/utils/helpers/snackbar_helper.dart';
+import 'package:thuri_cycle/presentation/core/utils/methods/aliases.dart';
 import 'package:thuri_cycle/presentation/core/utils/methods/shortcuts.dart';
 import 'package:thuri_cycle/presentation/core/widgets/custom/custom_divider.dart';
 import 'package:thuri_cycle/presentation/profile/widgets/profile_item_card.dart';
@@ -241,11 +243,18 @@ class _ProfilePageState extends State<ProfilePage> {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          //TODO: Implement now
                           ProfileItemCard(
                             title: context.l10n.termsOfUse,
                             svgName: 'assets/profile/terms.svg',
                             onTap: () async {
+                              //TODO [optimization]: Add this functionality in the next update later
+                              scaffoldMessengerKey.currentState
+                                ?..hideCurrentSnackBar()
+                                ..showSnackBar(
+                                  SnackBarHelper.createInformation(
+                                    message: context.l10n.comingInNextUpdate,
+                                  ),
+                                );
                               // await context.router
                               //     .push(const TermsOfUseRoute());
                             },
@@ -294,12 +303,7 @@ class _ProfilePageState extends State<ProfilePage> {
                             title: context.l10n.appVersion,
                             svgName: 'assets/profile/updates.svg',
                             value: 'V ${state.packageInfo?.version}',
-                            onTap: () async {
-                              //TODO: Don't forget to remove this when EditProfilePage is implemented
-                              context
-                                  .read<AuthBloc>()
-                                  .add(const AuthEvent.signedOut());
-                            },
+                            // onTap: () async {},
                           ),
                         ],
                       ),
