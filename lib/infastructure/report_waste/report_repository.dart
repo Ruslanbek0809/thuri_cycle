@@ -70,7 +70,7 @@ class ReportRepository implements IReportFacade {
   }
 
   @override
-  Future<Either<FirebaseFailure, Unit>> submitReport({
+  Future<Either<FirebaseFailure, MapMarkerModel>> submitReport({
     required double latitude,
     required double longitude,
     required MarkerType markerType,
@@ -92,9 +92,13 @@ class ReportRepository implements IReportFacade {
         reportedBy: reportedBy,
       );
 
-      await _mapMarkersCollection.withConverter.add(marker);
+      final docRef = await _mapMarkersCollection.withConverter.add(marker);
 
-      return unit;
+      // Refetch the marker to get the assigned `id` and proper data
+      final saved = await docRef.get();
+      final fullMarker = saved.data()!.copyWith(id: saved.id);
+
+      return fullMarker;
     });
   }
 }

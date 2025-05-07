@@ -20,6 +20,8 @@ import 'package:thuri_cycle/presentation/core/widgets/custom/custom_loading_indi
 import 'package:thuri_cycle/presentation/report_waste/widgets/add_report_photos_widget.dart';
 import 'package:thuri_cycle/router.gr.dart';
 
+//TODO: Return this resolved marker to the map (check old project) (add verification to remove the map marker)
+//TODO: Handle checkFields
 @RoutePage()
 class ResolvePage extends StatefulWidget {
   const ResolvePage(this.mapMarker, {super.key});

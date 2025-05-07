@@ -89,6 +89,7 @@ class _BottomControlsWidgetState extends State<BottomControlsWidget>
                     });
                   }
                 } else {
+                  //TODO: Fix this. Can't access
                   await context.router.push(
                     const ProfileUserEditRoute(),
                   );

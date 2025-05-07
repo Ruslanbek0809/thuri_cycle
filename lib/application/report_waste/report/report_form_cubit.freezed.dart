@@ -20,10 +20,10 @@ mixin _$ReportFormState {
   List<ImageWithFileModel> get images => throw _privateConstructorUsedError;
   bool get isSubmitting => throw _privateConstructorUsedError;
   bool get submissionSuccess => throw _privateConstructorUsedError;
-  Option<Either<FirebaseFailure, Unit>> get failureOrSuccessOption =>
+  Option<Either<FirebaseFailure, MapMarkerModel>> get failureOrSuccessOption =>
       throw _privateConstructorUsedError;
-  String? get errorMessage => throw _privateConstructorUsedError;
-  MapMarkerModel? get createdMarker => throw _privateConstructorUsedError;
+  String? get errorMessage =>
+      throw _privateConstructorUsedError; // MapMarkerModel? createdMarker,
   String? get imageUploadError => throw _privateConstructorUsedError;
 
   /// Create a copy of ReportFormState
@@ -44,12 +44,9 @@ abstract class $ReportFormStateCopyWith<$Res> {
       List<ImageWithFileModel> images,
       bool isSubmitting,
       bool submissionSuccess,
-      Option<Either<FirebaseFailure, Unit>> failureOrSuccessOption,
+      Option<Either<FirebaseFailure, MapMarkerModel>> failureOrSuccessOption,
       String? errorMessage,
-      MapMarkerModel? createdMarker,
       String? imageUploadError});
-
-  $MapMarkerModelCopyWith<$Res>? get createdMarker;
 }
 
 /// @nodoc
@@ -73,7 +70,6 @@ class _$ReportFormStateCopyWithImpl<$Res, $Val extends ReportFormState>
     Object? submissionSuccess = null,
     Object? failureOrSuccessOption = null,
     Object? errorMessage = freezed,
-    Object? createdMarker = freezed,
     Object? imageUploadError = freezed,
   }) {
     return _then(_value.copyWith(
@@ -96,34 +92,16 @@ class _$ReportFormStateCopyWithImpl<$Res, $Val extends ReportFormState>
       failureOrSuccessOption: null == failureOrSuccessOption
           ? _value.failureOrSuccessOption
           : failureOrSuccessOption // ignore: cast_nullable_to_non_nullable
-              as Option<Either<FirebaseFailure, Unit>>,
+              as Option<Either<FirebaseFailure, MapMarkerModel>>,
       errorMessage: freezed == errorMessage
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
               as String?,
-      createdMarker: freezed == createdMarker
-          ? _value.createdMarker
-          : createdMarker // ignore: cast_nullable_to_non_nullable
-              as MapMarkerModel?,
       imageUploadError: freezed == imageUploadError
           ? _value.imageUploadError
           : imageUploadError // ignore: cast_nullable_to_non_nullable
               as String?,
     ) as $Val);
-  }
-
-  /// Create a copy of ReportFormState
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $MapMarkerModelCopyWith<$Res>? get createdMarker {
-    if (_value.createdMarker == null) {
-      return null;
-    }
-
-    return $MapMarkerModelCopyWith<$Res>(_value.createdMarker!, (value) {
-      return _then(_value.copyWith(createdMarker: value) as $Val);
-    });
   }
 }
 
@@ -140,13 +118,9 @@ abstract class _$$ReportFormStateImplCopyWith<$Res>
       List<ImageWithFileModel> images,
       bool isSubmitting,
       bool submissionSuccess,
-      Option<Either<FirebaseFailure, Unit>> failureOrSuccessOption,
+      Option<Either<FirebaseFailure, MapMarkerModel>> failureOrSuccessOption,
       String? errorMessage,
-      MapMarkerModel? createdMarker,
       String? imageUploadError});
-
-  @override
-  $MapMarkerModelCopyWith<$Res>? get createdMarker;
 }
 
 /// @nodoc
@@ -168,7 +142,6 @@ class __$$ReportFormStateImplCopyWithImpl<$Res>
     Object? submissionSuccess = null,
     Object? failureOrSuccessOption = null,
     Object? errorMessage = freezed,
-    Object? createdMarker = freezed,
     Object? imageUploadError = freezed,
   }) {
     return _then(_$ReportFormStateImpl(
@@ -191,15 +164,11 @@ class __$$ReportFormStateImplCopyWithImpl<$Res>
       failureOrSuccessOption: null == failureOrSuccessOption
           ? _value.failureOrSuccessOption
           : failureOrSuccessOption // ignore: cast_nullable_to_non_nullable
-              as Option<Either<FirebaseFailure, Unit>>,
+              as Option<Either<FirebaseFailure, MapMarkerModel>>,
       errorMessage: freezed == errorMessage
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
               as String?,
-      createdMarker: freezed == createdMarker
-          ? _value.createdMarker
-          : createdMarker // ignore: cast_nullable_to_non_nullable
-              as MapMarkerModel?,
       imageUploadError: freezed == imageUploadError
           ? _value.imageUploadError
           : imageUploadError // ignore: cast_nullable_to_non_nullable
@@ -218,7 +187,6 @@ class _$ReportFormStateImpl implements _ReportFormState {
       required this.submissionSuccess,
       required this.failureOrSuccessOption,
       this.errorMessage,
-      this.createdMarker,
       this.imageUploadError})
       : _images = images;
 
@@ -237,17 +205,16 @@ class _$ReportFormStateImpl implements _ReportFormState {
   @override
   final bool submissionSuccess;
   @override
-  final Option<Either<FirebaseFailure, Unit>> failureOrSuccessOption;
+  final Option<Either<FirebaseFailure, MapMarkerModel>> failureOrSuccessOption;
   @override
   final String? errorMessage;
-  @override
-  final MapMarkerModel? createdMarker;
+// MapMarkerModel? createdMarker,
   @override
   final String? imageUploadError;
 
   @override
   String toString() {
-    return 'ReportFormState(markerType: $markerType, images: $images, isSubmitting: $isSubmitting, submissionSuccess: $submissionSuccess, failureOrSuccessOption: $failureOrSuccessOption, errorMessage: $errorMessage, createdMarker: $createdMarker, imageUploadError: $imageUploadError)';
+    return 'ReportFormState(markerType: $markerType, images: $images, isSubmitting: $isSubmitting, submissionSuccess: $submissionSuccess, failureOrSuccessOption: $failureOrSuccessOption, errorMessage: $errorMessage, imageUploadError: $imageUploadError)';
   }
 
   @override
@@ -266,8 +233,6 @@ class _$ReportFormStateImpl implements _ReportFormState {
                 other.failureOrSuccessOption == failureOrSuccessOption) &&
             (identical(other.errorMessage, errorMessage) ||
                 other.errorMessage == errorMessage) &&
-            (identical(other.createdMarker, createdMarker) ||
-                other.createdMarker == createdMarker) &&
             (identical(other.imageUploadError, imageUploadError) ||
                 other.imageUploadError == imageUploadError));
   }
@@ -281,7 +246,6 @@ class _$ReportFormStateImpl implements _ReportFormState {
       submissionSuccess,
       failureOrSuccessOption,
       errorMessage,
-      createdMarker,
       imageUploadError);
 
   /// Create a copy of ReportFormState
@@ -300,10 +264,9 @@ abstract class _ReportFormState implements ReportFormState {
       required final List<ImageWithFileModel> images,
       required final bool isSubmitting,
       required final bool submissionSuccess,
-      required final Option<Either<FirebaseFailure, Unit>>
+      required final Option<Either<FirebaseFailure, MapMarkerModel>>
           failureOrSuccessOption,
       final String? errorMessage,
-      final MapMarkerModel? createdMarker,
       final String? imageUploadError}) = _$ReportFormStateImpl;
 
   @override
@@ -315,11 +278,9 @@ abstract class _ReportFormState implements ReportFormState {
   @override
   bool get submissionSuccess;
   @override
-  Option<Either<FirebaseFailure, Unit>> get failureOrSuccessOption;
+  Option<Either<FirebaseFailure, MapMarkerModel>> get failureOrSuccessOption;
   @override
-  String? get errorMessage;
-  @override
-  MapMarkerModel? get createdMarker;
+  String? get errorMessage; // MapMarkerModel? createdMarker,
   @override
   String? get imageUploadError;
 

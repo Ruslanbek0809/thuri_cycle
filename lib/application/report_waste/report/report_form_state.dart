@@ -7,9 +7,10 @@ class ReportFormState with _$ReportFormState {
     required List<ImageWithFileModel> images,
     required bool isSubmitting,
     required bool submissionSuccess,
-    required Option<Either<FirebaseFailure, Unit>> failureOrSuccessOption,
+    required Option<Either<FirebaseFailure, MapMarkerModel>>
+        failureOrSuccessOption,
     String? errorMessage,
-    MapMarkerModel? createdMarker,
+    // MapMarkerModel? createdMarker,
     String? imageUploadError,
   }) = _ReportFormState;
 

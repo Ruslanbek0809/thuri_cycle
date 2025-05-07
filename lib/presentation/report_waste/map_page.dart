@@ -234,9 +234,25 @@ class _MapPageState extends State<MapPage> with WidgetsBindingObserver {
                 alignment: Alignment.bottomCenter,
                 child: BottomControlsWidget(
                   onAddWidgetPressed: () async {
-                    await context.router.push(
+                    final mapMarkerModel =
+                        await context.router.push<MapMarkerModel?>(
                       const ReportRoute(),
                     );
+                    if (mapMarkerModel != null) {
+                      if (context.mounted) {
+                        context
+                            .read<MapMarkerFormCubit>()
+                            .addOrReplaceMarker(mapMarkerModel);
+
+                        scaffoldMessengerKey.currentState
+                          ?..hideCurrentSnackBar()
+                          ..showSnackBar(
+                            SnackBarHelper.createSuccess(
+                              message: context.l10n.reportedSuccessfully,
+                            ),
+                          );
+                      }
+                    }
                     // reportFormCubit: context.read<ReportFormCubit>(),
                   },
                 ),

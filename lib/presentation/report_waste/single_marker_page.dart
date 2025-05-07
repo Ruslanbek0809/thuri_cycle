@@ -18,6 +18,7 @@ import 'package:thuri_cycle/presentation/report_waste/widgets/marker_type_app_ba
 import 'package:thuri_cycle/router.gr.dart';
 
 //TODO [optimization]: Work on canBeReported
+//TODO [optimization]: Work on openReportAsInappropriateDialog
 @RoutePage()
 class SingleMarkerPage extends StatefulWidget {
   const SingleMarkerPage({required this.mapMarker, super.key});

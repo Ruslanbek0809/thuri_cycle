@@ -21,8 +21,8 @@ import 'package:thuri_cycle/presentation/report_waste/widgets/add_report_photos_
 import 'package:thuri_cycle/presentation/report_waste/widgets/report_marker_type_card.dart';
 import 'package:thuri_cycle/router.gr.dart';
 
-//TODO: Implement send function using form
 //TODO: Return this reported marker to the map (check old project)
+//TODO: Handle checkFields
 //TODO [optimization]: Handle errorMessage
 @RoutePage()
 class ReportPage extends StatefulWidget {
@@ -124,17 +124,10 @@ class _ReportPageState extends State<ReportPage> {
                     ),
                   );
               },
-              (_) async {
-                scaffoldMessengerKey.currentState
-                  ?..hideCurrentSnackBar()
-                  ..showSnackBar(
-                    SnackBarHelper.createSuccess(
-                      message: context.l10n.reportedSuccessfully,
-                    ),
-                  );
-
-                //TODO [optimization]: If possible try to move it just before MapPage (Use AutoRouteWrapper) (REMOVE this)
-                context.read<ReportFormCubit>().reset();
+              (newMapMarker) async {
+                if (context.mounted) {
+                  context.router.pop(newMapMarker);
+                }
               },
             );
           });
@@ -357,46 +350,31 @@ class _ReportPageState extends State<ReportPage> {
     );
   }
 
-  // Future<bool> checkRequiredFields(
-  //   BuildContext context,
-  //   AddProductFormState state,
-  // ) async {
-  //   if (state.addProductModel.category == null) {
-  //     await showSnackBar(context.l10n.categoryIsRequired);
-  //     return false;
-  //   } else if (state.addProductModel.subcategory == null) {
-  //     await showSnackBar(context.l10n.subcategoryIsRequired);
-  //     return false;
-  //   } else if (state.addProductModel.productName?.isEmpty ?? true) {
-  //     await showSnackBar(context.l10n.nameIsRequired);
-  //     return false;
-  //   } else if (state.addProductModel.price == null) {
-  //     await showSnackBar(context.l10n.priceIsRequired);
-  //     return false;
-  //   }
-  //   if ((state.addProductModel.isSelectedFromMap != null &&
-  //           state.addProductModel.isSelectedFromMap! == true &&
-  //           state.addProductModel.location != null &&
-  //           state.addProductModel.location!.isEmpty == true) ||
-  //       state.addProductModel.isSelectedFromMap == false &&
-  //           state.addProductModel.address == null) {
-  //     await showSnackBar(context.l10n.locationIsRequired);
-  //     return false;
-  //   }
-  //   return true;
-  // }
+  Future<bool> checkRequiredFields(
+    BuildContext context,
+    ReportFormState state,
+  ) async {
+    // if (state.markerType == null) {
+    //   await showSnackBar(context.l10n.markerTypeRequired);
+    //   return false;
+    // } else if (state.images.isEmpty) {
+    //   await showSnackBar(context.l10n.imageRequired);
+    //   return false;
+    // }
+    return true;
+  }
 
-  // Future<void> showSnackBar(String message) async {
-  //   scaffoldMessengerKey.currentState
-  //     ?..hideCurrentSnackBar()
-  //     ..showSnackBar(
-  //       SnackBarHelper.createError(
-  //         message: message,
-  //         snackBarPosition: 'top',
-  //       ),
-  //     );
-  //   return;
-  // }
+  Future<void> showSnackBar(String message) async {
+    scaffoldMessengerKey.currentState
+      ?..hideCurrentSnackBar()
+      ..showSnackBar(
+        SnackBarHelper.createError(
+          message: message,
+          snackBarPosition: 'top',
+        ),
+      );
+    return;
+  }
 
   // void send() async {
   //   var pos = get<LocationProvider>().lastLocationInfo().position;

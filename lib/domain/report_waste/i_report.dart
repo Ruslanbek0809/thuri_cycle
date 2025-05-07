@@ -13,7 +13,7 @@ abstract class IReportFacade {
 
   Future<List<String>> uploadMultipleImages(List<ImageWithFileModel> images);
 
-  Future<Either<FirebaseFailure, Unit>> submitReport({
+  Future<Either<FirebaseFailure, MapMarkerModel>> submitReport({
     required double latitude,
     required double longitude,
     required MarkerType markerType,

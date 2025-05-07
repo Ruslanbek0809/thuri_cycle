@@ -163,7 +163,7 @@ class _ProfilePageState extends State<ProfilePage> {
                           ProfileItemCard(
                             title: context.l10n.language,
                             svgName: 'assets/profile/language.svg',
-                            value: 'English',
+                            value: state.languageModel?.name ?? 'English',
                             onTap: () async {
                               final languages = <LanguageModel>[
                                 LanguageModel(

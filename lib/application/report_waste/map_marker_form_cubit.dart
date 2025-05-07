@@ -88,6 +88,17 @@ class MapMarkerFormCubit extends Cubit<MapMarkerFormState> {
     );
   }
 
+  void addOrReplaceMarker(MapMarkerModel marker) {
+    final updated = List<MapMarkerModel>.from(state.allMarkers)
+      ..removeWhere((m) => m.id == marker.id);
+
+    if (marker.resolutionDate == null || state.includeResolved) {
+      updated.add(marker);
+    }
+
+    emit(state.copyWith(allMarkers: updated));
+  }
+
   Future<void> saveCurrentMapPosition(LatLng center, double zoom) async {
     await mapPreferences.savePosition(center, zoom);
   }
@@ -122,17 +133,6 @@ class MapMarkerFormCubit extends Cubit<MapMarkerFormState> {
       visibleMarkers,
       (m) => _distance(location, m.latLng),
     );
-  }
-
-  void addOrReplaceMarker(MapMarkerModel marker) {
-    final updated = List<MapMarkerModel>.from(state.allMarkers)
-      ..removeWhere((m) => m.id == marker.id);
-
-    if (marker.resolutionDate == null || state.includeResolved) {
-      updated.add(marker);
-    }
-
-    emit(state.copyWith(allMarkers: updated));
   }
 
   @override
