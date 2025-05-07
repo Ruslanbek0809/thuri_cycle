@@ -207,7 +207,7 @@ class _$UserModelImpl implements _UserModel {
       this.username,
       this.phoneNumber,
       this.profilePicture,
-      this.isAnonymous = true,
+      this.isAnonymous = false,
       @JsonKey(name: 'fcm_token') this.fcmToken,
       this.points});
 

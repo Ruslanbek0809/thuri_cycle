@@ -15,7 +15,7 @@ class UserModel with _$UserModel {
     String? username,
     String? phoneNumber,
     String? profilePicture,
-    @Default(true) bool? isAnonymous,
+    @Default(false) bool? isAnonymous,
     // @Default([]) List<String> bookmarks,
     @JsonKey(name: 'fcm_token') String? fcmToken,
     num? points,

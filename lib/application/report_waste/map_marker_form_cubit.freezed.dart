@@ -190,7 +190,9 @@ class __$$MapMarkerFormStateImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$MapMarkerFormStateImpl implements _MapMarkerFormState {
+class _$MapMarkerFormStateImpl
+    with DiagnosticableTreeMixin
+    implements _MapMarkerFormState {
   _$MapMarkerFormStateImpl(
       {required this.initialLatLng,
       required this.initialZoom,
@@ -233,8 +235,23 @@ class _$MapMarkerFormStateImpl implements _MapMarkerFormState {
   final String? errorMessage;
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'MapMarkerFormState(initialLatLng: $initialLatLng, initialZoom: $initialZoom, lastMapCenter: $lastMapCenter, isLoading: $isLoading, includeResolved: $includeResolved, shownTypes: $shownTypes, allMarkers: $allMarkers, errorMessage: $errorMessage)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'MapMarkerFormState'))
+      ..add(DiagnosticsProperty('initialLatLng', initialLatLng))
+      ..add(DiagnosticsProperty('initialZoom', initialZoom))
+      ..add(DiagnosticsProperty('lastMapCenter', lastMapCenter))
+      ..add(DiagnosticsProperty('isLoading', isLoading))
+      ..add(DiagnosticsProperty('includeResolved', includeResolved))
+      ..add(DiagnosticsProperty('shownTypes', shownTypes))
+      ..add(DiagnosticsProperty('allMarkers', allMarkers))
+      ..add(DiagnosticsProperty('errorMessage', errorMessage));
   }
 
   @override

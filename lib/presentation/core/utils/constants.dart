@@ -100,6 +100,8 @@ class Constants {
   final lastMapLongitude = 'lastMapLongitude';
   final lastMapZoom = 'lastMapZoom';
 
+  final fcmToken = 'fcmToken';
+
   final imageHeight = 256.0;
 
   /// Theme defaults.

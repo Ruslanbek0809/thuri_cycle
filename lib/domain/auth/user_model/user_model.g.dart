@@ -13,7 +13,7 @@ _$UserModelImpl _$$UserModelImplFromJson(Map<String, dynamic> json) =>
       username: json['username'] as String?,
       phoneNumber: json['phoneNumber'] as String?,
       profilePicture: json['profilePicture'] as String?,
-      isAnonymous: json['isAnonymous'] as bool? ?? true,
+      isAnonymous: json['isAnonymous'] as bool? ?? false,
       fcmToken: json['fcm_token'] as String?,
       points: json['points'] as num?,
     );

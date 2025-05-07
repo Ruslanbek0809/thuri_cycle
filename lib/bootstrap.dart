@@ -18,12 +18,12 @@ import 'package:universal_platform/universal_platform.dart';
 //   //* make sure you call `initializeApp` before using other Firebase services.
 //   await Firebase.initializeApp();
 
-//   talker.warn(
+//   talker.verbose(
 //     'initFcmBackgroundMessage() onMessage.listen: message.data: ${message.data}',
 //   );
 
 //   if (message.notification != null) {
-//     talker.warn(
+//     talker.verbose(
 //       'initFcmBackgroundMessage() onMessage.listen: message.notification: ${message.notification}',
 //     );
 //   }
@@ -82,7 +82,7 @@ Future<void> bootstrap(FutureOr<Widget> Function() builder) async {
       await Firebase.initializeApp(
         options: DefaultFirebaseOptions.currentPlatform,
       );
-      // //! ---------- FIREBASE MESSAGING CONFIG (IOS & WEB) -------- //
+      //! ---------- FIREBASE MESSAGING CONFIG (IOS & WEB) -------- //
       // final messaging = FirebaseMessaging.instance;
 
       // unawaited(messaging.requestPermission());

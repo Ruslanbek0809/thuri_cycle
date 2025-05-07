@@ -2,10 +2,12 @@ import 'dart:async';
 
 import 'package:bloc/bloc.dart';
 import 'package:collection/collection.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:latlong2/latlong.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:thuri_cycle/domain/report_waste/i_report.dart';
 import 'package:thuri_cycle/domain/report_waste/map_marker.dart';
 import 'package:thuri_cycle/infastructure/core/local_storage/map_preferences.dart';
@@ -19,10 +21,13 @@ class MapMarkerFormCubit extends Cubit<MapMarkerFormState> {
   MapMarkerFormCubit(
     this.iReportFacade,
     this.mapPreferences,
+    this.sharedPreferences,
   ) : super(MapMarkerFormState.initial());
 
   final IReportFacade iReportFacade;
   final MapPreferences mapPreferences;
+
+  final SharedPreferences sharedPreferences;
   final Distance _distance = const Distance();
   static const double zoomThreshold = 11;
 
@@ -109,7 +114,7 @@ class MapMarkerFormCubit extends Cubit<MapMarkerFormState> {
     //   (e) =>
     //       (state.includeResolved || !e.isResolved()) &&
     //       state.shownTypes.contains(e.markerType),
-    // ); //TODO: Adjust this visibleMarkers 
+    // ); //TODO: Adjust this visibleMarkers
   }
 
   MapMarkerModel? getClosestMarker(LatLng location) {
@@ -135,4 +140,36 @@ class MapMarkerFormCubit extends Cubit<MapMarkerFormState> {
     _mapEventSubscription?.cancel();
     return super.close();
   }
+
+  // //*----------------- FB Messaging ---------------------//
+
+  // Future<void> initFcmToken() async {
+  //   final firebaseMessaging = FirebaseMessaging.instance;
+  //   await firebaseMessaging.getToken().then(
+  //     (fcmToken) async {
+  //       if (fcmToken != null) {
+  //         if (kDebugMode) {
+  //           talker.verbose('initFcmToken() getToken() fcmToken: $fcmToken');
+  //         }
+
+  //         await sharedPreferences.setString($constants.fcmToken, fcmToken);
+  //       }
+  //       return null;
+  //     },
+  //     onError: (dynamic err) {
+  //       if (err != null) {
+  //         talker.verbose(err);
+  //       }
+  //     },
+  //   );
+
+  //   //* Listen for token refresh
+  //   FirebaseMessaging.instance.onTokenRefresh.listen((newFcmToken) async {
+  //     if (kDebugMode) {
+  //       talker
+  //           .verbose('initFcmToken() onTokenRefresh newFcmToken: $newFcmToken');
+  //     }
+  //     await sharedPreferences.setString($constants.fcmToken, newFcmToken);
+  //   });
+  // }
 }

@@ -70,12 +70,11 @@ class _ProfileUserEditPageState extends State<ProfileUserEditPage> {
                     ),
                   );
               },
-              (r) async {
+              (_) async {
                 scaffoldMessengerKey.currentState
                   ?..hideCurrentSnackBar()
                   ..showSnackBar(
                     SnackBarHelper.createSuccess(
-                      // title: 'Hey, ${r.userName}',
                       message: context.l10n.successUpdateInfo,
                       duration: const Duration(seconds: 2),
                     ),
