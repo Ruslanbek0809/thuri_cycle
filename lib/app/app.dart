@@ -9,6 +9,7 @@ import 'package:thuri_cycle/application/profile/settings_form_cubit.dart';
 import 'package:thuri_cycle/application/report_waste/location/location_cubit.dart';
 import 'package:thuri_cycle/application/report_waste/map_marker_form_cubit.dart';
 import 'package:thuri_cycle/application/report_waste/report/report_form_cubit.dart';
+import 'package:thuri_cycle/application/report_waste/resolve/resolve_form_cubit.dart';
 import 'package:thuri_cycle/infastructure/core/dependency_injection/di.dart';
 import 'package:thuri_cycle/l10n/l10n.dart';
 import 'package:thuri_cycle/presentation/core/utils/constants.dart';
@@ -57,6 +58,10 @@ class _AppState extends State<App> {
         //TODO [optimization]: If possible try to move it just before MapPage (Use AutoRouteWrapper)
         BlocProvider<ReportFormCubit>(
           create: (_) => getIt<ReportFormCubit>(),
+        ),
+        //TODO [optimization]: If possible try to move it just before MapPage (Use AutoRouteWrapper)
+        BlocProvider<ResolveFormCubit>(
+          create: (_) => getIt<ResolveFormCubit>(),
         ),
       ],
       child: BlocListener<AuthBloc, AuthState>(

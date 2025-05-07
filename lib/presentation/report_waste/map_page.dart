@@ -44,6 +44,7 @@ class _MapPageState extends State<MapPage> with WidgetsBindingObserver {
     context.read<MapMarkerFormCubit>()
       ..initialize()
       ..connectToMapStream(mapController.mapEventStream);
+    // context.read<MapMarkerFormCubit>().initFcmToken();
   }
 
   @override

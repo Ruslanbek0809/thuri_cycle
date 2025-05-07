@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:thuri_cycle/application/auth/auth_bloc.dart';
+import 'package:thuri_cycle/application/auth/profile_user_form/profile_user_form_cubit.dart';
 import 'package:thuri_cycle/application/report_waste/location/location_cubit.dart';
 import 'package:thuri_cycle/application/report_waste/single_marker_form_cubit/single_marker_form_cubit.dart';
 import 'package:thuri_cycle/domain/report_waste/location_info.dart';
@@ -14,6 +15,7 @@ import 'package:thuri_cycle/presentation/core/utils/methods/aliases.dart';
 import 'package:thuri_cycle/presentation/core/utils/methods/shortcuts.dart';
 import 'package:thuri_cycle/presentation/report_waste/widgets/marker_photos_list_widget.dart';
 import 'package:thuri_cycle/presentation/report_waste/widgets/marker_type_app_bar_title.dart';
+import 'package:thuri_cycle/router.gr.dart';
 
 //TODO [optimization]: Work on canBeReported
 @RoutePage()
@@ -151,19 +153,37 @@ class _SingleMarkerPageState extends State<SingleMarkerPage> {
                     ),
                   SizedBox(height: $constants.insets.xs),
                   //*----------------- RESOLVE BUTTON ---------------------//
-                  ElevatedButton(
-                    onPressed: (mapMarker.resolutionDate == null &&
-                            authBlocState == const AuthState.authenticated() &&
-                            nearEnoughToResolve)
-                        ? () {}
-                        //TODO: Implement this
-                        // ? openResolvePage
-                        : null,
-                    child: Text(
-                      mapMarker.resolutionDate == null
-                          ? context.l10n.resolve
-                          : context.l10n.alreadyResolved,
-                    ),
+                  BlocBuilder<ProfileUserFormCubit, ProfileUserFormState>(
+                    buildWhen: (previous, current) =>
+                        previous.userModel != current.userModel,
+                    builder: (context, state) {
+                      // final currentUser = state.userModel;
+                      // final isReportedByCurrentUser =
+                      //     mapMarker.reportedBy == currentUser.uid;
+
+                      return
+                          // isReportedByCurrentUser
+                          //     ? const SizedBox.shrink()
+                          //     :
+                          ElevatedButton(
+                        onPressed: (mapMarker.resolutionDate == null &&
+                                authBlocState ==
+                                    const AuthState.authenticated() &&
+                                nearEnoughToResolve)
+                            ? () async {
+                                await context.router.push(
+                                  ResolveRoute(mapMarker: mapMarker),
+                                );
+                              }
+                            // ? openResolvePage
+                            : null,
+                        child: Text(
+                          mapMarker.resolutionDate == null
+                              ? context.l10n.resolve
+                              : context.l10n.alreadyResolved,
+                        ),
+                      );
+                    },
                   ),
                   //*----------------- Provides helpful info ---------------------//
                   if (mapMarker.resolutionDate == null)
@@ -202,6 +222,7 @@ class _SingleMarkerPageState extends State<SingleMarkerPage> {
                                         ),
                                       );
                                   },
+                                  //TODO [optimizations]: Implement this user page later
                                   // onPressed: () => Navigator.pushNamed(
                                   //   context,
                                   //   UserPage.routeName,
@@ -227,6 +248,7 @@ class _SingleMarkerPageState extends State<SingleMarkerPage> {
                                           ),
                                         );
                                     },
+                                    //TODO [optimizations]: Implement this user page later
                                     // onPressed: () => Navigator.pushNamed(
                                     //   context,
                                     //   UserPage.routeName,

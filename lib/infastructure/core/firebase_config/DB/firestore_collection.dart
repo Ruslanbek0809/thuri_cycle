@@ -102,8 +102,8 @@ class FirestoreCollection<T> {
   // Future<void> update(String id, Map<String, dynamic> data) {
   //   return firestoreService.update('$path/$id', data);
   // }
-  Future<void> update(String path, Map<String, dynamic> data) {
-    final db = FirebaseFirestore.instance;
-    return db.doc(path).update(data);
-  }
+  // Future<void> update(String path, Map<String, dynamic> data) {
+  //   final db = FirebaseFirestore.instance;
+  //   return db.doc(path).update(data);
+  // }
 }

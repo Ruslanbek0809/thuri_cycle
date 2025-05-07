@@ -88,7 +88,11 @@ class _BottomControlsWidgetState extends State<BottomControlsWidget>
                       }
                     });
                   }
-                } else {}
+                } else {
+                  await context.router.push(
+                    const ProfileUserEditRoute(),
+                  );
+                }
               },
               backgroundColor: $constants.palette.main,
               tooltip: authBlocState == const AuthState.unauthenticated()
@@ -193,18 +197,18 @@ class _BottomControlsWidgetState extends State<BottomControlsWidget>
     });
   }
 
-  Widget _buildMessage(
-    BuildContext context,
-    int index,
-    Animation<double> animation,
-  ) {
-    if (errorMessage != null && index == 0) {
-      return _buildErrorMessage(context, animation, errorMessage!);
-    } else {
-      // should be unreachable
-      return const SizedBox.shrink();
-    }
-  }
+  // Widget _buildMessage(
+  //   BuildContext context,
+  //   int index,
+  //   Animation<double> animation,
+  // ) {
+  //   if (errorMessage != null && index == 0) {
+  //     return _buildErrorMessage(context, animation, errorMessage!);
+  //   } else {
+  //     // should be unreachable
+  //     return const SizedBox.shrink();
+  //   }
+  // }
 
   Widget _buildErrorMessage(
     BuildContext context,

@@ -255,6 +255,7 @@ class _ReportPageState extends State<ReportPage> {
                         ),
                       ),
                       //*----------------- PHOTOS UPLOAD SECTION ---------------------//
+                      //TODO [optimization]: Don't let upload an image when submitting is ongoing
                       SizedBox(height: $constants.insets.sm + 2),
                       AddReportPhotosWidget(
                         state.images,

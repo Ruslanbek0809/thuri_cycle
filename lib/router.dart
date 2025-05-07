@@ -44,13 +44,18 @@ class AppRouter extends RootStackRouter {
               children: [
                 AutoRoute(path: '', page: MapRoute.page, initial: true),
                 AutoRoute(
+                  path: 'report',
+                  page: ReportRoute.page,
+                  meta: const {'hideBottomNav': true},
+                ),
+                AutoRoute(
                   path: 'single-marker',
                   page: SingleMarkerRoute.page,
                   meta: const {'hideBottomNav': true},
                 ),
                 AutoRoute(
-                  path: 'report',
-                  page: ReportRoute.page,
+                  path: 'resolve',
+                  page: ResolveRoute.page,
                   meta: const {'hideBottomNav': true},
                 ),
                 AutoRoute(
