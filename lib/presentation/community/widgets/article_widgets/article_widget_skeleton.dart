@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:shimmer/shimmer.dart';
 import 'package:thuri_cycle/presentation/community/widgets/article_widgets/shared/constants.dart';
-import 'package:thuri_cycle/presentation/community/widgets/article_widgets/theme/src/app_colors.dart';
 import 'package:thuri_cycle/presentation/community/widgets/article_widgets/theme/src/app_shadows.dart';
+import 'package:thuri_cycle/presentation/core/utils/constants.dart';
 
 class ArticleWidgetSkeleton extends StatelessWidget {
   const ArticleWidgetSkeleton({super.key}) : isLarge = false;
@@ -13,7 +13,7 @@ class ArticleWidgetSkeleton extends StatelessWidget {
 
   Widget _buildRegularSkeleton() => Container(
         decoration: BoxDecoration(
-          color: AppColors.white,
+          color: $constants.palette.white,
           borderRadius: BorderRadius.circular(12),
           border: Border.all(color: const Color(0xfff2f2f2)),
           boxShadow: [AppShadows.primary],
@@ -29,7 +29,7 @@ class ArticleWidgetSkeleton extends StatelessWidget {
               child: Shimmer.fromColors(
                 baseColor: Colors.black.withOpacity(0.1),
                 highlightColor: Colors.black.withOpacity(0.08),
-                child: Container(height: 100, color: AppColors.white),
+                child: Container(height: 100, color: $constants.palette.white),
               ),
             ),
             Expanded(
@@ -45,7 +45,7 @@ class ArticleWidgetSkeleton extends StatelessWidget {
                         height: 20,
                         width: 100,
                         decoration: BoxDecoration(
-                          color: AppColors.white,
+                          color: $constants.palette.white,
                           borderRadius: BorderRadius.circular(5),
                         ),
                       ),
@@ -58,7 +58,7 @@ class ArticleWidgetSkeleton extends StatelessWidget {
                         height: 20,
                         width: 200,
                         decoration: BoxDecoration(
-                          color: AppColors.white,
+                          color: $constants.palette.white,
                           borderRadius: BorderRadius.circular(5),
                         ),
                       ),
@@ -71,7 +71,7 @@ class ArticleWidgetSkeleton extends StatelessWidget {
                         height: 20,
                         width: 150,
                         decoration: BoxDecoration(
-                          color: AppColors.white,
+                          color: $constants.palette.white,
                           borderRadius: BorderRadius.circular(5),
                         ),
                       ),
@@ -84,7 +84,7 @@ class ArticleWidgetSkeleton extends StatelessWidget {
                         height: 25,
                         width: 120,
                         decoration: BoxDecoration(
-                          color: AppColors.white,
+                          color: $constants.palette.white,
                           borderRadius: BorderRadius.circular(6),
                         ),
                       ),
@@ -102,7 +102,7 @@ class ArticleWidgetSkeleton extends StatelessWidget {
         child: ClipRRect(
           borderRadius: BorderRadius.circular(18),
           child: Container(
-            color: AppColors.white,
+            color: $constants.palette.white,
             height: AppConstants.featuredArticleHeight,
             child: ClipRRect(
               borderRadius: BorderRadius.circular(18),
@@ -110,7 +110,7 @@ class ArticleWidgetSkeleton extends StatelessWidget {
                 children: [
                   Expanded(
                     child: ColoredBox(
-                      color: AppColors.white,
+                      color: $constants.palette.white,
                       child: Padding(
                         padding: const EdgeInsets.all(20),
                         child: Column(
@@ -123,7 +123,7 @@ class ArticleWidgetSkeleton extends StatelessWidget {
                                 height: 20,
                                 width: 200,
                                 decoration: BoxDecoration(
-                                  color: AppColors.white,
+                                  color: $constants.palette.white,
                                   borderRadius: BorderRadius.circular(6),
                                 ),
                               ),
@@ -136,7 +136,7 @@ class ArticleWidgetSkeleton extends StatelessWidget {
                                 height: 24,
                                 width: double.infinity,
                                 decoration: BoxDecoration(
-                                  color: AppColors.white,
+                                  color: $constants.palette.white,
                                   borderRadius: BorderRadius.circular(6),
                                 ),
                               ),
@@ -149,7 +149,7 @@ class ArticleWidgetSkeleton extends StatelessWidget {
                                 height: 25,
                                 width: double.infinity,
                                 decoration: BoxDecoration(
-                                  color: AppColors.white,
+                                  color: $constants.palette.white,
                                   borderRadius: BorderRadius.circular(6),
                                 ),
                               ),
@@ -162,7 +162,7 @@ class ArticleWidgetSkeleton extends StatelessWidget {
                                 height: 25,
                                 width: 120,
                                 decoration: BoxDecoration(
-                                  color: AppColors.white,
+                                  color: $constants.palette.white,
                                   borderRadius: BorderRadius.circular(6),
                                 ),
                               ),
@@ -175,7 +175,7 @@ class ArticleWidgetSkeleton extends StatelessWidget {
                                 height: 42,
                                 width: 120,
                                 decoration: BoxDecoration(
-                                  color: AppColors.white,
+                                  color: $constants.palette.white,
                                   borderRadius: BorderRadius.circular(40),
                                 ),
                               ),
@@ -189,7 +189,7 @@ class ArticleWidgetSkeleton extends StatelessWidget {
                     child: Shimmer.fromColors(
                       baseColor: Colors.black.withOpacity(0.1),
                       highlightColor: Colors.black.withOpacity(0.08),
-                      child: Container(color: AppColors.white),
+                      child: Container(color: $constants.palette.white),
                     ),
                   ),
                 ],

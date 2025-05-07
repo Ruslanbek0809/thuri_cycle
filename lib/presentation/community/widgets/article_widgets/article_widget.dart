@@ -32,7 +32,7 @@ class ArticleWidget extends StatelessWidget {
   final void Function(Article)? onTap;
   final bool isLarge;
 
-  Widget _buildRegularArticle() => Container(
+  Widget _buildRegularArticle(BuildContext context) => Container(
         decoration: BoxDecoration(
           color: $constants.palette.white,
           borderRadius: BorderRadius.circular(12),
@@ -119,10 +119,12 @@ class ArticleWidget extends StatelessWidget {
                     ),
                     const SizedBox(height: 3),
                     Text(
-                      article.title,
+                      Localizations.localeOf(context).languageCode == 'en'
+                          ? article.title
+                          : article.titleDe,
                       maxLines: 4,
                       style: AppTextStyles.blackBlack22
-                          .copyWith(fontSize: 17.5, height: 1.2),
+                          .copyWith(fontSize: 17, height: 1.2),
                     ),
                     const Spacer(),
                     Container(
@@ -135,7 +137,9 @@ class ArticleWidget extends StatelessWidget {
                         borderRadius: BorderRadius.circular(10),
                       ),
                       child: Text(
-                        article.tag,
+                        Localizations.localeOf(context).languageCode == 'en'
+                            ? article.tag
+                            : article.tagDe,
                         style: AppTextStyles.primaryBold14
                             .copyWith(color: $constants.palette.main),
                       ),
@@ -153,7 +157,7 @@ class ArticleWidget extends StatelessWidget {
         child: ClipRRect(
           borderRadius: BorderRadius.circular(18),
           child: Container(
-            color: AppColors.white,
+            color: $constants.palette.white,
             height: AppConstants.featuredArticleHeight,
             child: Stack(
               fit: StackFit.expand,
@@ -183,8 +187,8 @@ class ArticleWidget extends StatelessWidget {
                       bottomLeft: Radius.circular(18),
                     ),
                     child: Container(
-                      decoration: const BoxDecoration(
-                        color: AppColors.white,
+                      decoration: BoxDecoration(
+                        color: $constants.palette.white,
                       ),
                       child: Padding(
                         padding: const EdgeInsets.all(20),
@@ -194,22 +198,30 @@ class ArticleWidget extends StatelessWidget {
                             Text(
                               context.l10n.article.toUpperCase(),
                               style: AppTextStyles.blackBlack22.copyWith(
-                                color: AppColors.secondary,
+                                color: $constants.palette.main,
                                 fontSize: 12,
                               ),
                             ),
                             Text(
-                              article.title
-                                  .split(' ')
-                                  .map((word) => word.capitalize())
-                                  .join(' '),
+                              Localizations.localeOf(context).languageCode ==
+                                      'en'
+                                  ? article.title
+                                      .split(' ')
+                                      .map((word) => word.capitalize())
+                                      .join(' ')
+                                  : article.titleDe
+                                      .split(' ')
+                                      .map((word) => word.capitalize())
+                                      .join(' '),
+                              maxLines: 5,
+                              overflow: TextOverflow.ellipsis,
                               style: AppTextStyles.blackBlack22
-                                  .copyWith(fontSize: 19),
+                                  .copyWith(fontSize: 18),
                             ),
                             const Spacer(),
                             AppButton.primary(
-                              fillColor: AppColors.secondary,
-                              textColor: AppColors.white,
+                              fillColor: $constants.palette.main,
+                              textColor: $constants.palette.white,
                               height: 42,
                               width: 120,
                               borderRadius: 40,
@@ -231,6 +243,8 @@ class ArticleWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) => Bouncing(
         onTap: () => onTap?.call(article),
-        child: isLarge ? _buildLargeArticle(context) : _buildRegularArticle(),
+        child: isLarge
+            ? _buildLargeArticle(context)
+            : _buildRegularArticle(context),
       );
 }

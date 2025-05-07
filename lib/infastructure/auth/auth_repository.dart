@@ -54,6 +54,7 @@ class AuthRepository implements IAuth {
     yield* _userCollection.streamSingle(uid).map(optionOf).distinct();
   }
 
+  //TODO: Fix firestore issue
   @override
   Future<Either<FirebaseFailure, UserModel>> updateProfileUser(
     UserModel user,
@@ -85,9 +86,26 @@ class AuthRepository implements IAuth {
         );
       }
 
-      talker.verbose('uid: $uid');
       final updatedUser = user.copyWith(profilePicture: newImageUrl);
-      await _userCollection.update(uid, updatedUser.toJson());
+
+      //TODO [optimization]: Try to come up with better solutions
+      final userDocPath = 'users/${user.uid}';
+      final exists = await _firestoreService.docExists(userDocPath);
+
+      if (!exists) {
+        await _firestoreService.create(userDocPath, updatedUser.toJson());
+        talker.info(
+          '[AuthRepository] SUCCESS New user document created for $uid',
+        );
+      } else {
+        await _firestoreService.set(userDocPath, updatedUser.toJson());
+        talker.verbose(
+          '[AuthRepository] SUCCESS User document already exists for $uid',
+        );
+      }
+
+      // talker.verbose('uid: $uid');
+      // await _userCollection.update(uid, updatedUser.toJson());
 
       return updatedUser;
     });

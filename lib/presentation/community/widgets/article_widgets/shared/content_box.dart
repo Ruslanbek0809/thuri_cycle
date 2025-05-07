@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-
-import '../theme/theme.dart';
+import 'package:thuri_cycle/presentation/community/widgets/article_widgets/theme/theme.dart';
+import 'package:thuri_cycle/presentation/core/utils/constants.dart';
 
 class ContentBox extends StatelessWidget {
   const ContentBox({
@@ -10,8 +10,8 @@ class ContentBox extends StatelessWidget {
     this.borderRadius,
     this.fillColor,
     this.child,
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   final double? height;
   final double? width;
@@ -28,7 +28,7 @@ class ContentBox extends StatelessWidget {
       padding: padding ?? const EdgeInsets.all(6),
       decoration: BoxDecoration(
         border: Border.all(color: const Color(0xfff2f2f2)),
-        color: fillColor ?? AppColors.white,
+        color: fillColor ?? $constants.palette.white,
         boxShadow: [AppShadows.small],
         borderRadius: BorderRadius.circular(borderRadius ?? 16),
       ),

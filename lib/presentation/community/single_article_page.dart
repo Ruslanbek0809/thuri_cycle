@@ -111,7 +111,9 @@ class SingleArticlePage extends StatelessWidget {
                         bottom: 10,
                       ),
                       child: Text(
-                        article.summary,
+                        Localizations.localeOf(context).languageCode == 'en'
+                            ? article.summary
+                            : article.summaryDe,
                         textAlign: TextAlign.start,
                         style: AppTextStyles.grayMedium16,
                       ),
@@ -207,8 +209,13 @@ class SingleArticlePage extends StatelessWidget {
                     const SizedBox(height: 25),
                     Padding(
                       padding: const EdgeInsets.all(20),
-                      child:
-                          AppMarkdown(text: article.content, lineHeight: 1.5),
+                      child: AppMarkdown(
+                        text:
+                            Localizations.localeOf(context).languageCode == 'en'
+                                ? article.content
+                                : article.contentDe,
+                        lineHeight: 1.5,
+                      ),
                     ),
                   ],
                   childAnimationBuilder: (widget) => SlideAnimation(

@@ -10,10 +10,18 @@ class Article with _$Article {
   const factory Article({
     required String uid,
     required String title,
+    @JsonKey(name: 'title_de')
+    required String titleDe,
     required String summary,
+    @JsonKey(name: 'summary_de')
+    required String summaryDe,
     required String imageUrl,
+    @JsonKey(name: 'tag_de')
+    required String tagDe,
     required String tag,
     required String content,
+    @JsonKey(name: 'content_de')
+    required String contentDe,
     @JsonKey(fromJson: dateTimeFromTimestamp, toJson: dateTimeToTimestamp)
     required DateTime date,
     @Default(false) bool? featured,

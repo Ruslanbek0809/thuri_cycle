@@ -22,10 +22,18 @@ Article _$ArticleFromJson(Map<String, dynamic> json) {
 mixin _$Article {
   String get uid => throw _privateConstructorUsedError;
   String get title => throw _privateConstructorUsedError;
+  @JsonKey(name: 'title_de')
+  String get titleDe => throw _privateConstructorUsedError;
   String get summary => throw _privateConstructorUsedError;
+  @JsonKey(name: 'summary_de')
+  String get summaryDe => throw _privateConstructorUsedError;
   String get imageUrl => throw _privateConstructorUsedError;
+  @JsonKey(name: 'tag_de')
+  String get tagDe => throw _privateConstructorUsedError;
   String get tag => throw _privateConstructorUsedError;
   String get content => throw _privateConstructorUsedError;
+  @JsonKey(name: 'content_de')
+  String get contentDe => throw _privateConstructorUsedError;
   @JsonKey(fromJson: dateTimeFromTimestamp, toJson: dateTimeToTimestamp)
   DateTime get date => throw _privateConstructorUsedError;
   bool? get featured => throw _privateConstructorUsedError;
@@ -47,10 +55,14 @@ abstract class $ArticleCopyWith<$Res> {
   $Res call(
       {String uid,
       String title,
+      @JsonKey(name: 'title_de') String titleDe,
       String summary,
+      @JsonKey(name: 'summary_de') String summaryDe,
       String imageUrl,
+      @JsonKey(name: 'tag_de') String tagDe,
       String tag,
       String content,
+      @JsonKey(name: 'content_de') String contentDe,
       @JsonKey(fromJson: dateTimeFromTimestamp, toJson: dateTimeToTimestamp)
       DateTime date,
       bool? featured});
@@ -73,10 +85,14 @@ class _$ArticleCopyWithImpl<$Res, $Val extends Article>
   $Res call({
     Object? uid = null,
     Object? title = null,
+    Object? titleDe = null,
     Object? summary = null,
+    Object? summaryDe = null,
     Object? imageUrl = null,
+    Object? tagDe = null,
     Object? tag = null,
     Object? content = null,
+    Object? contentDe = null,
     Object? date = null,
     Object? featured = freezed,
   }) {
@@ -89,13 +105,25 @@ class _$ArticleCopyWithImpl<$Res, $Val extends Article>
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
               as String,
+      titleDe: null == titleDe
+          ? _value.titleDe
+          : titleDe // ignore: cast_nullable_to_non_nullable
+              as String,
       summary: null == summary
           ? _value.summary
           : summary // ignore: cast_nullable_to_non_nullable
               as String,
+      summaryDe: null == summaryDe
+          ? _value.summaryDe
+          : summaryDe // ignore: cast_nullable_to_non_nullable
+              as String,
       imageUrl: null == imageUrl
           ? _value.imageUrl
           : imageUrl // ignore: cast_nullable_to_non_nullable
+              as String,
+      tagDe: null == tagDe
+          ? _value.tagDe
+          : tagDe // ignore: cast_nullable_to_non_nullable
               as String,
       tag: null == tag
           ? _value.tag
@@ -104,6 +132,10 @@ class _$ArticleCopyWithImpl<$Res, $Val extends Article>
       content: null == content
           ? _value.content
           : content // ignore: cast_nullable_to_non_nullable
+              as String,
+      contentDe: null == contentDe
+          ? _value.contentDe
+          : contentDe // ignore: cast_nullable_to_non_nullable
               as String,
       date: null == date
           ? _value.date
@@ -127,10 +159,14 @@ abstract class _$$ArticleImplCopyWith<$Res> implements $ArticleCopyWith<$Res> {
   $Res call(
       {String uid,
       String title,
+      @JsonKey(name: 'title_de') String titleDe,
       String summary,
+      @JsonKey(name: 'summary_de') String summaryDe,
       String imageUrl,
+      @JsonKey(name: 'tag_de') String tagDe,
       String tag,
       String content,
+      @JsonKey(name: 'content_de') String contentDe,
       @JsonKey(fromJson: dateTimeFromTimestamp, toJson: dateTimeToTimestamp)
       DateTime date,
       bool? featured});
@@ -151,10 +187,14 @@ class __$$ArticleImplCopyWithImpl<$Res>
   $Res call({
     Object? uid = null,
     Object? title = null,
+    Object? titleDe = null,
     Object? summary = null,
+    Object? summaryDe = null,
     Object? imageUrl = null,
+    Object? tagDe = null,
     Object? tag = null,
     Object? content = null,
+    Object? contentDe = null,
     Object? date = null,
     Object? featured = freezed,
   }) {
@@ -167,13 +207,25 @@ class __$$ArticleImplCopyWithImpl<$Res>
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
               as String,
+      titleDe: null == titleDe
+          ? _value.titleDe
+          : titleDe // ignore: cast_nullable_to_non_nullable
+              as String,
       summary: null == summary
           ? _value.summary
           : summary // ignore: cast_nullable_to_non_nullable
               as String,
+      summaryDe: null == summaryDe
+          ? _value.summaryDe
+          : summaryDe // ignore: cast_nullable_to_non_nullable
+              as String,
       imageUrl: null == imageUrl
           ? _value.imageUrl
           : imageUrl // ignore: cast_nullable_to_non_nullable
+              as String,
+      tagDe: null == tagDe
+          ? _value.tagDe
+          : tagDe // ignore: cast_nullable_to_non_nullable
               as String,
       tag: null == tag
           ? _value.tag
@@ -182,6 +234,10 @@ class __$$ArticleImplCopyWithImpl<$Res>
       content: null == content
           ? _value.content
           : content // ignore: cast_nullable_to_non_nullable
+              as String,
+      contentDe: null == contentDe
+          ? _value.contentDe
+          : contentDe // ignore: cast_nullable_to_non_nullable
               as String,
       date: null == date
           ? _value.date
@@ -201,10 +257,14 @@ class _$ArticleImpl extends _Article {
   const _$ArticleImpl(
       {required this.uid,
       required this.title,
+      @JsonKey(name: 'title_de') required this.titleDe,
       required this.summary,
+      @JsonKey(name: 'summary_de') required this.summaryDe,
       required this.imageUrl,
+      @JsonKey(name: 'tag_de') required this.tagDe,
       required this.tag,
       required this.content,
+      @JsonKey(name: 'content_de') required this.contentDe,
       @JsonKey(fromJson: dateTimeFromTimestamp, toJson: dateTimeToTimestamp)
       required this.date,
       this.featured = false})
@@ -218,13 +278,25 @@ class _$ArticleImpl extends _Article {
   @override
   final String title;
   @override
+  @JsonKey(name: 'title_de')
+  final String titleDe;
+  @override
   final String summary;
   @override
+  @JsonKey(name: 'summary_de')
+  final String summaryDe;
+  @override
   final String imageUrl;
+  @override
+  @JsonKey(name: 'tag_de')
+  final String tagDe;
   @override
   final String tag;
   @override
   final String content;
+  @override
+  @JsonKey(name: 'content_de')
+  final String contentDe;
   @override
   @JsonKey(fromJson: dateTimeFromTimestamp, toJson: dateTimeToTimestamp)
   final DateTime date;
@@ -234,7 +306,7 @@ class _$ArticleImpl extends _Article {
 
   @override
   String toString() {
-    return 'Article(uid: $uid, title: $title, summary: $summary, imageUrl: $imageUrl, tag: $tag, content: $content, date: $date, featured: $featured)';
+    return 'Article(uid: $uid, title: $title, titleDe: $titleDe, summary: $summary, summaryDe: $summaryDe, imageUrl: $imageUrl, tagDe: $tagDe, tag: $tag, content: $content, contentDe: $contentDe, date: $date, featured: $featured)';
   }
 
   @override
@@ -244,11 +316,17 @@ class _$ArticleImpl extends _Article {
             other is _$ArticleImpl &&
             (identical(other.uid, uid) || other.uid == uid) &&
             (identical(other.title, title) || other.title == title) &&
+            (identical(other.titleDe, titleDe) || other.titleDe == titleDe) &&
             (identical(other.summary, summary) || other.summary == summary) &&
+            (identical(other.summaryDe, summaryDe) ||
+                other.summaryDe == summaryDe) &&
             (identical(other.imageUrl, imageUrl) ||
                 other.imageUrl == imageUrl) &&
+            (identical(other.tagDe, tagDe) || other.tagDe == tagDe) &&
             (identical(other.tag, tag) || other.tag == tag) &&
             (identical(other.content, content) || other.content == content) &&
+            (identical(other.contentDe, contentDe) ||
+                other.contentDe == contentDe) &&
             (identical(other.date, date) || other.date == date) &&
             (identical(other.featured, featured) ||
                 other.featured == featured));
@@ -256,8 +334,8 @@ class _$ArticleImpl extends _Article {
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(
-      runtimeType, uid, title, summary, imageUrl, tag, content, date, featured);
+  int get hashCode => Object.hash(runtimeType, uid, title, titleDe, summary,
+      summaryDe, imageUrl, tagDe, tag, content, contentDe, date, featured);
 
   /// Create a copy of Article
   /// with the given fields replaced by the non-null parameter values.
@@ -279,10 +357,14 @@ abstract class _Article extends Article {
   const factory _Article(
       {required final String uid,
       required final String title,
+      @JsonKey(name: 'title_de') required final String titleDe,
       required final String summary,
+      @JsonKey(name: 'summary_de') required final String summaryDe,
       required final String imageUrl,
+      @JsonKey(name: 'tag_de') required final String tagDe,
       required final String tag,
       required final String content,
+      @JsonKey(name: 'content_de') required final String contentDe,
       @JsonKey(fromJson: dateTimeFromTimestamp, toJson: dateTimeToTimestamp)
       required final DateTime date,
       final bool? featured}) = _$ArticleImpl;
@@ -295,13 +377,25 @@ abstract class _Article extends Article {
   @override
   String get title;
   @override
+  @JsonKey(name: 'title_de')
+  String get titleDe;
+  @override
   String get summary;
   @override
+  @JsonKey(name: 'summary_de')
+  String get summaryDe;
+  @override
   String get imageUrl;
+  @override
+  @JsonKey(name: 'tag_de')
+  String get tagDe;
   @override
   String get tag;
   @override
   String get content;
+  @override
+  @JsonKey(name: 'content_de')
+  String get contentDe;
   @override
   @JsonKey(fromJson: dateTimeFromTimestamp, toJson: dateTimeToTimestamp)
   DateTime get date;

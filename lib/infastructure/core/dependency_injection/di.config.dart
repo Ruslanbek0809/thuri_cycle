@@ -41,6 +41,8 @@ import 'package:thuri_cycle/application/report_waste/map_marker_form_cubit.dart'
     as _i115;
 import 'package:thuri_cycle/application/report_waste/report/report_form_cubit.dart'
     as _i401;
+import 'package:thuri_cycle/application/report_waste/resolve/resolve_form_cubit.dart'
+    as _i634;
 import 'package:thuri_cycle/application/report_waste/single_marker_form_cubit/single_marker_form_cubit.dart'
     as _i804;
 import 'package:thuri_cycle/domain/app/theme_model.dart' as _i836;
@@ -48,6 +50,7 @@ import 'package:thuri_cycle/domain/auth/i_auth_facade.dart' as _i917;
 import 'package:thuri_cycle/domain/community/i_community.dart' as _i153;
 import 'package:thuri_cycle/domain/report_waste/i_location.dart' as _i145;
 import 'package:thuri_cycle/domain/report_waste/i_report.dart' as _i299;
+import 'package:thuri_cycle/domain/report_waste/i_resolve.dart' as _i899;
 import 'package:thuri_cycle/infastructure/auth/auth_repository.dart' as _i767;
 import 'package:thuri_cycle/infastructure/community/community_repository.dart'
     as _i443;
@@ -71,6 +74,8 @@ import 'package:thuri_cycle/infastructure/report_waste/location_repository.dart'
     as _i389;
 import 'package:thuri_cycle/infastructure/report_waste/report_repository.dart'
     as _i195;
+import 'package:thuri_cycle/infastructure/report_waste/resolve_repository.dart'
+    as _i512;
 import 'package:thuri_cycle/infastructure/scroll_controller/scroll_controller_service.dart'
     as _i795;
 
@@ -156,6 +161,10 @@ extension GetItInjectableX on _i174.GetIt {
         ));
     gh.factory<_i990.LocationCubit>(
         () => _i990.LocationCubit(gh<_i145.ILocationFacade>()));
+    gh.lazySingleton<_i899.IResolveFacade>(() => _i512.ResolveRepository(
+          gh<_i575.FirestoreService>(),
+          gh<_i137.FirebaseStorageService>(),
+        ));
     gh.lazySingleton<_i299.IReportFacade>(() => _i195.ReportRepository(
           gh<_i137.FirebaseStorageService>(),
           gh<_i357.MapMarkersCollection>(),
@@ -168,12 +177,15 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i884.CommunityFeaturedCubit(gh<_i153.ICommunity>()));
     gh.factory<_i749.CommunitySingleGuideCubit>(
         () => _i749.CommunitySingleGuideCubit(gh<_i153.ICommunity>()));
-    gh.factory<_i401.ReportFormCubit>(
-        () => _i401.ReportFormCubit(gh<_i299.IReportFacade>()));
     gh.factory<_i115.MapMarkerFormCubit>(() => _i115.MapMarkerFormCubit(
           gh<_i299.IReportFacade>(),
           gh<_i1048.MapPreferences>(),
+          gh<_i460.SharedPreferences>(),
         ));
+    gh.factory<_i634.ResolveFormCubit>(
+        () => _i634.ResolveFormCubit(gh<_i899.IResolveFacade>()));
+    gh.factory<_i401.ReportFormCubit>(
+        () => _i401.ReportFormCubit(gh<_i299.IReportFacade>()));
     return this;
   }
 }

@@ -1,6 +1,7 @@
 // ignore_for_file: must_be_immutable
 
 import 'package:flutter/material.dart';
+import 'package:thuri_cycle/presentation/core/utils/constants.dart';
 
 import '../../shared/bouncing.dart';
 import 'app_colors.dart';
@@ -26,7 +27,7 @@ class AppButton extends StatelessWidget {
   })  : decoration = BoxDecoration(
           color: isDisabled
               ? fillColor?.withOpacity(0.2)
-              : fillColor ?? (onTap == null ? Colors.grey[300] : AppColors.secondary.withOpacity(isDisabled ? 0.5 : 1)),
+              : fillColor ?? (onTap == null ? Colors.grey[300] : $constants.palette.main.withOpacity(isDisabled ? 0.5 : 1)),
           borderRadius: BorderRadius.circular(borderRadius),
           boxShadow: isDisabled || !hasShadow ? null : [AppShadows.primary],
           border: border,
@@ -49,7 +50,7 @@ class AppButton extends StatelessWidget {
     this.border,
   })  : highlightColor = null,
         decoration = BoxDecoration(
-          color: fillColor ?? AppColors.primary.withOpacity(0.1),
+          color: fillColor ?? $constants.palette.main.withOpacity(0.1),
           borderRadius: BorderRadius.circular(borderRadius),
           border: border ?? Border.all(width: 1, color: const Color(0xffECECEC)),
         ),

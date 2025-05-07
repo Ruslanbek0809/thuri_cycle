@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 //TODO [optimization]: If really needed, change to alternative one
 import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:thuri_cycle/presentation/community/widgets/article_widgets/theme/theme.dart';
+import 'package:thuri_cycle/presentation/core/utils/constants.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 
 class AppMarkdown extends StatefulWidget {
@@ -94,7 +95,7 @@ class AppMarkdownState extends State<AppMarkdown> {
                       margin: const EdgeInsets.all(10),
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(50),
-                        color: AppColors.white,
+                        color: $constants.palette.white,
                       ),
                       child: Wrap(
                         alignment: WrapAlignment.center,
@@ -104,7 +105,7 @@ class AppMarkdownState extends State<AppMarkdown> {
                           //   padding: const EdgeInsets.all(8),
                           //   decoration: const BoxDecoration(
                           //     shape: BoxShape.circle,
-                          //     color: AppColors.primary,
+                          //     color: $constants.palette.main,
                           //   ),
                           //   child: AppIcons.icon(AppIcons.camera, size: 12),
                           // ),

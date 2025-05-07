@@ -8,9 +8,9 @@ import 'package:thuri_cycle/l10n/l10n.dart';
 import 'package:thuri_cycle/presentation/community/widgets/article_widgets/article_widget.dart';
 import 'package:thuri_cycle/presentation/community/widgets/article_widgets/article_widget_skeleton.dart';
 import 'package:thuri_cycle/presentation/community/widgets/article_widgets/shared/constants.dart';
-import 'package:thuri_cycle/presentation/community/widgets/article_widgets/theme/src/app_colors.dart';
 import 'package:thuri_cycle/presentation/community/widgets/article_widgets/theme/src/app_shadows.dart';
 import 'package:thuri_cycle/presentation/community/widgets/article_widgets/theme/src/app_text_styles.dart';
+import 'package:thuri_cycle/presentation/core/utils/constants.dart';
 import 'package:thuri_cycle/router.gr.dart';
 
 class CommunityFeaturedSection extends StatelessWidget {
@@ -20,7 +20,7 @@ class CommunityFeaturedSection extends StatelessWidget {
         height: AppConstants.featuredArticleHeight,
         decoration: BoxDecoration(
           boxShadow: [AppShadows.primary],
-          color: AppColors.white,
+          color: $constants.palette.white,
           borderRadius: BorderRadius.circular(18),
         ),
         child: Center(

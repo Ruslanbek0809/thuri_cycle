@@ -1,7 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-
-import '../theme/theme.dart';
+import 'package:thuri_cycle/presentation/core/utils/constants.dart';
 
 class AppDialog {
   const AppDialog(this.context);
@@ -37,16 +36,16 @@ mixin IDialogService {
 }
 
 abstract class IDialog extends StatelessWidget with IDialogService {
-  const IDialog({Key? key}) : super(key: key);
+  const IDialog({super.key});
 }
 
 // ignore: must_be_immutable
 class LoadingDialog extends IDialog {
-  final String? title;
   LoadingDialog({
-    Key? key,
+    super.key,
     this.title,
-  }) : super(key: key);
+  });
+  final String? title;
 
   BuildContext? _context;
 
@@ -59,11 +58,11 @@ class LoadingDialog extends IDialog {
         child: Container(
           padding: const EdgeInsets.all(16),
           decoration: BoxDecoration(
-            color: AppColors.white,
+            color: $constants.palette.white,
             borderRadius: BorderRadius.circular(8),
           ),
-          child: const CircularProgressIndicator(
-            valueColor: AlwaysStoppedAnimation(AppColors.secondary),
+          child: CircularProgressIndicator(
+            valueColor: AlwaysStoppedAnimation($constants.palette.main),
           ),
         ),
       ),
