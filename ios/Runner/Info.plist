@@ -46,6 +46,8 @@
 	<string>This app needs access to camera to report and upload garbage photos</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>This app needs to access a location to select user address from Flutter Map.</string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>This app needs access to location to report and see waste reports on the Flutter map.</string>
 	<key>UIApplicationSupportsIndirectInputEvents</key>
 	<true/>
 	<key>UILaunchStoryboardName</key>
