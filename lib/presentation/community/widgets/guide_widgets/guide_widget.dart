@@ -1,15 +1,15 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:shimmer/shimmer.dart';
 import 'package:thuri_cycle/domain/community/guide/guide.dart';
 import 'package:thuri_cycle/l10n/l10n.dart';
-import 'package:thuri_cycle/presentation/core/utils/constants.dart';
-import 'package:thuri_cycle/presentation/core/utils/methods/shortcuts.dart';
 import 'package:thuri_cycle/presentation/community/widgets/article_widgets/shared/bouncing.dart';
 import 'package:thuri_cycle/presentation/community/widgets/article_widgets/theme/src/app_colors.dart';
 import 'package:thuri_cycle/presentation/community/widgets/article_widgets/theme/src/app_shadows.dart';
 import 'package:thuri_cycle/presentation/community/widgets/article_widgets/theme/src/app_text_styles.dart';
+import 'package:thuri_cycle/presentation/core/utils/constants.dart';
+import 'package:thuri_cycle/presentation/core/utils/methods/shortcuts.dart';
+import 'package:thuri_cycle/presentation/core/widgets/custom/custom_image.dart';
 
 class GuideWidget extends StatelessWidget {
   const GuideWidget({
@@ -73,7 +73,7 @@ class GuideWidget extends StatelessWidget {
                       // ),
                       Padding(
                         padding: const EdgeInsets.all(10),
-                        child: SvgPicture.network(guide.iconUrl),
+                        child: CustomImage(image: guide.iconUrl),
                       ),
                     ],
                   ),
@@ -93,7 +93,9 @@ class GuideWidget extends StatelessWidget {
                     ),
                   ),
                   Text(
-                    guide.material,
+                    Localizations.localeOf(context).languageCode == 'en'
+                        ? guide.material
+                        : guide.materialDe,
                     style: AppTextStyles.blackBlack22
                         .copyWith(fontSize: 17, height: 1.2),
                   ),

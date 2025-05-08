@@ -426,11 +426,16 @@ class SingleGuideRouteArgs {
 class SingleMarkerRoute extends _i19.PageRouteInfo<SingleMarkerRouteArgs> {
   SingleMarkerRoute({
     required _i22.MapMarkerModel mapMarker,
+    required void Function(_i22.MapMarkerModel) onResolveButtonPressed,
     _i21.Key? key,
     List<_i19.PageRouteInfo>? children,
   }) : super(
          SingleMarkerRoute.name,
-         args: SingleMarkerRouteArgs(mapMarker: mapMarker, key: key),
+         args: SingleMarkerRouteArgs(
+           mapMarker: mapMarker,
+           onResolveButtonPressed: onResolveButtonPressed,
+           key: key,
+         ),
          initialChildren: children,
        );
 
@@ -440,21 +445,31 @@ class SingleMarkerRoute extends _i19.PageRouteInfo<SingleMarkerRouteArgs> {
     name,
     builder: (data) {
       final args = data.argsAs<SingleMarkerRouteArgs>();
-      return _i17.SingleMarkerPage(mapMarker: args.mapMarker, key: args.key);
+      return _i17.SingleMarkerPage(
+        mapMarker: args.mapMarker,
+        onResolveButtonPressed: args.onResolveButtonPressed,
+        key: args.key,
+      );
     },
   );
 }
 
 class SingleMarkerRouteArgs {
-  const SingleMarkerRouteArgs({required this.mapMarker, this.key});
+  const SingleMarkerRouteArgs({
+    required this.mapMarker,
+    required this.onResolveButtonPressed,
+    this.key,
+  });
 
   final _i22.MapMarkerModel mapMarker;
+
+  final void Function(_i22.MapMarkerModel) onResolveButtonPressed;
 
   final _i21.Key? key;
 
   @override
   String toString() {
-    return 'SingleMarkerRouteArgs{mapMarker: $mapMarker, key: $key}';
+    return 'SingleMarkerRouteArgs{mapMarker: $mapMarker, onResolveButtonPressed: $onResolveButtonPressed, key: $key}';
   }
 }
 

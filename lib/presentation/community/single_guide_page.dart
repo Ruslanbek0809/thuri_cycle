@@ -4,7 +4,6 @@ import 'package:auto_route/auto_route.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:thuri_cycle/domain/community/guide/guide.dart';
 import 'package:thuri_cycle/l10n/l10n.dart';
 import 'package:thuri_cycle/presentation/community/widgets/article_widgets/app_icon_button.dart';
@@ -13,6 +12,8 @@ import 'package:thuri_cycle/presentation/community/widgets/article_widgets/theme
 import 'package:thuri_cycle/presentation/core/utils/constants.dart';
 import 'package:thuri_cycle/presentation/core/utils/methods/shortcuts.dart';
 
+//TODO [optimization]: Fix this error: bootstrap() runZonedGuarded() error: XmlParserException: ">" expected at 10:12
+//TODO: Optimize UI
 @RoutePage()
 class SingleGuidePage extends StatelessWidget {
   const SingleGuidePage({required this.guide, super.key});
@@ -22,6 +23,10 @@ class SingleGuidePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
+      backgroundColor: Theme.of(context).brightness == Brightness.light
+          ? $constants.palette.secondaryBackground
+          : $constants.palette.darkBackground,
       body: Stack(
         fit: StackFit.expand,
         children: [
@@ -45,7 +50,7 @@ class SingleGuidePage extends StatelessWidget {
                                 image: image,
                                 fit: BoxFit.cover,
                                 color:
-                                    guide.color.hexToColor().withOpacity(0.8),
+                                    guide.color.hexToColor().withOpacity(0.75),
                                 colorBlendMode: BlendMode.color,
                               ),
                             ),
@@ -68,13 +73,17 @@ class SingleGuidePage extends StatelessWidget {
                               child: Column(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
-                                  SvgPicture.network(
-                                    guide.iconUrl,
-                                    height: 60,
-                                  ),
+                                  // CustomImage(
+                                  //   image: guide.iconUrl,
+                                  //   height: 60,
+                                  // ),
+                                  // SvgPicture.network(
+                                  //   guide.iconUrl,
+                                  //   height: 60,
+                                  // ),
                                   const SizedBox(height: 20),
                                   Text(
-                                    '${context.l10n.recycling101}: ${guide.material}',
+                                    '${context.l10n.recycling101}: ${Localizations.localeOf(context).languageCode == 'en' ? guide.material : guide.materialDe}',
                                     textAlign: TextAlign.center,
                                     style: AppTextStyles.whiteExtraBold26,
                                   ),
@@ -85,13 +94,71 @@ class SingleGuidePage extends StatelessWidget {
                         ),
                       ),
                     ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 20,
-                        vertical: 10,
+                    SizedBox(
+                      width: getSize(context).width,
+                      child: Card(
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(
+                            $constants.corners.md + 6,
+                          ),
+                        ),
+                        margin: EdgeInsets.all($constants.insets.sm),
+                        child: Padding(
+                          padding: EdgeInsets.symmetric(
+                            horizontal: $constants.insets.sm,
+                            vertical: $constants.insets.xs + 2,
+                          ),
+                          child: AppMarkdown(
+                            text:
+                                Localizations.localeOf(context).languageCode ==
+                                        'en'
+                                    ? guide.content
+                                    : guide.contentDe,
+                            lineHeight: 1.5,
+                          ),
+                        ),
                       ),
-                      child: AppMarkdown(text: guide.content, lineHeight: 1.5),
                     ),
+                    if (guide.tip.isNotEmpty)
+                      SizedBox(
+                        width: getSize(context).width,
+                        child: Card(
+                          elevation: 0.25,
+                          color: const Color(0xFFDFF4D7),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(
+                              $constants.corners.md + 4,
+                            ),
+                          ),
+                          margin: EdgeInsets.symmetric(
+                            horizontal: $constants.insets.sm,
+                          ),
+                          child: Padding(
+                            padding: EdgeInsets.symmetric(
+                              horizontal: $constants.insets.sm,
+                              vertical: $constants.insets.xs + 2,
+                            ),
+                            child: Row(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Icon(
+                                  Icons.lightbulb_outline,
+                                  color: $constants.palette.main,
+                                  size: 24,
+                                ),
+                                const SizedBox(width: 10),
+                                Expanded(
+                                  child: Text(
+                                    guide.tip,
+                                    style: AppTextStyles.blackRegular14
+                                        .copyWith(height: 1.4),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
                   ],
                   childAnimationBuilder: (widget) => SlideAnimation(
                     verticalOffset: 55,

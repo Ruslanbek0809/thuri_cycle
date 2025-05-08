@@ -43,6 +43,12 @@ class AppRouter extends RootStackRouter {
               page: const EmptyShellRoute('MapRoute'),
               children: [
                 AutoRoute(path: '', page: MapRoute.page, initial: true),
+                //TODO [optimizations]: Find proper solution for this
+                AutoRoute(
+                  path: 'profile-user-edit-in-map',
+                  page: ProfileUserEditRoute.page,
+                  meta: const {'hideBottomNav': true},
+                ),
                 AutoRoute(
                   path: 'report',
                   page: ReportRoute.page,
@@ -96,13 +102,15 @@ class AppRouter extends RootStackRouter {
             // AutoRoute(path: 'community', page: CommunityRoute.page),
             AutoRoute(
               path: 'profile',
-              page: ProfileRoute.page,
-            ),
-            // To access this page outside of profile
-            AutoRoute(
-              path: 'profile-user-edit',
-              page: ProfileUserEditRoute.page,
-              meta: const {'hideBottomNav': true},
+              page: const EmptyShellRoute('ProfileRoute'),
+              children: [
+                AutoRoute(path: '', page: ProfileRoute.page, initial: true),
+                AutoRoute(
+                  path: 'profile-user-edit',
+                  page: ProfileUserEditRoute.page,
+                  meta: const {'hideBottomNav': true},
+                ),
+              ],
             ),
           ],
         ),

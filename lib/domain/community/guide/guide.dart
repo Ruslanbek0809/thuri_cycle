@@ -8,11 +8,17 @@ class Guide with _$Guide {
   const factory Guide({
     required String uid,
     required String material,
+    @JsonKey(name: 'material_de')
+    required String materialDe,
     required String imageUrl,
     required String iconUrl,
     required String color,
     required String content,
+    @JsonKey(name: 'content_de')
+    required String contentDe,
     required String tip,
+    @JsonKey(name: 'tip_de')
+    required String tipDe,
   }) = _Guide;
   const Guide._();
 

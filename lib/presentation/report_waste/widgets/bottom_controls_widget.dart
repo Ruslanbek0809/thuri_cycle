@@ -89,10 +89,18 @@ class _BottomControlsWidgetState extends State<BottomControlsWidget>
                     });
                   }
                 } else {
-                  //TODO: Fix this. Can't access
                   await context.router.push(
                     const ProfileUserEditRoute(),
                   );
+                  // AutoTabsRouter.of(context).setActiveIndex(2);
+                  // await Future<void>.delayed(const Duration(milliseconds: 100));
+
+                  // if (context.mounted) {
+                  // await context.pushRoute(const ProfileUserEditRoute());
+                  // // await context.router.push(
+                  // //   const ProfileUserEditRoute(),
+                  // // );
+                  // }
                 }
               },
               backgroundColor: $constants.palette.main,

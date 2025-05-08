@@ -22,11 +22,17 @@ Guide _$GuideFromJson(Map<String, dynamic> json) {
 mixin _$Guide {
   String get uid => throw _privateConstructorUsedError;
   String get material => throw _privateConstructorUsedError;
+  @JsonKey(name: 'material_de')
+  String get materialDe => throw _privateConstructorUsedError;
   String get imageUrl => throw _privateConstructorUsedError;
   String get iconUrl => throw _privateConstructorUsedError;
   String get color => throw _privateConstructorUsedError;
   String get content => throw _privateConstructorUsedError;
+  @JsonKey(name: 'content_de')
+  String get contentDe => throw _privateConstructorUsedError;
   String get tip => throw _privateConstructorUsedError;
+  @JsonKey(name: 'tip_de')
+  String get tipDe => throw _privateConstructorUsedError;
 
   /// Serializes this Guide to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -45,11 +51,14 @@ abstract class $GuideCopyWith<$Res> {
   $Res call(
       {String uid,
       String material,
+      @JsonKey(name: 'material_de') String materialDe,
       String imageUrl,
       String iconUrl,
       String color,
       String content,
-      String tip});
+      @JsonKey(name: 'content_de') String contentDe,
+      String tip,
+      @JsonKey(name: 'tip_de') String tipDe});
 }
 
 /// @nodoc
@@ -69,11 +78,14 @@ class _$GuideCopyWithImpl<$Res, $Val extends Guide>
   $Res call({
     Object? uid = null,
     Object? material = null,
+    Object? materialDe = null,
     Object? imageUrl = null,
     Object? iconUrl = null,
     Object? color = null,
     Object? content = null,
+    Object? contentDe = null,
     Object? tip = null,
+    Object? tipDe = null,
   }) {
     return _then(_value.copyWith(
       uid: null == uid
@@ -83,6 +95,10 @@ class _$GuideCopyWithImpl<$Res, $Val extends Guide>
       material: null == material
           ? _value.material
           : material // ignore: cast_nullable_to_non_nullable
+              as String,
+      materialDe: null == materialDe
+          ? _value.materialDe
+          : materialDe // ignore: cast_nullable_to_non_nullable
               as String,
       imageUrl: null == imageUrl
           ? _value.imageUrl
@@ -100,9 +116,17 @@ class _$GuideCopyWithImpl<$Res, $Val extends Guide>
           ? _value.content
           : content // ignore: cast_nullable_to_non_nullable
               as String,
+      contentDe: null == contentDe
+          ? _value.contentDe
+          : contentDe // ignore: cast_nullable_to_non_nullable
+              as String,
       tip: null == tip
           ? _value.tip
           : tip // ignore: cast_nullable_to_non_nullable
+              as String,
+      tipDe: null == tipDe
+          ? _value.tipDe
+          : tipDe // ignore: cast_nullable_to_non_nullable
               as String,
     ) as $Val);
   }
@@ -118,11 +142,14 @@ abstract class _$$GuideImplCopyWith<$Res> implements $GuideCopyWith<$Res> {
   $Res call(
       {String uid,
       String material,
+      @JsonKey(name: 'material_de') String materialDe,
       String imageUrl,
       String iconUrl,
       String color,
       String content,
-      String tip});
+      @JsonKey(name: 'content_de') String contentDe,
+      String tip,
+      @JsonKey(name: 'tip_de') String tipDe});
 }
 
 /// @nodoc
@@ -140,11 +167,14 @@ class __$$GuideImplCopyWithImpl<$Res>
   $Res call({
     Object? uid = null,
     Object? material = null,
+    Object? materialDe = null,
     Object? imageUrl = null,
     Object? iconUrl = null,
     Object? color = null,
     Object? content = null,
+    Object? contentDe = null,
     Object? tip = null,
+    Object? tipDe = null,
   }) {
     return _then(_$GuideImpl(
       uid: null == uid
@@ -154,6 +184,10 @@ class __$$GuideImplCopyWithImpl<$Res>
       material: null == material
           ? _value.material
           : material // ignore: cast_nullable_to_non_nullable
+              as String,
+      materialDe: null == materialDe
+          ? _value.materialDe
+          : materialDe // ignore: cast_nullable_to_non_nullable
               as String,
       imageUrl: null == imageUrl
           ? _value.imageUrl
@@ -171,9 +205,17 @@ class __$$GuideImplCopyWithImpl<$Res>
           ? _value.content
           : content // ignore: cast_nullable_to_non_nullable
               as String,
+      contentDe: null == contentDe
+          ? _value.contentDe
+          : contentDe // ignore: cast_nullable_to_non_nullable
+              as String,
       tip: null == tip
           ? _value.tip
           : tip // ignore: cast_nullable_to_non_nullable
+              as String,
+      tipDe: null == tipDe
+          ? _value.tipDe
+          : tipDe // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
@@ -185,11 +227,14 @@ class _$GuideImpl extends _Guide {
   const _$GuideImpl(
       {required this.uid,
       required this.material,
+      @JsonKey(name: 'material_de') required this.materialDe,
       required this.imageUrl,
       required this.iconUrl,
       required this.color,
       required this.content,
-      required this.tip})
+      @JsonKey(name: 'content_de') required this.contentDe,
+      required this.tip,
+      @JsonKey(name: 'tip_de') required this.tipDe})
       : super._();
 
   factory _$GuideImpl.fromJson(Map<String, dynamic> json) =>
@@ -200,6 +245,9 @@ class _$GuideImpl extends _Guide {
   @override
   final String material;
   @override
+  @JsonKey(name: 'material_de')
+  final String materialDe;
+  @override
   final String imageUrl;
   @override
   final String iconUrl;
@@ -208,11 +256,17 @@ class _$GuideImpl extends _Guide {
   @override
   final String content;
   @override
+  @JsonKey(name: 'content_de')
+  final String contentDe;
+  @override
   final String tip;
+  @override
+  @JsonKey(name: 'tip_de')
+  final String tipDe;
 
   @override
   String toString() {
-    return 'Guide(uid: $uid, material: $material, imageUrl: $imageUrl, iconUrl: $iconUrl, color: $color, content: $content, tip: $tip)';
+    return 'Guide(uid: $uid, material: $material, materialDe: $materialDe, imageUrl: $imageUrl, iconUrl: $iconUrl, color: $color, content: $content, contentDe: $contentDe, tip: $tip, tipDe: $tipDe)';
   }
 
   @override
@@ -223,18 +277,23 @@ class _$GuideImpl extends _Guide {
             (identical(other.uid, uid) || other.uid == uid) &&
             (identical(other.material, material) ||
                 other.material == material) &&
+            (identical(other.materialDe, materialDe) ||
+                other.materialDe == materialDe) &&
             (identical(other.imageUrl, imageUrl) ||
                 other.imageUrl == imageUrl) &&
             (identical(other.iconUrl, iconUrl) || other.iconUrl == iconUrl) &&
             (identical(other.color, color) || other.color == color) &&
             (identical(other.content, content) || other.content == content) &&
-            (identical(other.tip, tip) || other.tip == tip));
+            (identical(other.contentDe, contentDe) ||
+                other.contentDe == contentDe) &&
+            (identical(other.tip, tip) || other.tip == tip) &&
+            (identical(other.tipDe, tipDe) || other.tipDe == tipDe));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(
-      runtimeType, uid, material, imageUrl, iconUrl, color, content, tip);
+  int get hashCode => Object.hash(runtimeType, uid, material, materialDe,
+      imageUrl, iconUrl, color, content, contentDe, tip, tipDe);
 
   /// Create a copy of Guide
   /// with the given fields replaced by the non-null parameter values.
@@ -256,11 +315,14 @@ abstract class _Guide extends Guide {
   const factory _Guide(
       {required final String uid,
       required final String material,
+      @JsonKey(name: 'material_de') required final String materialDe,
       required final String imageUrl,
       required final String iconUrl,
       required final String color,
       required final String content,
-      required final String tip}) = _$GuideImpl;
+      @JsonKey(name: 'content_de') required final String contentDe,
+      required final String tip,
+      @JsonKey(name: 'tip_de') required final String tipDe}) = _$GuideImpl;
   const _Guide._() : super._();
 
   factory _Guide.fromJson(Map<String, dynamic> json) = _$GuideImpl.fromJson;
@@ -270,6 +332,9 @@ abstract class _Guide extends Guide {
   @override
   String get material;
   @override
+  @JsonKey(name: 'material_de')
+  String get materialDe;
+  @override
   String get imageUrl;
   @override
   String get iconUrl;
@@ -278,7 +343,13 @@ abstract class _Guide extends Guide {
   @override
   String get content;
   @override
+  @JsonKey(name: 'content_de')
+  String get contentDe;
+  @override
   String get tip;
+  @override
+  @JsonKey(name: 'tip_de')
+  String get tipDe;
 
   /// Create a copy of Guide
   /// with the given fields replaced by the non-null parameter values.

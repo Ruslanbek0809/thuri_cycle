@@ -53,8 +53,9 @@ class ThemeModel with _$ThemeModel {
   @factoryMethod
   static Future<ThemeModel> create() async {
     return ThemeModel(
-      // mode: ThemeMode.light,
-      mode: ThemeMode.system,
+      //TODO [optimization]: Change it back to system after working on the theme
+      mode: ThemeMode.light,
+      // mode: ThemeMode.system,
       light: await createTheme(brightness: Brightness.light),
       dark: await createTheme(brightness: Brightness.dark),
     );
