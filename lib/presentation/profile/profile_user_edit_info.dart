@@ -1,6 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:phone_form_field/phone_form_field.dart';
 import 'package:thuri_cycle/application/auth/auth_bloc.dart';
 import 'package:thuri_cycle/application/auth/profile_user_form/profile_user_form_cubit.dart';
@@ -17,6 +18,7 @@ import 'package:thuri_cycle/presentation/core/widgets/custom/custom_image.dart';
 import 'package:thuri_cycle/presentation/core/widgets/custom/custom_loading_indicator.dart';
 import 'package:thuri_cycle/presentation/core/widgets/custom/custom_opacity_back_button.dart';
 import 'package:thuri_cycle/presentation/core/widgets/custom/custom_svg_avatar.dart';
+import 'package:thuri_cycle/presentation/core/widgets/custom/custom_text_button.dart';
 import 'package:thuri_cycle/presentation/core/widgets/keyboard_dismisser.dart';
 import 'package:thuri_cycle/presentation/profile/widgets/profile_users_circle_avatar_picked_file.dart';
 import 'package:thuri_cycle/presentation/profile/widgets/profile_users_edit_with_label_hook.dart';
@@ -208,6 +210,91 @@ class _ProfileUserEditPageState extends State<ProfileUserEditPage> {
                                         textInputAction: TextInputAction.done,
                                         isReadOnly: true,
                                       ),
+                                      //*------------------ Become a Verifier BUTTON ---------------------//
+                                      Padding(
+                                        padding: EdgeInsets.only(
+                                          top: $constants.insets.sm,
+                                        ),
+                                        child: CustomTextButton(
+                                          backgroundColor:
+                                              $constants.palette.main,
+                                          borderRadius: BorderRadius.circular(
+                                            $constants.corners.md + 2,
+                                          ),
+                                          minimumSize: Size(
+                                            getSize(context).width -
+                                                (($constants.insets.sm + 4) *
+                                                    2),
+                                            getTabletType() ? 80 : 50,
+                                          ),
+                                          child: Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                            children: [
+                                              Icon(
+                                                MdiIcons.shieldCheckOutline,
+                                                color: $constants.palette.white,
+                                                size: 20,
+                                              ),
+                                              SizedBox(
+                                                width: $constants.insets.xs,
+                                              ),
+                                              Text(
+                                                context.l10n.becomeVerifier,
+                                                style: getTextTheme(context)
+                                                    .titleSmall!
+                                                    .copyWith(
+                                                      fontSize:
+                                                          responsiveFontSize(
+                                                        context,
+                                                        12.75,
+                                                      ),
+                                                      fontWeight:
+                                                          FontWeight.w400,
+                                                      color: $constants
+                                                          .palette.white,
+                                                    ),
+                                              ),
+                                            ],
+                                          ),
+                                          onPressed: () async {
+                                            // TODO [optimization]: Implement this
+                                            scaffoldMessengerKey.currentState
+                                              ?..hideCurrentSnackBar()
+                                              ..showSnackBar(
+                                                SnackBarHelper
+                                                    .createInformation(
+                                                  message: context
+                                                      .l10n.comingInNextUpdate,
+                                                ),
+                                              );
+                                          },
+                                        ),
+                                      ),
+                                      // TODO [optimization]: Only show this when user IS a verifier
+                                      // if (isVerifier)
+                                      //   Padding(
+                                      //     padding: const EdgeInsets.symmetric(
+                                      //         vertical: 12),
+                                      //     child: Text(
+                                      //       "✅ You are a verifier",
+                                      //       style: theme.textTheme.titleSmall!
+                                      //           .copyWith(
+                                      //         fontWeight: FontWeight.w600,
+                                      //         color: $constants.palette.success,
+                                      //       ),
+                                      //     ),
+                                      //   ),
+
+                                      // SwitchWidget(
+                                      //   checked: acceptedToReview,
+                                      //   title: l10n.acceptToReviewSwitchTitle,
+                                      //   description: l10n
+                                      //       .acceptToReviewSwitchDescription,
+                                      //   onCheckedChanged: (value) async {
+                                      //     // Confirm and process switch change...
+                                      //   },
+                                      // ),
                                     ],
                                   ),
                                 ),
@@ -430,6 +517,7 @@ class _ProfileUserEditPageState extends State<ProfileUserEditPage> {
                             ),
                           ],
                         ),
+
                         // SizedBox(height: $constants.insets.xxs + 2),
                         // Card(
                         //   shape: RoundedRectangleBorder(
