@@ -259,7 +259,7 @@ class _ProfilePageState extends State<ProfilePage> {
                               //     .push(const TermsOfUseRoute());
                             },
                           ),
-                          //TODO: Implement later on
+                          //TODO [optimizations]: Implement later on
                           // const CustomDivider(),
                           // ProfileItemCard(
                           //   title: context.l10n.privacyPolicy,
@@ -270,7 +270,7 @@ class _ProfilePageState extends State<ProfilePage> {
                           //   },
                           // ),
                           const CustomDivider(),
-                          //TODO: Implement later on
+                          //TODO [optimizations]: Implement later on
                           // ProfileItemCard(
                           //   title: context.l10n.contactUs,
                           //   svgName: 'assets/profile/contact_us.svg',
@@ -278,7 +278,7 @@ class _ProfilePageState extends State<ProfilePage> {
                           //     // await context.router.push(const ContactUsRoute());
                           //   },
                           // ),
-                          //TODO: Implement later on
+                          //TODO [optimizations]: Implement later on
                           // const CustomDivider(),
                           // ProfileItemCard(
                           //   title: context.l10n.rateUs,
@@ -289,7 +289,7 @@ class _ProfilePageState extends State<ProfilePage> {
                           //     //     .requestInAppReview();
                           //   },
                           // ),
-                          //TODO: Implement later on
+                          //TODO [optimizations]: Implement later on
                           // const CustomDivider(),
                           // ProfileItemCard(
                           //   title: 'FAQ',

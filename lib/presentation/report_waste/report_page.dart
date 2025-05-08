@@ -23,6 +23,7 @@ import 'package:thuri_cycle/router.gr.dart';
 
 //TODO: Return this reported marker to the map (check old project)
 //TODO: Handle checkFields
+//TODO: Fix error when newly created and try to access but not opening
 //TODO [optimization]: Handle errorMessage
 @RoutePage()
 class ReportPage extends StatefulWidget {

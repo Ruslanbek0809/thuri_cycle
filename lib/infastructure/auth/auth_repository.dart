@@ -423,6 +423,7 @@ class AuthRepository implements IAuth {
 
     final uid = user.uid;
     final email = user.email ?? '';
+    //TODO [optimization]: Username is getting updated for no reason
     final name = user.displayName ?? user.email ?? user.phoneNumber ?? '';
     final photoUrl = user.photoURL ?? '';
     final phoneNumber = user.phoneNumber ?? '';

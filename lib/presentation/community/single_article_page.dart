@@ -20,7 +20,6 @@ import 'package:thuri_cycle/presentation/core/utils/constants.dart';
 
 GlobalKey _summaryKey = GlobalKey();
 
-//TODO: Look for changes from old project for this page and apply any needed features from it if needed
 @RoutePage()
 class SingleArticlePage extends StatelessWidget {
   const SingleArticlePage({required this.article, super.key});

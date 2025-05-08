@@ -16,7 +16,7 @@ class ThemeModel with _$ThemeModel {
     required ThemeData dark,
   }) = _ThemeModel;
 
-  //TODO: Change it back to system
+  //TODO [optimization]: Change it back to system after working on the theme
   factory ThemeModel.initial() => ThemeModel(
         mode: ThemeMode.light,
         // mode: ThemeMode.system,

@@ -28,9 +28,9 @@ class SettingsFormCubit extends Cubit<SettingsFormState> {
     emit(
       state.copyWith(
         languageModel: LanguageModel(
-          id: appLocaleID ?? 1,
-          shortName: appLocale ?? 'en',
-          name: appLocaleName ?? 'English',
+          id: appLocaleID ?? 2,
+          shortName: appLocale ?? 'de',
+          name: appLocaleName ?? 'Deutsch',
         ),
       ),
     );

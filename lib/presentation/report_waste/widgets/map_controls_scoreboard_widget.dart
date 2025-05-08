@@ -6,6 +6,8 @@ import 'package:thuri_cycle/application/report_waste/location/location_cubit.dar
 import 'package:thuri_cycle/domain/report_waste/location_info.dart';
 import 'package:thuri_cycle/l10n/l10n.dart';
 import 'package:thuri_cycle/presentation/core/utils/constants.dart';
+import 'package:thuri_cycle/presentation/core/utils/helpers/snackbar_helper.dart';
+import 'package:thuri_cycle/presentation/core/utils/methods/aliases.dart';
 import 'package:thuri_cycle/router.gr.dart';
 
 class MapControlsAndScoreboardWidget extends StatefulWidget {
@@ -13,10 +15,12 @@ class MapControlsAndScoreboardWidget extends StatefulWidget {
   final VoidCallback? onTap;
 
   @override
-  State<MapControlsAndScoreboardWidget> createState() => _MapControlsAndScoreboardWidgetState();
+  State<MapControlsAndScoreboardWidget> createState() =>
+      _MapControlsAndScoreboardWidgetState();
 }
 
-class _MapControlsAndScoreboardWidgetState extends State<MapControlsAndScoreboardWidget>
+class _MapControlsAndScoreboardWidgetState
+    extends State<MapControlsAndScoreboardWidget>
     with SingleTickerProviderStateMixin<MapControlsAndScoreboardWidget> {
   static const Duration repositionAnimDuration = Duration(milliseconds: 200);
   late final AnimationController repositionAnim;
@@ -70,6 +74,13 @@ class _MapControlsAndScoreboardWidgetState extends State<MapControlsAndScoreboar
                 materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
                 mini: true,
                 onPressed: () async {
+                  scaffoldMessengerKey.currentState
+                    ?..hideCurrentSnackBar()
+                    ..showSnackBar(
+                      SnackBarHelper.createInformation(
+                        message: context.l10n.comingInNextUpdate,
+                      ),
+                    );
                   await context.router.push(
                     ScoreboardRoute(
                       mapCenter: locationInfo?.latLng ??

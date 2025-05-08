@@ -1,11 +1,8 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:thuri_cycle/application/auth/auth_bloc.dart';
 import 'package:thuri_cycle/l10n/l10n.dart';
 import 'package:thuri_cycle/presentation/report_waste/widgets/about_card_widget.dart';
-import 'package:thuri_cycle/presentation/report_waste/widgets/switch_widget.dart';
 
 //TODO: Add descriptions
 @RoutePage()
@@ -14,8 +11,6 @@ class SettingsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final authBlocState = context.watch<AuthBloc>().state;
-
     // final verifyTime = watchStream(
     //       (VerifyTimeProvider provider) => provider.getVerifyTimeStream(),
     //       get<VerifyTimeProvider>().getVerifyTime(),
@@ -33,7 +28,7 @@ class SettingsPage extends StatelessWidget {
             const Padding(
               padding: EdgeInsets.symmetric(horizontal: 8),
               child: AboutCardWidget(
-                description: 'ThuriCycle description',
+                description: 'ThuriCycle – Smart Waste, Sauberes Thüringen',
                 // description: l10n.insignoDescription,
                 svgAssetPath: 'assets/app_logo_svg.svg',
                 urlString: 'https://github.com/Ruslanbek0809',
@@ -43,7 +38,7 @@ class SettingsPage extends StatelessWidget {
             const Padding(
               padding: EdgeInsets.symmetric(horizontal: 8),
               child: AboutCardWidget(
-                description: 'Description',
+                description: 'Individuelles Projekt. Bald kommt Version 2!',
                 // description: l10n.mindshubDescription,
                 svgAssetPath: 'assets/app_logo_svg.svg',
                 urlString: 'https://mindshub.it',
@@ -51,27 +46,27 @@ class SettingsPage extends StatelessWidget {
             ),
             const SizedBox(height: 16),
             const Divider(height: 1),
-            if (authBlocState == const AuthState.authenticated())
-              SwitchWidget(
-                checked: true,
-                // checked: verifyTime.dateTime != null,
-                title: context.l10n.acceptToReviewSwitchTitle,
-                description: context.l10n.acceptToReviewSwitchDescription,
-                // title: l10n.acceptToReviewSwitchTitle,
-                // description: l10n.acceptToReviewSwitchDescription,
-                onCheckedChanged: (acceptedToReview) async {
-                  // if (acceptedToReview) {
-                  //   var confirmed = await openAcceptToReviewDialog(context);
-                  //   if (confirmed != true) {
-                  //     return;
-                  //   }
-                  // }
+            // if (authBlocState == const AuthState.authenticated())
+            //   SwitchWidget(
+            //     checked: true,
+            //     // checked: verifyTime.dateTime != null,
+            //     title: context.l10n.acceptToReviewSwitchTitle,
+            //     description: context.l10n.acceptToReviewSwitchDescription,
+            //     // title: l10n.acceptToReviewSwitchTitle,
+            //     // description: l10n.acceptToReviewSwitchDescription,
+            //     onCheckedChanged: (acceptedToReview) async {
+            //       // if (acceptedToReview) {
+            //       //   var confirmed = await openAcceptToReviewDialog(context);
+            //       //   if (confirmed != true) {
+            //       //     return;
+            //       //   }
+            //       // }
 
-                  // await get<Backend>().setAcceptedToReview(acceptedToReview);
-                  // get<VerifyTimeProvider>()
-                  //     .onAcceptedToReviewSettingChanged(acceptedToReview);
-                },
-              ),
+            //       // await get<Backend>().setAcceptedToReview(acceptedToReview);
+            //       // get<VerifyTimeProvider>()
+            //       //     .onAcceptedToReviewSettingChanged(acceptedToReview);
+            //     },
+            //   ),
             // InkWell(
             //   onTap: () {
             //     Navigator.pushNamed(context, IntroductionPage.routeName);

@@ -1,6 +1,6 @@
 name: thuri_cycle
 description: A mobile solution that guides users on proper recycling and waste reduction in Thuringia.
-version: 1.0.0+1
+version: 1.0.1+2
 publish_to: none
 
 environment:

@@ -33,30 +33,29 @@ enum MarkerType {
   }
 
   String getName(BuildContext context) {
-    final l10n = AppLocalizations.of(context);
     switch (this) {
       case MarkerType.unknown:
-        return l10n.markerTypeUnknown;
+        return context.l10n.markerTypeUnknown;
       case MarkerType.plasticAndPackaging:
-        return l10n.markerTypePlasticAndPackaging;
+        return context.l10n.markerTypePlasticAndPackaging;
       case MarkerType.paper:
-        return l10n.markerTypePaper;
+        return context.l10n.markerTypePaper;
       case MarkerType.glass:
-        return l10n.markerTypeGlass;
+        return context.l10n.markerTypeGlass;
       case MarkerType.organic:
-        return l10n.markerTypeOrganic;
+        return context.l10n.markerTypeOrganic;
       case MarkerType.residual:
-        return l10n.markerTypeResidual;
+        return context.l10n.markerTypeResidual;
       case MarkerType.electronics:
-        return l10n.markerTypeElectronics;
+        return context.l10n.markerTypeElectronics;
       case MarkerType.hazardous:
-        return l10n.markerTypeHazardous;
+        return context.l10n.markerTypeHazardous;
       case MarkerType.bulky:
-        return l10n.markerTypeBulky;
+        return context.l10n.markerTypeBulky;
       case MarkerType.textiles:
-        return l10n.markerTypeTextiles;
+        return context.l10n.markerTypeTextiles;
       case MarkerType.batteries:
-        return l10n.markerTypeBatteries;
+        return context.l10n.markerTypeBatteries;
     }
   }
 }

@@ -13,13 +13,13 @@ part 'locale_cubit.freezed.dart';
 class LocaleCubit extends Cubit<LocaleState> {
   LocaleCubit(
     this.sharedPreferences,
-  ) : super(LocaleState.initial(const Locale('en')));
+  ) : super(LocaleState.initial(const Locale('de')));
 
   final SharedPreferences sharedPreferences;
 
   Future<void> initLocale() async {
     final appLocale = sharedPreferences.getString($constants.appLocale);
-    emit(state.copyWith(locale: Locale(appLocale ?? 'en')));
+    emit(state.copyWith(locale: Locale(appLocale ?? 'de')));
   }
 
   Future<void> changeLocale(Locale newLocale) async {

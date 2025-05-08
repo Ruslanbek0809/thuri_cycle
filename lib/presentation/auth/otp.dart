@@ -104,6 +104,16 @@ class _OtpPageState extends State<OtpPage> {
                               context
                                   .read<AuthBloc>()
                                   .add(const AuthEvent.authCheckRequested());
+                              if (context.mounted) {
+                                scaffoldMessengerKey.currentState
+                                  ?..hideCurrentSnackBar()
+                                  ..showSnackBar(
+                                    SnackBarHelper.createSuccess(
+                                      message: context.l10n.successLoggedIn,
+                                      duration: const Duration(seconds: 2),
+                                    ),
+                                  );
+                              }
                               context.router.popUntilRoot();
                               // await context.router
                               //     .replaceAll([const AppWrapperRoute()]);

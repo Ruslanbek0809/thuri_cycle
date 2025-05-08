@@ -45,10 +45,8 @@ Future<void> bootstrap(FutureOr<Widget> Function() builder) async {
       final widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
 
       //* PRESERVES splash screen until authentication complete.
-      // TODO: If needed you can now keep the splash screen up while your app initializes! No need for a secondary splash screen anymore.
       FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
 
-      // TODO: If needed, uncommen
       // //! ---------- HIVE INIT CONFIG -------- //
       // await Hive.initFlutter();
 
@@ -56,7 +54,6 @@ Future<void> bootstrap(FutureOr<Widget> Function() builder) async {
       //* CONFIGURES dependency injection to init modules and singletons.
       await configureDependencyInjection();
 
-      // TODO: If needed, uncomment
       // if (UniversalPlatform.isAndroid) {
       //   //* INCREASES android devices preferred refresh rate to its maximum.
       //   await FlutterDisplayMode.setHighRefreshRate();
@@ -107,7 +104,6 @@ Future<void> bootstrap(FutureOr<Widget> Function() builder) async {
               ),
       );
 
-      //TODO: Check whether following config is needed for Google Maps
       // //! ---------- GOOGLE MAPS CONFIG -------- //
       // if (UniversalPlatform.isAndroid) {
       //   AndroidGoogleMapsFlutter.useAndroidViewSurface = true;

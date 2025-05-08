@@ -10,22 +10,17 @@ import 'package:thuri_cycle/presentation/core/utils/methods/aliases.dart';
 part 'auth_form_cubit.freezed.dart';
 part 'auth_form_state.dart';
 
-//TODO: Create BlocProvider for this wherever it is used
+//TODO [optimization]: Create BlocProvider for this wherever it is used
 @injectable
 class AuthFormCubit extends Cubit<AuthFormState> {
   AuthFormCubit(this.iAuth) : super(AuthFormState.initial());
   final IAuth iAuth;
 
-  // //* RESETS default auth form to initial state
-  // Future<void> resetAuthFormToInitialState() async {
-  //   emit(AuthFormState.initial());
-  // }
-
   void setIsLoadingToFalse() {
     talker.info('[AuthCubit] setIsLoadingToFalse()');
     emit(state.copyWith(isLoading: false));
   }
-
+  
   Future<void> signInWithGoogle() async {
     talker.info('[AuthCubit] signInWithGoogle()');
     emit(

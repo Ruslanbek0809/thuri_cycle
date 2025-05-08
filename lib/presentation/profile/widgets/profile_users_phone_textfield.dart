@@ -105,6 +105,7 @@ class _ProfileUsersPhoneTextFieldState
       child: PhoneFormField(
         key: widget.key,
         controller: phoneController,
+        initialValue: const PhoneNumber(isoCode: IsoCode.DE, nsn: ''),
         countrySelectorNavigator: CountrySelectorNavigator.dialog(
           width: getSize(context).width - $constants.insets.offset,
           height: getSize(context).height - (getSize(context).height * 0.25),

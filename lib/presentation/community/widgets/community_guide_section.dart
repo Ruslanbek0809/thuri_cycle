@@ -11,7 +11,6 @@ import 'package:thuri_cycle/presentation/community/widgets/guide_widgets/guide_w
 import 'package:thuri_cycle/presentation/community/widgets/guide_widgets/guide_widget_skeleton.dart';
 import 'package:thuri_cycle/router.gr.dart';
 
-//TODO: Add tip section
 class CommunityGuidesSection extends StatelessWidget {
   const CommunityGuidesSection({super.key});
 
