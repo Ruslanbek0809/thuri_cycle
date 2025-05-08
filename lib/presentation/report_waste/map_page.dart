@@ -20,7 +20,6 @@ import 'package:thuri_cycle/presentation/report_waste/widgets/settings_controls_
 import 'package:thuri_cycle/router.gr.dart';
 
 //TODO: Look for changes from old project for this page and apply any needed features from it if needed
-//TODO: Add getMarkers
 @RoutePage()
 class MapPage extends StatefulWidget {
   const MapPage({super.key});
@@ -124,11 +123,19 @@ class _MapPageState extends State<MapPage> with WidgetsBindingObserver {
                 final dy = (tapPosition.global.dy - screenPoint.dy)
                     .abs(); //TODO: Check changes here in this file 1 more time
                 if (max(dx, dy) < markerScale * 0.7) {
-                  // openMarkerPage(minMarker);
-
                   await context.router.push(
-                    SingleMarkerRoute(mapMarker: minMarker),
+                    SingleMarkerRoute(
+                      mapMarker: minMarker,
+                      onResolveButtonPressed: (newMapMarkerModel) async {
+                        if (context.mounted) {
+                          context
+                              .read<MapMarkerFormCubit>()
+                              .addOrReplaceMarker(newMapMarkerModel);
+                        }
+                      },
+                    ),
                   );
+                  // openMarkerPage(minMarker);
                 }
               },
             ),
@@ -137,8 +144,8 @@ class _MapPageState extends State<MapPage> with WidgetsBindingObserver {
               TileLayer(
                 urlTemplate: 'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
               ),
-              //TODO: Add more features of LocationProvider
-              // TODO: Check
+              // TODO: Check and fix
+              //TODO [optimization]: Add more features of LocationProvider
               // TODO [optimization]: Optimize LocationCubit by using LocationInfo and keeping current last position
               //*----------------- CURRENT LOCATION ---------------------//
               BlocBuilder<LocationCubit, LocationState>(

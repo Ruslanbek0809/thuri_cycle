@@ -89,14 +89,24 @@ class MapMarkerFormCubit extends Cubit<MapMarkerFormState> {
   }
 
   void addOrReplaceMarker(MapMarkerModel marker) {
-    final updated = List<MapMarkerModel>.from(state.allMarkers)
-      ..removeWhere((m) => m.id == marker.id);
+    // final updated = List<MapMarkerModel>.from(state.allMarkers)
+    //   ..removeWhere((m) => m.id == marker.id);
+    // if (marker.resolutionDate == null || state.includeResolved) {
+    //   updated.add(marker);
+    // }
 
-    if (marker.resolutionDate == null || state.includeResolved) {
-      updated.add(marker);
+    // emit(state.copyWith(allMarkers: updated));
+
+    final updatedMarkers = List<MapMarkerModel>.from(state.allMarkers);
+    final index = updatedMarkers.indexWhere((m) => m.id == marker.id);
+
+    if (index != -1) {
+      updatedMarkers[index] = marker;
+    } else {
+      updatedMarkers.add(marker);
     }
 
-    emit(state.copyWith(allMarkers: updated));
+    emit(state.copyWith(allMarkers: updatedMarkers));
   }
 
   Future<void> saveCurrentMapPosition(LatLng center, double zoom) async {

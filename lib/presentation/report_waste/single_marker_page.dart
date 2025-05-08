@@ -1,6 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:thuri_cycle/application/auth/auth_bloc.dart';
 import 'package:thuri_cycle/application/auth/profile_user_form/profile_user_form_cubit.dart';
 import 'package:thuri_cycle/application/report_waste/location/location_cubit.dart';
@@ -19,10 +20,16 @@ import 'package:thuri_cycle/router.gr.dart';
 
 //TODO [optimization]: Work on canBeReported
 //TODO [optimization]: Work on openReportAsInappropriateDialog
+//TODO [optimization]: Work on verification. Opinion: No, don’t delete after verification. Keep the marker for historical tracking and community trust.
 @RoutePage()
 class SingleMarkerPage extends StatefulWidget {
-  const SingleMarkerPage({required this.mapMarker, super.key});
+  const SingleMarkerPage({
+    required this.mapMarker,
+    required this.onResolveButtonPressed,
+    super.key,
+  });
   final MapMarkerModel mapMarker;
+  final void Function(MapMarkerModel) onResolveButtonPressed;
 
   @override
   State<SingleMarkerPage> createState() => _SingleMarkerPageState();
@@ -35,7 +42,7 @@ class SingleMarkerPage extends StatefulWidget {
 // }
 
 class _SingleMarkerPageState extends State<SingleMarkerPage> {
-  MapMarkerModel get mapMarker => widget.mapMarker;
+  late MapMarkerModel _mapMarker;
 
   String? markerError;
   String? resolveError;
@@ -44,6 +51,8 @@ class _SingleMarkerPageState extends State<SingleMarkerPage> {
   @override
   void initState() {
     super.initState();
+
+    _mapMarker = widget.mapMarker;
     // reload();
   }
 
@@ -69,15 +78,15 @@ class _SingleMarkerPageState extends State<SingleMarkerPage> {
     );
 
     final nearEnoughToResolve =
-        locationInfo?.position?.map(mapMarker.isNearEnoughToResolve) ?? false;
+        locationInfo?.position?.map(_mapMarker.isNearEnoughToResolve) ?? false;
 
     return BlocProvider(
       create: (_) => getIt<SingleMarkerFormCubit>()
-        ..getUserModelByID(mapMarker.reportedBy, isReportedByUser: true)
-        ..getUserModelByID(mapMarker.resolvedBy),
+        ..getUserModelByID(_mapMarker.reportedBy, isReportedByUser: true)
+        ..getUserModelByID(_mapMarker.resolvedBy),
       child: Scaffold(
         appBar: AppBar(
-          title: MarkerTypeAppBarTitle(mapMarker.markerType),
+          title: MarkerTypeAppBarTitle(_mapMarker.markerType),
           actions:
               // isLoggedIn && (singleMarkerModel.canBeReported ?? false)
               //     ?
@@ -99,119 +108,239 @@ class _SingleMarkerPageState extends State<SingleMarkerPage> {
           ],
           // : null,
         ),
-        body: WillPopScope(
-          onWillPop: () async {
-            Navigator.pop(
-              context,
-              mapMarker,
-            ); // pass the up-to-date loaded marker to the parent
-            return false;
-          },
-          child: Center(
-            child: SingleChildScrollView(
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  //*----------------- Map marker images ---------------------//
-                  if (mapMarker.images.isNotEmpty)
-                    MarkerPhotoListWidget(imageUrls: mapMarker.images),
-                  // MarkerPhotoListWidget(
-                  //   singleMarkerModel.marker.images,
-                  //   singleMarkerModel.marker.images.map(
-                  //     (image) => imageFromNetwork(
-                  //         imageId: image, height: AddImagesWidget.imageHeight),
-                  //   ),
-                  // ),
-                  // ErrorText(markerError, l10n.errorLoading),
-                  // ErrorText(
-                  //   widget.errorAddingImages,
-                  //   l10n.errorUploadingReportImages,
-                  //   topPadding: $constants.insets.sm,
-                  // ),
-                  // ErrorText(
-                  //   resolveError,
-                  //   l10n.errorUploadingResolveImages,
-                  //   topPadding: $constants.insets.sm,
-                  // ),
-                  // ErrorText(
-                  //   reportAsInappropriateError,
-                  //   l10n.errorReportingAsInappropriate,
-                  //   topPadding: $constants.insets.sm,
-                  // ),
+        body: Center(
+          child: SingleChildScrollView(
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                //*----------------- Map marker images ---------------------//
+                if (_mapMarker.images.isNotEmpty)
+                  Padding(
+                    padding: EdgeInsets.only(bottom: $constants.insets.xs),
+                    child: MarkerPhotoListWidget(imageUrls: _mapMarker.images),
+                  ),
+                // MarkerPhotoListWidget(
+                //   singleMarkerModel.marker.images,
+                //   singleMarkerModel.marker.images.map(
+                //     (image) => imageFromNetwork(
+                //         imageId: image, height: AddImagesWidget.imageHeight),
+                //   ),
+                // ),
+                // ErrorText(markerError, l10n.errorLoading),
+                // ErrorText(
+                //   widget.errorAddingImages,
+                //   l10n.errorUploadingReportImages,
+                //   topPadding: $constants.insets.sm,
+                // ),
+                // ErrorText(
+                //   resolveError,
+                //   l10n.errorUploadingResolveImages,
+                //   topPadding: $constants.insets.sm,
+                // ),
+                // ErrorText(
+                //   reportAsInappropriateError,
+                //   l10n.errorReportingAsInappropriate,
+                //   topPadding: $constants.insets.sm,
+                // ),
 
-                  //*----------------- Resolved no show || Login to resolve || Get closer to resolve ---------------------//
-                  if (mapMarker.resolutionDate != null)
-                    const SizedBox()
-                  else if (authBlocState == const AuthState.unauthenticated())
-                    Text(
+                //*----------------- Awaiting Verification ---------------------//
+                // if (_mapMarker.resolutionDate != null
+                //     //  && !_mapMarker.isVerified
+                //     )
+                //   Padding(
+                //     padding: EdgeInsets.symmetric(
+                //       horizontal: $constants.insets.sm,
+                //       vertical: $constants.insets.sm - 4,
+                //     ),
+                //     child: Row(
+                //       mainAxisAlignment: MainAxisAlignment.center,
+                //       children: [
+                //         Icon(
+                //           MdiIcons.clockAlertOutline,
+                //           color: Colors.orange,
+                //         ),
+                //         SizedBox(width: $constants.insets.xs),
+                //         Expanded(
+                //           child: Text(
+                //             context.l10n.resolutionPendingVerification,
+                //             style: theme.textTheme.bodyMedium?.copyWith(
+                //               color: Colors.orange[800],
+                //               fontWeight: FontWeight.w600,
+                //             ),
+                //             textAlign: TextAlign.center,
+                //           ),
+                //         ),
+                //       ],
+                //     ),
+                //   ),
+
+                if (_mapMarker.resolutionDate != null
+                    // && !_mapMarker.isVerified
+                    )
+                  Card(
+                    color: Colors.orange.shade50,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(
+                        $constants.corners.md + 2,
+                      ),
+                    ),
+                    margin: EdgeInsets.fromLTRB(
+                      $constants.insets.sm,
+                      $constants.insets.sm + 4,
+                      $constants.insets.sm,
+                      $constants.insets.sm,
+                    ),
+                    child: Padding(
+                      padding: EdgeInsets.all($constants.insets.sm - 4),
+                      child: Row(
+                        children: [
+                          Icon(
+                            MdiIcons.clockAlertOutline,
+                            color: Colors.orange,
+                          ),
+                          SizedBox(width: $constants.insets.sm - 4),
+                          Expanded(
+                            child: Text(
+                              context.l10n.resolutionPendingVerification,
+                              style: getTextTheme(context).titleSmall!.copyWith(
+                                    fontSize:
+                                        responsiveFontSize(context, 12.75),
+                                    fontWeight: FontWeight.w600,
+                                    color: Colors.orange[800],
+                                  ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                //*----------------- Resolved no show || Login to resolve || Get closer to resolve ---------------------//
+                if (_mapMarker.resolutionDate != null)
+                  const SizedBox()
+                else if (authBlocState == const AuthState.unauthenticated())
+                  Padding(
+                    padding: EdgeInsets.only(bottom: $constants.insets.xs),
+                    child: Text(
                       context.l10n.loginToResolve,
                       textAlign: TextAlign.center,
-                    )
-                  else if (!nearEnoughToResolve)
-                    Text(
+                    ),
+                  )
+                else if (!nearEnoughToResolve)
+                  Padding(
+                    padding: EdgeInsets.only(bottom: $constants.insets.xs),
+                    child: Text(
                       context.l10n.getCloserToResolve,
                       textAlign: TextAlign.center,
                     ),
-                  SizedBox(height: $constants.insets.xs),
-                  //*----------------- RESOLVE BUTTON ---------------------//
-                  BlocBuilder<ProfileUserFormCubit, ProfileUserFormState>(
-                    buildWhen: (previous, current) =>
-                        previous.userModel != current.userModel,
-                    builder: (context, state) {
-                      // final currentUser = state.userModel;
-                      // final isReportedByCurrentUser =
-                      //     mapMarker.reportedBy == currentUser.uid;
-
-                      return
-                          // isReportedByCurrentUser
-                          //     ? const SizedBox.shrink()
-                          //     :
-                          ElevatedButton(
-                        onPressed: (mapMarker.resolutionDate == null &&
-                                authBlocState ==
-                                    const AuthState.authenticated() &&
-                                nearEnoughToResolve)
-                            ? () async {
-                                await context.router.push(
-                                  ResolveRoute(mapMarker: mapMarker),
-                                );
-                              }
-                            // ? openResolvePage
-                            : null,
-                        child: Text(
-                          mapMarker.resolutionDate == null
-                              ? context.l10n.resolve
-                              : context.l10n.alreadyResolved,
-                        ),
-                      );
-                    },
                   ),
-                  //*----------------- Provides helpful info ---------------------//
-                  if (mapMarker.resolutionDate == null)
-                    Padding(
-                      padding: EdgeInsets.only(
-                        top: $constants.insets.xs,
-                        left: $constants.insets.sm,
-                        right: $constants.insets.sm,
-                      ),
+                //*----------------- RESOLVE BUTTON ---------------------//
+                BlocBuilder<ProfileUserFormCubit, ProfileUserFormState>(
+                  buildWhen: (previous, current) =>
+                      previous.userModel != current.userModel,
+                  builder: (context, state) {
+                    // final currentUser = state.userModel;
+                    // final isReportedByCurrentUser =
+                    //     mapMarker.reportedBy == currentUser.uid;
+
+                    return
+                        // isReportedByCurrentUser
+                        //     ? const SizedBox.shrink()
+                        //     :
+                        ElevatedButton(
+                      onPressed: (_mapMarker.resolutionDate == null &&
+                              authBlocState ==
+                                  const AuthState.authenticated() &&
+                              nearEnoughToResolve)
+                          ? () async {
+                              final newMapMarker =
+                                  await context.router.push<MapMarkerModel?>(
+                                ResolveRoute(mapMarker: _mapMarker),
+                              );
+                              if (newMapMarker != null && context.mounted) {
+                                //TODO [optimizations]: Handle this better w/o using setState
+                                setState(() {
+                                  _mapMarker = newMapMarker;
+                                });
+
+                                widget.onResolveButtonPressed(newMapMarker);
+                                if (context.mounted) {
+                                  scaffoldMessengerKey.currentState
+                                    ?..hideCurrentSnackBar()
+                                    ..showSnackBar(
+                                      SnackBarHelper.createSuccess(
+                                        message:
+                                            context.l10n.resolvedSuccessfully,
+                                        duration: const Duration(seconds: 4),
+                                      ),
+                                    );
+                                }
+                                await context
+                                    .read<SingleMarkerFormCubit>()
+                                    .getUserModelByID(_mapMarker.resolvedBy);
+                              }
+                            }
+                          // ? openResolvePage
+                          : null,
                       child: Text(
-                        context.l10n.usePpe,
-                        style: theme.textTheme.labelMedium,
-                        textAlign: TextAlign.center,
+                        _mapMarker.resolutionDate == null
+                            ? context.l10n.resolve
+                            : context.l10n.alreadyResolved,
                       ),
+                    );
+                  },
+                ),
+                //*----------------- Provides helpful info ---------------------//
+                if (_mapMarker.resolutionDate == null)
+                  Padding(
+                    padding: EdgeInsets.only(
+                      top: $constants.insets.xs,
+                      left: $constants.insets.sm,
+                      right: $constants.insets.sm,
                     ),
-                  SizedBox(height: $constants.insets.xs),
-                  //*----------------- ReportedByUser & ResolvedByUser ---------------------//
-                  BlocBuilder<SingleMarkerFormCubit, SingleMarkerFormState>(
-                    buildWhen: (p, c) => p != c,
-                    builder: (context, state) {
-                      final reportedByUserModel = state.reportedByUser;
-                      final resolvedByUserModel = state.resolvedByUser;
-                      return state.isLoading
-                          ? const CircularProgressIndicator()
-                          : OverflowBar(
-                              overflowAlignment: OverflowBarAlignment.center,
-                              children: [
+                    child: Text(
+                      context.l10n.usePpe,
+                      style: theme.textTheme.labelMedium,
+                      textAlign: TextAlign.center,
+                    ),
+                  ),
+                SizedBox(height: $constants.insets.xs),
+                //*----------------- ReportedByUser & ResolvedByUser ---------------------//
+                BlocBuilder<SingleMarkerFormCubit, SingleMarkerFormState>(
+                  buildWhen: (p, c) => p != c,
+                  builder: (context, state) {
+                    final reportedByUserModel = state.reportedByUser;
+                    final resolvedByUserModel = state.resolvedByUser;
+                    return state.isLoading
+                        ? const CircularProgressIndicator()
+                        : OverflowBar(
+                            overflowAlignment: OverflowBarAlignment.center,
+                            children: [
+                              TextButton(
+                                onPressed: () {
+                                  scaffoldMessengerKey.currentState
+                                    ?..hideCurrentSnackBar()
+                                    ..showSnackBar(
+                                      SnackBarHelper.createInformation(
+                                        message:
+                                            context.l10n.comingInNextUpdate,
+                                      ),
+                                    );
+                                },
+                                //TODO [optimizations]: Implement this user page later
+                                // onPressed: () => Navigator.pushNamed(
+                                //   context,
+                                //   UserPage.routeName,
+                                //   arguments: mapMarker.reportedBy,
+                                // ),
+                                child: Text(
+                                  context.l10n.reportedBy(
+                                    reportedByUserModel.username ??
+                                        'Unknown', //TODO [optimizations]: Add translations
+                                  ),
+                                ),
+                              ),
+                              if (resolvedByUserModel != null &&
+                                  resolvedByUserModel.username != null)
                                 TextButton(
                                   onPressed: () {
                                     scaffoldMessengerKey.currentState
@@ -227,47 +356,20 @@ class _SingleMarkerPageState extends State<SingleMarkerPage> {
                                   // onPressed: () => Navigator.pushNamed(
                                   //   context,
                                   //   UserPage.routeName,
-                                  //   arguments: mapMarker.reportedBy,
+                                  //   arguments: mapMarker.resolvedBy,
                                   // ),
                                   child: Text(
-                                    context.l10n.reportedBy(
-                                      reportedByUserModel.username ??
-                                          'Unknown', //TODO: Add translations
+                                    context.l10n.resolvedBy(
+                                      resolvedByUserModel.username ??
+                                          'Unknown', //TODO [optimizations]: Add translations
                                     ),
                                   ),
                                 ),
-                                if (resolvedByUserModel != null &&
-                                    resolvedByUserModel.username != null)
-                                  TextButton(
-                                    onPressed: () {
-                                      scaffoldMessengerKey.currentState
-                                        ?..hideCurrentSnackBar()
-                                        ..showSnackBar(
-                                          SnackBarHelper.createInformation(
-                                            message:
-                                                context.l10n.comingInNextUpdate,
-                                          ),
-                                        );
-                                    },
-                                    //TODO [optimizations]: Implement this user page later
-                                    // onPressed: () => Navigator.pushNamed(
-                                    //   context,
-                                    //   UserPage.routeName,
-                                    //   arguments: mapMarker.resolvedBy,
-                                    // ),
-                                    child: Text(
-                                      context.l10n.resolvedBy(
-                                        resolvedByUserModel.username ??
-                                            'Unknown', //TODO: Add translations
-                                      ),
-                                    ),
-                                  ),
-                              ],
-                            );
-                    },
-                  ),
-                ],
-              ),
+                            ],
+                          );
+                  },
+                ),
+              ],
             ),
           ),
         ),

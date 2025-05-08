@@ -30,6 +30,7 @@ class ReportRepository implements IReportFacade {
       final markers =
           await _mapMarkersCollection.futureAll('creationDate', true);
 
+      //TODO [optimizations]: Make it extension to use it multiple times
       final enriched = await Future.wait(
         markers.map((marker) async {
           // ignore: omit_local_variable_types
@@ -98,7 +99,10 @@ class ReportRepository implements IReportFacade {
       final saved = await docRef.get();
       final fullMarker = saved.data()!.copyWith(id: saved.id);
 
-      return fullMarker;
+      final resolvedImages = await Future.wait(
+        fullMarker.images.map(_firebaseStorage.getImageUrl),
+      );
+      return fullMarker.copyWith(images: resolvedImages);
     });
   }
 }

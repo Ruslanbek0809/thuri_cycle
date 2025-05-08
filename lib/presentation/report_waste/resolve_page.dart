@@ -58,7 +58,7 @@ class _ResolvePageState extends State<ResolvePage> {
     final profileUserFormCubitState =
         context.watch<ProfileUserFormCubit>().state;
     final userModel = profileUserFormCubitState.userModel;
-    
+
     final locationState = context.watch<LocationCubit>().state;
     LocationInfoModel? locationInfo;
 
@@ -98,16 +98,9 @@ class _ResolvePageState extends State<ResolvePage> {
                   );
               },
               (newMapMarker) async {
-                scaffoldMessengerKey.currentState
-                  ?..hideCurrentSnackBar()
-                  ..showSnackBar(
-                    SnackBarHelper.createSuccess(
-                      message: context.l10n.resolvedSuccessfully,
-                    ),
-                  );
-
-                //TODO [optimization]: If possible try to move it just before MapPage (Use AutoRouteWrapper) (REMOVE this)
-                context.read<ResolveFormCubit>().reset();
+                if (context.mounted) {
+                  context.router.pop(newMapMarker);
+                }
               },
             );
           });
@@ -239,7 +232,7 @@ class _ResolvePageState extends State<ResolvePage> {
                       ),
                       child: CustomElevatedGradientButton(
                         child: Text(
-                          context.l10n.send,
+                          context.l10n.resolve,
                           style: getTextTheme(context).titleMedium!.copyWith(
                                 fontSize: responsiveFontSize(
                                   context,
