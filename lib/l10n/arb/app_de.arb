@@ -1,184 +1,187 @@
 {
-    "@@locale": "de",
-    "homeAppBarTitle": "Startseite",
-    "@homeAppBarTitle": {
-    "description": "Text in der App-Leiste der Startseite"
-    },
-    "continuee": "Weiter",
-    "welcome": "Willkommen bei ThuriCycle!",
-    "chooseOthers": "Andere Anmeldeoptionen auswählen",
-    "confirmation": "Bestätigung",
-    "profile": "Profil",
-    "logIn": "Anmelden",
-    "loginToDoAction": "Bitte melden Sie sich in Ihrem Konto an, um diese Aktion auszuführen!",
-    "cancel": "Abbrechen",
-    "login": "Anmelden",
-    "clear": "Löschen",
-    "noConnection": "Keine Verbindung",
-    "retry": "Wiederholen",
-    "error": "Fehler",
-    "serverError": "Serverfehler",
-    "unexpectedError": "Unerwarteter Fehler",
-    "cancelled": "Abgebrochen",
-    "emailAlreadyInUse": "E-Mail-Adresse wird bereits verwendet",
-    "invalidEmailPassword": "Ungültige E-Mail- und Passwortkombination",
-    "tooManyRequests": "Zu viele Anfragen",
-    "bySigningYouAgree": "Mit der Anmeldung stimmen Sie unseren Nutzungsbedingungen zu",
-    "and": "und",
-    "success": "Erfolgreich!",
-    "successLoggedIn": "Sie haben sich erfolgreich angemeldet!",
-    "or": "oder",
-    "signInWithGoogle": "Mit Google anmelden",
-    "signInWithApple": "Mit Apple anmelden",
-    "required": "Erforderlich",
-    "invalidPhoneNumber": "Ungültige Telefonnummer",
-    "„phoneNumberIsNotValid“": "Telefonnummer ist ungültig",
-    "yourPhoneDoesntSupportAppleSignIn": "Ihr Telefon unterstützt die Apple-Anmeldemethode nicht. Bitte aktualisieren Sie die iOS-Version Ihrer App und versuchen Sie es erneut!",
-    "typeCodeSentTo": "Geben Sie einen Bestätigungscode ein, der an diese Adresse gesendet wurde.",
-    "didntGetCode": "Kein Code erhalten?",
-    "resend": "Erneut senden.","authFailed": 
-    "Authentifizierung fehlgeschlagen",
-    "otpCodeResent": "OTP-Code wird erneut gesendet",
-    "termsOfUse": "Nutzungsbedingungen",
-    "privacyPolicy": "Datenschutzrichtlinie",
-    "contactUs": "Kontakt",
-    "rateUs": "Bewerten Sie uns",
-    "appVersion": "App-Version",
-    "theme": "Thema",
-    "language": "Sprache",
-    "darkMode": "Dunkelmodus",
-    "viewProfile": "Profil anzeigen",
-    "pleaseLoginOrRegisterToUse": "Bitte melden Sie sich in Ihrem Konto an oder registrieren Sie sich, um diese Anwendung zu nutzen!",
-    "camera": "Kamera",
-    "gallery": "Galerie",
-    "deletePhoto": "Foto löschen",
-    "wasteType": "Abfallart",
-    "selectWasteType": "Abfallart auswählen",
-    "markerTypeUnknown": "Unbekannte Art",
-    "markerTypePlasticAndPackaging": "Kunststoff & Verpackung",
-    "markerTypePaper": "Papier",
-    "markerTypeGlass": "Glas",
-    "markerTypeOrganic": "Organischer Abfall",
-    "markerTypeResidual": "Restmüll",
-    "markerTypeElectronics": "Elektronik",
-    "markerTypeHazardous": "Gefährlicher Abfall",
-    "markerTypeBulky": "Sperrmüll",
-    "markerTypeTextiles": "Textilien",
-    "markerTypeBatteries": "Batterien",
-    "addPhotos": "Laden Sie ein oder mehrere deutliche Fotos des Abfalls hoch",
-    "chooseClearPhotos": "Stellen Sie sicher, dass der Abfall gut sichtbar ist, um die Bearbeitung zu erleichtern.",
-    "settings": "Einstellungen",
-    "filterMarkers": "Markierungen filtern",
-    "refresh": "Aktualisieren",
-    "ok": "OK",
-    "includeResolved": "Erledigte Fälle einschließen",
-    "scoreboard": "Anzeigetafel",
-    "global": "Global",
-    "km1": "1 km",
-    "km10": "10 km",
-    "km100": "100 km",
-    "points": "{points} Punkte",
-    "@points": {
-        "placeholders": {
-        "points": {
-            "type": "double",
-            "format": "decimalPattern"
-            }
-        }
-    },
-    "additional_points": "+{points}",
-    "@additional_points": {
-        "placeholders": {
-        "points": {
-            "type": "double",
-            "format": "decimalPattern"
-            }
-        }
-    },
-    "noActiveSpecialScoreboard": "Derzeit ist keine spezielle Anzeigetafel aktiv. Folgen Sie MindsHub in den sozialen Medien, um über Insignia-Events informiert zu werden!",
-    "goToPosition": "Gehe zu deiner Position",
-    "user": "Benutzer",
-    "report": "Melden",
-    "reportAsInappropriate": "Als unangemessen melden",
-    "confirmReportAsInappropriate": "Möchten Sie diesen Marker wirklich als unangemessen melden?",
-    "reportedBy": "Gemeldet von {user}",
-    "errorReporting": "Fehler beim Melden: {error}",
-    "@errorReporting": {
-    "placeholders": {
-    "error": {
-    "type": "String"
-                }
-            }
-        },
-    "markerType": "Markierungstyp",
-    "loginRequired": "Anmeldung erforderlich",
-    "grantLocationPermission": "Berechtigung zum Zugriff auf den Standort erteilen",
-    "enableLocationServices": "Standortdienste aktivieren",
-    "addImage": "Bild hinzufügen",
-    "selectMarkerType": "Markierungstyp auswählen",
-    "locationIsLoading": "Standort wird geladen, bitte warten…",
-    "send": "Senden",
-    "usePpe": "Verwenden Sie Handschuhe oder geeignete persönliche Schutzausrüstung. Müll einsammeln",
-    "reportedBy": "Gemeldet von {user}",
-    "@reportedBy": {
-    "placeholders": {
-    "user": {
-    "type": "String"
-                }
-            }
-        },
-    "resolvedBy": "Gelöst von {user}",
-    "@resolvedBy": {
-    "placeholders": {
-    "user": {
-    "type": "String"
-                }
-            }
-        },
-    "loginToResolve": "Anmelden, um das Problem zu lösen",
-    "getCloserToResolve": "Näher an die Lösung herankommen",
-    "resolve": "Lösen",
-    "alreadyResolved": "Bereits gelöst",
-    "tooFarToResolve": "Du bist zu weit weg, um das Problem zu lösen",
-    "close": "Schließen",
-    "chooseYourLanguage": "Wählen Sie Ihre Sprache",
-    "community": "Community",
-    "featured": "Empfohlen",
-    "comingSoon": "Demnächst verfügbar!",
-    "article": "Artikel",
-    "readNow": "Jetzt lesen",
-    "recycling101": "Recycling 101",
-    "howToRecycle": "So recyceln Sie...",
-    "readArticles": "Artikel lesen",
-    "aiGenerated": "KI-generiert",
-    "articleSummary": "Artikelzusammenfassung",
-    "hide": "Ausblenden",
-    "recyclingGuide": "Recycling-Leitfaden",
-    "reportedSuccessfully": "Erfolgreich gemeldet",
-    "resolvedSuccessfully": "Vielen Dank für die Lösung des Problems! Ihre Lösung ist für die Community sichtbar und wartet auf Überprüfung.",
-    "resolutionPendingVerification": "Von einem Community-Mitglied gelöst. Überprüfung zur Bestätigung der Richtigkeit steht noch aus.",
-    "becomeVerifier": "Verifizierer werden & Punkte sammeln",
-    "yes": "Ja",
-    "no": "Nein",
-    "acceptToReviewDialogTitle": "Möchten Sie an der Bildbewertung teilnehmen?",
-    "acceptToReviewDialogText": "Durch die Bewertung von Bildern anderer Nutzer können Sie regelmäßig Punkte sammeln. Sie können jedoch unmoderierten Bildern mit sensiblen Inhalten ausgesetzt sein. Mit dem Tippen auf \"{yes}\" erklären Sie daher, dass Sie volljährig sind und sich der Risiken bewusst sind.",
-    "@acceptToReviewDialogText": {
-        "placeholders": {
-            "yes": {
-                    "type": "String"
-            }
-        }
-    },
-    "acceptToReviewSwitchTitle": "An der Bildbewertung teilnehmen",
-    "acceptToReviewSwitchDescription": "Durch die Bewertung von Bildern anderer Nutzer können Sie regelmäßig Punkte sammeln. Sie können jedoch unmoderierten Bildern mit sensiblen Inhalten ausgesetzt sein.",
-    "username": "Benutzername",
-    "phoneNumber": "Telefonnummer",
-    "email": "E-Mail",
-    "successUpdateInfo": "Sie haben Ihre Daten erfolgreich aktualisiert!",
-    "logout": "Abmelden",
-    "logOut": "Abmelden",
-    "logOutInfo": "Möchten Sie sich wirklich abmelden?",
-    "save": "Speichern",
-    "usernameIsRequired": "Benutzername ist erforderlich",
-    "comingInNextUpdate": "Kommt im nächsten Update"
+   "@@locale": "de",
+   "wasteMap": "Abfallkarte",
+   "community": "Gemeinschaft",
+   "profile": "Profil",
+   "homeAppBarTitle": "Startseite",
+   "@homeAppBarTitle": {
+   "description": "Text auf der App-Leiste der Startseite"
+   },
+   "continuee": "Weiter",
+   "welcome": "Willkommen bei ThuriCycle!",
+   "chooseOthers": "Andere Anmeldeoptionen wählen",
+   "confirmation": "Bestätigung",
+   "logIn": "Anmelden",
+   "loginToDoAction": "Bitte melden Sie sich bei Ihrem Konto an, um diese Aktion durchzuführen!",
+   "cancel": "Abbrechen",
+   "login": "Anmelden",
+   "clear": "Löschen",
+   "noConnection": "Keine Verbindung",
+   "retry": "Erneut versuchen",
+   "error": "Fehler",
+   "serverError": "Serverfehler",
+   "unexpectedError": "Unerwarteter Fehler",
+   "cancelled": "Abgebrochen",
+   "emailAlreadyInUse": "E-Mail wird bereits verwendet",
+   "invalidEmailPassword": "Ungültige Kombination aus E-Mail und Passwort",
+   "tooManyRequests": "Zu viele Anfragen",
+   "bySigningYouAgree": "Mit der Anmeldung stimmen Sie unseren",
+   "and": "und",
+   "success": "Erfolgreich!",
+   "successLoggedIn": "Sie haben sich erfolgreich angemeldet!",
+   "or": "oder",
+   "signInWithGoogle": "Mit Google anmelden",
+   "signInWithApple": "Mit Apple anmelden",
+   "required": "Erforderlich",
+   "invalidPhoneNumber": "Ungültige Telefonnummer",
+   "„phoneNumberIsNotValid“": "Telefonnummer ist ungültig",
+   "yourPhoneDoesntSupportAppleSignIn": "Ihr Telefon unterstützt die Apple-Anmeldemethode nicht. Bitte aktualisieren Sie die iOS-Version Ihrer App und versuchen Sie es erneut!",
+   "typeCodeSentTo": "Geben Sie den Bestätigungscode ein, der gesendet wurde an",
+   "didntGetCode": "Kein Code erhalten?",
+   "resend": "Erneut senden.","authFailed":
+   "Authentifizierung fehlgeschlagen",
+   "otpCodeResent": "OTP-Code wurde erneut gesendet",
+   "termsOfUse": "Nutzungsbedingungen",
+   "privacyPolicy": "Datenschutzrichtlinie",
+   "contactUs": " Kontaktieren Sie uns",
+   "rateUs": "Bewerten Sie uns",
+   "appVersion": "App-Version",
+   "theme": "Thema",
+   "language": "Sprache",
+   "darkMode": "Dunkelmodus",
+   "viewProfile": "Profil anzeigen",
+   "pleaseLoginOrRegisterToUse": "Bitte melden Sie sich an oder registrieren Sie sich, um diese Anwendung zu nutzen!",
+   "camera": "Kamera",
+   "gallery": "Galerie",
+   "deletePhoto": "Foto löschen",
+   "wasteType": "Abfallart",
+   "selectWasteType": "Abfallart auswählen",
+   "markerTypeUnknown": "Unbekannter Typ",
+   "markerTypePlasticAndPackaging": "Kunststoff & Verpackung",
+   "markerTypePaper": "Papier",
+   "markerTypeGlass": "Glas",
+   "markerTypeOrganic": "Biomüll",
+   "markerTypeResidual": "Restmüll",
+   "markerTypeElectronics": "Elektronik",
+   "markerTypeHazardous": "Gefährlicher Abfall",
+   "markerTypeBulky": "Sperrmüll",
+   "markerTypeTextiles": "Textilien",
+   "markerTypeBatteries": "Batterien",
+   "addPhotos": "Laden Sie klare Fotos des Abfalls hoch",
+   "chooseClearPhotos": "Stellen Sie sicher, dass der Abfall deutlich sichtbar ist, um die Verarbeitung zu erleichtern.",
+   "settings": "Einstellungen",
+   "filterMarkers": "Markierungen filtern",
+   "refresh": "Aktualisieren",
+   "ok": "OK",
+   "includeResolved": "Gelöst einbeziehen",
+   "scoreboard": "Bestenliste",
+   "global": "Global",
+   "km1": "1 km",
+   "km10": "10 km",
+   "km100": "100 km",
+   "points": "{points} Punkte",
+   "@points": {
+       "placeholders": {
+       "points": {
+           "type": "double",
+           "format": "decimalPattern"
+           }
+       }
+   },
+   "additional_points": "+{points}",
+   "@additional_points": {
+       "placeholders": {
+       "points": {
+           "type": "double",
+           "format": "decimalPattern"
+           }
+       }
+   },
+   "noActiveSpecialScoreboard": "Zurzeit ist keine spezielle Bestenliste aktiv. Folgen Sie MindsHub in den sozialen Medien, um über Insigno-Veranstaltungen informiert zu bleiben!",
+   "goToPosition": "Gehe zu deiner Position",
+   "user": "Benutzer",
+   "report": "Melden",
+   "reportAsInappropriate": "Als unangemessen melden",
+   "confirmReportAsInappropriate": "Möchten Sie diesen Marker wirklich als unangemessen melden?",
+   "reportedBy": "Gemeldet von {user}",
+   "errorReporting": "Fehler beim Melden: {error}",
+   "@errorReporting": {
+   "placeholders": {
+   "error": {
+   "type": "String"
+               }
+           }
+       },
+   "markerType": "Markierungstyp",
+   "loginRequired": "Anmeldung erforderlich",
+   "grantLocationPermission": "Standortzugriff erlauben",
+   "enableLocationServices": "Standortdienste aktivieren",
+   "addImage": "Bild hinzufügen",
+   "selectMarkerType": "Markierungstyp auswählen",
+   "locationIsLoading": "Standort wird geladen, bitte warten…",
+   "send": "Senden",
+   "usePpe": "Tragen Sie Handschuhe oder geeignete persönliche Schutzausrüstung, um Müll aufzuheben",
+   "reportedBy": "Gemeldet von {user}",
+   "@reportedBy": {
+   "placeholders": {
+   "user": {
+   "type": "String"
+               }
+           }
+       },
+   "resolvedBy": "Gelöst von {user}",
+   "@resolvedBy": {
+   "placeholders": {
+   "user": {
+   "type": "String"
+               }
+           }
+       },
+   "loginToResolve": "Zum Lösen anmelden",
+   "getCloserToResolve": "Nähern Sie sich, um zu lösen",
+   "resolve": "Lösen",
+   "alreadyResolved": "Bereits gelöst",
+   "tooFarToResolve": "Sie sind zu weit entfernt, um zu lösen",
+   "close": "Schließen",
+   "chooseYourLanguage": "Wählen Sie Ihre Sprache",
+   "featured": "Empfohlen",
+   "comingSoon": "Demnächst verfügbar!",
+   "article": "Artikel",
+   "readNow": "Jetzt lesen",
+   "recycling101": "Recycling 101",
+   "howToRecycle": "Wie recycelt man...",
+   "readArticles": "Artikel lesen",
+   "aiGenerated": "KI-generiert",
+   "articleSummary": "Artikelzusammenfassung",
+   "hide": "Ausblenden",
+   "recyclingGuide": "Recycling-Leitfaden",
+   "reportedSuccessfully": "Erfolgreich gemeldet",
+   "resolvedSuccessfully": "Danke für die Lösung des Problems! Ihre Lösung ist für die Community sichtbar und wartet auf Bestätigung.",
+   "resolutionPendingVerification": "Von einem Community-Mitglied gelöst. Bestätigung ausstehend, um die Richtigkeit zu überprüfen.",
+   "becomeVerifier": "Werden Sie Prüfer & verdienen Sie Punkte",
+   "yes": "Ja",
+   "no": "Nein",
+   "acceptToReviewDialogTitle": "Möchten Sie an der Überprüfung von Bildern teilnehmen?",
+   "acceptToReviewDialogText": "Durch das Überprüfen von Bildern, die von anderen Nutzern gepostet wurden, können Sie regelmäßig Punkte verdienen. Dabei könnten Sie jedoch auf unmoderierte Bilder mit sensiblen Inhalten stoßen. Indem Sie auf „{Ja}“ tippen, erklären Sie, DASS SIE VOLLJÄHRIG SIND und SICH DER RISIKEN BEWUSST SIND.",
+   "@acceptToReviewDialogText": {
+       "placeholders": {
+           "yes": {
+                   "type": "String"
+           }
+       }
+   },
+   "acceptToReviewSwitchTitle": "An der Bildüberprüfung teilnehmen",
+   "acceptToReviewSwitchDescription": "Durch das Überprüfen von Bildern, die von anderen Nutzern gepostet wurden, können Sie regelmäßig Punkte verdienen. Dabei könnten Sie jedoch unmoderierten Bildern mit sensiblen Inhalten ausgesetzt sein.",
+   "username": "Benutzername",
+   "phoneNumber": "Telefonnummer",
+   "email": "E-Mail",
+   "successUpdateInfo": "Ihre Informationen wurden erfolgreich aktualisiert!",
+   "logout": "Abmelden",
+   "logOut": "Abmelden",
+   "logOutInfo": "Möchten Sie sich wirklich abmelden?",
+   "save": "Speichern",
+   "usernameIsRequired": "Benutzername ist erforderlich",
+    "thuriCycleDescription": "ThuriCycle – Eine smarte, gemeinschaftsbasierte Abfall- & Recycling-App für Thüringen",
+    "personalDescription": "Persönliches Projekt. Bald kommen Updates mit neuen Funktionen!",
+   "comingInNextUpdate": "Kommt mit dem nächsten Update"
 }

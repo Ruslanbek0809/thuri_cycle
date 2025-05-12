@@ -22,7 +22,7 @@ class ReportRepository implements IReportFacade {
   final MapMarkersCollection _mapMarkersCollection;
 
   @override
-  Future<Either<FirebaseFailure, List<MapMarkerModel>>> getMarkersFromFb(
+  Future<Either<FirebaseFailure, List<MapMarkerModel>>> getMarkersFromFB(
     LatLng center, {
     required bool includeResolved,
   }) {

@@ -8,6 +8,7 @@ class MapMarkerFormState with _$MapMarkerFormState {
     required LatLng? lastMapCenter,
     required bool isLoading,
     required bool includeResolved,
+    required bool isNewInitialPositionLocked,
     required Set<MarkerType> shownTypes,
     required List<MapMarkerModel> allMarkers,
     String? errorMessage,
@@ -19,6 +20,7 @@ class MapMarkerFormState with _$MapMarkerFormState {
         lastMapCenter: null,
         isLoading: false,
         includeResolved: false,
+        isNewInitialPositionLocked: false,
         shownTypes: {},
         allMarkers: [],
       );

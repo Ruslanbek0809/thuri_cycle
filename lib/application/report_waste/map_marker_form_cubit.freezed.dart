@@ -21,6 +21,7 @@ mixin _$MapMarkerFormState {
   LatLng? get lastMapCenter => throw _privateConstructorUsedError;
   bool get isLoading => throw _privateConstructorUsedError;
   bool get includeResolved => throw _privateConstructorUsedError;
+  bool get isNewInitialPositionLocked => throw _privateConstructorUsedError;
   Set<MarkerType> get shownTypes => throw _privateConstructorUsedError;
   List<MapMarkerModel> get allMarkers => throw _privateConstructorUsedError;
   String? get errorMessage => throw _privateConstructorUsedError;
@@ -44,6 +45,7 @@ abstract class $MapMarkerFormStateCopyWith<$Res> {
       LatLng? lastMapCenter,
       bool isLoading,
       bool includeResolved,
+      bool isNewInitialPositionLocked,
       Set<MarkerType> shownTypes,
       List<MapMarkerModel> allMarkers,
       String? errorMessage});
@@ -69,6 +71,7 @@ class _$MapMarkerFormStateCopyWithImpl<$Res, $Val extends MapMarkerFormState>
     Object? lastMapCenter = freezed,
     Object? isLoading = null,
     Object? includeResolved = null,
+    Object? isNewInitialPositionLocked = null,
     Object? shownTypes = null,
     Object? allMarkers = null,
     Object? errorMessage = freezed,
@@ -93,6 +96,10 @@ class _$MapMarkerFormStateCopyWithImpl<$Res, $Val extends MapMarkerFormState>
       includeResolved: null == includeResolved
           ? _value.includeResolved
           : includeResolved // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isNewInitialPositionLocked: null == isNewInitialPositionLocked
+          ? _value.isNewInitialPositionLocked
+          : isNewInitialPositionLocked // ignore: cast_nullable_to_non_nullable
               as bool,
       shownTypes: null == shownTypes
           ? _value.shownTypes
@@ -124,6 +131,7 @@ abstract class _$$MapMarkerFormStateImplCopyWith<$Res>
       LatLng? lastMapCenter,
       bool isLoading,
       bool includeResolved,
+      bool isNewInitialPositionLocked,
       Set<MarkerType> shownTypes,
       List<MapMarkerModel> allMarkers,
       String? errorMessage});
@@ -147,6 +155,7 @@ class __$$MapMarkerFormStateImplCopyWithImpl<$Res>
     Object? lastMapCenter = freezed,
     Object? isLoading = null,
     Object? includeResolved = null,
+    Object? isNewInitialPositionLocked = null,
     Object? shownTypes = null,
     Object? allMarkers = null,
     Object? errorMessage = freezed,
@@ -171,6 +180,10 @@ class __$$MapMarkerFormStateImplCopyWithImpl<$Res>
       includeResolved: null == includeResolved
           ? _value.includeResolved
           : includeResolved // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isNewInitialPositionLocked: null == isNewInitialPositionLocked
+          ? _value.isNewInitialPositionLocked
+          : isNewInitialPositionLocked // ignore: cast_nullable_to_non_nullable
               as bool,
       shownTypes: null == shownTypes
           ? _value._shownTypes
@@ -199,6 +212,7 @@ class _$MapMarkerFormStateImpl
       required this.lastMapCenter,
       required this.isLoading,
       required this.includeResolved,
+      required this.isNewInitialPositionLocked,
       required final Set<MarkerType> shownTypes,
       required final List<MapMarkerModel> allMarkers,
       this.errorMessage})
@@ -215,6 +229,8 @@ class _$MapMarkerFormStateImpl
   final bool isLoading;
   @override
   final bool includeResolved;
+  @override
+  final bool isNewInitialPositionLocked;
   final Set<MarkerType> _shownTypes;
   @override
   Set<MarkerType> get shownTypes {
@@ -236,7 +252,7 @@ class _$MapMarkerFormStateImpl
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'MapMarkerFormState(initialLatLng: $initialLatLng, initialZoom: $initialZoom, lastMapCenter: $lastMapCenter, isLoading: $isLoading, includeResolved: $includeResolved, shownTypes: $shownTypes, allMarkers: $allMarkers, errorMessage: $errorMessage)';
+    return 'MapMarkerFormState(initialLatLng: $initialLatLng, initialZoom: $initialZoom, lastMapCenter: $lastMapCenter, isLoading: $isLoading, includeResolved: $includeResolved, isNewInitialPositionLocked: $isNewInitialPositionLocked, shownTypes: $shownTypes, allMarkers: $allMarkers, errorMessage: $errorMessage)';
   }
 
   @override
@@ -249,6 +265,8 @@ class _$MapMarkerFormStateImpl
       ..add(DiagnosticsProperty('lastMapCenter', lastMapCenter))
       ..add(DiagnosticsProperty('isLoading', isLoading))
       ..add(DiagnosticsProperty('includeResolved', includeResolved))
+      ..add(DiagnosticsProperty(
+          'isNewInitialPositionLocked', isNewInitialPositionLocked))
       ..add(DiagnosticsProperty('shownTypes', shownTypes))
       ..add(DiagnosticsProperty('allMarkers', allMarkers))
       ..add(DiagnosticsProperty('errorMessage', errorMessage));
@@ -269,6 +287,10 @@ class _$MapMarkerFormStateImpl
                 other.isLoading == isLoading) &&
             (identical(other.includeResolved, includeResolved) ||
                 other.includeResolved == includeResolved) &&
+            (identical(other.isNewInitialPositionLocked,
+                    isNewInitialPositionLocked) ||
+                other.isNewInitialPositionLocked ==
+                    isNewInitialPositionLocked) &&
             const DeepCollectionEquality()
                 .equals(other._shownTypes, _shownTypes) &&
             const DeepCollectionEquality()
@@ -285,6 +307,7 @@ class _$MapMarkerFormStateImpl
       lastMapCenter,
       isLoading,
       includeResolved,
+      isNewInitialPositionLocked,
       const DeepCollectionEquality().hash(_shownTypes),
       const DeepCollectionEquality().hash(_allMarkers),
       errorMessage);
@@ -306,6 +329,7 @@ abstract class _MapMarkerFormState implements MapMarkerFormState {
       required final LatLng? lastMapCenter,
       required final bool isLoading,
       required final bool includeResolved,
+      required final bool isNewInitialPositionLocked,
       required final Set<MarkerType> shownTypes,
       required final List<MapMarkerModel> allMarkers,
       final String? errorMessage}) = _$MapMarkerFormStateImpl;
@@ -320,6 +344,8 @@ abstract class _MapMarkerFormState implements MapMarkerFormState {
   bool get isLoading;
   @override
   bool get includeResolved;
+  @override
+  bool get isNewInitialPositionLocked;
   @override
   Set<MarkerType> get shownTypes;
   @override

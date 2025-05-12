@@ -1,10 +1,16 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:thuri_cycle/l10n/l10n.dart';
+import 'package:thuri_cycle/presentation/core/utils/constants.dart';
+import 'package:thuri_cycle/presentation/core/utils/helpers/snackbar_helper.dart';
+import 'package:thuri_cycle/presentation/core/utils/methods/aliases.dart';
+import 'package:thuri_cycle/presentation/core/utils/methods/shortcuts.dart';
+import 'package:thuri_cycle/presentation/core/widgets/custom/custom_text_button.dart';
 import 'package:thuri_cycle/presentation/report_waste/widgets/about_card_widget.dart';
 
-//TODO: Add descriptions
+//TODO [optimization]: Check descriptions and update the links
 @RoutePage()
 class SettingsPage extends StatelessWidget {
   const SettingsPage({super.key});
@@ -25,26 +31,73 @@ class SettingsPage extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 8),
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: $constants.insets.xs),
               child: AboutCardWidget(
-                description: 'ThuriCycle – Smart Waste, Sauberes Thüringen',
-                // description: l10n.insignoDescription,
+                description: context.l10n.thuriCycleDescription,
                 svgAssetPath: 'assets/app_logo_svg.svg',
                 urlString: 'https://github.com/Ruslanbek0809',
               ),
             ),
             const SizedBox(height: 8),
-            const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 8),
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: $constants.insets.xs),
               child: AboutCardWidget(
-                description: 'Individuelles Projekt. Bald kommt Version 2!',
-                // description: l10n.mindshubDescription,
+                description: context.l10n.personalDescription,
                 svgAssetPath: 'assets/app_logo_svg.svg',
-                urlString: 'https://mindshub.it',
+                urlString: 'https://github.com/Ruslanbek0809',
               ),
             ),
-            const SizedBox(height: 16),
+            //*------------------ Become a Verifier BUTTON ---------------------//
+            Padding(
+              padding: EdgeInsets.only(
+                top: $constants.insets.sm,
+              ),
+              child: CustomTextButton(
+                backgroundColor: $constants.palette.main,
+                borderRadius: BorderRadius.circular(
+                  $constants.corners.md + 2,
+                ),
+                minimumSize: Size(
+                  getSize(context).width - (($constants.insets.sm + 4) * 2),
+                  getTabletType() ? 80 : 50,
+                ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Icon(
+                      MdiIcons.shieldCheckOutline,
+                      color: $constants.palette.white,
+                      size: 20,
+                    ),
+                    SizedBox(
+                      width: $constants.insets.xs,
+                    ),
+                    Text(
+                      context.l10n.becomeVerifier,
+                      style: getTextTheme(context).titleSmall!.copyWith(
+                            fontSize: responsiveFontSize(
+                              context,
+                              12.75,
+                            ),
+                            fontWeight: FontWeight.w400,
+                            color: $constants.palette.white,
+                          ),
+                    ),
+                  ],
+                ),
+                onPressed: () async {
+                  // TODO [optimization]: Implement this
+                  scaffoldMessengerKey.currentState
+                    ?..hideCurrentSnackBar()
+                    ..showSnackBar(
+                      SnackBarHelper.createInformation(
+                        message: context.l10n.comingInNextUpdate,
+                      ),
+                    );
+                },
+              ),
+            ),
             const Divider(height: 1),
             // if (authBlocState == const AuthState.authenticated())
             //   SwitchWidget(

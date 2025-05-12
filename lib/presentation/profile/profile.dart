@@ -160,6 +160,7 @@ class _ProfilePageState extends State<ProfilePage> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           //*------------------ LANGUAGE ---------------------//
+                          //TODO [optimizations]: Fix lang error showing DE only 
                           ProfileItemCard(
                             title: context.l10n.language,
                             svgName: 'assets/profile/language.svg',

@@ -41,7 +41,7 @@ class _MapPageState extends State<MapPage> with WidgetsBindingObserver {
 
     context.read<LocationCubit>().initialize();
     context.read<MapMarkerFormCubit>()
-      ..initialize()
+      ..initInitPositionAndGetMarkersFromFB()
       ..connectToMapStream(mapController.mapEventStream);
     // context.read<MapMarkerFormCubit>().initFcmToken();
   }
@@ -144,35 +144,61 @@ class _MapPageState extends State<MapPage> with WidgetsBindingObserver {
               TileLayer(
                 urlTemplate: 'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
               ),
-              // TODO: Check and fix
+              //TODO [optimization]: Fix very first time not loading error
+              //TODO [optimization]: Reimplement listener part here commented
+              //TODO [optimization]: Optimize getCurrentOrLastKnownLocationInfo usage and its initial latLong assignment (also checkout saveCurrentMapPosition in MapControlsAndScoreboardWidget)
               //TODO [optimization]: Add more features of LocationProvider
-              // TODO [optimization]: Optimize LocationCubit by using LocationInfo and keeping current last position
               //*----------------- CURRENT LOCATION ---------------------//
               BlocBuilder<LocationCubit, LocationState>(
-                buildWhen: (previous, current) => previous != current,
+                // listenWhen: (prev, curr) => prev != curr,
+                // listener: (context, locationState) {
+                //   if (state.isNewInitialPositionLocked) {
+                //     locationState.maybeWhen(
+                //       success: (_) {
+                //         context
+                //             .read<MapMarkerFormCubit>()
+                //             .initInitPositionAndGetMarkersFromFB(
+                //               isNewSaveNewMapPosition: true,
+                //               center: mapController.camera.center,
+                //               zoom: mapController.camera.zoom,
+                //             );
+                //         context
+                //             .read<MapMarkerFormCubit>()
+                //             .setIsNewInitialPositionLockedToTrue();
+                //       },
+                //       orElse: () => talker
+                //           .verbose('MapPage BlocConsumer LocationCubit ERROR'),
+                //     );
+                //   }
+                // },
                 builder: (context, state) {
-                  return state.maybeWhen(
-                    orElse: Container.new,
-                    success: (locationInfoModel) {
-                      final latLng = locationInfoModel.latLng;
-                      if (latLng == null) {
-                        return Container();
-                      }
-                      return MarkerLayer(
-                        markers: [
-                          Marker(
-                            rotate: true,
-                            point: latLng,
-                            child: SvgPicture.asset(
-                              'assets/current_location1.svg',
-                            ),
-                            // Icon(
-                            //   Icons.my_location,
-                            //   size: getTabletType() ? 52 : 26,
-                            //   color: Theme.of(context).primaryColor,
-                            // ),
-                          ),
-                        ],
+                  return BlocBuilder<LocationCubit, LocationState>(
+                    buildWhen: (previous, current) => previous != current,
+                    builder: (context, state) {
+                      return state.maybeWhen(
+                        orElse: Container.new,
+                        success: (locationInfoModel) {
+                          final latLng = locationInfoModel.latLng;
+                          if (latLng == null) {
+                            return Container();
+                          }
+                          return MarkerLayer(
+                            markers: [
+                              Marker(
+                                rotate: true,
+                                point: latLng,
+                                child: SvgPicture.asset(
+                                  'assets/current_location1.svg',
+                                ),
+                                // Icon(
+                                //   Icons.my_location,
+                                //   size: getTabletType() ? 52 : 26,
+                                //   color: Theme.of(context).primaryColor,
+                                // ),
+                              ),
+                            ],
+                          );
+                        },
                       );
                     },
                   );
@@ -193,7 +219,6 @@ class _MapPageState extends State<MapPage> with WidgetsBindingObserver {
                 ),
               ),
               //*----------------- MAP CONTROLS & SCOREBOARD ---------------------//
-              //TODO: Check map controls part
               BlocBuilder<LocationCubit, LocationState>(
                 builder: (context, state) {
                   final locationInfoModel = state.maybeWhen(
@@ -204,13 +229,19 @@ class _MapPageState extends State<MapPage> with WidgetsBindingObserver {
                   return Align(
                     alignment: Alignment.topRight,
                     child: MapControlsAndScoreboardWidget(
-                      onTap: () {
+                      onTap: () async {
                         if (locationInfoModel != null &&
                             locationInfoModel.position != null) {
                           mapController.move(
                             locationInfoModel.latLng!,
                             $constants.defaultInitialZoom,
                           );
+                          await context
+                              .read<MapMarkerFormCubit>()
+                              .saveCurrentMapPosition(
+                                mapController.camera.center,
+                                mapController.camera.zoom,
+                              );
                         }
                       },
                     ),

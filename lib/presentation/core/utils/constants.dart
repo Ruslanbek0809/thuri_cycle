@@ -315,7 +315,7 @@ class _Navigation {
             size: getTabletType() ? 52 : 26,
             color: $constants.palette.main,
           ),
-          label: 'Waste Map',
+          label: context.l10n.wasteMap,
         ),
         NavigationDestination(
           icon: Icon(
@@ -328,7 +328,7 @@ class _Navigation {
             size: getTabletType() ? 52 : 26,
             color: $constants.palette.main,
           ),
-          label: 'Community',
+          label: context.l10n.community,
         ),
         NavigationDestination(
           icon: Icon(
@@ -341,7 +341,7 @@ class _Navigation {
             size: getTabletType() ? 52 : 26,
             color: $constants.palette.main,
           ),
-          label: 'Profile',
+          label: context.l10n.profile,
         ),
       ];
 }

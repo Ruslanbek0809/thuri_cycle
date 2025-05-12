@@ -17,6 +17,7 @@ class LocationCubit extends Cubit<LocationState> {
   final ILocationFacade iLocationFacade;
   StreamSubscription<Position>? _positionSubscription;
 
+  // Keeps updating after current or last known position with getPositionStream
   Future<void> initialize() async {
     final granted = await iLocationFacade.isPermissionGranted();
     final serviceEnabled = await iLocationFacade.isServiceEnabled();
@@ -26,21 +27,33 @@ class LocationCubit extends Cubit<LocationState> {
     }
 
     if (serviceEnabled && granted) {
-      // Emit current info first
-      final currentInfo = await iLocationFacade.getCurrentLocationInfo();
-      emit(LocationState.success(currentInfo));
-
-      _positionSubscription = iLocationFacade.getPositionStream().listen(
-        (pos) async {
-          final updated = currentInfo.copyWith(position: pos);
-          emit(LocationState.success(updated));
-        },
-        onError: (dynamic e) {
-          talker.error('LocationCubit error: $e');
+      final currentOrLastKnownLocationInfoPosition =
+          await iLocationFacade.getCurrentOrLastKnownLocationInfo();
+      currentOrLastKnownLocationInfoPosition.fold(
+        () {
+          talker.error(
+            'LocationCubit currentOrLastKnownLocationInfoPosition ERROR',
+          );
           emit(const LocationState.failure());
+        },
+        (currentOrLastKnownLocationInfo) {
+          emit(LocationState.success(currentOrLastKnownLocationInfo));
+
+          _positionSubscription = iLocationFacade.getPositionStream().listen(
+            (pos) async {
+              final updated =
+                  currentOrLastKnownLocationInfo.copyWith(position: pos);
+              emit(LocationState.success(updated));
+            },
+            onError: (dynamic e) {
+              talker.error('LocationCubit ERROR: $e');
+              emit(const LocationState.failure());
+            },
+          );
         },
       );
     } else {
+      talker.error('LocationCubit serviceEnabled && granted ERROR');
       emit(const LocationState.failure());
     }
   }

@@ -12,6 +12,7 @@ import 'package:thuri_cycle/domain/report_waste/i_report.dart';
 import 'package:thuri_cycle/domain/report_waste/map_marker.dart';
 import 'package:thuri_cycle/infastructure/core/local_storage/map_preferences.dart';
 import 'package:thuri_cycle/presentation/core/utils/constants.dart';
+import 'package:thuri_cycle/presentation/core/utils/methods/aliases.dart';
 
 part 'map_marker_form_cubit.freezed.dart';
 part 'map_marker_form_state.dart';
@@ -20,11 +21,13 @@ part 'map_marker_form_state.dart';
 class MapMarkerFormCubit extends Cubit<MapMarkerFormState> {
   MapMarkerFormCubit(
     this.iReportFacade,
+    // this.ILocationFacade,
     this.mapPreferences,
     this.sharedPreferences,
   ) : super(MapMarkerFormState.initial());
 
   final IReportFacade iReportFacade;
+  // final ILocationFacade iLocationFacade;
   final MapPreferences mapPreferences;
 
   final SharedPreferences sharedPreferences;
@@ -33,9 +36,32 @@ class MapMarkerFormCubit extends Cubit<MapMarkerFormState> {
 
   StreamSubscription<MapEvent>? _mapEventSubscription;
 
-  Future<void> initialize() async {
+  void setIsNewInitialPositionLockedToTrue() {
+    talker.info('[MapMarkerFormCubit] setIsNewInitialPositionLockedToTrue()');
+    emit(state.copyWith(isNewInitialPositionLocked: true));
+  }
+
+  Future<void> initInitPositionAndGetMarkersFromFB({
+    bool isNewSaveNewMapPosition = false,
+    LatLng? center,
+    double? zoom,
+  }) async {
+    if (isNewSaveNewMapPosition) {
+      await saveCurrentMapPosition(center!, zoom!);
+    }
     final initialLatLng = mapPreferences.getInitialLatLng();
     final initialZoom = mapPreferences.getInitialZoom();
+
+    // final granted = await iLocationFacade.isPermissionGranted();
+    // final serviceEnabled = await iLocationFacade.isServiceEnabled();
+
+    // if (!granted) {
+    //   await iLocationFacade.requestPermission();
+    // }
+
+    // if (serviceEnabled && granted) {
+
+    // }
 
     emit(
       state.copyWith(
@@ -44,7 +70,7 @@ class MapMarkerFormCubit extends Cubit<MapMarkerFormState> {
       ),
     );
 
-    await loadMarkersFromFb(initialLatLng);
+    await getMarkersFromFB(initialLatLng);
   }
 
   void connectToMapStream(Stream<MapEvent> eventStream) {
@@ -56,10 +82,10 @@ class MapMarkerFormCubit extends Cubit<MapMarkerFormState> {
               (state.lastMapCenter == null ||
                   _distance(event.camera.center, state.lastMapCenter!) > 5000),
         )
-        .listen((event) => loadMarkersFromFb(event.camera.center));
+        .listen((event) => getMarkersFromFB(event.camera.center));
   }
 
-  Future<void> loadMarkersFromFb(LatLng center) async {
+  Future<void> getMarkersFromFB(LatLng center) async {
     emit(
       state.copyWith(
         isLoading: true,
@@ -67,7 +93,7 @@ class MapMarkerFormCubit extends Cubit<MapMarkerFormState> {
       ),
     );
 
-    final response = await iReportFacade.getMarkersFromFb(
+    final response = await iReportFacade.getMarkersFromFB(
       center,
       includeResolved: state.includeResolved,
     );
@@ -125,7 +151,7 @@ class MapMarkerFormCubit extends Cubit<MapMarkerFormState> {
     if (includeResolved == true &&
         !state.includeResolved &&
         state.lastMapCenter != null) {
-      loadMarkersFromFb(state.lastMapCenter!);
+      getMarkersFromFB(state.lastMapCenter!);
     }
   }
 
@@ -150,36 +176,4 @@ class MapMarkerFormCubit extends Cubit<MapMarkerFormState> {
     _mapEventSubscription?.cancel();
     return super.close();
   }
-
-  // //*----------------- FB Messaging ---------------------//
-
-  // Future<void> initFcmToken() async {
-  //   final firebaseMessaging = FirebaseMessaging.instance;
-  //   await firebaseMessaging.getToken().then(
-  //     (fcmToken) async {
-  //       if (fcmToken != null) {
-  //         if (kDebugMode) {
-  //           talker.verbose('initFcmToken() getToken() fcmToken: $fcmToken');
-  //         }
-
-  //         await sharedPreferences.setString($constants.fcmToken, fcmToken);
-  //       }
-  //       return null;
-  //     },
-  //     onError: (dynamic err) {
-  //       if (err != null) {
-  //         talker.verbose(err);
-  //       }
-  //     },
-  //   );
-
-  //   //* Listen for token refresh
-  //   FirebaseMessaging.instance.onTokenRefresh.listen((newFcmToken) async {
-  //     if (kDebugMode) {
-  //       talker
-  //           .verbose('initFcmToken() onTokenRefresh newFcmToken: $newFcmToken');
-  //     }
-  //     await sharedPreferences.setString($constants.fcmToken, newFcmToken);
-  //   });
-  // }
 }

@@ -6,7 +6,7 @@ import 'package:thuri_cycle/domain/report_waste/map_marker.dart';
 import 'package:thuri_cycle/presentation/core/utils/constants.dart';
 
 abstract class IReportFacade {
-  Future<Either<FirebaseFailure, List<MapMarkerModel>>> getMarkersFromFb(
+  Future<Either<FirebaseFailure, List<MapMarkerModel>>> getMarkersFromFB(
     LatLng center, {
     required bool includeResolved,
   });

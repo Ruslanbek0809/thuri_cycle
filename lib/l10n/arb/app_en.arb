@@ -1,5 +1,8 @@
 {
     "@@locale": "en",
+    "wasteMap": "Waste Map",
+    "community": "Community",
+    "profile": "Profile",
     "homeAppBarTitle": "Home",
     "@homeAppBarTitle": {
         "description": "Text shown in the AppBar of the Home Page"
@@ -8,7 +11,6 @@
     "welcome": "Welcome to ThuriCycle!",
     "chooseOthers": "Choose other login options",
     "confirmation": "Confirmation",
-    "profile": "Profile",
     "logIn": "Log in",
     "loginToDoAction": "Please Log in to your account to do this action!",
     "cancel": "Cancel",
@@ -142,7 +144,6 @@
     "tooFarToResolve": "You are too far to resolve",
     "close": "Close",
     "chooseYourLanguage": "Choose your language",
-    "community": "Community",
     "featured": "Featured",
     "comingSoon": "Coming soon!",
     "article": "Article",
@@ -180,5 +181,7 @@
     "logOutInfo": "Do you really want to log out?",
     "save": "Save",
     "usernameIsRequired": "Username is required",
+    "thuriCycleDescription": "ThuriCycle – A Smart, Community-Driven Waste & Recycling App for Thuringia",
+    "personalDescription": "Personal project. Soon, updates are coming with new features!",
     "comingInNextUpdate": "Coming in the next update"
 }

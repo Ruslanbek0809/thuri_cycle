@@ -17,11 +17,11 @@ class LocationRepository implements ILocationFacade {
     return Geolocator.getPositionStream(locationSettings: locationSettings);
   }
 
-  @override
-  Future<Option<Position>> getLastKnownPosition() async {
-    final position = await Geolocator.getLastKnownPosition();
-    return optionOf(position);
-  }
+  // @override
+  // Future<Option<Position>> getLastKnownPosition() async {
+  //   final position = await Geolocator.getLastKnownPosition();
+  //   return optionOf(position);
+  // }
 
   @override
   Future<bool> isPermissionGranted() async {
@@ -40,15 +40,38 @@ class LocationRepository implements ILocationFacade {
     return Geolocator.isLocationServiceEnabled();
   }
 
+  //TODO [optimizations]: Handle it better
   @override
-  Future<LocationInfoModel> getCurrentLocationInfo() async {
+  Future<Option<LocationInfoModel>> getCurrentOrLastKnownLocationInfo() async {
     final permissionGranted = await isPermissionGranted();
     final servicesEnabled = await isServiceEnabled();
-    final positionOpt = await getLastKnownPosition();
-    return LocationInfoModel(
-      servicesEnabled: servicesEnabled,
-      permissionGranted: permissionGranted,
-      position: positionOpt.toNullable(),
-    );
+
+    // final positionOpt = await getLastKnownPosition();
+    // final positionModel = positionOpt.toNullable();
+
+    final lastKnownPosition = await Geolocator.getLastKnownPosition();
+    if (lastKnownPosition != null) {
+      return some(
+        LocationInfoModel(
+          servicesEnabled: servicesEnabled,
+          permissionGranted: permissionGranted,
+          position: lastKnownPosition,
+        ),
+      );
+    } else {
+      // Fallback to getting current position (may take a second)
+      try {
+        final currentPosition = await Geolocator.getCurrentPosition();
+        return some(
+          LocationInfoModel(
+            servicesEnabled: servicesEnabled,
+            permissionGranted: permissionGranted,
+            position: currentPosition,
+          ),
+        );
+      } catch (e) {
+        return none(); // Could not retrieve position
+      }
+    }
   }
 }
