@@ -10,6 +10,8 @@ import 'package:path_provider/path_provider.dart';
 import 'package:thuri_cycle/firebase_options.dart';
 import 'package:thuri_cycle/infastructure/bloc_observer/bloc_observer.dart';
 import 'package:thuri_cycle/infastructure/core/dependency_injection/di.dart';
+import 'package:thuri_cycle/infastructure/core/firebase_config/messaging/firebase_messaging_service.dart';
+import 'package:thuri_cycle/infastructure/core/firebase_config/messaging/local_notification_service.dart';
 import 'package:thuri_cycle/presentation/core/utils/methods/aliases.dart';
 import 'package:universal_platform/universal_platform.dart';
 
@@ -79,7 +81,17 @@ Future<void> bootstrap(FutureOr<Widget> Function() builder) async {
       await Firebase.initializeApp(
         options: DefaultFirebaseOptions.currentPlatform,
       );
-      //! ---------- FIREBASE MESSAGING CONFIG (IOS & WEB) -------- //
+      //! ---------- FIREBASE MESSAGING & LOCAL NOTIFICATIONS CONFIG (ANDROID & IOS) -------- //
+      final localNotificationsService = LocalNotificationsService.instance();
+      await localNotificationsService.init();
+
+      final firebaseMessagingService = FirebaseMessagingService.instance();
+      await firebaseMessagingService.init(
+        localNotificationsService: localNotificationsService,
+      );
+
+      //TODO [optimizations]: Remove these later?
+
       // final messaging = FirebaseMessaging.instance;
 
       // unawaited(messaging.requestPermission());
