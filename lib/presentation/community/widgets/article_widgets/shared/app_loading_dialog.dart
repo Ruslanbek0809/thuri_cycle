@@ -15,7 +15,7 @@ class AppDialog {
   Future<void> loading() async {
     _current = LoadingDialog();
 
-    await showDialog(
+    await showDialog<dynamic>(
       context: context,
       barrierDismissible: false,
       barrierColor: Colors.black.withOpacity(kIsWeb ? 0.7 : 0.4),
