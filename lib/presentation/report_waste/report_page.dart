@@ -329,16 +329,19 @@ class _ReportPageState extends State<ReportPage> {
                             });
                           }
                         } else {
-                          // if (await checkRequiredFields(state) == true) {
-                          final pos = locationInfo?.position;
-                          if (pos != null) {
-                            await context.read<ReportFormCubit>().submitReport(
-                                  latitude: pos.latitude,
-                                  longitude: pos.longitude,
-                                  userId: userModel.uid,
-                                );
+                          if (await checkRequiredFields(context, state) ==
+                              true) {
+                            final pos = locationInfo?.position;
+                            if (pos != null && context.mounted) {
+                              await context
+                                  .read<ReportFormCubit>()
+                                  .submitReport(
+                                    latitude: pos.latitude,
+                                    longitude: pos.longitude,
+                                    userId: userModel.uid,
+                                  );
+                            }
                           }
-                          // }
                         }
                       },
                     ),
@@ -355,13 +358,13 @@ class _ReportPageState extends State<ReportPage> {
     BuildContext context,
     ReportFormState state,
   ) async {
-    // if (state.markerType == null) {
-    //   await showSnackBar(context.l10n.markerTypeRequired);
-    //   return false;
-    // } else if (state.images.isEmpty) {
-    //   await showSnackBar(context.l10n.imageRequired);
-    //   return false;
-    // }
+    if (state.markerType == null) {
+      await showSnackBar(context.l10n.wasteTypeIsRequired);
+      return false;
+    } else if (state.images.isEmpty) {
+      await showSnackBar(context.l10n.imagesRequired);
+      return false;
+    }
     return true;
   }
 

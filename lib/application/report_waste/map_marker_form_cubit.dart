@@ -21,13 +21,11 @@ part 'map_marker_form_state.dart';
 class MapMarkerFormCubit extends Cubit<MapMarkerFormState> {
   MapMarkerFormCubit(
     this.iReportFacade,
-    // this.ILocationFacade,
     this.mapPreferences,
     this.sharedPreferences,
   ) : super(MapMarkerFormState.initial());
 
   final IReportFacade iReportFacade;
-  // final ILocationFacade iLocationFacade;
   final MapPreferences mapPreferences;
 
   final SharedPreferences sharedPreferences;
@@ -51,17 +49,6 @@ class MapMarkerFormCubit extends Cubit<MapMarkerFormState> {
     }
     final initialLatLng = mapPreferences.getInitialLatLng();
     final initialZoom = mapPreferences.getInitialZoom();
-
-    // final granted = await iLocationFacade.isPermissionGranted();
-    // final serviceEnabled = await iLocationFacade.isServiceEnabled();
-
-    // if (!granted) {
-    //   await iLocationFacade.requestPermission();
-    // }
-
-    // if (serviceEnabled && granted) {
-
-    // }
 
     emit(
       state.copyWith(

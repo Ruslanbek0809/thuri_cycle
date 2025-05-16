@@ -262,17 +262,18 @@ class _ResolvePageState extends State<ResolvePage> {
                               });
                             }
                           } else {
-                            // if (await checkRequiredFields(state) == true) {
-                            final pos = locationInfo?.position;
-                            if (pos != null) {
-                              await context
-                                  .read<ResolveFormCubit>()
-                                  .submitReport(
-                                    mapMarker: mapMarker,
-                                    userId: userModel.uid,
-                                  );
+                            if (await checkRequiredFields(context, state) ==
+                                true) {
+                              final pos = locationInfo?.position;
+                              if (pos != null && context.mounted) {
+                                await context
+                                    .read<ResolveFormCubit>()
+                                    .submitReport(
+                                      mapMarker: mapMarker,
+                                      userId: userModel.uid,
+                                    );
+                              }
                             }
-                            // }
                           }
                         },
                       ),
@@ -284,6 +285,29 @@ class _ResolvePageState extends State<ResolvePage> {
         },
       ),
     );
+  }
+
+  Future<bool> checkRequiredFields(
+    BuildContext context,
+    ResolveFormState state,
+  ) async {
+    if (state.resolvedImages.isEmpty) {
+      await showSnackBar(context.l10n.imagesRequired);
+      return false;
+    }
+    return true;
+  }
+
+  Future<void> showSnackBar(String message) async {
+    scaffoldMessengerKey.currentState
+      ?..hideCurrentSnackBar()
+      ..showSnackBar(
+        SnackBarHelper.createError(
+          message: message,
+          snackBarPosition: 'top',
+        ),
+      );
+    return;
   }
 
   // void resolve() {

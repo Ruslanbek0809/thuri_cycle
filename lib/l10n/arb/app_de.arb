@@ -181,7 +181,9 @@
    "logOutInfo": "Möchten Sie sich wirklich abmelden?",
    "save": "Speichern",
    "usernameIsRequired": "Benutzername ist erforderlich",
-    "thuriCycleDescription": "ThuriCycle – Eine smarte, gemeinschaftsbasierte Abfall- & Recycling-App für Thüringen",
-    "personalDescription": "Persönliches Projekt. Bald kommen Updates mit neuen Funktionen!",
+   "thuriCycleDescription": "ThuriCycle – Eine smarte, gemeinschaftsbasierte Abfall- & Recycling-App für Thüringen",
+   "personalDescription": "Persönliches Projekt. Bald kommen Updates mit neuen Funktionen!",
+   "wasteTypeIsRequired": "Abfallart ist erforderlich",
+   "imagesRequired": "Bild(er) sind erforderlich",
    "comingInNextUpdate": "Kommt mit dem nächsten Update"
 }

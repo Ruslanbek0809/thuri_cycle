@@ -183,5 +183,7 @@
     "usernameIsRequired": "Username is required",
     "thuriCycleDescription": "ThuriCycle – A Smart, Community-Driven Waste & Recycling App for Thuringia",
     "personalDescription": "Personal project. Soon, updates are coming with new features!",
+    "wasteTypeIsRequired": "Waste type is required",
+    "imagesRequired": "Image(s) are required",
     "comingInNextUpdate": "Coming in the next update"
 }
