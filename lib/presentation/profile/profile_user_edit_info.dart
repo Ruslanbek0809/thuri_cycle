@@ -68,7 +68,7 @@ class _ProfileUserEditPageState extends State<ProfileUserEditPage> {
                   ?..hideCurrentSnackBar()
                   ..showSnackBar(
                     SnackBarHelper.createError(
-                      message: mapFailureToMessage(failure),
+                      message: mapFailureToMessage(context, failure),
                     ),
                   );
               },

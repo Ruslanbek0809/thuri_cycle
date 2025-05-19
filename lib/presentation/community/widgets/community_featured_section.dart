@@ -51,7 +51,7 @@ class CommunityFeaturedSection extends StatelessWidget {
                     orElse: Container.new,
                     loading: () => const ArticleWidgetSkeleton.large(),
                     failed: (e) =>
-                        articleContainer(text: mapFailureToMessage(e)),
+                        articleContainer(text: mapFailureToMessage(context, e)),
                     success: (article) => article != null
                         ? ArticleWidget.large(
                             article: article,

@@ -64,7 +64,8 @@ class CommunityArticlesSection extends StatelessWidget {
                     itemBuilder: (context, index) =>
                         const ArticleWidgetSkeleton(),
                   ),
-                  failed: (e) => Center(child: Text(mapFailureToMessage(e))),
+                  failed: (e) =>
+                      Center(child: Text(mapFailureToMessage(context, e))),
                   success: (articles) => GridView.builder(
                     shrinkWrap: true,
                     padding: const EdgeInsets.symmetric(horizontal: 20),

@@ -335,7 +335,7 @@ class _SingleMarkerPageState extends State<SingleMarkerPage> {
                                 child: Text(
                                   context.l10n.reportedBy(
                                     reportedByUserModel.username ??
-                                        'Unknown', //TODO [optimizations]: Add translations
+                                        context.l10n.unknown,
                                   ),
                                 ),
                               ),
@@ -361,7 +361,7 @@ class _SingleMarkerPageState extends State<SingleMarkerPage> {
                                   child: Text(
                                     context.l10n.resolvedBy(
                                       resolvedByUserModel.username ??
-                                          'Unknown', //TODO [optimizations]: Add translations
+                                          context.l10n.unknown,
                                     ),
                                   ),
                                 ),

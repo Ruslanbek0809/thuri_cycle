@@ -1,6 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
+import 'package:flutter/widgets.dart';
 import 'package:thuri_cycle/domain/core/firebase_failure.dart';
+import 'package:thuri_cycle/l10n/l10n.dart';
 import 'package:thuri_cycle/presentation/core/utils/methods/aliases.dart';
 
 typedef FirebaseRepoFunction<T> = Future<T> Function();
@@ -33,15 +35,14 @@ Future<Either<FirebaseFailure, T>> firebaseFailureHandler<T>(
   }
 }
 
-String mapFailureToMessage(FirebaseFailure failure) {
-  //TODO: Add translations
+String mapFailureToMessage(BuildContext context, FirebaseFailure failure) {
   return failure.when(
-    unexpected: () => 'Something went wrong.',
-    permissionDenied: () => 'You do not have permission.',
-    notFound: () => 'Requested item not found.',
-    networkError: () => 'Network error. Please try again later.',
-    userNotFound: () => 'User was not found',
-    custom: (msg) => msg, 
+    unexpected: () => context.l10n.smthWentWrong,
+    permissionDenied: () => context.l10n.doNotHavePermission,
+    notFound: () => context.l10n.requestedItemNotFound,
+    networkError: () => context.l10n.networkError,
+    userNotFound: () => context.l10n.userNotFound,
+    custom: (msg) => msg,
   );
   // failure.maybeMap(
   //   insufficientPermission: (_) => 'Insufficient permissions',

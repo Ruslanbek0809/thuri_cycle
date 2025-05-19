@@ -185,5 +185,12 @@
     "personalDescription": "Personal project. Soon, updates are coming with new features!",
     "wasteTypeIsRequired": "Waste type is required",
     "imagesRequired": "Image(s) are required",
+    "smthWentWrong": "Something went wrong",
+    "doNotHavePermission": "You do not have permission",
+    "requestedItemNotFound": "Requested item not found",
+    "networkError": "Network error. Please try again later",
+    "userNotFound": "User was not found",
+    "imageTypeNotSupported": "This image type is not supported",
+    "unknown": "Unknown",
     "comingInNextUpdate": "Coming in the next update"
 }

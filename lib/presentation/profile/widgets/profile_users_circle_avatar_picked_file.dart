@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:thuri_cycle/l10n/l10n.dart';
 import 'package:thuri_cycle/presentation/core/utils/constants.dart';
 import 'package:thuri_cycle/presentation/core/utils/methods/shortcuts.dart';
 
@@ -33,9 +34,9 @@ class ProfileUsersCircleAvatarPickedFile extends StatelessWidget {
                   Object error,
                   StackTrace? stackTrace,
                 ) {
-                  return const Center(
+                  return Center(
                     child: Text(
-                      'This image type is not supported', //TODO: Add translations
+                      context.l10n.imageTypeNotSupported,
                     ),
                   );
                 },

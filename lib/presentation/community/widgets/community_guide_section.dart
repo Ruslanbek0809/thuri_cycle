@@ -53,7 +53,8 @@ class CommunityGuidesSection extends StatelessWidget {
                     itemBuilder: (context, index) =>
                         const GuideWidgetSkeleton(),
                   ),
-                  failed: (e) => Center(child: Text(mapFailureToMessage(e))),
+                  failed: (e) =>
+                      Center(child: Text(mapFailureToMessage(context, e))),
                   success: (guides) => MasonryGridView.count(
                     shrinkWrap: true,
                     padding:

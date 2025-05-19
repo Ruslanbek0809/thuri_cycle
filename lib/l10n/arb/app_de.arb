@@ -185,5 +185,12 @@
    "personalDescription": "Persönliches Projekt. Bald kommen Updates mit neuen Funktionen!",
    "wasteTypeIsRequired": "Abfallart ist erforderlich",
    "imagesRequired": "Bild(er) sind erforderlich",
+   "smthWentWrong": " ⁠Etwas ist schiefgelaufen",
+   "doNotHavePermission": "⁠⁠Sie haben keine Berechtigung",
+   "requestedItemNotFound": "Angeforderter Eintrag wurde nicht gefunden",
+   "networkError": "⁠⁠Netzwerkfehler, Bitte versuchen Sie es später erneut",
+   "userNotFound": "⁠⁠Benutzer wurde nicht gefunden",
+   "imageTypeNotSupported": "This image type is not supported",
+   "unknown": "unbekannt",
    "comingInNextUpdate": "Kommt mit dem nächsten Update"
 }
