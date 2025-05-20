@@ -291,7 +291,6 @@ class _MapPageState extends State<MapPage> with WidgetsBindingObserver {
                           );
                       }
                     }
-                    // reportFormCubit: context.read<ReportFormCubit>(),
                   },
                 ),
               ),

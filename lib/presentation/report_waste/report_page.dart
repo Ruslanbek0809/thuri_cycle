@@ -21,7 +21,6 @@ import 'package:thuri_cycle/presentation/report_waste/widgets/add_report_photos_
 import 'package:thuri_cycle/presentation/report_waste/widgets/report_marker_type_card.dart';
 import 'package:thuri_cycle/router.gr.dart';
 
-//TODO: Return this reported marker to the map (check old project)
 //TODO: Fix error when newly created and try to access but not opening
 //TODO [optimization]: Handle errorMessage
 @RoutePage()
