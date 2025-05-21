@@ -1,0 +1,2 @@
+/Users/rhasanoff/Desktop/development/projects/thuri_cycle/android/app/.cxx/RelWithDebInfo/5k4e873s/armeabi-v7a/CMakeFiles/edit_cache.dir
+/Users/rhasanoff/Desktop/development/projects/thuri_cycle/android/app/.cxx/RelWithDebInfo/5k4e873s/armeabi-v7a/CMakeFiles/rebuild_cache.dir
