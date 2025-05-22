@@ -18,7 +18,6 @@ import 'package:thuri_cycle/presentation/core/utils/helpers/snackbar_helper.dart
 import 'package:thuri_cycle/presentation/core/utils/methods/aliases.dart';
 import 'package:thuri_cycle/presentation/core/utils/methods/shortcuts.dart';
 
-//TODO: Look for changes from old project for this page and apply any needed features from it if needed
 //TODO [optimization]: Refactor everything inside the page later (plus add error widgets in bloc sections)
 @RoutePage()
 class CommunityPage extends StatefulWidget {
