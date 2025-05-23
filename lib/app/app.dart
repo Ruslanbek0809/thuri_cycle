@@ -75,7 +75,6 @@ class _AppState extends State<App> {
         child: BlocBuilder<AppCubit, AppState>(
           buildWhen: (p, c) => p.theme != c.theme,
           builder: (context, appState) {
-            //TODO Add DE localization
             return BlocBuilder<LocaleCubit, LocaleState>(
               buildWhen: (p, c) => p != c,
               builder: (context, localeState) {
