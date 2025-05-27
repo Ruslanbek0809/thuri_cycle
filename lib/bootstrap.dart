@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:developer';
 
 import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
@@ -10,26 +11,25 @@ import 'package:path_provider/path_provider.dart';
 import 'package:thuri_cycle/firebase_options.dart';
 import 'package:thuri_cycle/infastructure/bloc_observer/bloc_observer.dart';
 import 'package:thuri_cycle/infastructure/core/dependency_injection/di.dart';
-import 'package:thuri_cycle/infastructure/core/firebase_config/messaging/firebase_messaging_service.dart';
-import 'package:thuri_cycle/infastructure/core/firebase_config/messaging/local_notification_service.dart';
+import 'package:thuri_cycle/presentation/core/utils/constants.dart';
 import 'package:thuri_cycle/presentation/core/utils/methods/aliases.dart';
 import 'package:universal_platform/universal_platform.dart';
 
-// Future<void> initFcmBackgroundMessage(RemoteMessage message) async {
-//   //* If you're going to use other Firebase services in the background, such as Firestore,
-//   //* make sure you call `initializeApp` before using other Firebase services.
-//   await Firebase.initializeApp();
+Future<void> initFcmBackgroundMessage(RemoteMessage message) async {
+  //* If you're going to use other Firebase services in the background, such as Firestore,
+  //* make sure you call `initializeApp` before using other Firebase services.
+  await Firebase.initializeApp();
 
-//   talker.verbose(
-//     'initFcmBackgroundMessage() onMessage.listen: message.data: ${message.data}',
-//   );
+  talker.verbose(
+    'initFcmBackgroundMessage() onMessage.listen: message.data: ${message.data}',
+  );
 
-//   if (message.notification != null) {
-//     talker.verbose(
-//       'initFcmBackgroundMessage() onMessage.listen: message.notification: ${message.notification}',
-//     );
-//   }
-// }
+  if (message.notification != null) {
+    talker.verbose(
+      'initFcmBackgroundMessage() onMessage.listen: message.notification: ${message.notification}',
+    );
+  }
+}
 
 Future<void> bootstrap(FutureOr<Widget> Function() builder) async {
   FlutterError.onError = (details) {
@@ -81,28 +81,27 @@ Future<void> bootstrap(FutureOr<Widget> Function() builder) async {
       await Firebase.initializeApp(
         options: DefaultFirebaseOptions.currentPlatform,
       );
-      //! ---------- FIREBASE MESSAGING & LOCAL NOTIFICATIONS CONFIG (ANDROID & IOS) -------- //
-      final localNotificationsService = LocalNotificationsService.instance();
-      await localNotificationsService.init();
+      //! ---------- FIREBASE MESSAGING CONFIG (IOS & WEB) -------- //
+      final messaging = FirebaseMessaging.instance;
 
-      final firebaseMessagingService = FirebaseMessagingService.instance();
-      await firebaseMessagingService.init(
-        localNotificationsService: localNotificationsService,
-      );
+      unawaited(messaging.requestPermission());
 
-      //TODO [optimizations]: Remove these later?
+      if (UniversalPlatform.isAndroid) {
+        unawaited(messaging.subscribeToTopic($constants.fcmTopicAndroid));
+      } else if (UniversalPlatform.isIOS) {
+        unawaited(messaging.subscribeToTopic($constants.fcmTopicIos));
+      }
 
-      // final messaging = FirebaseMessaging.instance;
+      FirebaseMessaging.onBackgroundMessage(initFcmBackgroundMessage);
+      
+      // //! ---------- FIREBASE MESSAGING & LOCAL NOTIFICATIONS CONFIG (ANDROID & IOS) -------- //
+      // final localNotificationsService = LocalNotificationsService.instance();
+      // await localNotificationsService.init();
 
-      // unawaited(messaging.requestPermission());
-
-      // if (UniversalPlatform.isAndroid) {
-      //   unawaited(messaging.subscribeToTopic($constants.fcmTopicAndroid));
-      // } else if (UniversalPlatform.isIOS) {
-      //   unawaited(messaging.subscribeToTopic($constants.fcmTopicIos));
-      // }
-
-      // FirebaseMessaging.onBackgroundMessage(initFcmBackgroundMessage);
+      // final firebaseMessagingService = FirebaseMessagingService.instance();
+      // await firebaseMessagingService.init(
+      //   localNotificationsService: localNotificationsService,
+      // );
 
       // //! ---------- SENTRY INIT CONFIG -------- //
       // await initializeSentry();

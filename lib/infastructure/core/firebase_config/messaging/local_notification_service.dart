@@ -60,7 +60,8 @@ class LocalNotificationsService {
       initializationSettings,
       onDidReceiveNotificationResponse: (NotificationResponse response) {
         // Handle notification tap in foreground
-        talker.verbose('Foreground notification has been tapped: ${response.payload}');
+        talker.verbose(
+            'Foreground notification has been tapped: ${response.payload}');
       },
     );
 
@@ -72,6 +73,7 @@ class LocalNotificationsService {
 
     // Mark initialization as complete
     _isFlutterLocalNotificationInitialized = true;
+    talker.verbose('LocalNotificationsService init()');
   }
 
   /// Show a local notification with the given title, body, and payload.

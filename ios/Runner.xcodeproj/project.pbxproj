@@ -165,7 +165,6 @@
 				331C8082294A63A400263BE5 /* RunnerTests */,
 				5E288CFFECE4EEDDC3D3C15A /* Pods */,
 				5FA28C6E34AE9D1BE10CA775 /* Frameworks */,
-				4C3DED582DE51AAF00A5E5EE /* GoogleService-Info.plist */,
 			);
 			sourceTree = "<group>";
 		};
@@ -190,6 +189,7 @@
 				1498D2331E8E89220040F4C2 /* GeneratedPluginRegistrant.m */,
 				74858FAE1ED2DC5600515810 /* AppDelegate.swift */,
 				74858FAD1ED2DC5600515810 /* Runner-Bridging-Header.h */,
+				4C3DED582DE51AAF00A5E5EE /* GoogleService-Info.plist */,
 			);
 			path = Runner;
 			sourceTree = "<group>";

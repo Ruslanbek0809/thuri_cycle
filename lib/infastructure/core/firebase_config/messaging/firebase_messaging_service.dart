@@ -47,6 +47,7 @@ class FirebaseMessagingService {
     if (initialMessage != null) {
       _onMessageOpenedApp(initialMessage);
     }
+    talker.verbose('FirebaseMessagingService init()');
   }
 
   /// Retrieves and manages the FCM token for push notifications

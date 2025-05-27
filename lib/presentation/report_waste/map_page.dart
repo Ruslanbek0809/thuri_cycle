@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:thuri_cycle/application/app/locale/locale_cubit.dart';
 import 'package:thuri_cycle/application/report_waste/location/location_cubit.dart';
 import 'package:thuri_cycle/application/report_waste/map_marker_form_cubit.dart';
 import 'package:thuri_cycle/domain/report_waste/location_info.dart';
@@ -40,6 +41,12 @@ class _MapPageState extends State<MapPage> with WidgetsBindingObserver {
     WidgetsBinding.instance.addObserver(this);
 
     context.read<LocationCubit>().initialize();
+
+    context.read<LocaleCubit>().initFcmToken();
+    context.read<LocaleCubit>().initialMessage(context);
+    context.read<LocaleCubit>().initFcmForegroundMessage(context);
+    context.read<LocaleCubit>().initFcmNotificationPressedMessage(context);
+
     context.read<MapMarkerFormCubit>()
       ..initInitPositionAndGetMarkersFromFB()
       ..connectToMapStream(mapController.mapEventStream);

@@ -135,15 +135,23 @@ class __$$LocaleStateImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$LocaleStateImpl implements _LocaleState {
+class _$LocaleStateImpl with DiagnosticableTreeMixin implements _LocaleState {
   const _$LocaleStateImpl({required this.locale});
 
   @override
   final Locale locale;
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'LocaleState(locale: $locale)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'LocaleState'))
+      ..add(DiagnosticsProperty('locale', locale));
   }
 
   @override
@@ -280,15 +288,23 @@ class __$$InitialImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$InitialImpl implements _Initial {
+class _$InitialImpl with DiagnosticableTreeMixin implements _Initial {
   _$InitialImpl(this.locale);
 
   @override
   final Locale locale;
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'LocaleState.initial(locale: $locale)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'LocaleState.initial'))
+      ..add(DiagnosticsProperty('locale', locale));
   }
 
   @override
