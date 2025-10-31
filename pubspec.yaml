@@ -57,7 +57,7 @@ dependencies:
   easy_image_viewer: ^1.5.1
   phone_form_field: ^10.0.6
   
-  flutter_native_splash: ^2.4.5 #TODO: Check this native splash screen before uploading the app for production
+  flutter_native_splash: ^2.4.6 #TODO: Check this native splash screen before uploading the app for production
   flutter_launcher_icons: ^0.14.3
 
   # MAPS
