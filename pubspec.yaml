@@ -39,7 +39,7 @@ dependencies:
   # TOOLS
   get_it: ^8.0.3
   injectable: ^2.5.0
-  freezed_annotation: ^2.4.4
+  freezed_annotation: ^3.0.0
   talker_flutter: ^4.7.1
   universal_platform: ^1.1.0
   flutter_hooks: ^0.21.2
@@ -90,7 +90,7 @@ dev_dependencies:
   mocktail: ^1.0.4
   very_good_analysis: ^7.0.0
   # TODO [optimization]: Upgrade freezed (with freezed_annotation) and update codes accordingly
-  freezed: ^2.5.8
+  freezed: ^3.0.6
   injectable_generator: ^2.7.0
   auto_route_generator: ^10.0.1
   json_serializable: ^6.9.4
