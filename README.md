@@ -10,6 +10,33 @@ A Very Good Project created by Very Good CLI.
 
 ---
 
+## :camera: Screenshots
+### :camera: Phone screenshots:
+| 1 | 2| 3|
+|------|-------|-------|
+|<img src="screenshots/1.png" width="200">|<img src="screenshots/2.png" width="200">|<img src="screenshots/3.png" width="200">|
+
+| 4 | 5| 6|
+|------|-------|-------|
+|<img src="screenshots/4.png" width="200">|<img src="screenshots/5.png" width="200">|<img src="screenshots/6.png" width="200">|
+
+| 7 | 8| 9|
+|------|-------|-------|
+|<img src="screenshots/7.png" width="200">|<img src="screenshots/8.png" width="200">|<img src="screenshots/9.png" width="200">|
+
+| 10 | 11| 12|
+|------|-------|-------|
+|<img src="screenshots/10.png" width="200">|<img src="screenshots/11.png" width="200">|<img src="screenshots/12.png" width="200">|
+
+| 13 | 14| 15|
+|------|-------|-------|
+|<img src="screenshots/13.png" width="200">|<img src="screenshots/14.png" width="200">|<img src="screenshots/15.png" width="200">|
+
+| 16 |
+|------|-------|-------|
+|<img src="screenshots/16.png"
+
+
 ## Getting Started 🚀
 
 This project contains 3 flavors:
