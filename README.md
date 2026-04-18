@@ -1,3 +1,4 @@
+# Open-sourced recently
 # ThuriCycle
 
 ![coverage][coverage_badge]
@@ -34,7 +35,7 @@ A Very Good Project created by Very Good CLI.
 
 | 16 |
 |------|-------|-------|
-|<img src="screenshots/16.png"
+|<img src="screenshots/16.png" width="200">|
 
 
 ## Getting Started 🚀
