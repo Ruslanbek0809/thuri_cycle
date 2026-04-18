@@ -34,7 +34,7 @@ A Very Good Project created by Very Good CLI.
 |<img src="screenshots/13.png" width="200">|<img src="screenshots/14.png" width="200">|<img src="screenshots/15.png" width="200">|
 
 | 16 |
-|------|-------|-------|
+|------|
 |<img src="screenshots/16.png" width="200">|
 
 
